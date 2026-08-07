@@ -9,6 +9,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
 import { embeddedToolSchemaErrors, ontologyIdentityErrors, patternCatalogErrors } from "./contract-invariants.mjs";
+import { markdownAnchors } from "./markdown-anchors.mjs";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const ignoredDirectories = new Set([".git", "node_modules", "coverage"]);
@@ -34,32 +35,6 @@ async function walk(directory) {
 
 function relative(file) {
   return path.relative(root, file).split(path.sep).join("/");
-}
-
-function githubSlug(value) {
-  return value
-    .trim()
-    .toLowerCase()
-    .replace(/<[^>]+>/g, "")
-    .replace(/[^\p{L}\p{N}\s_-]/gu, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-");
-}
-
-function markdownAnchors(content) {
-  const anchors = new Set();
-  for (const match of content.matchAll(/<a\s+(?:name|id)=["']([^"']+)["'][^>]*>/gi)) anchors.add(match[1]);
-  for (const line of content.split("\n")) {
-    const match = /^(#{1,6})\s+(.+?)\s*$/.exec(line);
-    if (!match) continue;
-    const base = githubSlug(match[2]);
-    if (!base) continue;
-    let candidate = base;
-    let suffix = 1;
-    while (anchors.has(candidate)) candidate = `${base}-${suffix++}`;
-    anchors.add(candidate);
-  }
-  return anchors;
 }
 
 function collectControlIds(value, ids = new Set()) {
@@ -190,6 +165,9 @@ if (packageMetadata) {
   if (packageMetadata.private !== true) fail("package.json must prevent accidental registry publication");
   if (packageMetadata.repository?.url !== "git+https://github.com/davidahmann/production-agent-engineering.git") {
     fail("package.json has a non-canonical repository URL");
+  }
+  if (!citation.includes(`version: ${packageMetadata.version}`)) {
+    fail("CITATION.cff version does not match package.json");
   }
 }
 
