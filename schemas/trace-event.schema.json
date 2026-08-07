@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/davidahmann/production-agent-engineering/schemas/trace-event.schema.json",
+  "title": "Agent state-transition trace event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["run_id", "operation_id", "state", "details", "telemetry"],
+  "properties": {
+    "run_id": { "type": "string", "format": "uuid" },
+    "operation_id": { "$ref": "#/$defs/digest" },
+    "state": { "type": "string", "pattern": "^[a-z][a-z0-9_]+$" },
+    "stop_reason": { "type": "string", "pattern": "^[a-z][a-z0-9_]+$" },
+    "details": { "type": "object" },
+    "telemetry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent.run.id",
+        "agent.operation.id",
+        "agent.system.id",
+        "agent.system.version",
+        "agent.workflow.id",
+        "agent.workflow.state",
+        "agent.tenant.hash",
+        "agent.principal.id_hash",
+        "agent.caller.id_hash",
+        "agent.autonomy.level",
+        "agent.steps.count"
+      ],
+      "properties": {
+        "agent.run.id": { "type": "string", "format": "uuid" },
+        "agent.operation.id": { "$ref": "#/$defs/digest" },
+        "agent.system.id": { "type": "string", "minLength": 1 },
+        "agent.system.version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+        "agent.workflow.id": { "type": "string", "minLength": 1 },
+        "agent.workflow.state": { "type": "string", "minLength": 1 },
+        "agent.tenant.hash": { "$ref": "#/$defs/digest" },
+        "agent.principal.id_hash": { "$ref": "#/$defs/digest" },
+        "agent.caller.id_hash": { "$ref": "#/$defs/digest" },
+        "agent.autonomy.level": { "enum": ["observe", "recommend", "execute_reversible", "execute_bounded", "coordinate"] },
+        "agent.stop.reason": { "type": "string", "minLength": 1 },
+        "agent.steps.count": { "type": "integer", "minimum": 1 },
+        "agent.cost.usd": { "type": "number", "minimum": 0 },
+        "agent.accepted_outcome": { "type": "boolean" }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "stop_reason": true },
+        "required": ["stop_reason"]
+      },
+      "then": {
+        "properties": {
+          "telemetry": {
+            "type": "object",
+            "required": ["agent.stop.reason", "agent.cost.usd", "agent.accepted_outcome"],
+            "properties": {
+              "agent.stop.reason": true,
+              "agent.cost.usd": true,
+              "agent.accepted_outcome": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+  }
+}

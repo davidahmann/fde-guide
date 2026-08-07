@@ -1,0 +1,72 @@
+{
+  "$schema": "../../../schemas/tool-contract.schema.json",
+  "schema_version": "1.0.0",
+  "tool_id": "commit_resolution",
+  "version": "1.0.0",
+  "owner": "accounts-payable-platform",
+  "purpose": "Commit an approved invoice-resolution proposal and return a ledger effect receipt",
+  "kind": "commit_write",
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["operation_id", "tenant_id", "invoice_id", "invoice_revision", "proposal_id", "proposal_digest", "approval_id", "policy_revision", "idempotency_key"],
+    "properties": {
+      "operation_id": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+      "tenant_id": { "type": "string" },
+      "invoice_id": { "type": "string" },
+      "invoice_revision": { "type": "string" },
+      "proposal_id": { "type": "string" },
+      "proposal_digest": { "type": "string" },
+      "approval_id": { "type": "string" },
+      "policy_revision": { "type": "string" },
+      "idempotency_key": { "type": "string" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["effect_id", "service_receipt", "status"],
+    "properties": {
+      "effect_id": { "type": "string" },
+      "service_receipt": { "type": "string" },
+      "status": { "const": "committed" }
+    }
+  },
+  "error_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["code", "message", "retryable"],
+    "properties": {
+      "code": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]+$" },
+      "message": { "type": "string", "minLength": 1 },
+      "retryable": { "type": "boolean" }
+    }
+  },
+  "authorization": {
+    "agent_principal": "invoice-exception-workload",
+    "caller_context_required": true,
+    "required_scopes": ["invoice-resolution:commit"],
+    "policy_decision_point": "commit-service",
+    "tenant_binding": true,
+    "fail_mode": "closed"
+  },
+  "execution": {
+    "timeout_ms": 8000,
+    "max_attempts": 2,
+    "retryable_errors": ["TIMEOUT", "UNAVAILABLE"],
+    "idempotency": { "required": true, "key_fields": ["operation_id"], "enforced_by": "accounts-payable-ledger" }
+  },
+  "side_effects": { "class": "reversible", "resources": ["invoice", "resolution-receipt"], "compensation": "restore invoice revision using finance-approved compensation" },
+  "approval": { "required": true, "role": "accounts-payable-approver", "proposal_digest_required": true, "expires_seconds": 3600 },
+  "network": { "egress": "allowlist", "destinations": ["ap-ledger.internal"], "credential_broker": "workload-identity-gateway" },
+  "failure_modes": [
+    { "code": "POLICY_DENIED", "class": "authorization", "retry": false, "escalate": true },
+    { "code": "APPROVAL_EXPIRED", "class": "authorization", "retry": false, "escalate": true },
+    { "code": "DIGEST_MISMATCH", "class": "validation", "retry": false, "escalate": true },
+    { "code": "TIMEOUT", "class": "retryable", "retry": true, "escalate": false },
+    { "code": "READBACK_MISMATCH", "class": "escalation", "retry": false, "escalate": true }
+  ],
+  "observability": { "span_name": "agent.tool.commit_resolution", "audit_event": "invoice_resolution.committed", "redacted_fields": [], "postcondition_readback": true },
+  "invariants": ["approval binds proposal digest", "caller authorization is current", "one resolution commit per invoice revision", "completion requires ledger readback"],
+  "control_ids": ["TOL-003", "IAM-002", "IAM-003", "REL-001", "REL-003", "HUM-001", "OPS-001"]
+}

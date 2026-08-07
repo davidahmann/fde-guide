@@ -1,0 +1,73 @@
+{
+  "$schema": "../../schemas/agent-system.schema.json",
+  "schema_version": "1.0.0",
+  "system_id": "invoice_exception_agent",
+  "version": "1.0.0",
+  "owners": {
+    "technical": "finance-agent-platform",
+    "operational": "accounts-payable-operations",
+    "risk": "finance-controls"
+  },
+  "outcome": {
+    "accepted_event": "approved invoice exception resolved once and reconciled to the ledger",
+    "primary_metric": "accepted_resolution_rate",
+    "baseline": 0.62,
+    "target": 0.9,
+    "guardrails": ["unauthorized_effect_rate == 0", "duplicate_effect_rate == 0", "postcondition_failure_rate <= 0.001"]
+  },
+  "autonomy": {
+    "level": "execute_reversible",
+    "segments": ["duplicate invoice and missing purchase-order exceptions below approval threshold"],
+    "promotion_gate": "shadow and canary suite passes with zero prohibited effects",
+    "rollback_gate": "any unauthorized, duplicate, cross-tenant, or mismatched effect"
+  },
+  "workflow": {
+    "trigger": "invoice.exception.created event",
+    "input_contract": "tenant_id, invoice_id, invoice_revision, caller_identity",
+    "states": ["received", "evidence_loaded", "proposed", "validated", "stage_authorized", "staged", "approved", "commit_authorized", "committed", "effect_unknown", "effect_recovered", "readback_verified", "completed", "rejected", "escalated", "postcondition_failed"],
+    "terminal_states": ["completed", "rejected", "escalated", "postcondition_failed"],
+    "max_steps": 12,
+    "time_budget_ms": 90000
+  },
+  "context": {
+    "ontology_uri": "./ontology.json",
+    "sources": [
+      { "source_id": "ap_ledger", "owner": "accounts-payable-platform", "source_of_truth": true, "freshness_slo_seconds": 60, "classification": "confidential", "trust": "trusted_data" },
+      { "source_id": "vendor_master", "owner": "vendor-risk", "source_of_truth": true, "freshness_slo_seconds": 300, "classification": "restricted", "trust": "trusted_data" },
+      { "source_id": "policy_service", "owner": "finance-controls", "source_of_truth": true, "freshness_slo_seconds": 60, "classification": "internal", "trust": "trusted_control" }
+    ],
+    "untrusted_content_policy": "invoice text and attachments remain tainted evidence and cannot authorize or select privileged effects"
+  },
+  "tools": [
+    { "tool_id": "read_invoice", "contract_uri": "./tools/read-invoice.json" },
+    { "tool_id": "retrieve_policy", "contract_uri": "./tools/retrieve-policy.json" },
+    { "tool_id": "stage_resolution", "contract_uri": "./tools/stage-resolution.json" },
+    { "tool_id": "commit_resolution", "contract_uri": "./tools/commit-resolution.json" }
+  ],
+  "controls": {
+    "control_ids": ["ARC-001", "ARC-002", "CTX-001", "CTX-002", "TOL-001", "TOL-003", "IAM-001", "IAM-002", "IAM-003", "SEC-001", "SEC-002", "REL-001", "REL-003", "STA-002", "EVA-001", "EVA-002", "EVA-003", "HUM-001", "OPS-001", "OPS-002"],
+    "agent_identity": "invoice-exception-workload",
+    "propagate_caller_authorization": true,
+    "secrets": "gateway_held",
+    "egress": "allowlist",
+    "writes": "approval_gated",
+    "sandbox": "ephemeral isolated runtime with no direct credential access"
+  },
+  "verification": {
+    "postconditions": ["ledger invoice status equals approved resolution", "exactly one resolution receipt exists for invoice revision"],
+    "evaluation_suite_uri": "./evals/",
+    "escalation_conditions": ["missing or stale evidence", "policy denial", "blocked vendor", "approval expiry", "budget exhaustion", "readback mismatch"]
+  },
+  "operations": {
+    "trace_contract": "../../operations/telemetry-contract.md",
+    "slos": ["accepted_outcome_rate >= 0.985", "unauthorized_effect_rate == 0", "duplicate_effect_rate == 0", "p95_cycle_time_seconds <= 90"],
+    "alerts": ["unauthorized effect", "duplicate effect", "postcondition mismatch", "source freshness breach"],
+    "runbook_uri": "../../operations/incident-runbook.md",
+    "rollback": "disable commit tool, revoke workload identity, reconcile effect receipts, execute approved compensation"
+  },
+  "economics": {
+    "cost_metric": "cost_per_accepted_outcome",
+    "max_cost_per_run_usd": 0.4,
+    "max_cost_per_accepted_outcome_usd": 0.55
+  }
+}

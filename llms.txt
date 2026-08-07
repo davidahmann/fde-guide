@@ -1,0 +1,27 @@
+# Production Agent Engineering: An FDE Field Guide
+
+Purpose: production AI agent architecture, evaluation, security, deployment, and operations.
+License: Apache-2.0
+
+Primary index: catalog.json
+Project controls (normative within this guide): controls/control-catalog.json
+Artifact contracts: schemas/
+Copy-ready artifacts: templates/
+Reference architectures: blueprints/
+Executable reference: examples/invoice-exception/
+Release and operations: operations/
+Engineering rationale: library/
+Dated evidence: research/
+Contribution contract: AGENTS.md and CONTRIBUTING.md
+Security reports: SECURITY.md
+
+Design artifact sequence:
+1. templates/fde-discovery-pack.md
+2. templates/operational-ontology.json
+3. templates/agent-system.json
+4. templates/tool-contract.json
+5. templates/evaluation-case.json
+6. templates/threat-model.json
+7. operations/release-gates.md
+
+Validation: npm ci && npm test && git diff --check

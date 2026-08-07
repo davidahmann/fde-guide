@@ -1,0 +1,58 @@
+name: Design proposal
+description: Propose a control, schema, blueprint, pattern, evaluation, or reference change.
+title: "[Proposal]: "
+labels:
+  - proposal
+  - triage
+body:
+  - type: dropdown
+    id: artifact_type
+    attributes:
+      label: Artifact type
+      options:
+        - Control
+        - Schema or runtime contract
+        - Blueprint
+        - Pattern or anti-pattern
+        - Evaluation or replay world
+        - Reference implementation
+        - Operations specification
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Production problem
+      description: Describe the workflow, failure mode, affected trust boundary, and current gap.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed contract
+      description: Define components, state transitions, authorization, failure behavior, telemetry, and release evidence as applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: Provide dated primary sources, reproducible research, or an inspectable failure case.
+    validations:
+      required: true
+  - type: textarea
+    id: tests
+    attributes:
+      label: Verification and rollback
+      description: List positive, negative, adversarial, and recovery cases plus the rollback path.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I reviewed the control catalog and relevant schema before proposing this change.
+          required: true
+        - label: Vendor claims are attributed and experimental claims are labeled.
+          required: true
