@@ -1,0 +1,49 @@
+name: Evidence correction
+description: Correct a stale, broken, weakly attributed, or misinterpreted source claim.
+title: "[Evidence]: "
+labels:
+  - evidence
+  - triage
+body:
+  - type: input
+    id: source_id
+    attributes:
+      label: Source and path
+      description: Evidence ID and repository path containing the claim.
+    validations:
+      required: true
+  - type: textarea
+    id: current_claim
+    attributes:
+      label: Current claim
+      description: Quote only the minimum repository text needed to identify the issue.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Correction
+      description: Explain what should change and why.
+    validations:
+      required: true
+  - type: input
+    id: primary_source
+    attributes:
+      label: Primary source
+      description: Stable URL to the specification, release, incident report, research artifact, or first-party engineering report.
+    validations:
+      required: true
+  - type: input
+    id: publication_date
+    attributes:
+      label: Publication date
+      description: Use YYYY-MM-DD when available.
+    validations:
+      required: true
+  - type: textarea
+    id: impact
+    attributes:
+      label: Control and implementation impact
+      description: Identify controls, patterns, templates, or examples that should be re-evaluated.
+    validations:
+      required: true

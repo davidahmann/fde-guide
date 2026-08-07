@@ -1,0 +1,67 @@
+{
+  "$schema": "../../../schemas/tool-contract.schema.json",
+  "schema_version": "1.0.0",
+  "tool_id": "read_invoice",
+  "version": "1.0.0",
+  "owner": "accounts-payable-platform",
+  "purpose": "Read one tenant-bound invoice revision from the accounts-payable ledger",
+  "kind": "query",
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["tenant_id", "invoice_id"],
+    "properties": {
+      "tenant_id": { "type": "string" },
+      "invoice_id": { "type": "string" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["tenant_id", "invoice_id", "revision", "status", "amount", "vendor_id", "observed_at"],
+    "properties": {
+      "tenant_id": { "type": "string" },
+      "invoice_id": { "type": "string" },
+      "revision": { "type": "string" },
+      "status": { "type": "string" },
+      "amount": { "type": "number" },
+      "vendor_id": { "type": "string" },
+      "observed_at": { "type": "string", "format": "date-time" }
+    }
+  },
+  "error_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["code", "message", "retryable"],
+    "properties": {
+      "code": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]+$" },
+      "message": { "type": "string", "minLength": 1 },
+      "retryable": { "type": "boolean" }
+    }
+  },
+  "authorization": {
+    "agent_principal": "invoice-exception-workload",
+    "caller_context_required": true,
+    "required_scopes": ["invoice:read"],
+    "policy_decision_point": "tool-gateway",
+    "tenant_binding": true,
+    "fail_mode": "closed"
+  },
+  "execution": {
+    "timeout_ms": 3000,
+    "max_attempts": 2,
+    "retryable_errors": ["TIMEOUT", "UNAVAILABLE"],
+    "idempotency": { "required": false, "key_fields": [], "enforced_by": "not-applicable" }
+  },
+  "side_effects": { "class": "none", "resources": [], "compensation": null },
+  "approval": { "required": false, "role": null, "proposal_digest_required": false, "expires_seconds": null },
+  "network": { "egress": "allowlist", "destinations": ["ap-ledger.internal"], "credential_broker": "workload-identity-gateway" },
+  "failure_modes": [
+    { "code": "NOT_FOUND", "class": "escalation", "retry": false, "escalate": true },
+    { "code": "POLICY_DENIED", "class": "authorization", "retry": false, "escalate": true },
+    { "code": "TIMEOUT", "class": "retryable", "retry": true, "escalate": false }
+  ],
+  "observability": { "span_name": "agent.tool.read_invoice", "audit_event": "invoice.read", "redacted_fields": ["bank_account"], "postcondition_readback": false },
+  "invariants": ["returned tenant_id equals authorized tenant_id", "returned revision identifies the exact evidence snapshot"],
+  "control_ids": ["CTX-001", "TOL-001", "IAM-002", "IAM-003", "SEC-001", "SEC-005"]
+}

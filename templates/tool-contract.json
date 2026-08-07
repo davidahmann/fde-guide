@@ -1,0 +1,87 @@
+{
+  "$schema": "../schemas/tool-contract.schema.json",
+  "schema_version": "1.0.0",
+  "tool_id": "stage_proposal",
+  "version": "0.1.0",
+  "owner": "domain-platform",
+  "purpose": "Create a non-binding proposal after validation and policy authorization",
+  "kind": "stage_write",
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["tenant_id", "work_item_id", "source_revision", "proposal"],
+    "properties": {
+      "tenant_id": { "type": "string" },
+      "work_item_id": { "type": "string" },
+      "source_revision": { "type": "string" },
+      "proposal": { "type": "object" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["proposal_id", "status", "proposal_digest"],
+    "properties": {
+      "proposal_id": { "type": "string" },
+      "status": { "const": "staged" },
+      "proposal_digest": { "type": "string" }
+    }
+  },
+  "error_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["code", "message", "retryable"],
+    "properties": {
+      "code": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]+$" },
+      "message": { "type": "string", "minLength": 1 },
+      "retryable": { "type": "boolean" }
+    }
+  },
+  "authorization": {
+    "agent_principal": "workflow-agent",
+    "caller_context_required": true,
+    "required_scopes": ["proposal:stage"],
+    "policy_decision_point": "tool-gateway",
+    "tenant_binding": true,
+    "fail_mode": "closed"
+  },
+  "execution": {
+    "timeout_ms": 5000,
+    "max_attempts": 2,
+    "retryable_errors": ["TIMEOUT", "UNAVAILABLE"],
+    "idempotency": {
+      "required": true,
+      "key_fields": ["tenant_id", "work_item_id", "source_revision"],
+      "enforced_by": "proposal-service"
+    }
+  },
+  "side_effects": {
+    "class": "staged",
+    "resources": ["resolution-proposal"],
+    "compensation": "discard staged proposal"
+  },
+  "approval": {
+    "required": false,
+    "role": null,
+    "proposal_digest_required": false,
+    "expires_seconds": null
+  },
+  "network": {
+    "egress": "allowlist",
+    "destinations": ["proposal-service.internal"],
+    "credential_broker": "workload-identity-gateway"
+  },
+  "failure_modes": [
+    { "code": "POLICY_DENIED", "class": "authorization", "retry": false, "escalate": true },
+    { "code": "INVALID_PROPOSAL", "class": "validation", "retry": false, "escalate": true },
+    { "code": "TIMEOUT", "class": "retryable", "retry": true, "escalate": false }
+  ],
+  "observability": {
+    "span_name": "agent.tool.stage_proposal",
+    "audit_event": "proposal.staged",
+    "redacted_fields": ["proposal.sensitive_notes"],
+    "postcondition_readback": true
+  },
+  "invariants": ["at most one active proposal per work item and source revision"],
+  "control_ids": ["TOL-001", "TOL-003", "IAM-002", "IAM-003", "REL-001", "STA-002"]
+}

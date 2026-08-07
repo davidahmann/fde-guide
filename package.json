@@ -1,0 +1,44 @@
+{
+  "name": "production-agent-engineering",
+  "version": "1.0.0",
+  "description": "FDE field guide and executable reference kit for production AI agents.",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": {
+    "name": "David Ahmann",
+    "url": "https://www.linkedin.com/in/dahmann/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidahmann/production-agent-engineering.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davidahmann/production-agent-engineering/issues"
+  },
+  "homepage": "https://github.com/davidahmann/production-agent-engineering#readme",
+  "keywords": [
+    "ai-agents",
+    "agentic-ai",
+    "fde",
+    "production-ai",
+    "evaluation",
+    "ai-security",
+    "observability"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "validate": "node scripts/validate-repository.mjs",
+    "test:contracts": "node --test tests/schema-contracts.test.mjs",
+    "test:policy": "node --test examples/invoice-exception/authorization-policy.test.mjs",
+    "test:reference": "node --test examples/invoice-exception/reference-loop.test.mjs",
+    "test:evals": "node --test examples/invoice-exception/run-evals.test.mjs",
+    "test": "npm run validate && npm run test:contracts && npm run test:policy && npm run test:reference && npm run test:evals"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  }
+}

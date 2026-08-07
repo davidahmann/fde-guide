@@ -1,0 +1,56 @@
+name: Bug report
+description: Report a reproducible defect in a contract, validator, example, or document.
+title: "[Bug]: "
+labels:
+  - bug
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report vulnerabilities here. Use the private channel in SECURITY.md.
+  - type: input
+    id: artifact
+    attributes:
+      label: Artifact
+      description: Path and control ID, schema ID, or evaluation case when applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: defect
+    attributes:
+      label: Defect
+      description: What is incorrect, inconsistent, or not reproducible?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Minimal inputs, commands, and observed output.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: State the expected contract, result, or invariant.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Commit SHA, Node.js version, operating system, and relevant runtime details.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues and pull requests.
+          required: true
+        - label: This report contains no secrets, private data, or proprietary material.
+          required: true

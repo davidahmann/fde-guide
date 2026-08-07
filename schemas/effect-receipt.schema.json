@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/davidahmann/production-agent-engineering/schemas/effect-receipt.schema.json",
+  "title": "Verified external-effect receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "effect_id",
+    "run_id",
+    "operation_id",
+    "action",
+    "resource_hash",
+    "proposal_digest",
+    "idempotency_key_hash",
+    "policy_decision_id",
+    "approval_id",
+    "service_receipt",
+    "committed_at",
+    "readback_status"
+  ],
+  "properties": {
+    "effect_id": { "type": "string", "format": "uuid" },
+    "run_id": { "type": "string", "format": "uuid" },
+    "operation_id": { "$ref": "#/$defs/digest" },
+    "action": { "type": "string", "pattern": "^[a-z][a-z0-9_]+$" },
+    "resource_hash": { "$ref": "#/$defs/digest" },
+    "proposal_digest": { "$ref": "#/$defs/digest" },
+    "idempotency_key_hash": { "$ref": "#/$defs/digest" },
+    "policy_decision_id": { "type": "string", "format": "uuid" },
+    "approval_id": { "type": "string", "format": "uuid" },
+    "service_receipt": { "type": "string", "minLength": 1 },
+    "committed_at": { "type": "string", "format": "date-time" },
+    "readback_status": { "enum": ["matched", "mismatched", "unknown"] }
+  },
+  "$defs": {
+    "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+  }
+}

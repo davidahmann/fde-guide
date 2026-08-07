@@ -1,0 +1,69 @@
+{
+  "$schema": "../../../schemas/tool-contract.schema.json",
+  "schema_version": "1.0.0",
+  "tool_id": "stage_resolution",
+  "version": "1.0.0",
+  "owner": "accounts-payable-platform",
+  "purpose": "Create a non-binding invoice-resolution proposal for review without mutating the ledger",
+  "kind": "stage_write",
+  "input_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["operation_id", "tenant_id", "invoice_id", "invoice_revision", "policy_revision", "proposal", "proposal_digest", "idempotency_key"],
+    "properties": {
+      "operation_id": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+      "tenant_id": { "type": "string" },
+      "invoice_id": { "type": "string" },
+      "invoice_revision": { "type": "string" },
+      "policy_revision": { "type": "string" },
+      "proposal": { "type": "object" },
+      "proposal_digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+      "idempotency_key": { "type": "string" }
+    }
+  },
+  "output_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["proposal_id", "proposal_digest", "status"],
+    "properties": {
+      "proposal_id": { "type": "string" },
+      "proposal_digest": { "type": "string" },
+      "status": { "const": "staged" }
+    }
+  },
+  "error_schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["code", "message", "retryable"],
+    "properties": {
+      "code": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]+$" },
+      "message": { "type": "string", "minLength": 1 },
+      "retryable": { "type": "boolean" }
+    }
+  },
+  "authorization": {
+    "agent_principal": "invoice-exception-workload",
+    "caller_context_required": true,
+    "required_scopes": ["invoice-resolution:stage"],
+    "policy_decision_point": "tool-gateway",
+    "tenant_binding": true,
+    "fail_mode": "closed"
+  },
+  "execution": {
+    "timeout_ms": 5000,
+    "max_attempts": 2,
+    "retryable_errors": ["TIMEOUT", "UNAVAILABLE"],
+    "idempotency": { "required": true, "key_fields": ["operation_id"], "enforced_by": "resolution-service" }
+  },
+  "side_effects": { "class": "staged", "resources": ["resolution-proposal"], "compensation": "discard resolution proposal" },
+  "approval": { "required": false, "role": null, "proposal_digest_required": false, "expires_seconds": null },
+  "network": { "egress": "allowlist", "destinations": ["resolution-service.internal"], "credential_broker": "workload-identity-gateway" },
+  "failure_modes": [
+    { "code": "POLICY_DENIED", "class": "authorization", "retry": false, "escalate": true },
+    { "code": "INVALID_PROPOSAL", "class": "validation", "retry": false, "escalate": true },
+    { "code": "TIMEOUT", "class": "retryable", "retry": true, "escalate": false }
+  ],
+  "observability": { "span_name": "agent.tool.stage_resolution", "audit_event": "invoice_resolution.staged", "redacted_fields": ["proposal.private_notes"], "postcondition_readback": true },
+  "invariants": ["no ledger mutation occurs", "at most one active proposal per invoice revision"],
+  "control_ids": ["TOL-003", "IAM-002", "IAM-003", "REL-001", "STA-002", "OPS-001"]
+}

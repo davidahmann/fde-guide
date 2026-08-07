@@ -1,0 +1,94 @@
+{
+  "$schema": "../schemas/operational-ontology.schema.json",
+  "schema_version": "1.0.0",
+  "ontology_id": "workflow_domain",
+  "version": "0.1.0",
+  "domain": "workflow domain",
+  "owners": ["domain-operations", "data-platform"],
+  "entities": [
+    {
+      "entity_id": "work_item",
+      "source_of_truth": "system-of-record",
+      "identity_keys": ["work_item_id"],
+      "attributes": [
+        {
+          "name": "work_item_id",
+          "type": "string",
+          "required": true,
+          "classification": "internal",
+          "temporal": false
+        },
+        {
+          "name": "status",
+          "type": "string",
+          "required": true,
+          "classification": "internal",
+          "temporal": true
+        }
+      ],
+      "lifecycle_states": ["open", "staged", "approved", "closed"]
+    },
+    {
+      "entity_id": "proposal",
+      "source_of_truth": "workflow-state-store",
+      "identity_keys": ["proposal_id"],
+      "attributes": [
+        {
+          "name": "proposal_id",
+          "type": "string",
+          "required": true,
+          "classification": "internal",
+          "temporal": false
+        }
+      ],
+      "lifecycle_states": ["staged", "approved", "rejected", "committed"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationship_id": "work_item_has_proposal",
+      "from": "work_item",
+      "to": "proposal",
+      "cardinality": "one_to_many",
+      "source_of_truth": "workflow-state-store"
+    }
+  ],
+  "actions": [
+    {
+      "action_id": "stage_proposal",
+      "actor_types": ["agent"],
+      "input_entities": ["work_item"],
+      "output_entities": ["proposal"],
+      "preconditions": ["work_item.status == open"],
+      "postconditions": ["proposal.status == staged"],
+      "authorization_policy": "stage_policy",
+      "side_effect": "staged",
+      "idempotency_scope": "work_item_id + source_revision"
+    }
+  ],
+  "policies": [
+    {
+      "policy_id": "stage_policy",
+      "decision": "allow_with_obligations",
+      "inputs": ["agent_identity", "caller_identity", "work_item"],
+      "enforcement_point": "tool-gateway",
+      "fail_mode": "closed"
+    }
+  ],
+  "invariants": [
+    {
+      "invariant_id": "one_active_proposal",
+      "expression": "active_proposals(work_item_id) <= 1",
+      "enforcement": "workflow-state-store",
+      "severity": "high"
+    }
+  ],
+  "evidence_types": [
+    {
+      "evidence_id": "source_record",
+      "source": "system-of-record",
+      "freshness_slo_seconds": 300,
+      "classification": "internal"
+    }
+  ]
+}

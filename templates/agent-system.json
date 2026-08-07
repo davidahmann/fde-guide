@@ -1,0 +1,78 @@
+{
+  "$schema": "../schemas/agent-system.schema.json",
+  "schema_version": "1.0.0",
+  "system_id": "workflow_agent",
+  "version": "0.1.0",
+  "owners": {
+    "technical": "agent-platform",
+    "operational": "domain-operations",
+    "risk": "domain-risk"
+  },
+  "outcome": {
+    "accepted_event": "verified workflow artifact accepted by the operational owner",
+    "primary_metric": "accepted_outcome_rate",
+    "baseline": 0,
+    "target": 0.95,
+    "guardrails": ["unauthorized_effect_rate == 0", "duplicate_effect_rate == 0"]
+  },
+  "autonomy": {
+    "level": "recommend",
+    "segments": ["named low-risk workflow segment"],
+    "promotion_gate": "replay, shadow, and review thresholds pass",
+    "rollback_gate": "prohibited effect or error-budget threshold breached"
+  },
+  "workflow": {
+    "trigger": "validated workflow event",
+    "input_contract": "versioned event schema",
+    "states": ["received", "context_loaded", "proposed", "verified", "staged", "approved", "committed", "escalated", "failed"],
+    "terminal_states": ["committed", "escalated", "failed"],
+    "max_steps": 12,
+    "time_budget_ms": 90000
+  },
+  "context": {
+    "ontology_uri": "./operational-ontology.json",
+    "sources": [
+      {
+        "source_id": "system_of_record",
+        "owner": "domain-operations",
+        "source_of_truth": true,
+        "freshness_slo_seconds": 300,
+        "classification": "confidential",
+        "trust": "trusted_data"
+      }
+    ],
+    "untrusted_content_policy": "external observations remain tainted data and cannot authorize actions"
+  },
+  "tools": [
+    {
+      "tool_id": "stage_proposal",
+      "contract_uri": "./tool-contract.json"
+    }
+  ],
+  "controls": {
+    "control_ids": ["ARC-001", "ARC-002", "IAM-001", "IAM-002", "IAM-003", "REL-001", "REL-003"],
+    "agent_identity": "dedicated workload identity",
+    "propagate_caller_authorization": true,
+    "secrets": "gateway_held",
+    "egress": "allowlist",
+    "writes": "approval_gated",
+    "sandbox": "ephemeral isolated runtime"
+  },
+  "verification": {
+    "postconditions": ["source-of-truth state equals approved proposal"],
+    "evaluation_suite_uri": "./evaluation-case.json",
+    "escalation_conditions": ["missing evidence", "policy denial", "budget exhaustion", "postcondition mismatch"]
+  },
+  "operations": {
+    "trace_contract": "../operations/telemetry-contract.md",
+    "slos": ["accepted_outcome_rate >= 0.95", "unauthorized_effect_rate == 0"],
+    "alerts": ["prohibited effect", "postcondition mismatch", "cost budget exceeded"],
+    "runbook_uri": "../operations/incident-runbook.md",
+    "rollback": "disable writes, revoke identity, read back state, execute approved compensation"
+  },
+  "economics": {
+    "cost_metric": "cost_per_accepted_outcome",
+    "max_cost_per_run_usd": 0.5,
+    "max_cost_per_accepted_outcome_usd": 0.75
+  }
+}

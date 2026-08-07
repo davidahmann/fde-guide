@@ -1,0 +1,181 @@
+{
+  "$schema": "./schemas/artifact-catalog.schema.json",
+  "schema_version": "1.0.0",
+  "updated": "2026-08-07",
+  "artifacts": [
+    {
+      "id": "controls.production",
+      "type": "control_catalog",
+      "path": "controls/control-catalog.json",
+      "tags": ["governance", "security", "reliability", "release"]
+    },
+    {
+      "id": "patterns.production",
+      "type": "standard",
+      "path": "patterns/pattern-catalog.json",
+      "tags": ["patterns", "anti-patterns", "controls", "evidence"]
+    },
+    {
+      "id": "template.fde-discovery",
+      "type": "template",
+      "path": "templates/fde-discovery-pack.md",
+      "tags": ["discovery", "workflow", "value", "context"]
+    },
+    {
+      "id": "template.ontology",
+      "type": "template",
+      "path": "templates/operational-ontology.json",
+      "tags": ["ontology", "entities", "actions", "invariants"]
+    },
+    {
+      "id": "template.agent-system",
+      "type": "template",
+      "path": "templates/agent-system.json",
+      "tags": ["architecture", "workflow", "controls", "operations"]
+    },
+    {
+      "id": "template.tool-contract",
+      "type": "template",
+      "path": "templates/tool-contract.json",
+      "tags": ["tools", "authorization", "effects", "reliability"]
+    },
+    {
+      "id": "template.evaluation-case",
+      "type": "template",
+      "path": "templates/evaluation-case.json",
+      "tags": ["evaluation", "replay", "trajectory", "security"]
+    },
+    {
+      "id": "template.threat-model",
+      "type": "template",
+      "path": "templates/threat-model.json",
+      "tags": ["security", "threat-model", "recovery"]
+    },
+    {
+      "id": "template.adr",
+      "type": "template",
+      "path": "templates/architecture-decision-record.md",
+      "tags": ["architecture", "decision", "evidence", "rollback"]
+    },
+    {
+      "id": "schema.artifact-catalog",
+      "type": "schema",
+      "path": "schemas/artifact-catalog.schema.json",
+      "tags": ["catalog", "artifacts", "discovery"]
+    },
+    {
+      "id": "schema.control-catalog",
+      "type": "schema",
+      "path": "schemas/control-catalog.schema.json",
+      "tags": ["controls", "evidence", "verification"]
+    },
+    {
+      "id": "schema.ontology",
+      "type": "schema",
+      "path": "schemas/operational-ontology.schema.json",
+      "tags": ["ontology", "entities", "actions", "policies"]
+    },
+    {
+      "id": "schema.agent-system",
+      "type": "schema",
+      "path": "schemas/agent-system.schema.json",
+      "tags": ["architecture", "workflow", "operations"]
+    },
+    {
+      "id": "schema.tool-contract",
+      "type": "schema",
+      "path": "schemas/tool-contract.schema.json",
+      "tags": ["tools", "authorization", "idempotency"]
+    },
+    {
+      "id": "schema.evaluation-case",
+      "type": "schema",
+      "path": "schemas/evaluation-case.schema.json",
+      "tags": ["evaluation", "trajectory", "replay"]
+    },
+    {
+      "id": "schema.threat-model",
+      "type": "schema",
+      "path": "schemas/threat-model.schema.json",
+      "tags": ["security", "threat-model", "trust-boundary"]
+    },
+    {
+      "id": "schema.pattern-catalog",
+      "type": "schema",
+      "path": "schemas/pattern-catalog.schema.json",
+      "tags": ["patterns", "anti-patterns", "evidence", "controls"]
+    },
+    {
+      "id": "schema.trace-event",
+      "type": "schema",
+      "path": "schemas/trace-event.schema.json",
+      "tags": ["telemetry", "trace", "state"]
+    },
+    {
+      "id": "schema.effect-receipt",
+      "type": "schema",
+      "path": "schemas/effect-receipt.schema.json",
+      "tags": ["effects", "readback", "audit"]
+    },
+    {
+      "id": "blueprint.bounded-retrieval",
+      "type": "blueprint",
+      "path": "blueprints/bounded-retrieval-agent.md",
+      "tags": ["retrieval", "read-only", "evidence"]
+    },
+    {
+      "id": "blueprint.transactional-write",
+      "type": "blueprint",
+      "path": "blueprints/transactional-write-agent.md",
+      "tags": ["write", "approval", "readback"]
+    },
+    {
+      "id": "blueprint.event-investigation",
+      "type": "blueprint",
+      "path": "blueprints/event-driven-investigation-agent.md",
+      "tags": ["events", "durability", "investigation"]
+    },
+    {
+      "id": "blueprint.multi-agent",
+      "type": "blueprint",
+      "path": "blueprints/multi-agent-coordinator.md",
+      "tags": ["multi-agent", "coordination", "concurrency"]
+    },
+    {
+      "id": "operations.release-gates",
+      "type": "runbook",
+      "path": "operations/release-gates.md",
+      "tags": ["release", "autonomy", "rollback"]
+    },
+    {
+      "id": "operations.telemetry",
+      "type": "standard",
+      "path": "operations/telemetry-contract.md",
+      "tags": ["observability", "trace", "metrics"]
+    },
+    {
+      "id": "operations.incident",
+      "type": "runbook",
+      "path": "operations/incident-runbook.md",
+      "tags": ["incident", "containment", "recovery"]
+    },
+    {
+      "id": "operations.slo-scorecard",
+      "type": "standard",
+      "path": "operations/slo-scorecard.md",
+      "tags": ["slo", "capacity", "recovery", "cost"]
+    },
+    {
+      "id": "example.invoice-exception",
+      "type": "example",
+      "path": "examples/invoice-exception/README.md",
+      "tags": ["finance", "write", "approval", "end-to-end"]
+    },
+    {
+      "id": "evidence.current",
+      "type": "evidence",
+      "path": "research/2026-02-07--2026-08-07-production-agent-source-ledger.md",
+      "tags": ["sources", "2026", "patterns", "failures"]
+    }
+  ]
+}

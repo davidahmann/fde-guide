@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/davidahmann/production-agent-engineering/schemas/agent-system.schema.json",
+  "title": "Production agent-system design record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "schema_version", "system_id", "version", "owners", "outcome", "autonomy", "workflow", "context", "tools", "controls", "verification", "operations", "economics"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "1.0.0" },
+    "system_id": { "$ref": "#/$defs/id" },
+    "version": { "$ref": "#/$defs/version" },
+    "owners": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["technical", "operational", "risk"],
+      "properties": {
+        "technical": { "type": "string", "minLength": 2 },
+        "operational": { "type": "string", "minLength": 2 },
+        "risk": { "type": "string", "minLength": 2 }
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accepted_event", "primary_metric", "baseline", "target", "guardrails"],
+      "properties": {
+        "accepted_event": { "type": "string", "minLength": 5 },
+        "primary_metric": { "type": "string", "minLength": 3 },
+        "baseline": { "type": "number" },
+        "target": { "type": "number" },
+        "guardrails": { "$ref": "#/$defs/nonEmptyStrings" }
+      }
+    },
+    "autonomy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["level", "segments", "promotion_gate", "rollback_gate"],
+      "properties": {
+        "level": { "enum": ["observe", "recommend", "execute_reversible", "execute_bounded", "coordinate"] },
+        "segments": { "$ref": "#/$defs/nonEmptyStrings" },
+        "promotion_gate": { "type": "string", "minLength": 5 },
+        "rollback_gate": { "type": "string", "minLength": 5 }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trigger", "input_contract", "states", "terminal_states", "max_steps", "time_budget_ms"],
+      "properties": {
+        "trigger": { "type": "string", "minLength": 3 },
+        "input_contract": { "type": "string", "minLength": 3 },
+        "states": { "$ref": "#/$defs/nonEmptyIds" },
+        "terminal_states": { "$ref": "#/$defs/nonEmptyIds" },
+        "max_steps": { "type": "integer", "minimum": 1 },
+        "time_budget_ms": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ontology_uri", "sources", "untrusted_content_policy"],
+      "properties": {
+        "ontology_uri": { "type": "string", "minLength": 3 },
+        "sources": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source_id", "owner", "source_of_truth", "freshness_slo_seconds", "classification", "trust"],
+            "properties": {
+              "source_id": { "$ref": "#/$defs/id" },
+              "owner": { "type": "string", "minLength": 2 },
+              "source_of_truth": { "type": "boolean" },
+              "freshness_slo_seconds": { "type": "integer", "minimum": 0 },
+              "classification": { "enum": ["public", "internal", "confidential", "restricted"] },
+              "trust": { "enum": ["trusted_control", "trusted_data", "untrusted_data"] }
+            }
+          }
+        },
+        "untrusted_content_policy": { "type": "string", "minLength": 5 }
+      }
+    },
+    "tools": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tool_id", "contract_uri"],
+        "properties": {
+          "tool_id": { "$ref": "#/$defs/id" },
+          "contract_uri": { "type": "string", "minLength": 3 }
+        }
+      }
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["control_ids", "agent_identity", "propagate_caller_authorization", "secrets", "egress", "writes", "sandbox"],
+      "properties": {
+        "control_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^[A-Z]{3}-[0-9]{3}$" }
+        },
+        "agent_identity": { "type": "string", "minLength": 3 },
+        "propagate_caller_authorization": { "type": "boolean" },
+        "secrets": { "enum": ["gateway_held", "none"] },
+        "egress": { "enum": ["deny_all", "allowlist"] },
+        "writes": { "enum": ["none", "staged", "approval_gated", "reversible"] },
+        "sandbox": { "type": "string", "minLength": 3 }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["postconditions", "evaluation_suite_uri", "escalation_conditions"],
+      "properties": {
+        "postconditions": { "$ref": "#/$defs/nonEmptyStrings" },
+        "evaluation_suite_uri": { "type": "string", "minLength": 3 },
+        "escalation_conditions": { "$ref": "#/$defs/nonEmptyStrings" }
+      }
+    },
+    "operations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trace_contract", "slos", "alerts", "runbook_uri", "rollback"],
+      "properties": {
+        "trace_contract": { "type": "string", "minLength": 3 },
+        "slos": { "$ref": "#/$defs/nonEmptyStrings" },
+        "alerts": { "$ref": "#/$defs/nonEmptyStrings" },
+        "runbook_uri": { "type": "string", "minLength": 3 },
+        "rollback": { "type": "string", "minLength": 5 }
+      }
+    },
+    "economics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cost_metric", "max_cost_per_run_usd", "max_cost_per_accepted_outcome_usd"],
+      "properties": {
+        "cost_metric": { "const": "cost_per_accepted_outcome" },
+        "max_cost_per_run_usd": { "type": "number", "exclusiveMinimum": 0 },
+        "max_cost_per_accepted_outcome_usd": { "type": "number", "exclusiveMinimum": 0 }
+      }
+    }
+  },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "nonEmptyIds": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/id" }
+    },
+    "nonEmptyStrings": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 3 }
+    }
+  }
+}
