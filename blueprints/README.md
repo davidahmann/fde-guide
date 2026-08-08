@@ -11,6 +11,7 @@
 | External trigger, long duration, retries, pause/resume | [Event-driven investigation agent](event-driven-investigation-agent.md) |
 | Distinct tools, data scopes, permissions, or specialist contexts | [Multi-agent coordinator](multi-agent-coordinator.md) |
 | Several production workflows need shared governance and reusable services | [Enterprise agent platform](enterprise-agent-platform.md) |
+| Complex or changing systems need navigable software and operational dependency views | [Evidence graph and change intelligence](evidence-graph-and-change-intelligence.md) |
 | Iterative analysis needs governed semantics, query/code execution, and claim-level evidence | [Governed data analysis agent](data-analysis-agent.md) |
 | Production signals should create isolated, reviewable improvement candidates | [Controlled improvement agent](controlled-improvement-agent.md) |
 
@@ -23,6 +24,7 @@
 | Intelligence selection | [`templates/intelligence-selection-record.md`](../templates/intelligence-selection-record.md) |
 | System-boundary decision | [`templates/architecture-decision-record.md`](../templates/architecture-decision-record.md) |
 | Operational ontology | [`schemas/operational-ontology.schema.json`](../schemas/operational-ontology.schema.json) |
+| System map and material-change impact review when justified by complexity | [`schemas/system-map-manifest.schema.json`](../schemas/system-map-manifest.schema.json) and [`schemas/change-impact-assessment.schema.json`](../schemas/change-impact-assessment.schema.json) |
 | Agent design | [`schemas/agent-system.schema.json`](../schemas/agent-system.schema.json) |
 | Versioned behavior configuration | [`schemas/behavior-bundle.schema.json`](../schemas/behavior-bundle.schema.json) |
 | Tool contract | [`schemas/tool-contract.schema.json`](../schemas/tool-contract.schema.json) |

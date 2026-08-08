@@ -2,7 +2,7 @@
 
 This folder holds dated evidence that supports the implementation library.
 
-**Repository source review:** 2026-08-07. For the current dated ledger, source location, publication date, attribution, and evidence tier were rechecked. Link reachability and first-party publication do not establish general validity; every implementation pattern still requires local evaluation.
+**Repository source review:** 2026-08-08. For the current dated ledger, source location, publication date, attribution, and evidence tier were rechecked. Link reachability and first-party publication do not establish general validity; every implementation pattern still requires local evaluation.
 
 ## How sources are admitted
 
@@ -20,6 +20,7 @@ Social, Reddit, YouTube, and news are research channels—not automatic authorit
 - [Production-agent source ledger](2026-02-07--2026-08-07-production-agent-source-ledger.md) — vetted findings reviewed from 2026-02-07 through 2026-08-07, plus explicitly marked canonical sources published earlier and revalidated during that window; includes implementation patterns, anti-patterns, and source-quality notes.
 - [AI Engineer production-agent video index](2026-08-07--ai-engineer-production-agent-video-index.md) — chapter-level practitioner talks with corroboration and claim limits.
 - [Operational-redesign and applied-AI practice note](2026-08-08--operational-redesign-and-applied-ai-practice.md) — supplied practitioner material and one directly reviewed organizational-change framework, with portable lessons separated from attribution and forecast claims.
+- [Evidence graphs and change intelligence](2026-08-08--evidence-graphs-and-change-intelligence.md) — architecture/catalog/lineage sources and project implementation leads, scoped to derived maps and impact review rather than graph-driven authority.
 
 ## Archive
 

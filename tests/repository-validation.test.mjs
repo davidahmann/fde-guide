@@ -255,6 +255,15 @@ test("repository validator rejects bypasses at its integrated boundaries", async
       );
     });
 
+    await t.test("change-impact assessments bind the exact system-map revision", async () => {
+      await mutateFile(
+        repositoryRoot,
+        "examples/shipment-risk-triage/change-impact-assessment.json",
+        transformJson((document) => { document.system_map.digest = `sha256:${"a".repeat(64)}`; }),
+        /system_map\.digest does not match/,
+      );
+    });
+
     await t.test("evaluation directories without cases", async () => {
       await mutateFile(
         repositoryRoot,

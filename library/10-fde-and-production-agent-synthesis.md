@@ -110,6 +110,7 @@ A pilot may pass one gate and fail another. Do not collapse them into a demo-suc
 - Production monitoring covers data, workflow, policies, effects, people, outcomes, and cost.
 - Each consequential decision uses the smallest sufficient mechanism—deterministic code, optimization, ML, retrieval, a foundation model, an agent, or human review—and retains the evidence, fallback, and cost rationale.
 - Cost is a non-functional requirement; the economic unit is an accepted outcome, not token or tool volume. [R26-63] [R26-64]
+- When complexity warrants a system map, it is derived navigation and impact evidence with provenance and freshness—not a replacement for source policy, release evidence, or source-of-truth verification. [R26-65] [R26-66] [R26-67]
 - Customer operation and retirement are designed from the beginning.
 
 ## What not to infer
@@ -124,5 +125,8 @@ A pilot may pass one gate and fail another. Do not collapse them into a demo-suc
 
 [R26-63]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-63
 [R26-64]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-64
+[R26-65]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-65
+[R26-66]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-66
+[R26-67]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-67
 
 Evidence: [R26-37 through R26-46](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#fde-delivery-and-operating-model-evidence), [R26-47 through R26-56](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-47), [R26-62 through R26-64](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-62), the [AI Engineer video index](../research/2026-08-07--ai-engineer-production-agent-video-index.md), and the [operational-redesign research note](../research/2026-08-08--operational-redesign-and-applied-ai-practice.md).

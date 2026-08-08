@@ -4,6 +4,13 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-08-08
+
+- Add optional, versioned system-map and change-impact contracts for FDEs and applied-AI teams operating complex or fast-changing systems.
+- Add a provenance-aware evidence-graph blueprint, map-freshness operating guide, research note, pattern/anti-pattern pair, and a shipment-risk walkthrough that demonstrates a material policy-change review.
+- Bind change-impact assessments to the exact system-map revision and enforce declared map sources, nodes, relationships, coverage, and impact references in repository validation.
+- Expand human and coding-agent navigation across the README, AGENTS, llms index, playbooks, architecture guides, operations, source index, and maintainer runbook.
+
 ## [1.2.0] - 2026-08-08
 
 - Expand the guide from customer-facing FDE delivery into one coherent method for FDEs, internal applied-AI engineers, product teams, and operations leaders.
@@ -57,7 +64,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.2.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.3.0...HEAD
+[1.3.0]: https://github.com/davidahmann/fde-guide/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/davidahmann/fde-guide/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/davidahmann/fde-guide/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/davidahmann/fde-guide/compare/v1.0.0...v1.0.1

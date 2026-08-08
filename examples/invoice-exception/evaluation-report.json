@@ -4,7 +4,7 @@
   "report_id": "invoice_exception_reference_report",
   "version": "2.0.0",
   "owner": "reference-evaluation-preparer",
-  "generated_at": "2026-08-08T01:19:49Z",
+  "generated_at": "2026-08-08T21:29:22Z",
   "claim": "The exact invoice-exception deterministic runtime passes all five committed regression cases under the recorded host-process environment.",
   "objective": "regression",
   "population": {
@@ -109,9 +109,9 @@
         {
           "component_id": "node-dependency-lock",
           "uri": "../../package-lock.json",
-          "version": "1.2.0",
+          "version": "1.3.0",
           "schema_version": null,
-          "digest": "sha256:a08e90ea99e0243359b81eedb6e24e2283ecb192ecc4e0de01b853398e10913a"
+          "digest": "sha256:188d464c2b2afd483db557a2c467ee936ea1d60fa1db230a3bb29274373528df"
         },
         {
           "component_id": "invoice-ontology",
@@ -233,7 +233,7 @@
           "digest": "sha256:40067352fe535cda5aa86940b514d6b2c72ac032841378034800cc180558114e"
         }
       ],
-      "environment_digest": "sha256:7315633d7fda7387523479463e0368757171fc8975964e0acfeb69262782b901",
+      "environment_digest": "sha256:4a2e8db8d30300df8ffe19c4fe6b18130beeaef379edd847e8023d60a0834586",
       "network_mode": "unenforced"
     }
   },
@@ -269,7 +269,7 @@
       "uri": "evaluation-output.json",
       "version": null,
       "schema_version": "1.0.0",
-      "digest": "sha256:494d796cfd2a19de8b5661437dfc28e2db6870895093af1baac8987699f59aac"
+      "digest": "sha256:e85d49bfe385058cf466fc700fdac5204de535621824a26a5cdcf58db339b15f"
     },
     "minimum_confidence": 1
   },
@@ -285,7 +285,7 @@
     "turns": 0,
     "tool_calls": 30,
     "total_tokens": 0,
-    "wall_time_ms": 70,
+    "wall_time_ms": 64,
     "cost_usd": 0,
     "peak_parallel_workers": 1
   },
@@ -383,7 +383,7 @@
     "rationale": "The bound executable runner and independent deterministic grader returned passing evidence for every exact committed regression case under the declared host-process limitations.",
     "decided_by": "deterministic-reference-grader",
     "authority_role": "repository-regression-evaluator",
-    "decided_at": "2026-08-08T01:19:49Z",
+    "decided_at": "2026-08-08T21:29:22Z",
     "independent_from_candidate": true
   },
   "control_ids": [

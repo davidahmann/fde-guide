@@ -14,6 +14,7 @@ import {
   capabilityRegistryDecisionDigest as registryDecisionDigest,
   canonicalDigestVersion,
   canonicalJson,
+  changeImpactAssessmentSemanticErrors,
   embeddedToolSchemaErrors,
   evaluationReportSemanticErrors,
   evaluationSandboxDigestPayload,
@@ -23,6 +24,7 @@ import {
   patternCatalogErrors,
   solutionReleaseSemanticErrors,
   sha256Digest,
+  systemMapManifestSemanticErrors,
   toolContractSemanticErrors,
 } from "./contract-invariants.mjs";
 import {
@@ -503,6 +505,9 @@ for (const [file, report] of documents) {
   if (report?.workflow_id && report?.functional_requirement && report?.decision) {
     for (const error of workflowCharterSemanticErrors(report, relative(file))) fail(error);
   }
+  if (report?.map_id && Array.isArray(report?.sources) && Array.isArray(report?.relations)) {
+    for (const error of systemMapManifestSemanticErrors(report, relative(file))) fail(error);
+  }
   if (report?.ontology_id && Array.isArray(report?.entities)) {
     for (const error of operationalOntologySemanticErrors(report, relative(file))) fail(error);
   }
@@ -520,6 +525,31 @@ for (const [file, report] of documents) {
   if (report?.effect_id && report?.service_receipt && report?.readback) {
     for (const error of effectReceiptSemanticErrors(report, relative(file))) fail(error);
   }
+}
+
+for (const [file, assessment] of documents) {
+  if (!assessment?.assessment_id || !assessment?.system_map || !Array.isArray(assessment?.impacted_elements)) continue;
+  let map = null;
+  let mapPath = null;
+  try {
+    ({ lexicalTarget: mapPath } = await resolveWithinRepository({
+      root,
+      baseDirectory: path.dirname(file),
+      candidate: assessment.system_map.uri,
+      requireRegularFile: true,
+    }));
+    map = documents.get(mapPath) ?? null;
+  } catch (error) {
+    fail(`${relative(file)} system_map.uri is unsafe or missing: ${error.message}`);
+  }
+  if (map && mapPath) {
+    if (assessment.system_map.version !== map.version) fail(`${relative(file)} system_map.version does not match ${relative(mapPath)}`);
+    if (assessment.system_map.status !== map.status) fail(`${relative(file)} system_map.status does not match ${relative(mapPath)}`);
+    if (assessment.system_map.digest !== await sha256Path(mapPath)) {
+      fail(`${relative(file)} system_map.digest does not match ${relative(mapPath)}`);
+    }
+  }
+  for (const error of changeImpactAssessmentSemanticErrors(assessment, map, relative(file))) fail(error);
 }
 
 const catalog = documents.get(path.join(root, "catalog.json"));

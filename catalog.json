@@ -76,6 +76,18 @@
       "tags": ["ontology", "entities", "actions", "invariants"]
     },
     {
+      "id": "template.system-map",
+      "type": "template",
+      "path": "templates/system-map-manifest.json",
+      "tags": ["architecture", "dependencies", "ownership", "change-impact"]
+    },
+    {
+      "id": "template.change-impact",
+      "type": "template",
+      "path": "templates/change-impact-assessment.json",
+      "tags": ["change", "impact", "validation", "rollback"]
+    },
+    {
       "id": "template.agent-system",
       "type": "template",
       "path": "templates/agent-system.json",
@@ -188,6 +200,18 @@
       "type": "schema",
       "path": "schemas/control-catalog.schema.json",
       "tags": ["controls", "evidence", "verification"]
+    },
+    {
+      "id": "schema.system-map",
+      "type": "schema",
+      "path": "schemas/system-map-manifest.schema.json",
+      "tags": ["architecture", "dependencies", "provenance", "freshness"]
+    },
+    {
+      "id": "schema.change-impact",
+      "type": "schema",
+      "path": "schemas/change-impact-assessment.schema.json",
+      "tags": ["change", "impact", "validation", "promotion"]
     },
     {
       "id": "schema.ontology",
@@ -328,6 +352,12 @@
       "tags": ["architecture", "decision", "ml", "optimization", "human-review"]
     },
     {
+      "id": "blueprint.evidence-graph-change-intelligence",
+      "type": "blueprint",
+      "path": "blueprints/evidence-graph-and-change-intelligence.md",
+      "tags": ["architecture", "dependencies", "change-impact", "provenance"]
+    },
+    {
       "id": "playbook.discovery-value",
       "type": "standard",
       "path": "playbooks/01-discovery-and-value.md",
@@ -376,6 +406,12 @@
       "tags": ["release", "change", "canary", "rollback"]
     },
     {
+      "id": "operations.map-freshness-change-impact",
+      "type": "standard",
+      "path": "operations/map-freshness-and-change-impact.md",
+      "tags": ["maps", "freshness", "change-impact", "operations"]
+    },
+    {
       "id": "operations.behavior-monitoring",
       "type": "standard",
       "path": "operations/behavior-monitoring.md",
@@ -416,6 +452,12 @@
       "type": "evidence",
       "path": "research/2026-08-08--operational-redesign-and-applied-ai-practice.md",
       "tags": ["sources", "2026", "operational-redesign", "applied-ai"]
+    },
+    {
+      "id": "evidence.evidence-graphs",
+      "type": "evidence",
+      "path": "research/2026-08-08--evidence-graphs-and-change-intelligence.md",
+      "tags": ["sources", "2026", "architecture", "change-impact"]
     }
   ]
 }

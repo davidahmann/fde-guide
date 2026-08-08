@@ -14,7 +14,7 @@ The repeated Matt Pocock summary was collapsed into one entry.
 
 ## Current implementation evidence
 
-The original sources below establish the library's foundational concepts. For current practices, failure modes, protocol changes, security research, source-quality screening, and revalidated cloud-native/value-architecture foundations, use the separate [production-agent source ledger](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md). The ledger includes the *Beyond the Twelve-Factor App* baseline and Frugal Architecture evidence at [R26-62 through R26-64](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-62), alongside primary GitHub, company engineering, security, X/Reddit lead, YouTube, and news screening notes.
+The original sources below establish the library's foundational concepts. For current practices, failure modes, protocol changes, security research, source-quality screening, and revalidated cloud-native/value-architecture foundations, use the separate [production-agent source ledger](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md). The ledger includes the *Beyond the Twelve-Factor App* baseline and Frugal Architecture evidence at [R26-62 through R26-64](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-62), plus C4, Backstage, OpenLineage, and graph-tool implementation evidence at [R26-65 through R26-69](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-65), alongside primary GitHub, company engineering, security, X/Reddit lead, YouTube, and news screening notes.
 
 <a id="s01"></a>
 ## S01 — Ramp Sheets: domain-native agentic spreadsheets

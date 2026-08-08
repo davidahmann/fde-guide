@@ -91,6 +91,10 @@ Do not begin with every integration, user segment, or exception. Use one represe
 
 Controls: `ARC-001`, `TOL-001`, `REL-003`, `OPS-001`.
 
+### Map complexity only when it changes delivery quality
+
+When cross-team dependencies repeatedly slow discovery, incident response, onboarding, or release review, create separate derived software and operational views. Use the [evidence graph and change-intelligence blueprint](../blueprints/evidence-graph-and-change-intelligence.md), a [system-map manifest](../templates/system-map-manifest.json), and a [change-impact assessment](../templates/change-impact-assessment.json). These views route people to likely impacts; they never replace source-of-truth policy, tool authorization, evaluation, approval, or readback. `CTX-001`, `CTX-002`, `CTX-004`, `OPS-007`.
+
 ## 6. Treat the solution as one release unit
 
 Version these together:

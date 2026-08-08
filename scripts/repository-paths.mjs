@@ -288,7 +288,7 @@ export function isGovernedJsonDocument(repositoryPath, document = null) {
     || /^controls\/.+\.json$/.test(repositoryPath)
     || /^examples\/.+\.json$/.test(repositoryPath)
     || /^patterns\/.+\.json$/.test(repositoryPath)
-    || /^releases\/.+\/(?:agent-system|behavior-bundle|capability-manifest|evaluation-case|evaluation-output|evaluation-report|handoff-envelope|operational-ontology|solution-release|threat-model|tool-contract|workflow-charter)\.json$/.test(repositoryPath)
+    || /^releases\/.+\/(?:agent-system|behavior-bundle|capability-manifest|change-impact-assessment|evaluation-case|evaluation-output|evaluation-report|handoff-envelope|operational-ontology|solution-release|system-map-manifest|threat-model|tool-contract|workflow-charter)\.json$/.test(repositoryPath)
     || /^releases\/.+\/(?:evals|tools)\/.+\.json$/.test(repositoryPath)
     || /^templates\/.+\.json$/.test(repositoryPath)
     || governedDocumentSchema(document) !== null;
@@ -307,6 +307,7 @@ export function expectedDocumentSchema(repositoryPath, document = null) {
     ["agent-system.json", "schemas/agent-system.schema.json"],
     ["behavior-bundle.json", "schemas/behavior-bundle.schema.json"],
     ["capability-manifest.json", "schemas/capability-manifest.schema.json"],
+    ["change-impact-assessment.json", "schemas/change-impact-assessment.schema.json"],
     ["evaluation-case.json", "schemas/evaluation-case.schema.json"],
     ["evaluation-output.json", "schemas/evaluation-output.schema.json"],
     ["evaluation-report.json", "schemas/evaluation-report.schema.json"],
@@ -315,6 +316,7 @@ export function expectedDocumentSchema(repositoryPath, document = null) {
     ["threat-model.json", "schemas/threat-model.schema.json"],
     ["tool-contract.json", "schemas/tool-contract.schema.json"],
     ["solution-release.json", "schemas/solution-release.schema.json"],
+    ["system-map-manifest.json", "schemas/system-map-manifest.schema.json"],
     ["workflow-charter.json", "schemas/workflow-charter.schema.json"],
   ]);
   if (repositoryPath.startsWith("templates/")) return templateSchemas.get(name) ?? null;
@@ -328,9 +330,11 @@ export function expectedDocumentSchema(repositoryPath, document = null) {
   if (/^examples\/[^/]+\/agent-system\.json$/.test(repositoryPath)) return "schemas/agent-system.schema.json";
   if (/^examples\/[^/]+\/behavior-bundle\.json$/.test(repositoryPath)) return "schemas/behavior-bundle.schema.json";
   if (/^examples\/[^/]+\/capability-manifest\.json$/.test(repositoryPath)) return "schemas/capability-manifest.schema.json";
+  if (/^examples\/[^/]+\/change-impact-assessment\.json$/.test(repositoryPath)) return "schemas/change-impact-assessment.schema.json";
   if (/^examples\/[^/]+\/evaluation-output\.json$/.test(repositoryPath)) return "schemas/evaluation-output.schema.json";
   if (/^examples\/[^/]+\/evaluation-report\.json$/.test(repositoryPath)) return "schemas/evaluation-report.schema.json";
   if (/^examples\/[^/]+\/solution-release\.json$/.test(repositoryPath)) return "schemas/solution-release.schema.json";
+  if (/^examples\/[^/]+\/system-map-manifest\.json$/.test(repositoryPath)) return "schemas/system-map-manifest.schema.json";
   if (/^examples\/[^/]+\/handoff-envelope\.json$/.test(repositoryPath)) return "schemas/handoff-envelope.schema.json";
   if (/^examples\/[^/]+\/ontology\.json$/.test(repositoryPath)) return "schemas/operational-ontology.schema.json";
   if (/^examples\/[^/]+\/threat-model\.json$/.test(repositoryPath)) return "schemas/threat-model.schema.json";
