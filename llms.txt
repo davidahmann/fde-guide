@@ -1,6 +1,6 @@
 # The FDE Guide
 
-Summary: A practical FDE guide to value engineering and production architecture for AI-enabled systems. It moves customer workflows from discovery to measurable, operated outcomes and does not require a specific model or agent framework.
+Summary: A practical guide for FDEs and internal applied-AI teams to use value engineering and production architecture for AI-enabled systems. It moves customer or internal workflows from discovery to measurable, operated outcomes and does not require a specific model or agent framework.
 License: Apache-2.0
 
 Read [AGENTS.md](AGENTS.md) before modifying this repository.
@@ -12,6 +12,7 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - Governed-artifact registry: [catalog.json](catalog.json)
 - Production controls: [controls/control-catalog.json](controls/control-catalog.json)
 - End-to-end FDE lifecycle: [playbooks/README.md](playbooks/README.md)
+- FDE and applied AI engineering synthesis: [library/10-fde-and-production-agent-synthesis.md](library/10-fde-and-production-agent-synthesis.md)
 - Discovery and value: [playbooks/01-discovery-and-value.md](playbooks/01-discovery-and-value.md)
 - Value and frugal architecture: [library/11-value-engineering-and-frugal-architecture.md](library/11-value-engineering-and-frugal-architecture.md)
 - Software architecture and intelligence selection: [library/12-software-architecture-and-intelligence-selection.md](library/12-software-architecture-and-intelligence-selection.md)

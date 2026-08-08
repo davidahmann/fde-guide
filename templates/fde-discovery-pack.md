@@ -48,6 +48,16 @@ Use the machine-readable [workflow-charter template](workflow-charter.json) for 
 | --- | --- | --- | --- | --- | --- |
 | | | | | | |
 
+## Context extraction and operational redesign
+
+Interview notes, recordings, documents, and demonstrations are discovery evidence. They do not become prompts, policy, memory, or production authority until the owning role validates them.
+
+| Candidate knowledge | Observed source and owner | Classification / scope | Type | Validate with | Keep, repair, remove, escalate, or abstract | Production destination / invalidation trigger |
+| --- | --- | --- | --- | --- | --- |
+| | | Public / internal / confidential / restricted | Fact / rule / judgment / workaround / exception / instruction | | | |
+
+Use this table to distinguish current evidence from rules, professional judgment, and historical scar tissue. Keep customer-specific context with the workflow owner. A reusable product or pattern candidate must be sanitized, recurrence-tested, and routed through the [field-learning register](field-learning-register.md); never copy customer data or local policy into a shared artifact.
+
 ## Exception taxonomy
 
 | Exception ID | Frequency | Severity | Detection | Current handling | Target handling | Escalation owner | Eval slice |
@@ -114,6 +124,16 @@ Copy these seven dimensions and their evidence into `workflow-charter.readiness`
 | Support and incident response | | | | | |
 | Cost and value review | | | | | |
 | Retirement | | | | | |
+
+## Stakeholder value and change contract
+
+| Audience | Current work and consequence | Expected benefit | New responsibility or control | Evidence of acceptance | Owner |
+| --- | --- | --- | --- | --- | --- |
+| Executive or operational sponsor | | Outcome, risk, or economics | Fund, unblock, and decide scope | Baseline, guardrails, and value review | |
+| Operator or domain expert | | Better evidence, reduced rework, or faster exception handling | Review, correct, escalate, or pause | Shadow comparison, training, feedback, and workload measures | |
+| Product or applied-AI team | | Reusable capability or reduced delivery friction | Preserve the customer-specific boundary and own shared changes | Sanitized recurrence evidence and release decision | |
+
+Controls: `FDE-002`, `FDE-003`, `FDE-004`, `ADP-001`, `CTX-001`, `CTX-002`.
 
 ## Cutover plan
 

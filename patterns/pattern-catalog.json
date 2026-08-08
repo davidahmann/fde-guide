@@ -273,6 +273,21 @@
       "review_due": "2027-02-07"
     },
     {
+      "id": "PAT-019",
+      "kind": "pattern",
+      "title": "Validated operational knowledge extraction",
+      "status": "accepted",
+      "maturity": "field_tested",
+      "applies_when": ["a delivery or internal applied-AI team is turning observed work into rules, context, evaluations, or reusable product capability"],
+      "implementation": ["classify each observed item as governed evidence, deterministic rule, professional judgment, workaround, exception, or untrusted content", "require accountable owner validation, provenance, scope, and an explicit preserve, repair, remove, escalate, or abstract disposition", "keep customer-specific context with its owner and promote only sanitized, recurrence-tested patterns through normal release gates"],
+      "control_ids": ["FDE-002", "FDE-004", "CTX-001", "CTX-002"],
+      "failure_signals": ["recordings or interviews become unreviewed prompts or policy", "a local workaround is generalized into a product feature", "customer data or policy appears in a shared pattern"],
+      "verification": ["representative knowledge candidates have an owner, classification, source, scope, and disposition", "a reusable candidate has sanitized recurrence evidence and an approved destination", "unvalidated or confidential material cannot enter shared rules, patterns, or evaluation fixtures"],
+      "evidence": ["R26-37", "R26-39", "R26-41", "R26-45", "R26-56"],
+      "reviewed_at": "2026-08-07",
+      "review_due": "2027-02-07"
+    },
+    {
       "id": "ANTI-001",
       "kind": "anti_pattern",
       "title": "Flat all-tools catalog",
