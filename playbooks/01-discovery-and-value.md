@@ -1,6 +1,6 @@
 # Discovery, Value Engineering, and Frugal Architecture
 
-The FDE's first deliverable is not code. It is a shared, evidence-backed definition of the work, the decision that matters, the value at stake, and the smallest intervention worth testing.
+The first deliverable for an FDE or internal applied-AI team is not code. It is a shared, evidence-backed definition of the work, the decision that matters, the value at stake, and the smallest intervention worth testing.
 
 Palantir's use-case guidance starts with a time-bounded operational outcome rather than a source integration, dashboard, or model technique. OpenAI describes FDE ownership across discovery, design, rollout, adoption, and measurable workflow impact. The portable synthesis is an outcome-backward engagement with continuous operator contact. [R26-37] [R26-41]
 
@@ -14,6 +14,7 @@ One person may hold several ownership or delivery roles during a small pilot, bu
 | Operational owner | Workflow result, process policy, service acceptance | Definition of accepted work |
 | Domain expert/operator | Real cases, exceptions, review quality, usability | Validation of observed work |
 | FDE/delivery lead | Discovery, solution coherence, execution, evidence | Connecting field facts to design decisions |
+| Product or applied-AI owner | Reusable product surface, platform boundary, and productization choices | What is generic versus workflow-specific, and whether a field learning becomes a product change |
 | Technical owner | Architecture, integration, release, maintainability | Production engineering acceptance |
 | Data/tool owner | Source quality, interfaces, permissions, change notices | Source and capability contracts |
 | Risk/security owner | Threats, policy, prohibited effects, release constraints | Risk acceptance |
@@ -79,6 +80,15 @@ For each step, record:
 
 Do not automate every observed behavior. Classify each as preserve, repair, remove, or escalate. A workaround caused by poor data or broken authorization is not automatically domain expertise.
 
+Treat operational knowledge as a validation problem, not a transcription exercise. For every candidate fact, rule, exception, or instruction, record its source, owner, scope, classification, freshness, and disposition:
+
+- A fact becomes governed evidence only when its source-of-truth and validity boundary are known.
+- A rule becomes deterministic policy only when the accountable owner confirms it.
+- A judgment becomes a candidate AI or human-review route only after its evidence, authority ceiling, fallback, and verifier are defined.
+- A workaround becomes a repair, removal, escalation, or explicitly retained local procedure—not an implicit prompt instruction.
+
+Keep customer-specific policies and data with their owner. Promote only an abstracted method, interface shape, failure class, or evaluation pattern after recurrence and portability are validated in the [field-learning register](../templates/field-learning-register.md). `CTX-001`, `CTX-002`, `FDE-004`.
+
 Control: `FDE-002`.
 
 ## 4. Establish the baseline
@@ -127,7 +137,19 @@ For each consequential decision, compare deterministic logic, optimization, clas
 
 Control: `ARC-005`.
 
-## 7. Assess readiness
+## 7. Design the change, not only the system
+
+An executive sponsor and an operator judge a pilot differently. Capture both contracts before implementation:
+
+| Audience | Must improve | Evidence before expansion |
+| --- | --- | --- |
+| Executive or operational sponsor | Owned outcome, risk posture, and full economics | Baseline, attribution method, guardrails, service owner, and stop conditions |
+| Operator or domain expert | Work surface, evidence access, exception handling, review load, and support | Shadow comparison, correction/override evidence, training completion, abandonment and wait-time guardrails |
+| Product or applied-AI team | Reusable capability without unsafe generalization | Explicit customer-specific boundary, validated recurrence, destination, and normal release evidence |
+
+The pilot should improve the work around current systems of record before forcing a platform migration. If data ownership, identity, access, or auditability is inadequate, make that remediation a readiness dependency rather than hiding it behind an AI layer. `FDE-003`, `ADP-001`, `ADP-002`.
+
+## 8. Assess readiness
 
 Score each dimension from `0` to `4`, and attach evidence:
 
@@ -141,7 +163,7 @@ Score each dimension from `0` to `4`, and attach evidence:
 
 Assess workflow clarity, context ownership/freshness, verifier quality, integration contracts, user adoption, risk controls, and production operations. A total score is not a release gate. A zero in verifier quality is blocking; missing authenticated authority, accountable operational/service ownership, or a lawful data path is a hard-gate failure outside the score.
 
-## 8. Charter or stop
+## 9. Charter or stop
 
 Complete the machine-readable [workflow charter](../templates/workflow-charter.json). The charter records:
 

@@ -1,6 +1,6 @@
 # FDE Playbooks
 
-Use these playbooks to move one customer workflow from an important problem to customer-owned production operation.
+Use these playbooks to move one customer or internal workflow from an important problem to business-owned production operation. For an internal team, read “customer” as the business unit or operating team that owns the workflow after delivery.
 
 ## Lifecycle
 

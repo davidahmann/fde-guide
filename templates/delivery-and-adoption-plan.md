@@ -51,6 +51,16 @@ Record the identity-deduplication rule, late-event policy, timezone, missing-dat
 
 The production surface must expose evidence, state, uncertainty, alternatives, and permitted actions. Users must be able to correct, pause, reject, escalate, and resume work without losing the audit trail.
 
+## Stakeholder value and productization boundary
+
+| Audience | Outcome or workday benefit | New responsibility | Acceptance evidence | Customer-specific or reusable | Owner |
+| --- | --- | --- | --- | --- | --- |
+| Executive or operational sponsor | | | | Customer-specific | |
+| Operator or domain expert | | | | Customer-specific | |
+| Product or applied-AI team | | | | Reusable only after governed validation | |
+
+Keep confidential workflow context, local policy, identities, and evidence with the owning organization. A repeated field signal may become a shared pattern or product candidate only after sanitization, recurrence review, a named destination, independent validation, and the normal compatible-release gate. Record that decision in the [field-learning register](field-learning-register.md). `FDE-004`, `DEL-002`.
+
 ## Pilot adoption and harness handoff
 
 Open this workstream at pilot entry. The receiving team pairs on the actual harness, evaluation, release, support, and adoption paths before bounded production.

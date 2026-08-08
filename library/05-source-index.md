@@ -225,6 +225,24 @@ The original sources below establish the library's foundational concepts. For cu
 - **Use in this library:** Evaluation-corpus contracts, slice coverage, evaluator shortcut checks, reviewer feedback design, and independent retests.
 - **Caution:** Educational test mechanics do not validate production behavior on their own; production cases still require controlled fixtures, authorization, postcondition readback, and operational ownership. No question text or answer key was copied into this library.
 
+<a id="s22"></a>
+## S22 — Varick: operational redesign before AI mechanism selection
+
+- **Evidence:** Full text supplied; publication date and canonical article URL were not supplied; reviewed 2026-08-08
+- **Author/publisher:** Varick, as named in the supplied article
+- **Contribution:** The article argues that transformation begins with observing and redesigning end-to-end work, then separating deterministic automation, contextual AI, and accountable human decisions. It distinguishes systems of record, business rules, raw intake, and feedback as separate operational layers; it also argues for an incremental path through sandbox, shadow, and supervised use.
+- **Use in this library:** Operational redesign, workflow qualification, context classification, adoption, and operating-model change.
+- **Caution:** Efficiency, value, and accuracy claims are vendor-reported. The article is practitioner perspective, not an independent transformation study or a normative source for control thresholds.
+
+<a id="s23"></a>
+## S23 — Aaron Levie: the applied-AI workflow layer
+
+- **Evidence:** Post text supplied; timestamp and permalink were not supplied; reviewed 2026-08-08
+- **Author:** Aaron Levie, as named in the supplied post
+- **Contribution:** The post frames the applied layer as the workflow-specific product around intelligence: context capture, task-shaped tools, human-in-the-loop interfaces, evaluation-informed model routing, and domain-specific delivery/change expertise.
+- **Use in this library:** Workflow-native product surfaces, route-level model economics, and the connection between FDE delivery and reusable platform capability.
+- **Caution:** This is an executive practitioner viewpoint, not a technical specification, independent market analysis, or evidence that any product layer creates a durable moat.
+
 ## Cross-source convergence
 
 The most repeated ideas are:
@@ -238,9 +256,10 @@ The most repeated ideas are:
 7. Evaluation and data foundations should precede model selection.
 8. Human accountability remains essential where verification is weak or stakes are high.
 9. Cost and model routing are part of architecture, not post-launch optimization.
-10. Typed schemas and symbolic business invariants can constrain probabilistic model output.
-11. The durable differentiator is the full system around the model.
-12. FDE work starts from an observed operational decision and measurable outcome, not a model or integration.
-13. Adoption, support, and customer operating ownership are production gates, not post-launch documentation tasks.
-14. Data, domain, behavior, tools, policy, evaluation, runtime, and user experience form one compatible release boundary.
-15. Evaluation results need explicit claims, environment versions, repeated trials, uncertainty, and contamination controls.
+10. Deployment, workflow-native experience, adoption, and operating ownership are part of the product—not services around an otherwise complete agent.
+11. Typed schemas and symbolic business invariants can constrain probabilistic model output.
+12. The durable differentiator is the full system around the model.
+13. FDE work starts from an observed operational decision and measurable outcome, not a model or integration.
+14. Adoption, support, and customer operating ownership are production gates, not post-launch documentation tasks.
+15. Data, domain, behavior, tools, policy, evaluation, runtime, and user experience form one compatible release boundary.
+16. Evaluation results need explicit claims, environment versions, repeated trials, uncertainty, and contamination controls.

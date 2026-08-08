@@ -2,7 +2,7 @@
 
 ## Mission
 
-This repository is a design and verification kit for production AI-enabled systems. Optimize for an accepted business outcome that can be independently verified, not for agent autonomy, tool count, model novelty, or architectural complexity.
+This repository is a design and verification kit for production AI-enabled systems. It serves FDEs, internal applied-AI engineers, product teams, and operations leaders. Optimize for an accepted business outcome that can be independently verified, not for agent autonomy, tool count, model novelty, or architectural complexity.
 
 Treat an agent as one component option. For each consequential decision, first compare deterministic code, optimization, classical ML, retrieval, a foundation-model call, a bounded agent workflow, and human review as applicable. Select the smallest sufficient mechanism and preserve the authority, evidence, cost, fallback, and retirement rationale. `ARC-004`, `ARC-005`.
 
@@ -43,7 +43,8 @@ Do not load the entire repository by default. Use the task routes below, then fo
 
 | Task | Read next | Expected result |
 | --- | --- | --- |
-| Lead an FDE engagement | [FDE playbooks](playbooks/README.md) → current lifecycle stage → required templates | Evidence-backed decisions from qualification through customer-owned production operation |
+| Lead an FDE or internal delivery engagement | [FDE playbooks](playbooks/README.md) → current lifecycle stage → required templates | Evidence-backed decisions from qualification through business-owned production operation |
+| Build shared applied-AI capability | [FDE and applied AI engineering synthesis](library/10-fde-and-production-agent-synthesis.md) → current lifecycle stage → relevant reusable artifact | A deliberate boundary between workflow-specific delivery, reusable product/platform capability, and sanitized field learning |
 | Select a workflow | [Discovery and Value](playbooks/01-discovery-and-value.md) → [Start Here](library/00-start-here.md) → [discovery pack](templates/fde-discovery-pack.md) → [workflow charter](templates/workflow-charter.json) | Observed workflow, owner, baseline, accepted outcome, verifier, value hypothesis, and risk ceiling |
 | Design an AI-enabled system | Approved workflow charter → [Value and Frugal Architecture](library/11-value-engineering-and-frugal-architecture.md) → [Software Architecture and Intelligence Selection](library/12-software-architecture-and-intelligence-selection.md) → [Solution Design and Delivery](playbooks/02-solution-and-delivery.md) → [blueprint selector](blueprints/README.md) → relevant templates | Value/cost case, intelligence-selection record, domain model, system design, behavior bundle where needed, contracts, evals, release, and adoption plan |
 | Add or change a tool | [Tool-contract Schema](schemas/tool-contract.schema.json) → [capability-manifest schema](schemas/capability-manifest.schema.json) → [capability supply chain](operations/capability-supply-chain.md) → affected behavior bundle, release manifest, examples, and tests | Narrow typed contract, verified build and authority provenance, admitted bundle membership, updated release digest, and regression coverage |

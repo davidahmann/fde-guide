@@ -1,10 +1,10 @@
 # The FDE Guide
 
-> **Value engineering and production architecture for AI-enabled systems**
+> **Value engineering and production architecture for FDEs, applied AI engineers, product teams, and operations leaders**
 
 ![The FDE Guide: Discover value, design the system, govern decisions, release safely, operate outcomes](assets/fde-guide-banner.svg)
 
-An independent, open-source forward-deployed engineering (FDE) guide for moving a customer workflow from discovery to a measurable, operated outcome.
+An independent, open-source guide for FDEs and internal applied-AI teams moving a customer or internal workflow from discovery to a measurable, operated outcome.
 
 [![Repository validation](https://github.com/davidahmann/fde-guide/actions/workflows/validate.yml/badge.svg)](https://github.com/davidahmann/fde-guide/actions/workflows/validate.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
@@ -14,13 +14,13 @@ Use this repository to:
 - Find operational work where a software system can create measurable value—and reject weak use cases early.
 - Choose the smallest adequate mix of rules, optimization, ML, foundation models, agents, and human review.
 - Turn field observations into a clear workflow, architecture, delivery plan, and controlled production service.
-- Give customer teams the evidence, skills, ownership, and operating routines to maintain the result.
+- Give operating and engineering teams the evidence, skills, ownership, and operating routines to maintain the result.
 
 Leading an engagement? Begin with the [FDE playbooks](playbooks/README.md). Designing one system? Use [Start Here](library/00-start-here.md). Building with a coding agent? Give it [`AGENTS.md`](AGENTS.md) as its working map.
 
 ## The promise
 
-**From customer workflow to measurable, operated outcome.**
+**From a real workflow to a measurable, operated outcome.**
 
 A useful demo can call a model and a few tools. A production AI-enabled system must also know who is allowed to act, which information is current, how to handle failure, how to prove that work finished, how much it costs, and how operators can stop or recover it.
 
@@ -36,13 +36,14 @@ Work in this order: **outcome → workflow → decision → system → controlle
 
 | If you need to… | Start with | You should leave with… |
 | --- | --- | --- |
-| Lead an FDE engagement | [FDE playbooks](playbooks/README.md) | A path from field discovery and value to customer-owned production operation |
+| Lead an FDE or internal delivery engagement | [FDE playbooks](playbooks/README.md) | A path from field discovery and value to business-owned production operation |
+| Build shared applied-AI capability | [FDE and applied AI engineering synthesis](library/10-fde-and-production-agent-synthesis.md) | A clear boundary between workflow-specific delivery, reusable product/platform capability, and safe field learning |
 | Decide what to build | [Discovery and Value](playbooks/01-discovery-and-value.md) and [Start Here](library/00-start-here.md) | An observed workflow, owner, baseline, measurable outcome, verifier, and go/no-go decision |
 | Make the value and cost case | [Value Engineering and Frugal Architecture](library/11-value-engineering-and-frugal-architecture.md) | A full-cost, outcome-level case with guardrails, cost ceiling, and stop conditions |
 | Choose rules, ML, models, or agents | [Software Architecture and Intelligence Selection](library/12-software-architecture-and-intelligence-selection.md) | The smallest sufficient decision mechanism, fallback, and measurable selection rationale |
 | Design a production system | [Production Implementation Playbook](library/07-production-implementation-playbook.md) | A domain model, architecture, behavior bundle, tool and capability contracts, evaluation cases, and threat model |
 | Choose an architecture | [Blueprint selector](blueprints/README.md) | The smallest system shape that fits the workflow and its risks |
-| Deliver and transfer a solution | [Solution Design and Delivery](playbooks/02-solution-and-delivery.md) | A tested vertical slice, adoption evidence, release plan, and customer-owned handoff |
+| Deliver and transfer a solution | [Solution Design and Delivery](playbooks/02-solution-and-delivery.md) | A tested vertical slice, adoption evidence, release plan, and business-owned handoff |
 | Review an existing AI system | [Production, Evaluation, and Governance](library/04-production-evaluation-and-governance.md) and [release gates](operations/release-gates.md) | A list of control gaps, required tests, and a release decision |
 | Build or repair evaluations | [Evaluation Corpus and Review Loops](library/09-evaluation-corpus-and-review-loops.md) | Repeatable success, failure, and adversarial scenarios |
 | Operate or improve a system | [Operate and Scale](playbooks/03-operate-and-scale.md) | A service cadence covering outcomes, adoption, reliability, safety, cost, change, and retirement |
@@ -135,7 +136,7 @@ The machine-readable [control catalog](controls/control-catalog.json) contains t
 
 | Path | What it answers |
 | --- | --- |
-| [`playbooks/`](playbooks/README.md) | How an FDE team moves from customer discovery and value to delivery, adoption, handoff, and post-production improvement |
+| [`playbooks/`](playbooks/README.md) | How an FDE or internal delivery team moves from workflow discovery and value to delivery, adoption, handoff, and post-production improvement |
 | [`library/`](library/00-start-here.md) | Why the design choices matter, what tends to fail, and how to work through a design |
 | [`blueprints/`](blueprints/README.md) | Which reference architecture fits the workflow |
 | [`templates/`](templates/README.md) | Which starter artifacts to adapt and complete for a new system |
@@ -149,7 +150,7 @@ The machine-readable [control catalog](controls/control-catalog.json) contains t
 | [`catalog.json`](catalog.json) | Which governed artifacts have stable IDs, types, paths, and tags |
 | [`scripts/`](scripts/validate-repository.mjs) and [`tests/`](tests/schema-contracts.test.mjs) | How repository structure, contracts, and examples are verified |
 
-The [production AI-systems mind map](library/08-agent-systems-mind-map.md) shows how customer value, architecture, intelligence selection, context, control, evidence, adoption, and operations depend on one another. The [FDE and production AI-system synthesis](library/10-fde-and-production-agent-synthesis.md) records the portable lessons behind the lifecycle.
+The [production AI-systems mind map](library/08-agent-systems-mind-map.md) shows how customer value, architecture, intelligence selection, context, control, evidence, adoption, and operations depend on one another. The [FDE and applied AI engineering synthesis](library/10-fde-and-production-agent-synthesis.md) explains how field delivery and internal product/platform engineering share one lifecycle without transferring customer-specific context.
 
 ## Evidence and scope
 

@@ -1,6 +1,6 @@
 # Solution Design and Delivery
 
-The design unit is the operational decision, not the model call. The delivery unit is the smallest end-to-end solution slice that can prove a customer outcome with representative data, real controls, and a usable work surface.
+The design unit is the operational decision, not the model call. The delivery unit is the smallest end-to-end solution slice that can prove a customer or internal outcome with representative data, real controls, and a usable work surface.
 
 ## 1. Trace requirements to the solution
 
@@ -58,6 +58,18 @@ The [enterprise agent platform blueprint](../blueprints/enterprise-agent-platfor
 - Delivery control plane for versions, branches, promotion, and rollback
 
 The model proposes. Trusted software validates, authorizes, executes, persists, and proves.
+
+The product layer bridges intelligence and real work. Design it as one coherent chain:
+
+```text
+operator trigger and work surface
+  -> governed context and decision mechanism
+  -> typed proposal or action boundary
+  -> persistent evidence and review state
+  -> source-of-truth result, outcome signal, and operating feedback
+```
+
+Do not reduce the product to output tokens. The application needs workflow-native context capture, task-shaped tools, a durable review artifact, and feedback paths that users can understand and operate. The internal applied-AI team can make those elements reusable; the operating team remains responsible for the local decision and policy. `ADP-001`, `ARC-002`, `FDE-004`.
 
 ## 5. Build a vertical slice
 
@@ -119,6 +131,8 @@ Recommended cadence:
 | Release gate | Technical, operational, risk, service owners | Evidence-based promotion or rollback |
 
 Keep a product backlog and an assurance backlog. A feature is not complete when its behavior, security, observability, support, or training remains undefined.
+
+Separate the customer-specific configuration backlog from the reusable product/platform backlog. A recurring field signal becomes a candidate shared improvement only after it is sanitized, its recurrence is evidenced without moving customer data, and its destination passes the normal design, evaluation, release, and rollback gates. Use the [field-learning register](../templates/field-learning-register.md); the FDE or delivery team does not unilaterally convert a local workaround into a platform feature. `FDE-004`, `DEL-002`.
 
 ## 8. Predeclare adoption evidence
 

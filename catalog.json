@@ -410,6 +410,12 @@
       "type": "evidence",
       "path": "research/2026-08-07--ai-engineer-production-agent-video-index.md",
       "tags": ["sources", "2026", "youtube", "field-reports"]
+    },
+    {
+      "id": "evidence.operational-redesign",
+      "type": "evidence",
+      "path": "research/2026-08-08--operational-redesign-and-applied-ai-practice.md",
+      "tags": ["sources", "2026", "operational-redesign", "applied-ai"]
     }
   ]
 }

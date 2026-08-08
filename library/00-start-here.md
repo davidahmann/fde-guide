@@ -2,7 +2,7 @@
 
 Use this page at the beginning of a design session. It routes you to the right material and prevents the common failure mode of starting with a model, framework, or multi-agent diagram before the work is understood.
 
-For an end-to-end customer engagement, use the [FDE playbooks](../playbooks/README.md). This page is the shorter design checkpoint for one workflow.
+For an end-to-end customer or internal engagement, use the [FDE playbooks](../playbooks/README.md). This page is the shorter design checkpoint for one workflow.
 
 ## The thirteen design questions
 
@@ -26,7 +26,8 @@ If any answer is missing, you are still in discovery. Start with [Product, Proce
 
 | Situation | Start here | Do not skip |
 | --- | --- | --- |
-| You are leading a customer engagement | [FDE playbooks](../playbooks/README.md) | Field observation, value evidence, adoption, service ownership, and exit criteria |
+| You are leading a field or internal delivery engagement | [FDE playbooks](../playbooks/README.md) | Field observation, value evidence, adoption, service ownership, and exit criteria |
+| You are building reusable applied-AI capability | [FDE and applied AI engineering synthesis](10-fde-and-production-agent-synthesis.md) | A clear productization boundary, reusable artifacts, and a governed field-learning loop |
 | You are choosing a workflow or validating value | [Discovery and Value](../playbooks/01-discovery-and-value.md) | A baseline, verifier, named outcome owner, and falsifiable value case |
 | You are choosing rules, ML, models, or agents | [Software Architecture and Intelligence Selection](12-software-architecture-and-intelligence-selection.md) | The smallest sufficient mechanism, component boundary, fallback, and evidence plan |
 | The agent needs company knowledge or data | [Context and Knowledge Systems](02-context-and-knowledge-systems.md) | Source ownership, freshness, scope, and evidence provenance |
