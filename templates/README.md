@@ -1,0 +1,50 @@
+# Working Templates
+
+Copy the smallest set needed for one workflow, replace the example values with evidence from the target environment, and keep the artifacts together under version control. A valid template is a structural starting point, not production evidence.
+
+## Engagement and value
+
+| Template | Decision it supports |
+| --- | --- |
+| [Field-observation log](field-observation-log.md) | What people actually do, including exceptions and workarounds |
+| [FDE discovery pack](fde-discovery-pack.md) | Whether the workflow is bounded, owned, verifiable, and ready |
+| [Workflow charter](workflow-charter.json) | Whether to discover, pilot, defer, do not build, promote, pause, or retire the workflow |
+| [Value case](value-case.md) | Whether measured outcome improvement justifies full delivery and operating cost |
+
+## Solution and assurance
+
+| Template | Decision it supports |
+| --- | --- |
+| [Operational ontology](operational-ontology.json) | Which objects, states, rules, actions, permissions, and evidence define the domain |
+| [Agent system](agent-system.json) | Where deterministic software, model judgment, tools, people, state, and operations meet |
+| [Behavior bundle](behavior-bundle.json) | Which exact model-route, prompt, harness, context, tool membership, and guardrail bytes the agent uses |
+| [Tool contract](tool-contract.json) | Which data and effects a capability exposes and how it is authorized, contained, and verified |
+| [Capability manifest](capability-manifest.json) | Which exact capability build is admitted, with what provenance, authority, assurance, and lifecycle |
+| [Threat model](threat-model.json) | Which abuses and failures must be prevented, detected, recovered, and tested |
+| [Evaluation case](evaluation-case.json) | Which representative condition must succeed, fail safely, or escalate |
+| [Evaluation report](evaluation-report.json) | Which claim was tested under which versions, trials, limits, and contamination controls |
+| [Handoff envelope](handoff-envelope.json) | What verified state, evidence, remaining work, authority, and budget one worker may pass to another |
+| [Architecture decision record](architecture-decision-record.md) | Why a consequential design choice was accepted and how it can be reversed |
+
+## Executable support skeletons
+
+| Skeleton | Fail-closed role |
+| --- | --- |
+| [Authorization policy](authorization-policy.mjs) | Deny every request until an implementation supplies an explicit policy decision |
+| [Evaluation runner](evaluation-runner.mjs) | Refuse to claim an executed trial until a real runner replaces the skeleton |
+| [Evaluation world](evaluation-world.mjs) | Represent the canonical template as not executed |
+| [Reference runtime](reference-runtime.mjs) | Refuse workflow execution until an implementation replaces the skeleton |
+| [Operator surface](operator-surface.mjs) | Refuse to imply that an adoption plan is an implemented review interface |
+| [Operations bundle](operations-bundle.mjs) | Refuse health, kill-switch, or rollback claims until controllers are wired |
+
+## Delivery and operation
+
+| Template | Decision it supports |
+| --- | --- |
+| [Delivery and adoption plan](delivery-and-adoption-plan.md) | How the vertical slice, acceptance, rollout, enablement, and ownership transfer will run |
+| [Solution release](solution-release.json) | Which compatible artifact bundle is approved for which segment and rollout |
+| [Customer enablement handoff](customer-enablement-handoff.md) | Whether the receiving team can operate, change, recover, and retire the service |
+| [Production service review](production-service-review.md) | Whether to expand, constrain, pause, improve, or retire the live workflow |
+| [Field-learning register](field-learning-register.md) | Which recurring field signal becomes a customer fix, platform change, documented pattern, or rejected proposal |
+
+Follow the full sequence in the [FDE playbooks](../playbooks/README.md). JSON artifacts declare a local schema and are checked by `npm run validate`.

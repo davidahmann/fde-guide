@@ -4,7 +4,7 @@ Contributions that improve the technical accuracy, executable examples, controls
 
 ## Before opening a change
 
-1. Read [`AGENTS.md`](AGENTS.md) and follow its required artifact order.
+1. Read [`AGENTS.md`](AGENTS.md) and follow the route for your change.
 2. Search existing [issues](https://github.com/davidahmann/production-agent-engineering/issues) and pull requests.
 3. For a new control, schema, or blueprint, open a design proposal before a large implementation.
 4. For a security issue, follow [`SECURITY.md`](SECURITY.md) instead of opening a public issue.
@@ -13,8 +13,10 @@ Contributions that improve the technical accuracy, executable examples, controls
 
 Requires Node.js 22 or later.
 
+Review repository code before execution. For an untrusted contribution, rely on CI or use a disposable environment with no credentials or sensitive data; `npm test` executes repository-controlled code.
+
 ```bash
-npm ci
+npm ci --ignore-scripts
 npm test
 git diff --check
 ```
@@ -23,7 +25,7 @@ Pull requests must keep the repository validator green and include regression co
 
 ## Contribution contract
 
-- Production requirements use `MUST`, `SHOULD`, or `MAY` and cite control IDs.
+- New or changed normative production requirements use `MUST`, `SHOULD`, or `MAY` and cite control IDs.
 - Runtime contracts use JSON Schema 2020-12; new or changed safety constraints include positive and negative tests.
 - Blueprints define components, trust boundaries, state transitions, failure behavior, telemetry, and release tests.
 - Examples include a design record, ontology, tool contracts, eval cases, threat model, and executable verification when feasible.

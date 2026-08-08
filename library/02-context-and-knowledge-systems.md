@@ -54,7 +54,7 @@ Agents need more than table access. A semantic layer should mark sources of trut
 
 For qualitative research, Listen uses a **virtual table**: one row per interview and generated columns for features, classifications, or sentiment. This turns an unstructured corpus into a map-reduce style analysis surface while keeping row-level evidence reviewable. [S03]
 
-For domains with consequential business rules, an **ontology** can make semantics executable rather than merely descriptive. It defines entities, relationships, and constraints—for example, who may receive a payout or whether an order has already been refunded. Standards such as RDFS and OWL support machine-readable relationships and logical inference. This complements a warehouse semantic layer: the semantic layer explains how to query and interpret data, while the ontology can reject domain states or proposed actions that violate explicit invariants. [S20]
+For domains with consequential business rules, an **ontology** can provide shared entities and relationships for executable checks—for example, who may receive a payout or whether an order has already been refunded. RDFS and OWL support machine-readable vocabularies and logical inference; they do not by themselves impose closed-world rejection on an application. Pair the ontology with a constraint layer such as SHACL shapes or deterministic rules to reject domain states or proposed actions that violate explicit invariants. This complements a warehouse semantic layer: the semantic layer explains how to query and interpret data, while the constraint layer enforces application policy. [S20] [R26-61]
 
 ### Custom systems
 
@@ -202,3 +202,4 @@ Vary query specificity, source availability, freshness, and ambiguity to find wh
 [S14]: 05-source-index.md#s14
 [S17]: 05-source-index.md#s17
 [S20]: 05-source-index.md#s20
+[R26-61]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-61

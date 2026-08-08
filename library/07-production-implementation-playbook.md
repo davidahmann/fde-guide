@@ -2,6 +2,8 @@
 
 This playbook turns the library into an execution sequence. Do not advance a phase because the demo looks good; advance when its exit criteria are met.
 
+For the customer-facing work before, around, and after these technical phases, use the [FDE playbooks](../playbooks/README.md). Field evidence and a candidate [workflow charter](../templates/workflow-charter.json) are inputs to Phase 0; an approved charter is required before Phase 1. Customer enablement and recurring service review are final outputs.
+
 ## Phase 0 — Charter the workflow
 
 **Goal:** prove that the candidate work is worth automating and has a bounded accountability model.
@@ -9,12 +11,15 @@ This playbook turns the library into an execution sequence. Do not advance a pha
 | Define | Minimum artifact |
 | --- | --- |
 | Business outcome | Baseline, target, metric owner, measurement window |
+| Operational requirement | User, working surface, decision, inputs, action, and accepted outcome |
 | Workflow boundary | Trigger, inputs, sources of truth, output artifact, downstream actions |
 | Work allocation | Which steps are deterministic, agentic, and human-owned |
 | Verifier | Postcondition, reconciliation, policy test, or review rubric |
 | Risk | Consequence of a bad recommendation, bad write, data leak, or delay |
 
-**Exit gate:** one narrow workflow has a measurable accepted outcome and a verifier. If the team cannot explain how it will know the result is correct, deploy it as a research or copilot surface—not autonomous execution.
+Use the [field-observation log](../templates/field-observation-log.md), [FDE discovery pack](../templates/fde-discovery-pack.md), [workflow charter](../templates/workflow-charter.json), and [value case](../templates/value-case.md).
+
+**Exit gate:** one observed, narrow workflow has a measurable accepted outcome, verifier, owner, adoption path, and service-ownership hypothesis. If the team cannot explain how it will know the result is correct, deploy it as a research or copilot surface—not autonomous execution.
 
 ## Phase 1 — Make the environment agent-ready
 
@@ -25,10 +30,10 @@ Assess each dependency as both a **resource** (the agent reads it) and a **tool*
 | Control | Implementation question |
 | --- | --- |
 | Source contract | Is the schema typed, documented, versioned, and freshness-aware? |
-| Identity | Does the workload have a dedicated identity distinct from the user and service? |
+| Identity | Is the acting principal unambiguous—current user plus agent attribution for interactive work, or a narrow workload identity for unattended work? |
 | Authorization | Is every tool/action authorized by policy outside the model? |
 | Secrets | Can the tool operate without exposing a credential to the model or sandbox? |
-| Egress | Which domains, APIs, and methods are allowed? What proxy enforces this? |
+| Egress | Which operation, identity, data class, destination, protocol, method, redirect, and credential combinations are allowed? What gateway enforces them? |
 | Write path | Is it read-only, staged, approval-gated, or compensable? |
 | Resilience | Are timeouts, idempotency, rate limits, and degradation behavior defined? |
 | Observability | Can the team trace request, action, outcome, and policy decision? |
@@ -90,21 +95,27 @@ Prefer replayable world snapshots to live reruns. Datadog's SRE evaluation appro
 
 Also evaluate the evaluator. An agent should not share a mutable trust boundary with the tests or judge that certifies it. Benchmark integrity work in 2026 demonstrated that perfect benchmark scores can coexist with zero useful task completion when test infrastructure is exploitable. [R26-25](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-25)
 
-**Exit gate:** the release suite contains realistic accepted, rejected, ambiguous, failure, and adversarial cases. A regression has a known owner and a reproducible trace.
+Every release claim should also record the world and environment revisions, model and harness configuration, evaluator, trial count, aggregation rule, uncertainty, and contamination controls. A single stochastic pass is neither a capability estimate nor a dependable regression gate. [R26-47](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-47) [R26-52](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-52)
 
-## Phase 5 — Release in reversible autonomy levels
+Record the claim, conditions, repetitions, uncertainty, contamination controls, limitations, and release decision in the [evaluation-report template](../templates/evaluation-report.json).
 
-| Level | Agent behavior | Required controls |
+**Exit gate:** the release suite contains realistic accepted, rejected, ambiguous, failure, and adversarial cases. A regression has a known owner and a reproducible trace, and the evaluation claim can be reproduced from its report.
+
+## Phase 5 — Release in named, reversible autonomy modes
+
+| Mode | Agent behavior | Required controls |
 | --- | --- | --- |
-| 0. Observe | Collects evidence and drafts an artifact | No external write; trace and review only |
-| 1. Recommend | Proposes a decision or staged action | Evidence packet; human approves every commit |
-| 2. Execute low-risk | Performs reversible, bounded writes | Postcondition readback; sampled review; rollback |
-| 3. Execute high-volume | Handles a narrow class automatically | Strong deterministic verifier; circuit breakers; continuous audit |
-| 4. Coordinate | Delegates bounded work across agents/services | Caller authorization propagation; concurrency/merge semantics; per-stage gates |
+| `observe` | Collects evidence and drafts an artifact | No external write; trace and review only |
+| `recommend` | Proposes a decision or staged action | Evidence packet; human approves every commit |
+| `execute_reversible` | Performs reversible writes within one named segment and effect class | Postcondition readback; sampled review; rollback |
+| `execute_bounded` | Performs a narrow, preauthorized operation within explicit policy and volume ceilings | Strong deterministic verifier; circuit breakers; continuous audit |
+| `coordinate` | Delegates bounded work across agents or services | Caller authorization propagation; typed handoffs; concurrency and merge semantics; per-stage gates |
 
-Move one level at a time and only for a named task segment. An agent can be Level 3 for a reversible classification but Level 0 for an external message or a financial write.
+Promote only one named task segment and effect class at a time. A system can use `execute_bounded` for one reversible operation while remaining `observe` for an external message or financial write. `coordinate` is a topology decision, not permission to exceed the delegated effect ceiling. Pair technical promotion with adoption, reviewer-capacity, support, and customer-ownership evidence from the [delivery and adoption plan](../templates/delivery-and-adoption-plan.md).
 
 **Exit gate:** the promotion is reversible, measurable, and attributable to an explicit configuration/model/tool version.
+
+Bind those versions and the rollout decision in the [solution-release manifest](../templates/solution-release.json). The manifest is the reviewed compatibility boundary; merge and deployment remain separate events.
 
 ## Phase 6 — Operate and improve the system
 
@@ -125,6 +136,8 @@ Balance observability against privacy and cost. High-cardinality or sensitive fi
 
 This is more effective than manually reading random traces or tracking a single global score. [R26-17](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-17)
 
+Treat every model, prompt, tool, retrieval, policy, evaluator, runtime, and professional-work-surface change as a versioned production change. Follow [change management](../operations/change-management.md), monitor the [full behavior path](../operations/behavior-monitoring.md), and use the [production service review](../templates/production-service-review.md) to decide whether to expand, constrain, pause, or retire the workflow.
+
 ### Runbook for an unsafe or failing run
 
 1. Freeze new writes and pause queued work.
@@ -139,7 +152,18 @@ This is more effective than manually reading random traces or tracking a single 
 
 - [Production release gates](../operations/release-gates.md)
 - [Production control catalog](../controls/control-catalog.json)
+- [Workflow-charter Schema](../schemas/workflow-charter.schema.json)
+- [Operational-ontology Schema](../schemas/operational-ontology.schema.json)
 - [Agent-system Schema](../schemas/agent-system.schema.json)
+- [Behavior-bundle Schema](../schemas/behavior-bundle.schema.json)
 - [Tool-contract Schema](../schemas/tool-contract.schema.json)
+- [Capability-manifest Schema](../schemas/capability-manifest.schema.json)
+- [Handoff-envelope Schema](../schemas/handoff-envelope.schema.json) for worker, agent, or context-reset delegation
 - [Evaluation-case Schema](../schemas/evaluation-case.schema.json)
+- [Evaluation-report Schema](../schemas/evaluation-report.schema.json)
+- [Solution-release Schema](../schemas/solution-release.schema.json)
 - [Threat-model Schema](../schemas/threat-model.schema.json)
+- [Delivery and adoption plan](../templates/delivery-and-adoption-plan.md)
+- [Customer enablement handoff](../templates/customer-enablement-handoff.md)
+- [Production service review](../templates/production-service-review.md)
+- [Field-learning register](../templates/field-learning-register.md)

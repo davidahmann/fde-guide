@@ -7,7 +7,14 @@ import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
-import { embeddedToolSchemaErrors, ontologyIdentityErrors, patternCatalogErrors } from "../scripts/contract-invariants.mjs";
+import {
+  embeddedToolSchemaErrors,
+  evaluationReportSemanticErrors,
+  ontologyIdentityErrors,
+  patternCatalogErrors,
+  solutionReleaseSemanticErrors,
+  toolContractSemanticErrors,
+} from "../scripts/contract-invariants.mjs";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const pairs = [
@@ -19,7 +26,11 @@ const pairs = [
   ["evaluation-case.schema.json", "templates/evaluation-case.json"],
   ["threat-model.schema.json", "templates/threat-model.json"],
   ["pattern-catalog.schema.json", "patterns/pattern-catalog.json"],
+  ["workflow-charter.schema.json", "templates/workflow-charter.json"],
+  ["evaluation-report.schema.json", "templates/evaluation-report.json"],
+  ["solution-release.schema.json", "templates/solution-release.json"],
 ];
+
 
 async function json(relativePath) {
   return JSON.parse(await readFile(path.join(root, relativePath), "utf8"));
@@ -49,6 +60,155 @@ for (const [schemaName, fixturePath] of pairs) {
   });
 }
 
+test("artifact catalog rejects paths that can escape the repository", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/artifact-catalog.schema.json"));
+  const fixture = await json("catalog.json");
+  fixture.artifacts[0].path = "../outside.md";
+  assert.equal(validate(fixture), false);
+});
+
+test("agent-system schema requires an operations trace contract", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/agent-system.schema.json"));
+  const fixture = await json("templates/agent-system.json");
+  delete fixture.operations.trace_contract;
+  assert.equal(validate(fixture), false);
+  assert.ok(validate.errors.some((error) => error.keyword === "required" && error.params.missingProperty === "trace_contract"));
+});
+
+test("agent-system schema requires a workflow charter", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/agent-system.schema.json"));
+  const fixture = await json("templates/agent-system.json");
+  delete fixture.charter_uri;
+  assert.equal(validate(fixture), false);
+  assert.ok(validate.errors.some((error) => error.keyword === "required" && error.params.missingProperty === "charter_uri"));
+});
+
+test("workflow-charter schema requires the operational requirement, stop conditions, service owner, and risk readiness", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/workflow-charter.schema.json"));
+  const fixture = await json("templates/workflow-charter.json");
+  delete fixture.functional_requirement;
+  delete fixture.stop_conditions;
+  delete fixture.owners.receiving_service_owner;
+  delete fixture.readiness.risk;
+  assert.equal(validate(fixture), false);
+  for (const field of ["functional_requirement", "stop_conditions"]) {
+    assert.ok(validate.errors.some((error) => error.keyword === "required" && error.params.missingProperty === field));
+  }
+  assert.ok(validate.errors.some((error) => error.keyword === "required" && error.params.missingProperty === "receiving_service_owner"));
+  assert.ok(validate.errors.some((error) => error.keyword === "required" && error.params.missingProperty === "risk"));
+});
+
+test("workflow-charter measured baselines require a numeric value and observation date", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/workflow-charter.schema.json"));
+  const fixture = await json("templates/workflow-charter.json");
+  fixture.outcome.primary_metric.baseline.status = "measured";
+  fixture.outcome.primary_metric.baseline.value = null;
+  fixture.outcome.primary_metric.baseline.as_of = null;
+  assert.equal(validate(fixture), false);
+  fixture.outcome.primary_metric.baseline.value = 0.61;
+  fixture.outcome.primary_metric.baseline.as_of = "2026-08-07";
+  assert.equal(validate(fixture), true, JSON.stringify(validate.errors));
+});
+
+test("workflow-charter pilot and production decisions require role-separated approval and readiness evidence", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/workflow-charter.schema.json"));
+  const pilot = await json("templates/workflow-charter.json");
+  pilot.status = "pilot";
+  pilot.decision.disposition = "pilot";
+  assert.equal(validate(pilot), false);
+  pilot.decision.approvers = [
+    { role: "operational", principal: "workflow-owner", approved_at: "2026-08-07T16:00:00Z" },
+    { role: "risk", principal: "risk-owner", approved_at: "2026-08-07T16:05:00Z" },
+  ];
+  assert.equal(validate(pilot), true, JSON.stringify(validate.errors));
+
+  const production = structuredClone(pilot);
+  production.status = "production";
+  production.decision.disposition = "promote";
+  assert.equal(validate(production), false);
+  production.outcome.primary_metric.baseline = {
+    status: "measured",
+    value: 0.61,
+    source: "target-environment measurement",
+    as_of: "2026-08-07",
+  };
+  for (const dimension of ["workflow", "context", "verifier", "integration", "adoption", "operations", "risk"]) {
+    production.readiness[dimension].score = 3;
+  }
+  production.decision.approvers.unshift({
+    role: "technical",
+    principal: "delivery-lead",
+    approved_at: "2026-08-07T15:55:00Z",
+  });
+  assert.equal(validate(production), true, JSON.stringify(validate.errors));
+});
+
+test("agent-system actor modes, behavior versions, and source contracts fail closed", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/agent-system.schema.json"));
+  const fixture = await json("templates/agent-system.json");
+
+  delete fixture.behavior.prompt_bundle;
+  delete fixture.context.sources[0].revision;
+  assert.equal(validate(fixture), false);
+
+  const interactive = await json("templates/agent-system.json");
+  interactive.actor_identity.mode = "interactive_delegated";
+  interactive.actor_identity.audit_attribution = "agent_only";
+  assert.equal(validate(interactive), false);
+  interactive.actor_identity.caller_binding = {
+    binding_type: "user_session",
+    subject_claim: "sub",
+    tenant_claim: "tenant_id",
+    session_id_claim: "sid",
+    max_session_age_seconds: 3600,
+  };
+  interactive.actor_identity.audit_attribution = "user_and_agent";
+  assert.equal(validate(interactive), true, JSON.stringify(validate.errors));
+
+  interactive.autonomy.level = "execute_bounded";
+  interactive.controls.propagate_caller_authorization = false;
+  assert.equal(validate(interactive), false);
+});
+
+test("agent-system outcomes, segments, owners, and economics stay aligned with their workflow charters", async () => {
+  for (const [charterPath, agentPath] of [
+    ["templates/workflow-charter.json", "templates/agent-system.json"],
+    ["examples/invoice-exception/workflow-charter.json", "examples/invoice-exception/agent-system.json"],
+  ]) {
+    const charter = await json(charterPath);
+    const agent = await json(agentPath);
+    assert.equal(charter.functional_requirement.accepted_outcome, charter.outcome.accepted_event);
+    assert.equal(agent.outcome.accepted_event, charter.outcome.accepted_event);
+    assert.equal(agent.outcome.primary_metric, charter.outcome.primary_metric.metric_id);
+    assert.equal(agent.outcome.baseline, charter.outcome.primary_metric.baseline.value);
+    assert.equal(agent.outcome.target, charter.outcome.primary_metric.target);
+    const operators = { eq: "==", lte: "<=", gte: ">=" };
+    assert.deepEqual(
+      agent.outcome.guardrails,
+      charter.outcome.guardrail_metrics.map((metric) => `${metric.metric_id} ${operators[metric.operator]} ${metric.threshold}`),
+    );
+    assert.deepEqual(agent.autonomy.segments, [charter.scope.initial_segment]);
+    assert.equal(agent.owners.technical, charter.owners.technical);
+    assert.equal(agent.owners.operational, charter.owners.operational);
+    assert.equal(agent.owners.risk, charter.owners.risk);
+    assert.equal(agent.economics.max_cost_per_accepted_outcome_usd, charter.value_case.max_cost_per_accepted_outcome_usd);
+  }
+});
+
 test("evaluation schema rejects an agent-controlled pass signal", async () => {
   const ajv = new Ajv2020({ allErrors: true, strict: true });
   addFormats(ajv);
@@ -56,6 +216,59 @@ test("evaluation schema rejects an agent-controlled pass signal", async () => {
   const fixture = await json("templates/evaluation-case.json");
   fixture.evaluator_boundary.agent_can_emit_pass_signal = true;
   assert.equal(validate(fixture), false);
+});
+
+test("evaluation reports reject mutable graders, cross-trial state, and missing trial semantics", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/evaluation-report.schema.json"));
+  const fixture = await json("templates/evaluation-report.json");
+  fixture.suite.agent_can_modify = true;
+  fixture.contamination_controls.answer_key_access = true;
+  fixture.contamination_controls.cross_trial_state = true;
+  fixture.trials.aggregation = "pass_at_k";
+  fixture.trials.k = null;
+  assert.equal(validate(fixture), false);
+});
+
+test("approved solution releases require technical, operational, and risk approvals", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/solution-release.schema.json"));
+  const fixture = await json("templates/solution-release.json");
+  fixture.release_status = "approved";
+  assert.equal(validate(fixture), false);
+});
+
+test("evaluation-report semantics reject contradictory results and non-independent repeated trials", async () => {
+  const fixture = await json("templates/evaluation-report.json");
+  assert.deepEqual(evaluationReportSemanticErrors(fixture, "fixture"), []);
+  fixture.trials.count = 3;
+  fixture.trials.independent = false;
+  fixture.results[0].pass = true;
+  fixture.suite.holdout_isolated = false;
+  fixture.decision.status = "accept";
+  const errors = evaluationReportSemanticErrors(fixture, "fixture");
+  assert.ok(errors.some((error) => error.includes("independent")));
+  assert.ok(errors.some((error) => error.includes("pass flag")));
+  assert.ok(errors.some((error) => error.includes("cannot accept")));
+});
+
+test("solution-release semantics bind approvals and migration state", async () => {
+  const fixture = await json("templates/solution-release.json");
+  assert.deepEqual(solutionReleaseSemanticErrors(fixture, "fixture"), []);
+  fixture.artifacts.push(structuredClone(fixture.artifacts[0]));
+  fixture.compatibility.migration_required = true;
+  fixture.approvals.push({
+    role: "technical",
+    principal: "technical-owner",
+    bound_release_digest: "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    approved_at: "2026-08-07T17:00:00Z",
+  });
+  const errors = solutionReleaseSemanticErrors(fixture, "fixture");
+  assert.ok(errors.some((error) => error.includes("duplicates artifact role")));
+  assert.ok(errors.some((error) => error.includes("not bound")));
+  assert.ok(errors.some((error) => error.includes("no migration procedure")));
 });
 
 test("ontology schema rejects an undeclared effect class", async () => {
@@ -174,15 +387,51 @@ test("every non-read effect requires brokered allowlisted network access", async
   base.observability.postcondition_readback = true;
   assert.equal(validate(base), true, JSON.stringify(validate.errors));
 
-  for (const network of [
-    { egress: "none", destinations: [], credential_broker: null },
-    { egress: "allowlist", destinations: [], credential_broker: "workload-identity-gateway" },
-    { egress: "allowlist", destinations: ["effect-service.internal"], credential_broker: null },
+  for (const mutation of [
+    (network) => { network.egress = "none"; },
+    (network) => { network.destinations = []; },
+    (network) => { network.allowed_operations = []; },
+    (network) => { network.allowed_methods = []; },
+    (network) => { network.address_resolution_policy = "deny"; },
+    (network) => { network.target_account_binding = false; },
+    (network) => { network.tenant_binding = false; },
+    (network) => { network.credential_broker = null; },
   ]) {
     const invalid = structuredClone(base);
-    invalid.network = network;
+    mutation(invalid.network);
     assert.equal(validate(invalid), false);
   }
+});
+
+test("read-capable tools declare bounded data exposure and governed approval", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/tool-contract.schema.json"));
+  const fixture = await json("examples/invoice-exception/tools/read-invoice.json");
+
+  for (const mutation of [
+    (dataAccess) => { dataAccess.classifications = []; },
+    (dataAccess) => { dataAccess.scope_fields = []; },
+    (dataAccess) => { dataAccess.max_records = 0; },
+    (dataAccess) => { dataAccess.max_response_bytes = 0; },
+  ]) {
+    const invalid = structuredClone(fixture);
+    mutation(invalid.data_access);
+    assert.equal(validate(invalid), false);
+  }
+});
+
+test("tool semantic checks bind data scope and network capability to the contract", async () => {
+  const fixture = await json("examples/invoice-exception/tools/read-invoice.json");
+  assert.deepEqual(toolContractSemanticErrors(fixture, "fixture"), []);
+
+  fixture.data_access.scope_fields.push("undeclared_scope");
+  fixture.network.allowed_operations = ["different_operation"];
+  fixture.network.tenant_binding = false;
+  const errors = toolContractSemanticErrors(fixture, "fixture");
+  assert.ok(errors.some((error) => error.includes("undeclared_scope")));
+  assert.ok(errors.some((error) => error.includes("allowed_operations")));
+  assert.ok(errors.some((error) => error.includes("tenant binding")));
 });
 
 test("irreversible effects are commit-only, approval-gated, and non-compensable", async () => {

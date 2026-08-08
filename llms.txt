@@ -1,27 +1,46 @@
 # Production Agent Engineering: An FDE Field Guide
 
-Purpose: production AI agent architecture, evaluation, security, deployment, and operations.
+Summary: A design and verification kit for moving bounded AI-agent workflows from discovery to controlled production use. It does not require a specific model or agent framework.
 License: Apache-2.0
 
-Primary index: catalog.json
-Project controls (normative within this guide): controls/control-catalog.json
-Artifact contracts: schemas/
-Copy-ready artifacts: templates/
-Reference architectures: blueprints/
-Executable reference: examples/invoice-exception/
-Release and operations: operations/
-Engineering rationale: library/
-Dated evidence: research/
-Contribution contract: AGENTS.md and CONTRIBUTING.md
-Security reports: SECURITY.md
+Read [AGENTS.md](AGENTS.md) before modifying this repository.
 
-Design artifact sequence:
-1. templates/fde-discovery-pack.md
-2. templates/operational-ontology.json
-3. templates/agent-system.json
-4. templates/tool-contract.json
-5. templates/evaluation-case.json
-6. templates/threat-model.json
-7. operations/release-gates.md
+## Entry points
 
-Validation: npm ci && npm test && git diff --check
+- Human overview: [README.md](README.md)
+- Agent editing and routing contract: [AGENTS.md](AGENTS.md)
+- Governed-artifact registry: [catalog.json](catalog.json)
+- Production controls: [controls/control-catalog.json](controls/control-catalog.json)
+- End-to-end FDE lifecycle: [playbooks/README.md](playbooks/README.md)
+- Discovery and value: [playbooks/01-discovery-and-value.md](playbooks/01-discovery-and-value.md)
+- Solution design and delivery: [playbooks/02-solution-and-delivery.md](playbooks/02-solution-and-delivery.md)
+- Operate and scale: [playbooks/03-operate-and-scale.md](playbooks/03-operate-and-scale.md)
+- Design starting point: [library/00-start-here.md](library/00-start-here.md)
+- Complete implementation sequence: [library/07-production-implementation-playbook.md](library/07-production-implementation-playbook.md)
+- Architecture selection: [blueprints/README.md](blueprints/README.md)
+- Governed data-agent design: [blueprints/data-analysis-agent.md](blueprints/data-analysis-agent.md)
+- Controlled improvement design: [blueprints/controlled-improvement-agent.md](blueprints/controlled-improvement-agent.md)
+- Starter design artifacts: [templates/README.md](templates/README.md)
+- Machine-readable contracts: [schemas/README.md](schemas/README.md)
+- Versioned behavior contract: [schemas/behavior-bundle.schema.json](schemas/behavior-bundle.schema.json)
+- Evaluation claim contract: [schemas/evaluation-report.schema.json](schemas/evaluation-report.schema.json)
+- Compatible release contract: [schemas/solution-release.schema.json](schemas/solution-release.schema.json)
+- Capability provenance contract: [schemas/capability-manifest.schema.json](schemas/capability-manifest.schema.json)
+- Typed handoff contract: [schemas/handoff-envelope.schema.json](schemas/handoff-envelope.schema.json)
+- Patterns and anti-patterns: [patterns/pattern-catalog.json](patterns/pattern-catalog.json)
+- Executable reference: [examples/invoice-exception/README.md](examples/invoice-exception/README.md)
+- Release and operations: [operations/README.md](operations/README.md)
+- Production changes: [operations/change-management.md](operations/change-management.md)
+- Behavior monitoring: [operations/behavior-monitoring.md](operations/behavior-monitoring.md)
+- Capability supply chain: [operations/capability-supply-chain.md](operations/capability-supply-chain.md)
+- Evidence policy and dated research: [research/README.md](research/README.md)
+- Maintainer runbook: [docs/maintainers/repository-maintenance.md](docs/maintainers/repository-maintenance.md)
+
+Safety baseline: Model output does not authorize effects or prove completion. Side-effecting operations require boundary authorization and service-enforced duplicate safety; consequential effects also require source-of-truth verification.
+
+Build order: workflow charter → domain model → agent system → behavior bundle → tool contracts and capability manifests → threat model and evaluation → solution release. A tool change is incomplete until the exact build is admitted, included in the behavior bundle, evaluated, and bound into a new release digest.
+
+Contribution contract: [CONTRIBUTING.md](CONTRIBUTING.md)
+Security reports: [SECURITY.md](SECURITY.md)
+Execution safety: Review repository code first; run untrusted contributions only in CI or a disposable environment without secrets.
+Validation: `npm ci --ignore-scripts && npm test && git diff --check`

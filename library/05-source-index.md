@@ -14,53 +14,65 @@ The repeated Matt Pocock summary was collapsed into one entry.
 
 ## Current implementation evidence
 
-The original sources below establish the library's foundational concepts. For current practices, failure modes, protocol changes, security research, and source-quality screening from 2026-02-07 to 2026-08-07, use the separate [Latest-Six-Month Production-Agent Source Ledger](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md). It includes primary GitHub, company engineering, security, X/Reddit lead, YouTube, and news screening notes.
+The original sources below establish the library's foundational concepts. For current practices, failure modes, protocol changes, security research, and source-quality screening reviewed from 2026-02-07 to 2026-08-07, use the separate [production-agent source ledger](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md). The ledger also includes explicitly revalidated canonical sources published before the review window. It includes primary GitHub, company engineering, security, X/Reddit lead, YouTube, and news screening notes.
 
 <a id="s01"></a>
 ## S01 — Ramp Sheets: domain-native agentic spreadsheets
 
-- **Evidence:** Summary supplied
+- **Evidence:** Summary supplied; original talk metadata and cited chapters reviewed
 - **Speaker:** Alexander Shevchenko, head of applied research at Ramp
+- **Published:** May 7, 2026
+- **Link:** [How Ramp built an AI agent that can think outside of tokens](https://youtu.be/trEM9OKr5Sc)
 - **Contribution:** Ramp Sheets evolved from internal process mining based on recordings of finance work. The product moved away from opaque code generation toward Excel-native range operations and formulas, using a Modal sandbox and Python only as an escape hatch. The notes also describe an internal `Inspect` coding agent that monitors the system and proposes pull requests, plus experimental latent briefing and steering-vector research.
 - **Use in this library:** Workflow discovery, native artifacts, sandbox design, safe self-improvement, emerging research.
 
 <a id="s02"></a>
 ## S02 — Hex: data agents and longitudinal evaluation
 
-- **Evidence:** Summary supplied
+- **Evidence:** Summary supplied; original talk metadata and cited chapters reviewed
 - **Speaker:** Izzy Miller, AI engineer at Hex
+- **Published:** April 9, 2026
+- **Links:** [Talk](https://youtu.be/Xyh1EqcjGME), [Hex evaluation writeup](https://hex.tech/blog/evaluate-data-agents/)
 - **Contribution:** Data analysis is iterative and project-scoped, which pushed Hex from single-shot text-to-SQL toward agents that carry context across notebooks and threads. Hex is unifying agents around a shared harness, tools, and context harvesting. “Metric City” is described as a 90-day simulation for evaluating behavior over time. Data-agent correctness remains more subjective than executable code correctness.
 - **Use in this library:** Common harnesses, data-specific verification, longitudinal evaluation, domain compounding.
 
 <a id="s03"></a>
 ## S03 — Listen: multi-agent qualitative research
 
-- **Evidence:** Summary supplied
+- **Evidence:** Summary supplied; original talk metadata and cited chapters reviewed
 - **Speaker:** Florian Juengermann, CTO and co-founder of Listen
+- **Published:** April 23, 2026
+- **Link:** [How Listen builds AI Agents that review their own work](https://youtu.be/YTTH-0XXEBE)
 - **Contribution:** A Composer, Interviewer, and Research Agent cover study design, multimodal interviews, and corpus analysis. The Research Agent turns interviews into a virtual table for map-reduce analysis. A feedback subagent reviews reports, while an E2B sandbox runs Python and produces presentation artifacts. The Composer supports iterative collaborative editing.
 - **Use in this library:** Virtual tables, reviewer agents, sandboxed analysis, persistent artifacts.
 
 <a id="s04"></a>
 ## S04 — Elastic: agentic search as context engineering
 
-- **Evidence:** Summary supplied
+- **Evidence:** Summary supplied; original talk metadata and cited chapters reviewed
 - **Speaker:** Leonie Monigatti, Elastic
+- **Published:** May 8, 2026
+- **Link:** [Agentic Search for Context Engineering](https://youtu.be/ynJyIKwjonM)
 - **Contribution:** Retrieval requires intentional tool design beyond generic RAG. Specialized semantic search, database query tools, and shell access have different strengths. Common failures are skipped tools, wrong tools, and bad parameters. Detailed descriptions, system guidance, and on-demand Skills improve selection. A robust stack combines a low floor of reliable tools with a high ceiling of sandboxed general capability.
 - **Use in this library:** Retrieval portfolios, tool descriptions, staged instructions, low-floor/high-ceiling design.
 
 <a id="s05"></a>
 ## S05 — Legora: the Verifier's Rule and interfaces beyond chat
 
-- **Evidence:** Summary supplied
+- **Evidence:** Summary supplied; original talk metadata and cited chapters reviewed
 - **Speaker:** Jacob Lauritzen, CTO of Legora
+- **Published:** April 22, 2026
+- **Link:** [Agents need more than a chat](https://youtu.be/XNtkiQJ49Ps)
 - **Contribution:** As execution becomes cheap, planning and review become bottlenecks. Tasks that are easy to verify are better candidates for automation. Decompose work, add guardrails, and encode human judgment in Skills and review stages. High-bandwidth persistent artifacts are better than chat for collaborative professional work.
 - **Use in this library:** Verifiability, progressive autonomy, review UX, persistent artifacts.
 
 <a id="s06"></a>
 ## S06 — Uber: production MCP gateway and registry
 
-- **Evidence:** Summary supplied
+- **Evidence:** Summary supplied; original talk metadata and cited chapters reviewed
 - **Speakers:** Meghana Somasundara and Rush Tehrani, Uber
+- **Published:** May 7, 2026
+- **Links:** [Talk](https://youtu.be/yVqMxBahjfA), [Uber identity and gateway writeup](https://www.uber.com/au/en/blog/solving-the-agent-identity-crisis/)
 - **Contribution:** Uber reports scaling MCP to 5,000+ engineers, 60,000+ weekly agent executions, and an estate of 10,000+ microservices. Its control plane generates MCP definitions from IDLs, centralizes authorization and PII redaction, exposes tools through builder, SDK, and coding-agent surfaces, and uses derived tools to narrow selection and override parameters. Planned capabilities include evaluations, SLA tiers, cross-registry search, and A/B-tested Skills.
 - **Use in this library:** Tool governance, discovery, generated schemas, derived tools, platform scale.
 - **Caution:** Scale and performance are company-reported.
@@ -68,8 +80,10 @@ The original sources below establish the library's foundational concepts. For cu
 <a id="s07"></a>
 ## S07 — Event-sourced agent harness workshop
 
-- **Evidence:** Summary supplied
+- **Evidence:** Summary supplied; original talk metadata and cited chapters reviewed
 - **Speaker:** Jonas Templestein, as named in the supplied notes
+- **Published:** May 14, 2026
+- **Link:** [Event-sourced agent harness workshop](https://youtu.be/vi-2nasppAg)
 - **Contribution:** Every interaction becomes a serialized event. A synchronous reducer derives state; an after-append hook performs side effects. Replay recovers state without repeating costly calls. Multiple processors can subscribe to a stream, and circuit breakers stop runaway event generation. The workshop also demonstrates dynamically loading JavaScript processors from event payloads.
 - **Use in this library:** Event sourcing, reducers, replay, extensibility, circuit breakers.
 - **Caution:** Dynamically executing processor code creates a major supply-chain and sandboxing risk.
@@ -77,8 +91,10 @@ The original sources below establish the library's foundational concepts. For cu
 <a id="s08"></a>
 ## S08 — Datadog: production agents at organizational scale
 
-- **Evidence:** Summary supplied
+- **Evidence:** Summary supplied; original talk metadata and cited chapters reviewed
 - **Speaker:** Diamond Bishop, Datadog
+- **Published:** May 11, 2026
+- **Link:** [Datadog Built 100 AI Agents—Here's What Broke](https://youtu.be/C3y3M_03Vco)
 - **Contribution:** Datadog describes SRE, development, and security agents and advocates machine-readable documentation, proactive event-driven operation, durable execution such as Temporal, continuous evaluation, simple rewriteable harnesses, model/framework independence, and multiplayer human-agent surfaces.
 - **Use in this library:** Proactive agents, durable execution, continuous evaluation, simple harnesses.
 - **Caution:** “100+ production agents” and other scale claims are company-reported.
@@ -96,8 +112,10 @@ The original sources below establish the library's foundational concepts. For cu
 <a id="s10"></a>
 ## S10 — Five pillars for production AI
 
-- **Evidence:** Summary supplied
+- **Evidence:** Summary supplied; original talk metadata and cited chapters reviewed
 - **Speaker:** Sandipan Bhaumik
+- **Published:** June 18, 2026
+- **Link:** [Production AI Playbook](https://youtu.be/ObTPqBGsEbA)
 - **Contribution:** Define business success and evaluation infrastructure before choosing a model. The five pillars are evaluation, observability, data foundation, multi-agent orchestration, and governance. Evaluation spans deterministic, semantic, and behavioral checks. Prompts and model versions require change control. A retail-banking case attributes a satisfaction regression to stale retrieval data.
 - **Use in this library:** Build order, evaluation layers, traceability, data freshness, governance.
 
@@ -179,8 +197,10 @@ The original sources below establish the library's foundational concepts. For cu
 <a id="s19"></a>
 ## S19 — Tejas Kumar: building reliable agents with harnesses
 
-- **Evidence:** Summary supplied
+- **Evidence:** Summary supplied; original talk metadata and cited chapters reviewed
 - **Speaker:** Tejas Kumar, IBM
+- **Published:** May 17, 2026
+- **Link:** [Harness demonstration](https://youtu.be/C_GG5g38vLU)
 - **Contribution:** Using GPT-3.5 Turbo, the presentation argues that a harness can improve even an older, cheaper model through a controlled tool registry, context compaction, maximum-step guardrails, deterministic verification, and programmatic handling of known states. In the browser demonstration, an unharnessed agent encountered a Hacker News login page but hallucinated that an upvote succeeded. A verifier inspected tool history and page state, while a later login handler enabled authenticated completion.
 - **Use in this library:** Minimum viable harness, postcondition verification, bounded loops, credential isolation.
 - **Emerging claim:** The speaker anticipates dynamically generated, on-the-fly harnesses by 2027. This is a forecast, not an established production pattern.
@@ -188,9 +208,11 @@ The original sources below establish the library's foundational concepts. For cu
 <a id="s20"></a>
 ## S20 — Frank Coyle: ontologies as agentic guardrails
 
-- **Evidence:** Summary supplied
+- **Evidence:** Summary supplied; original talk metadata and cited chapters reviewed
 - **Speaker:** Frank Coyle
-- **Contribution:** Neurosymbolic systems combine probabilistic LLM interpretation with formal domain entities, relationships, and constraints. RDFS and OWL can express logical rules, while a schema tool such as Pydantic validates input types. The proposed pattern validates structure at the “door” and domain consistency at the “ledger” before executing an action—for example, preventing duplicate refunds or payouts to the wrong role.
+- **Published:** July 22, 2026
+- **Link:** [Ontology guardrails talk](https://youtu.be/Sir59K8ZDPU)
+- **Contribution:** Neurosymbolic systems combine probabilistic LLM interpretation with formal domain entities and relationships. RDFS and OWL express vocabularies and logical axioms for inference; a separate constraint mechanism such as SHACL shapes or deterministic rules is needed to reject proposed states or actions under application policy. A schema tool such as Pydantic separately validates input types. The proposed pattern validates structure at the “door” and domain consistency at the “ledger” before executing an action—for example, preventing duplicate refunds or payouts to the wrong role. [R26-61](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-61)
 - **Use in this library:** Ontologies, semantic constraints, layered validation, deterministic business invariants.
 - **Caution:** Ontologies require careful domain modeling, ownership, versioning, and integration; they do not independently solve stale evidence, incorrect intent selection, or authorization.
 
@@ -218,3 +240,7 @@ The most repeated ideas are:
 9. Cost and model routing are part of architecture, not post-launch optimization.
 10. Typed schemas and symbolic business invariants can constrain probabilistic model output.
 11. The durable differentiator is the full system around the model.
+12. FDE work starts from an observed operational decision and measurable outcome, not a model or integration.
+13. Adoption, support, and customer operating ownership are production gates, not post-launch documentation tasks.
+14. Data, domain, behavior, tools, policy, evaluation, runtime, and user experience form one compatible release boundary.
+15. Evaluation results need explicit claims, environment versions, repeated trials, uncertainty, and contamination controls.

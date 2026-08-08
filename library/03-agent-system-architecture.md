@@ -82,11 +82,11 @@ Probabilistic interpretation and deterministic domain logic can be composed inst
 1. The model proposes a typed intent or tool call.
 2. A schema validator such as Pydantic checks shape, types, and required fields.
 3. Authorization checks whether this principal may attempt the action.
-4. An ontology or rule engine checks domain relationships and invariants.
+4. A constraint validator or deterministic rule engine checks domain relationships and invariants expressed against the ontology.
 5. Deterministic code executes the accepted action.
 6. A postcondition verifier checks the resulting external state.
 
-An ontology can reject a structurally valid but logically impossible action, such as issuing a second refund or sending a customer payout to a support representative. It does not prove that retrieved facts are current or that the model selected the correct intent, so retrieval quality, authorization, and post-action verification remain separate controls.
+RDFS and OWL provide vocabulary and inference; rejection semantics require a validation or rule layer such as SHACL shapes or deterministic code. That constraint layer can reject a structurally valid but disallowed action, such as issuing a second refund or sending a customer payout to a support representative. It does not prove that retrieved facts are current or that the model selected the correct intent, so retrieval quality, authorization, and post-action verification remain separate controls. [R26-61](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-61)
 
 ## Graph engineering
 

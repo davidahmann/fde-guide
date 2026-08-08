@@ -5,16 +5,30 @@
 | Field | Value |
 | --- | --- |
 | Workflow ID | |
+| Executive sponsor | |
 | Operational owner | |
 | Technical owner | |
 | Risk owner | |
+| Intended users/operators | |
+| Receiving service owner | |
 | Trigger | |
+| Current work product or decision | |
+| Initial segment and exclusions | |
 | Accepted outcome | |
-| Baseline | |
+| Baseline status and evidence | Measured / estimated / unmeasured |
 | Target | |
 | Measurement window | |
 | Verifier | |
 | Maximum acceptable failure | |
+| Pilot stop conditions | |
+
+Use the machine-readable [workflow-charter template](workflow-charter.json) for the governed decision after discovery.
+
+## Field evidence register
+
+| Evidence ID | Method | Case/segment | Date | Source owner | Redaction/classification | Observation supported | Limitation |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| | Interview / shadow / recording / event log / artifact / metric | | | | | | |
 
 ## Workflow event log
 
@@ -48,26 +62,58 @@
 
 ## Value-verifiability matrix
 
-| Candidate | Annual volume | Minutes/case | Error cost | Integration cost | Verification coverage | Residual risk | Priority |
-| --- | ---: | ---: | ---: | ---: | ---: | --- | ---: |
-| | | | | | | | |
+| Candidate | Annual volume | Minutes/case | Loaded labor/hour | Error rate | Error cost/event | Annualized integration + operating cost | Verifier coverage (0–1) | Adoption probability (0–1) | Residual risk probability (0–1) | Priority ratio |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| | | | | | | | | | | |
 
 ```text
-priority = annual_volume × minutes_per_case × verifier_coverage × adoption_probability
-           ---------------------------------------------------------------
-           integration_cost × residual_risk_multiplier
+gross_annual_value = annual_volume × (
+  minutes_per_case / 60 × loaded_labor_cost_per_hour
+  + error_rate × error_cost_per_event
+)
+
+risk_adjusted_verified_value =
+  gross_annual_value
+  × verifier_coverage
+  × adoption_probability
+  × (1 - residual_risk_probability)
+
+priority_ratio = risk_adjusted_verified_value
+                 / max(1 currency unit, annualized_integration_and_operating_cost)
 ```
+
+Use one declared currency and annual period. Bound every probability or coverage input to `0..1`, preserve low/expected/high scenarios, and do not compare ratios built from different units or periods. This ratio ranks qualified candidates; it does not override a hard owner, verifier, authority, safety, or adoption gate. Keep estimated, measured, and realized value separate. Complete the [value-case template](value-case.md) before a pilot decision.
+
+## Assumption and decision log
+
+| ID | Assumption or decision | Evidence | Owner | Test or review date | If false | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| | | | | | | Open / validated / rejected / superseded |
 
 ## Readiness gates
 
-| Gate | Required evidence | Owner | Status |
-| --- | --- | --- | --- |
-| Workflow | Accepted outcome, boundary, verifier | Operational | |
-| Data | Owners, source-of-truth rules, freshness, classification | Data | |
-| Tools | Typed contracts, identity, authorization, idempotency | Platform | |
-| Security | Threat model, secrets, egress, tenant isolation | Security | |
-| Evaluation | Replay cases, safety slices, isolated graders | Evaluation | |
-| Operations | SLOs, alerts, runbooks, rollback, capacity | Operations | |
+| Charter dimension | Required evidence | Owner | Score (0–4) | Status |
+| --- | --- | --- | ---: | --- |
+| Workflow clarity | User, interface, decision, inputs, permitted action, accepted outcome, boundary | Operational | | |
+| Context | Owners, source-of-truth rules, revisions, freshness, classification | Data | | |
+| Verifier | Independent completion evidence, representative cases, safety slices, isolated graders | Evaluation | | |
+| Integration | Typed tool contracts, identity, authorization, duplicate safety, dependency ownership | Platform | | |
+| Adoption | User surface, training, review capacity, support, workflow integration | Operational | | |
+| Operations | SLOs, alerts, runbooks, rollback, capacity | Operations | | |
+| Risk | Threat model, secrets, egress, tenant isolation, prohibited effects, recovery | Security/risk | | |
+
+Copy these seven dimensions and their evidence into `workflow-charter.readiness`. Authenticated authority, accountable ownership, and a lawful data path remain independent hard gates even when the scored dimensions are otherwise strong.
+
+## Adoption and ownership plan
+
+| Capability | Current owner | Receiving owner | Evidence of readiness | Exercise | Exit condition |
+| --- | --- | --- | --- | --- | --- |
+| Workflow and policy | | | | | |
+| Data and tools | | | | | |
+| Evaluation and release | | | | | |
+| Support and incident response | | | | | |
+| Cost and value review | | | | | |
+| Retirement | | | | | |
 
 ## Cutover plan
 
@@ -75,5 +121,5 @@ priority = annual_volume × minutes_per_case × verifier_coverage × adoption_pr
 | --- | ---: | --- | --- | --- | --- |
 | Offline | 0% | None | Replay fixtures ready | Thresholds pass | Any prohibited effect |
 | Shadow | Mirrored | None | Observability complete | Stable slice metrics | Data or policy drift |
-| Canary | 1–5% | Staged/reversible | Human review ready | SLO and review thresholds | Error-budget burn |
-| Bounded production | Named segment | Policy-gated | Runbooks exercised | Continuous controls | Kill-switch threshold |
+| Canary | 1–5% | Staged/reversible | Human review, support, and rollback ready | SLO, adoption, and review thresholds | Error-budget burn |
+| Bounded production | Named segment | Policy-gated | Customer owners and runbooks exercised | Outcome, adoption, and continuous controls | Kill-switch or value threshold |

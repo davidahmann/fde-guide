@@ -1,6 +1,6 @@
-# Latest-Six-Month Production-Agent Source Ledger
+# Production-Agent Source Ledger
 
-Research window: **2026-02-07 to 2026-08-07**.
+Current research window: **2026-02-07 to 2026-08-07**. A small number of foundational sources published before the window are retained only when explicitly labeled as revalidated on 2026-08-07.
 
 This is a curated implementation database, not a popularity list. It favors primary specifications, engineering evidence, reproducible research, security publications, and concrete first-party operating reports. Vendor claims are kept as patterns to test, not universal performance promises.
 
@@ -254,7 +254,7 @@ This is a curated implementation database, not a popularity list. It favors prim
 - **Date:** 2026-07-24
 - **Type / tier:** Official benchmark announcement; A
 - **Source:** [AWS announces aws-bench](https://aws.amazon.com/about-aws/whats-new/2026/07/aws-bench/)
-- **Finding:** Test cases pair natural-language queries with a defined cloud-resource state and ground truth; the CLI creates environments, runs/scored evaluations, and resets state.
+- **Finding:** Test cases pair natural-language queries with a defined cloud-resource state and ground truth; the CLI creates environments, runs and scores evaluations, and resets state.
 - **Portable pattern:** Reproducible environment state, verifiable tasks, harness-aware scoring, and resettable worlds.
 - **Anti-pattern:** Benchmarking an agent against a task without controlling the state it sees or changes.
 
@@ -377,10 +377,272 @@ This is a curated implementation database, not a popularity list. It favors prim
 - **Date:** 2026-07-21
 - **Type / tier:** Preliminary incident report; A for disclosed facts, provisional for root cause
 - **Source:** [Security incident during model evaluation](https://openai.com/index/hugging-face-model-evaluation-security-incident/)
-- **Finding:** Evaluation environments are production-adjacent security domains. The disclosure emphasizes minimized egress, dependency patching, credential audit, anomaly detection, and containment paths.
-- **Portable pattern:** Treat evaluation sandboxes as hostile-input environments; apply the same network, dependency, credential, and response controls as production.
-- **Anti-pattern:** Assuming a sandbox is safe merely because it lacks direct public Internet access.
-- **Caveat:** The report is preliminary and under external review; do not infer an unconfirmed root cause.
+- **Finding:** OpenAI's July 28–29 updates attribute the escape path to a package-registry proxy vulnerability and document access to public credentials and real external services. Its August 4 report describes related third-party evaluation incidents involving Internet scope and environment configuration.
+- **Portable pattern:** Treat evaluation sandboxes as hostile-input environments; bind egress to the operation, credential, account, request shape, redirect policy, and destination rather than a host name alone.
+- **Anti-pattern:** Assuming direct-Internet denial or a destination allowlist is sufficient while package proxies, redirects, public credentials, or live accounts remain reachable.
+- **Caveat:** The disclosure remains preliminary and OpenAI states that a fuller technical report is forthcoming; do not infer an unconfirmed root cause.
+
+## FDE, delivery, and operating-model evidence
+
+<a id="r26-37"></a>
+### R26-37 — OpenAI: FDE ownership from discovery through production
+
+- **Date:** 2026-05-11; role reviewed 2026-08-07
+- **Type / tier:** Official company announcement and current role definition; C for operating claims
+- **Sources:** [OpenAI Deployment Company](https://openai.com/index/openai-launches-the-deployment-company/) and [Forward Deployed Engineer role](https://openai.com/careers/forward-deployed-engineer-%28fde%29-sf-san-francisco/)
+- **Finding:** OpenAI defines FDE work as direct collaboration with leaders, operators, and domain and engineering teams across discovery, scoping, system design, build, rollout, adoption, workflow impact, and eval-driven product feedback.
+- **Portable pattern:** Give one accountable delivery team responsibility for the path from a named business problem to measured production use; keep field feedback connected to the platform and model roadmap.
+- **Anti-pattern:** A discovery handoff followed by isolated implementation, or a prototype whose owner is undefined after launch.
+- **Caveat:** Role descriptions and company announcements state intended practice; they are not audited delivery outcomes.
+
+<a id="r26-38"></a>
+### R26-38 — OpenAI Presence: begin with one specific job
+
+- **Date:** 2026-07-22
+- **Type / tier:** Official product and deployment description; C
+- **Source:** [Introducing OpenAI Presence](https://openai.com/index/introducing-openai-presence/)
+- **Finding:** The described deployment method begins with a specific customer or internal job, then limits knowledge, system access, approvals, escalation, and operating support around that job.
+- **Portable pattern:** Use a bounded workflow segment as the unit of discovery, architecture, evaluation, release, and ownership.
+- **Anti-pattern:** Beginning with a general-purpose autonomous worker or enterprise-wide tool access.
+
+<a id="r26-39"></a>
+### R26-39 — OpenAI: use-case discovery and prioritization
+
+- **Date:** Undated; revalidated 2026-08-07
+- **Type / tier:** Official business implementation guide; C
+- **Source:** [Identifying and scaling AI use cases](https://openai.com/business/guides-and-resources/identifying-and-scaling-ai-use-cases/)
+- **Finding:** The guide recommends finding opportunities in repetitive work, skill bottlenecks, and ambiguity; mapping workflows into tasks; using cross-functional business, domain, and technical participation; and prioritizing impact against effort.
+- **Portable pattern:** Collect opportunities broadly, apply readiness and risk gates, then rank the surviving candidates by measurable impact, effort, and time to evidence.
+- **Anti-pattern:** Selecting the most impressive or technically novel use case without an operator, baseline, or adoption path.
+- **Caveat:** Customer metrics in the guide remain vendor-attributed and do not establish general ROI.
+
+<a id="r26-40"></a>
+### R26-40 — OpenAI: incremental agent architecture
+
+- **Date:** Undated; revalidated 2026-08-07
+- **Type / tier:** Official agent implementation guide; A for design guidance
+- **Source:** [A practical guide to building AI agents](https://openai.com/business/guides-and-resources/a-practical-guide-to-building-ai-agents/)
+- **Finding:** Agent-worthy workflows contain ambiguity, brittle rules, or unstructured information. The guide recommends establishing an eval baseline, starting with one agent, and introducing multiple agents only when instruction or tool complexity justifies it.
+- **Portable pattern:** Compare deterministic software, a single model call, a coded workflow, and a single agent before adding orchestration complexity.
+- **Anti-pattern:** Treating every AI feature as an agent or assuming multi-agent decomposition is an architectural upgrade.
+
+<a id="r26-41"></a>
+### R26-41 — Palantir: outcome-led use-case lifecycle
+
+- **Date:** Undated; reviewed 2026-08-07
+- **Type / tier:** Official product-development guidance; C
+- **Sources:** [Use case lifecycle](https://www.palantir.com/docs/foundry/use-case-life-cycle/overview), [distilling functional requirements](https://www.palantir.com/docs/foundry/use-case-life-cycle/distilling-functional-requirements), [solution design](https://www.palantir.com/docs/foundry/use-case-life-cycle/solution-design), and [use-case roles](https://www.palantir.com/docs/foundry/use-case-life-cycle/use-case-roles)
+- **Finding:** Palantir frames a use case as a time-bounded effort that improves a user's operational decision, not a source integration, dashboard, or model technique. Its requirement pattern connects user, interface, decision, decision inputs, action, outcomes, and owners to object models, lifecycle state, enrichments, and interface intent.
+- **Portable pattern:** Work backward from the user's decision and action to the domain model, context, logic, effects, interface, and platform components; maintain requirement-to-solution traceability.
+- **Anti-pattern:** Technology-first scoping, UI-first requirements, or architecture that cannot trace a component to a user decision and measurable outcome.
+
+<a id="r26-42"></a>
+### R26-42 — Palantir: decision-centric operational model
+
+- **Date:** Undated; reviewed 2026-08-07
+- **Type / tier:** Official architecture documentation; A for described design
+- **Sources:** [Why create an Ontology?](https://www.palantir.com/docs/foundry/ontology/why-ontology), [Ontology overview](https://www.palantir.com/docs/foundry/ontology/overview), and [Ontology system](https://www.palantir.com/docs/foundry/architecture-center/ontology-system)
+- **Finding:** Palantir models operational decisions through data, logic, action, and security, including stateful objects, relationships, functions, governed actions, and writeback. The model represents decisions and effects, not only source schemas or document semantics.
+- **Portable pattern:** Build an operational domain contract that includes entities, states, rules, actions, authorization, feedback, and reconciliation.
+- **Anti-pattern:** A retrieval index or static knowledge graph presented as the complete operational context for an action-taking agent.
+- **Caveat:** This is an architecture pattern derived from vendor documentation, not a requirement to use Palantir or its terminology.
+
+<a id="r26-43"></a>
+### R26-43 — Palantir: close the decision-to-action loop
+
+- **Date:** Undated; reviewed 2026-08-07
+- **Type / tier:** Official application guidance; C
+- **Source:** [What is an operational application?](https://www.palantir.com/docs/foundry/app-building/operational-apps)
+- **Finding:** Palantir distinguishes read-only reporting from applications that support a specific decision and capture governed action or writeback. It states that operational decision workflows are more likely to affect adoption and outcomes.
+- **Portable pattern:** Put the agent inside the professional's decision artifact, expose governed actions, and capture the resulting decision and outcome as feedback.
+- **Anti-pattern:** A dashboard or chat surface that produces insight but leaves action, accountability, and outcome capture outside the system.
+- **Caveat:** The adoption statement is a first-party operating observation; validate it with the target users.
+
+<a id="r26-44"></a>
+### R26-44 — Palantir: branch the end-to-end solution, then release it
+
+- **Date:** Current documentation reviewed 2026-08-07; initial announcement 2025-04-29
+- **Type / tier:** Official change-management documentation; A
+- **Sources:** [Global Branching](https://www.palantir.com/docs/foundry/global-branching/overview) and [core concepts](https://www.palantir.com/docs/foundry/global-branching/core-concepts)
+- **Finding:** Global Branching isolates changes across connected resources for end-to-end testing and review, while environment release remains a separate promotion concern.
+- **Portable pattern:** Version data, domain model, agent, tools, policy, evaluations, and user surface as one compatible solution change; treat merge and production promotion as distinct events.
+- **Anti-pattern:** Testing only code while data, policy, tool, or interface changes reach production independently.
+
+<a id="r26-45"></a>
+### R26-45 — Palantir: customer operating capability is the scale gate
+
+- **Date:** Undated; reviewed 2026-08-07
+- **Type / tier:** Official adoption and governance guidance; C
+- **Sources:** [Foundry Program overview](https://www.palantir.com/docs/foundry/foundry-adoption/program-overview), [governance processes](https://www.palantir.com/docs/foundry/foundry-adoption/governance-processes), and [Phase 3 roles](https://www.palantir.com/docs/foundry/foundry-adoption/phase-3-roles)
+- **Finding:** The guidance assigns program, domain, product, data, governance, support, training, and use-case ownership; it describes recurring planning, access, support, and enablement processes and treats embedded experts as temporary accelerators rather than permanent domain owners.
+- **Portable pattern:** Begin transfer on day one and measure readiness through ownership, access governance, support, training, release competence, and incident response—not use-case count.
+- **Anti-pattern:** Permanent dependence on the FDE, late handoff, or scaling deployments before the customer can operate and change them.
+
+<a id="r26-46"></a>
+### R26-46 — Palantir: evaluate effects and observe the whole workflow
+
+- **Date:** Undated; reviewed 2026-08-07
+- **Type / tier:** Official evaluation and observability documentation; A
+- **Sources:** [AIP Evals](https://www.palantir.com/docs/foundry/aip-evals/overview), [Observability](https://www.palantir.com/docs/foundry/observability/overview), and [AIP architecture](https://www.palantir.com/docs/foundry/architecture-center/aip-architecture)
+- **Finding:** Palantir exposes evaluation of functions and state changes alongside execution history, metrics, traces, logs, actions, data health, and alerting.
+- **Portable pattern:** Evaluate intended world-state changes and operate the full dependency graph: data, models, tools, actions, policies, user workflow, outcomes, and cost.
+- **Anti-pattern:** Model-call telemetry or text quality scores presented as complete production observability.
+
+<a id="r26-47"></a>
+### R26-47 — Anthropic: evaluation-driven agent development
+
+- **Date:** 2026-01-09; revalidated 2026-08-07
+- **Type / tier:** Official engineering guidance; A
+- **Source:** [Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)
+- **Finding:** Agent evaluation covers outcome and trajectory, combines code, model, and human graders, separates capability from regression suites, uses repeated trials, and assigns infrastructure ownership while enabling product and domain teams to contribute cases.
+- **Portable pattern:** State the evaluation claim, choose consistency or best-of metrics to match the product contract, preserve independent test environments, and make production failures into owned regressions.
+- **Anti-pattern:** Single-trial reliability claims, final-answer-only grading, or eval ownership isolated from users and product requirements.
+
+<a id="r26-48"></a>
+### R26-48 — Anthropic: stable interfaces for long-running work
+
+- **Date:** 2026-03-24 and 2026-04-08
+- **Type / tier:** Official engineering experiments; A for implementation evidence, experimental for generalization
+- **Sources:** [Harness design for long-running application development](https://www.anthropic.com/engineering/harness-design-long-running-apps) and [Scaling Managed Agents](https://www.anthropic.com/engineering/managed-agents)
+- **Finding:** Anthropic separates append-only session history, replaceable harness logic, and sandbox execution; it uses structured artifacts to carry verified state across context transitions and removes harness scaffolding when newer models no longer need it.
+- **Portable pattern:** Use typed handoffs and stable runtime interfaces; version model-specific workarounds and require evidence before retaining them.
+- **Anti-pattern:** Conversation history as the only durable state, or permanent scaffolding based on one model version's limitations.
+
+<a id="r26-49"></a>
+### R26-49 — Anthropic: capability-aware containment
+
+- **Date:** 2026-05-25
+- **Type / tier:** Official security engineering; A
+- **Source:** [How we contain Claude across products](https://www.anthropic.com/engineering/how-we-contain-claude)
+- **Finding:** Anthropic documents data-exfiltration paths that can use approved destinations with attacker-controlled credentials, illustrating that a domain allowlist grants capability rather than proving safety.
+- **Portable pattern:** Bind network access to operation, resolved destination, path, redirect behavior, credential provenance, account, tenant, request shape, and response limits.
+- **Anti-pattern:** Destination-only egress policy or treating read-only access as low disclosure risk by default.
+
+<a id="r26-50"></a>
+### R26-50 — Anthropic: approval quality must be measured
+
+- **Date:** 2026-03-25
+- **Type / tier:** Official product-security engineering; A
+- **Source:** [How we built Claude Code auto mode](https://www.anthropic.com/engineering/claude-code-auto-mode)
+- **Finding:** Repeated approvals can become habitual, while automated action classifiers still have false positives and false negatives. The described monitor evaluates explicit intent and observable actions without treating the agent's rationale as authority.
+- **Portable pattern:** Tier approvals by disclosure and effect risk; measure acceptance, denial, override, latency, fatigue, and sampled unsafe approvals; keep independent monitoring separate from authorization.
+- **Anti-pattern:** A universal approval wall, or a model-based approval classifier as the sole gate for a high-stakes action.
+- **Caveat:** Published rates are implementation-specific and do not define portable thresholds.
+
+<a id="r26-51"></a>
+### R26-51 — Anthropic: behavioral changes need per-model rollout controls
+
+- **Date:** 2026-04-23
+- **Type / tier:** Official engineering postmortem; A
+- **Source:** [An update on recent Claude Code quality reports](https://www.anthropic.com/engineering/april-23-postmortem)
+- **Finding:** Anthropic traced regressions to model-specific defaults, context handling, and a prompt change, then added per-model evaluations, prompt audits, soak periods, and gradual rollout.
+- **Portable pattern:** Treat model, prompt, tool description, routing, context, and guardrail changes as behavioral releases with versioned diffs, per-route tests, canary, rollback, and dependency-lifecycle review.
+- **Anti-pattern:** Global behavioral configuration rollout because aggregate evaluation passed.
+
+<a id="r26-52"></a>
+### R26-52 — OpenAI: evaluation claim and environment manifest
+
+- **Date:** 2026-05-29
+- **Type / tier:** Official evaluation guidance; A
+- **Source:** [Trustworthy third-party evaluations: foundations](https://openai.com/index/trustworthy-third-party-evaluations-foundations/)
+- **Finding:** OpenAI recommends reporting the claim, model and harness, tools, elicitation, environment, resource enforcement, time, tokens, cost, and uncertainty because the surrounding system materially affects the result.
+- **Portable pattern:** A score is incomplete without the tested claim, version manifest, budgets, trials, uncertainty, and limitations.
+- **Anti-pattern:** Benchmark or release claim without enough configuration to reproduce or interpret it.
+
+<a id="r26-53"></a>
+### R26-53 — OpenAI: audit the benchmark and evaluator
+
+- **Date:** 2026-07-08
+- **Type / tier:** Official benchmark audit; B
+- **Source:** [Separating signal from noise in coding evaluations](https://openai.com/index/separating-signal-from-noise-coding-evaluations/)
+- **Finding:** OpenAI found a material share of inspected SWE-Bench Pro tasks broken, reinforcing that test validity, contamination, answer-key access, and evaluator integrity are part of the measured system.
+- **Portable pattern:** Audit tasks, reference solutions, hidden data, environment isolation, and negative controls before using a suite as a release gate.
+- **Anti-pattern:** Treating a benchmark label or leaderboard score as ground truth.
+- **Caveat:** The published percentage is benchmark-specific and must not become a general defect-rate assumption.
+
+<a id="r26-54"></a>
+### R26-54 — AI Engineer: production-agent practitioner corpus
+
+- **Date:** 2026-04-09 to 2026-08-06
+- **Type / tier:** Original conference talks and builder interviews; C unless paired with a primary artifact
+- **Source:** [Curated AI Engineer video index](2026-08-07--ai-engineer-production-agent-video-index.md)
+- **Finding:** Independent talks repeatedly converge on workflow observation, professional artifacts, scoped tools, durable state, full-trajectory evaluation, source-of-truth verification, production feedback loops, and explicit human interruption. Talks also surface contested or experimental practices such as same-agent review and dynamic worker code.
+- **Portable pattern:** Use talks as implementation leads, then corroborate mechanisms with code, official engineering reports, and local evaluation before making them controls.
+- **Anti-pattern:** Converting a speaker's architecture, scale metric, or demo result into a universal production requirement.
+
+<a id="r26-55"></a>
+### R26-55 — OpenAI: vendor lifecycle is an architecture input
+
+- **Date:** 2026-06-03
+- **Type / tier:** Official product update; A
+- **Source:** [Introducing AgentKit](https://openai.com/index/introducing-agentkit/)
+- **Finding:** OpenAI announced end-of-life dates for Agent Builder and the Evals product while recommending code-based alternatives.
+- **Portable pattern:** Record vendor capability lifecycle, replacement path, and exit test in each behavioral release.
+- **Anti-pattern:** A vendor UI, model route, or harness behavior as the permanent architectural source of truth.
+
+<a id="r26-56"></a>
+### R26-56 — Anthropic: simplest sufficient design and high-signal context
+
+- **Date:** Foundational guidance revalidated 2026-08-07
+- **Type / tier:** Official engineering guidance; A
+- **Sources:** [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents), [effective context engineering](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), and [writing effective tools for agents](https://www.anthropic.com/engineering/writing-tools-for-agents)
+- **Finding:** Anthropic recommends the simplest sufficient workflow, high-signal just-in-time context, task-shaped tools, semantic identifiers, concise outputs, and measured escalation to agents or multi-agent systems.
+- **Portable pattern:** Keep the agent loop, context, and tool surface small enough to inspect; add complexity only after a measured failure demonstrates the need.
+- **Anti-pattern:** Architecture complexity, context volume, or tool count used as a proxy for capability.
+
+<a id="r26-57"></a>
+### R26-57 — Palantir AI FDE: permission-bound interactive delegation
+
+- **Date:** Undated; reviewed 2026-08-07
+- **Type / tier:** Official product security documentation; A for described controls
+- **Sources:** [AI FDE overview](https://www.palantir.com/docs/foundry/ai-fde/overview) and [security and governance](https://www.palantir.com/docs/foundry/ai-fde/security-and-governance)
+- **Finding:** AI FDE uses the authenticated user's session, remains subject to server-side permissions, provides selectable tools and context, attributes activity to the user, and uses branch/review patterns for mutations.
+- **Portable pattern:** Distinguish interactive delegated agents from unattended agents: retain both user and agent attribution, intersect current authority, and require policy or approval for consequential mutations.
+- **Anti-pattern:** A shared service account for interactive users, or an unattended workflow impersonating a human user.
+- **Caveat:** This describes one vendor's interactive development agent and does not prove that user-bound identity is appropriate for every runtime.
+
+<a id="r26-58"></a>
+### R26-58 — SLSA: verify provenance against an artifact and expectations
+
+- **Date:** Version 1.2 released 2025-11-24; reviewed 2026-08-07
+- **Type / tier:** Linux Foundation supply-chain specification; A
+- **Sources:** [SLSA v1.2 release announcement](https://slsa.dev/blog/2025/11/announce-slsa-v1.2), [provenance](https://slsa.dev/spec/v1.2/provenance), and [artifact verification](https://slsa.dev/spec/v1.2/verifying-artifacts)
+- **Finding:** Provenance is useful only when a verifier checks the signed envelope, matches the statement subject to the artifact digest, trusts the builder identity, and compares the build against expected source and parameters.
+- **Portable pattern:** Verify capability bytes and provenance against an independently configured root of trust and admission expectations before registry entry or execution.
+- **Anti-pattern:** Storing an attestation or checksum without verifying its signature, subject binding, builder identity, and expected source.
+- **Caveat:** SLSA specifies software supply-chain controls; applying them to agent tools, skills, MCP servers, or prompts is a repository-derived adaptation.
+
+<a id="r26-59"></a>
+### R26-59 — in-toto: attestations bind authenticated claims to immutable subjects
+
+- **Date:** Attestation Framework v1.2 released 2026-03-18
+- **Type / tier:** Open supply-chain attestation specification; A
+- **Sources:** [v1.2.0 release](https://github.com/in-toto/attestation/releases/tag/v1.2.0), [in-toto Attestation Framework](https://github.com/in-toto/attestation/blob/main/spec/README.md), [Statement layer](https://github.com/in-toto/attestation/blob/main/spec/v1/statement.md), and [Envelope layer](https://github.com/in-toto/attestation/blob/main/spec/v1/envelope.md)
+- **Finding:** An in-toto Statement binds typed metadata to immutable subjects by digest; an authenticated envelope carries the signed statement, with DSSE recommended by the specification.
+- **Portable pattern:** Put the artifact digest and typed provenance claim inside the signed subject; verify the envelope and policy outside the capability being admitted.
+- **Anti-pattern:** A free-form signature string or signed description that is not cryptographically bound to the exact artifact and predicate.
+- **Caveat:** The specification supplies an attestation structure, not a complete capability-admission policy or trust-root selection method.
+
+<a id="r26-60"></a>
+### R26-60 — IETF draft: separate stable operation identity from request fingerprint
+
+- **Date:** Draft published 2025-10-15; expired 2026-04-18
+- **Type / tier:** IETF Internet-Draft; C, work in progress
+- **Source:** [The Idempotency-Key HTTP Header Field, draft-07](https://datatracker.ietf.org/doc/html/draft-ietf-httpapi-idempotency-key-header-07)
+- **Finding:** The draft represents a client's only-once intent with a unique key, assigns key-lifecycle and enforcement responsibility to the resource, and treats a payload-derived fingerprint as an optional, separate request check.
+- **Portable pattern:** Derive a stable operation identity from the business intent, enforce it at the service, and bind mutable request content or source revisions through a separate fingerprint and precondition.
+- **Anti-pattern:** Recomputing an idempotency key from mutable source state or model output, which can assign a new identity to a retry of the same business operation.
+- **Caveat:** This document is an expired Internet-Draft, not an RFC; it is a non-normative design reference and may be replaced or changed.
+
+<a id="r26-61"></a>
+### R26-61 — W3C SHACL: ontology semantics and closed-world validation are different layers
+
+- **Date:** W3C Recommendation 2017-07-20; revalidated 2026-08-07
+- **Type / tier:** W3C Recommendation; A
+- **Source:** [Shapes Constraint Language (SHACL)](https://www.w3.org/TR/shacl/)
+- **Finding:** SHACL defines constraints and conformance checking for RDF data graphs, including validation reports, while ontology languages supply vocabulary and inference semantics.
+- **Portable pattern:** Use an ontology to define shared meaning; use SHACL, JSON Schema, policy rules, or another explicit closed-world validator to reject invalid operational state.
+- **Anti-pattern:** Claiming that RDFS or OWL vocabulary alone rejects undeclared or operationally invalid states.
 
 ## Social, Reddit, YouTube, and news screening notes
 
@@ -396,12 +658,12 @@ This is a curated implementation database, not a popularity list. It favors prim
 
 ### YouTube and news quality filter
 
-- **YouTube:** Search covered official conference/company channels. No video met the admission bar of an in-window date plus a transcript or primary technical artifact robust enough to support a concrete control. The library deliberately does not elevate untranscribed talks into implementation guidance.
+- **YouTube:** Search covered original conference and company channels. The [curated AI Engineer video index](2026-08-07--ai-engineer-production-agent-video-index.md) records verified watch-page metadata, creator chapters, claim status, and primary corroboration where available. Talks remain Tier C unless a linked implementation artifact independently raises the evidence quality.
 - **News:** [Axios reporting on the OpenAI/Hugging Face incident](https://www.axios.com/2026/08/06/openai-hugging-face-black-hat) was reviewed as a timely signal. Core guidance cites the affected organization's preliminary report (R26-36) instead; the Axios article should not be treated as a technical postmortem.
 
 ## Cross-source patterns established by this ledger
 
-1. **Tool inventory is an architecture and security problem.** Progressive discovery, tight schemas, and compact primitives outperform flat “all tools in context” designs.
+1. **Tool inventory is an architecture and security problem.** Progressive discovery, tight schemas, and compact primitives reduce context load, narrow exposed authority, and lower tool-selection ambiguity compared with loading a flat catalog into every run.
 2. **Instructions are not authorization.** Agent identity, caller authority, egress, secrets, staging, and policy decisions must be enforced outside the model.
 3. **State needs a trust lifecycle.** Context, cache entries, memory, and artifacts need provenance, integrity labels, approval gates, freshness, and invalidation.
 4. **The evaluator is part of the attack surface.** Full outcomes and traces matter, but the test world and validator must be isolated from agent control.

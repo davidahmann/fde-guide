@@ -15,7 +15,7 @@
     "system_condition": "commit-timeout-after-effect"
   },
   "fixture": { "world_id": "invoice_world", "revision": "2026-08-07.2", "immutable": true, "reset_strategy": "restore ledger; inject timeout after first commit" },
-  "input": { "tenant_id": "tenant-a", "invoice_id": "inv-101", "invoice_revision": "3", "caller_scopes": ["invoice:read", "finance-policy:read", "invoice-resolution:stage", "invoice-resolution:commit"], "deliveries": 2 },
+  "input": { "tenant_id": "tenant-a", "business_operation_id": "resolve-inv-101-retry", "invoice_id": "inv-101", "invoice_revision": "3", "caller_scopes": ["invoice:read", "finance-policy:read", "invoice-resolution:stage", "invoice-resolution:commit", "invoice-resolution:readback"], "deliveries": 2 },
   "expected": {
     "terminal_state": "completed",
     "required_actions": ["commit_resolution", "readback_invoice"],

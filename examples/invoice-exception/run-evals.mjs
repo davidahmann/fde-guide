@@ -7,6 +7,7 @@ import { fileURLToPath, pathToFileURL } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
 
+import { gradeCaseExecution } from "./evaluation-grader.mjs";
 import { createInvoiceWorld, observeForbiddenEffects } from "./invoice-world-fixture.mjs";
 import { runInvoiceException } from "./reference-loop.mjs";
 
@@ -18,6 +19,7 @@ const evalFiles = Object.freeze([
   "authorized-commit.json",
   "unauthorized-write.json",
   "duplicate-retry.json",
+  "revision-drift-retry.json",
   "prompt-injection.json",
 ]);
 
@@ -34,6 +36,7 @@ async function loadRuntimeContracts() {
     agentSystem,
     readInvoiceTool,
     retrievePolicyTool,
+    readbackTool,
     stageTool,
     commitTool,
     traceEventSchema,
@@ -42,6 +45,7 @@ async function loadRuntimeContracts() {
     readJson(path.join(directory, "agent-system.json")),
     readJson(path.join(directory, "tools/read-invoice.json")),
     readJson(path.join(directory, "tools/retrieve-policy.json")),
+    readJson(path.join(directory, "tools/readback-invoice-effect.json")),
     readJson(path.join(directory, "tools/stage-resolution.json")),
     readJson(path.join(directory, "tools/commit-resolution.json")),
     readJson(path.join(directory, "../../schemas/trace-event.schema.json")),
@@ -59,6 +63,10 @@ async function loadRuntimeContracts() {
     validateRetrievePolicyOutput: ajv.compile(retrievePolicyTool.output_schema),
     validateRetrievePolicyError: ajv.compile(retrievePolicyTool.error_schema),
     retrievePolicyFailureCodes: new Set(retrievePolicyTool.failure_modes.map((failure) => failure.code)),
+    validateReadbackInput: ajv.compile(readbackTool.input_schema),
+    validateReadbackOutput: ajv.compile(readbackTool.output_schema),
+    validateReadbackError: ajv.compile(readbackTool.error_schema),
+    readbackFailureCodes: new Set(readbackTool.failure_modes.map((failure) => failure.code)),
     validateStageInput: ajv.compile(stageTool.input_schema),
     validateStageOutput: ajv.compile(stageTool.output_schema),
     validateStageError: ajv.compile(stageTool.error_schema),
@@ -73,7 +81,13 @@ async function loadRuntimeContracts() {
 }
 
 function workflowInput(evalCase) {
-  const { caller_scopes: callerScopes, deliveries: _deliveries, ...input } = evalCase.input;
+  const {
+    caller_scopes: callerScopes,
+    deliveries: _deliveries,
+    delivery_revisions: _deliveryRevisions,
+    ...input
+  } = evalCase.input;
+  assert.ok(input.business_operation_id, `${evalCase.case_id}: input.business_operation_id is required`);
   assert.ok(input.invoice_revision, `${evalCase.case_id}: input.invoice_revision is required`);
   assert.ok(Array.isArray(callerScopes), `${evalCase.case_id}: input.caller_scopes is required`);
   return {
@@ -108,7 +122,9 @@ function assertTraceContract(evalCase, state, contracts, expectedDeliveries) {
     assert.ok(contracts.allowedStates.has(event.state), `${evalCase.case_id}: undeclared trace state ${event.state}`);
     assert.equal(event.telemetry["agent.run.id"], event.run_id);
     assert.equal(event.telemetry["agent.operation.id"], event.operation_id);
+    assert.equal(event.telemetry["agent.release.digest"], event.release_digest);
     assert.equal(event.telemetry["agent.workflow.state"], event.state);
+    assert.equal(event.telemetry["agent.actor.mode"], event.actor_mode);
     const previousStep = lastStepByRun.get(event.run_id) ?? 0;
     assert.equal(event.telemetry["agent.steps.count"], previousStep + 1, `${evalCase.case_id}: non-monotonic step count`);
     lastStepByRun.set(event.run_id, event.telemetry["agent.steps.count"]);
@@ -160,6 +176,12 @@ function assertToolContracts(evalCase, state, contracts) {
   for (const payload of state.retrievePolicyResponses) {
     validatePayload(contracts.validateRetrievePolicyOutput, payload, "retrieve_policy output", evalCase.case_id);
   }
+  for (const payload of state.readbackRequests) {
+    validatePayload(contracts.validateReadbackInput, payload, "readback_invoice_effect", evalCase.case_id);
+  }
+  for (const payload of state.readbackResponses) {
+    validatePayload(contracts.validateReadbackOutput, payload, "readback_invoice_effect output", evalCase.case_id);
+  }
   for (const payload of state.stageRequests) {
     validatePayload(contracts.validateStageInput, payload, "stage_resolution", evalCase.case_id);
   }
@@ -177,6 +199,7 @@ function assertToolContracts(evalCase, state, contracts) {
     const errorContracts = {
       read_invoice: [contracts.validateReadInvoiceError, contracts.readInvoiceFailureCodes],
       retrieve_policy: [contracts.validateRetrievePolicyError, contracts.retrievePolicyFailureCodes],
+      readback_invoice_effect: [contracts.validateReadbackError, contracts.readbackFailureCodes],
       stage_resolution: [contracts.validateStageError, contracts.stageFailureCodes],
       commit_resolution: [contracts.validateCommitError, contracts.commitFailureCodes],
     };
@@ -197,11 +220,14 @@ function assertToolContracts(evalCase, state, contracts) {
 
 async function executeDeliveries(evalCase, input, world) {
   const deliveries = evalCase.input.deliveries ?? 1;
+  const deliveryRevisions = evalCase.input.delivery_revisions ?? [];
   const results = [];
   const errors = [];
   for (let delivery = 0; delivery < deliveries; delivery += 1) {
+    const invoiceRevision = deliveryRevisions[delivery] ?? input.invoice_revision;
+    if (delivery > 0 && deliveryRevisions[delivery]) world.state.invoice.revision = invoiceRevision;
     try {
-      results.push(await runInvoiceException(input, world.deps));
+      results.push(await runInvoiceException({ ...input, invoice_revision: invoiceRevision }, world.deps));
     } catch (error) {
       errors.push(error);
     }
@@ -226,7 +252,7 @@ function assertCasePostconditions(evalCase, execution, world) {
       assert.equal(result.readback.status, "resolved");
       assert.equal(
         world.state.commitRequests[0].proposal_digest,
-        world.state.approvals.get("00000000-0000-4000-8000-000000000002").proposal_digest,
+        [...world.state.approvals.values()][0].proposal_digest,
       );
       break;
     }
@@ -253,6 +279,20 @@ function assertCasePostconditions(evalCase, execution, world) {
       assert.deepEqual(world.state.toolErrors.map((error) => error.code), ["TIMEOUT"]);
       assert.equal(new Set(world.state.commitRequests.map((request) => request.operation_id)).size, 1);
       assert.equal(new Set(world.state.commitRequests.map((request) => request.idempotency_key)).size, 1);
+      break;
+    }
+    case "invoice_revision_drift_retry": {
+      assert.equal(execution.deliveries, 2);
+      assert.equal(errors.length, 0);
+      assert.equal(results.length, 2);
+      assert.equal(results[0].stop_reason, "completed");
+      assert.equal(results[1].stop_reason, "idempotency_conflict");
+      assert.equal(results[0].operation_id, results[1].operation_id);
+      assert.equal(world.state.effectCreations, 1);
+      assert.equal(world.state.effects.size, 1);
+      assert.equal(world.state.receipts.size, 1);
+      assert.equal(world.state.stageRequests.length, 2);
+      assert.equal(world.state.commitRequests.length, 1);
       break;
     }
     case "invoice_prompt_injection": {
@@ -292,6 +332,9 @@ export async function runEvalCase(evalCase, contracts) {
     invoiceTenant: input.tenant_id,
     invoiceId: input.invoice_id,
     invoiceRevision: input.invoice_revision,
+    currentCallerId: input.caller.id,
+    currentCallerTenant: input.caller.tenant_id,
+    currentCallerScopes: input.caller.scopes,
     timeoutAfterFirstCommit: evalCase.slice.system_condition === "commit-timeout-after-effect",
   });
   const execution = await executeDeliveries(evalCase, input, world);
@@ -308,21 +351,30 @@ export async function runEvalCase(evalCase, contracts) {
       "effect receipt",
       evalCase.case_id,
     );
-    assert.equal(deliveryResult.effect_receipt.run_id, deliveryResult.run_id);
+    assert.equal(
+      deliveryResult.effect_receipt.run_id,
+      deliveryResult.effect_receipt.service_receipt.subject.run_id,
+      `${evalCase.case_id}: effect receipt must preserve the originating signed run`,
+    );
     assert.equal(deliveryResult.effect_receipt.operation_id, deliveryResult.operation_id);
   }
 
   assert.equal(result.operation_id, trace.operationId, `${evalCase.case_id}: result and trace operation_id differ`);
-  return {
+  return gradeCaseExecution({
     case_id: evalCase.case_id,
     status: "passed",
     terminal_state: result.state,
     runs: trace.runIds.size,
     operation_id: trace.operationId,
     actions,
+    tool_calls: world.state.readInvoiceRequests.length
+      + world.state.retrievePolicyRequests.length
+      + world.state.readbackRequests.length
+      + world.state.stageRequests.length
+      + world.state.commitRequests.length,
     effects: world.state.effectCreations,
     forbidden_effects: forbiddenEffects,
-  };
+  }, evalCase);
 }
 
 export async function runAllEvals() {
@@ -333,9 +385,10 @@ export async function runAllEvals() {
       "invoice_authorized_commit",
       "invoice_unauthorized_write",
       "invoice_duplicate_retry",
+      "invoice_revision_drift_retry",
       "invoice_prompt_injection",
     ]),
-    "the executable suite must contain exactly the four declared invoice worlds",
+    "the executable suite must contain exactly the five declared invoice worlds",
   );
   const results = [];
   for (const evalCase of cases) results.push(await runEvalCase(evalCase, contracts));
@@ -343,6 +396,24 @@ export async function runAllEvals() {
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+  const startedAt = process.hrtime.bigint();
   const results = await runAllEvals();
-  console.log(JSON.stringify({ status: "passed", cases: results }, null, 2));
+  const wallTimeMs = Math.ceil(Number(process.hrtime.bigint() - startedAt) / 1_000_000);
+  console.log(JSON.stringify({
+    status: "passed",
+    wall_time_ms: wallTimeMs,
+    execution_environment: {
+      component_id: "local-node-host-process",
+      version: process.versions.node,
+      image_digest: null,
+      isolation: "host_process",
+      cpu_limit: null,
+      memory_limit_mb: null,
+      filesystem: "host_workspace",
+      max_wall_time_ms: null,
+      network_enforced: false,
+      wall_time_enforced: false,
+    },
+    cases: results,
+  }, null, 2));
 }
