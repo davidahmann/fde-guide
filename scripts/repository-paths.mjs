@@ -19,14 +19,14 @@ export async function resolveWithinRepository({
     throw new Error("absolute paths are not repository-relative");
   }
 
-  const resolvedRoot = await realpath(root);
-  const lexicalTarget = path.resolve(baseDirectory, candidate);
+  const resolvedRoot = await realpath(root); // lgtm [js/path-injection] -- caller supplies the repository root.
+  const lexicalTarget = path.resolve(baseDirectory, candidate); // lgtm [js/path-injection] -- candidate is rejected if it escapes root below.
   if (!isWithinDirectory(root, lexicalTarget)) throw new Error("path escapes the repository root");
 
-  const resolvedTarget = await realpath(lexicalTarget);
+  const resolvedTarget = await realpath(lexicalTarget); // lgtm [js/path-injection] -- symlink target is checked against resolvedRoot below.
   if (!isWithinDirectory(resolvedRoot, resolvedTarget)) throw new Error("resolved path escapes the repository root");
 
-  const metadata = await lstat(lexicalTarget);
+  const metadata = await lstat(lexicalTarget); // lgtm [js/path-injection] -- lexicalTarget passed both root-containment checks.
   if (requireRegularFile && !metadata.isFile()) throw new Error("target is not a regular file");
 
   return { lexicalTarget, resolvedTarget, metadata };
