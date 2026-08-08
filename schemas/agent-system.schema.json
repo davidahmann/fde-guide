@@ -4,12 +4,13 @@
   "title": "Production agent-system design record",
   "type": "object",
   "additionalProperties": false,
-  "required": ["$schema", "schema_version", "system_id", "version", "owners", "outcome", "autonomy", "workflow", "context", "tools", "controls", "verification", "operations", "economics"],
+  "required": ["$schema", "schema_version", "system_id", "version", "charter_uri", "owners", "outcome", "autonomy", "actor_identity", "behavior", "workflow", "context", "tools", "controls", "verification", "operations", "economics"],
   "properties": {
     "$schema": { "type": "string" },
-    "schema_version": { "const": "1.0.0" },
+    "schema_version": { "const": "1.2.0" },
     "system_id": { "$ref": "#/$defs/id" },
     "version": { "$ref": "#/$defs/version" },
+    "charter_uri": { "type": "string", "minLength": 3 },
     "owners": {
       "type": "object",
       "additionalProperties": false,
@@ -43,6 +44,57 @@
         "rollback_gate": { "type": "string", "minLength": 5 }
       }
     },
+    "actor_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "agent_principal", "caller_binding", "credential_ttl_seconds", "authority_scope", "audit_attribution"],
+      "properties": {
+        "mode": { "enum": ["interactive_delegated", "unattended_workload", "mixed"] },
+        "agent_principal": { "type": "string", "minLength": 3 },
+        "caller_binding": {
+          "oneOf": [
+            { "type": "null" },
+            { "$ref": "#/$defs/callerBinding" }
+          ]
+        },
+        "credential_ttl_seconds": { "type": "integer", "minimum": 1 },
+        "authority_scope": { "$ref": "#/$defs/nonEmptyStrings" },
+        "audit_attribution": { "enum": ["agent_only", "user_and_agent"] }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "mode": { "enum": ["interactive_delegated", "mixed"] } }, "required": ["mode"] },
+          "then": {
+            "properties": {
+              "caller_binding": { "$ref": "#/$defs/callerBinding" },
+              "audit_attribution": { "const": "user_and_agent" }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "mode": { "const": "unattended_workload" } }, "required": ["mode"] },
+          "then": {
+            "properties": {
+              "caller_binding": { "type": "null" },
+              "audit_attribution": { "const": "agent_only" }
+            }
+          }
+        }
+      ]
+    },
+    "behavior": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_route", "prompt_bundle", "harness", "context_policy", "tool_bundle", "guardrail_policy"],
+      "properties": {
+        "model_route": { "$ref": "#/$defs/versionedComponent" },
+        "prompt_bundle": { "$ref": "#/$defs/versionedComponent" },
+        "harness": { "$ref": "#/$defs/versionedComponent" },
+        "context_policy": { "$ref": "#/$defs/versionedComponent" },
+        "tool_bundle": { "$ref": "#/$defs/versionedComponent" },
+        "guardrail_policy": { "$ref": "#/$defs/versionedComponent" }
+      }
+    },
     "workflow": {
       "type": "object",
       "additionalProperties": false,
@@ -68,11 +120,22 @@
           "items": {
             "type": "object",
             "additionalProperties": false,
-            "required": ["source_id", "owner", "source_of_truth", "freshness_slo_seconds", "classification", "trust"],
+            "required": ["source_id", "owner", "source_of_truth", "revision", "schema_contract", "freshness_slo_seconds", "classification", "trust"],
             "properties": {
               "source_id": { "$ref": "#/$defs/id" },
               "owner": { "type": "string", "minLength": 2 },
               "source_of_truth": { "type": "boolean" },
+              "revision": { "type": "string", "minLength": 1 },
+              "schema_contract": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["id", "version", "digest"],
+                "properties": {
+                  "id": { "type": "string", "minLength": 3 },
+                  "version": { "type": "string", "minLength": 1 },
+                  "digest": { "$ref": "#/$defs/digest" }
+                }
+              },
               "freshness_slo_seconds": { "type": "integer", "minimum": 0 },
               "classification": { "enum": ["public", "internal", "confidential", "restricted"] },
               "trust": { "enum": ["trusted_control", "trusted_data", "untrusted_data"] }
@@ -88,17 +151,18 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["tool_id", "contract_uri"],
+        "required": ["tool_id", "contract_uri", "capability"],
         "properties": {
           "tool_id": { "$ref": "#/$defs/id" },
-          "contract_uri": { "type": "string", "minLength": 3 }
+          "contract_uri": { "type": "string", "minLength": 3 },
+          "capability": { "$ref": "#/$defs/capabilityBinding" }
         }
       }
     },
     "controls": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["control_ids", "agent_identity", "propagate_caller_authorization", "secrets", "egress", "writes", "sandbox"],
+      "required": ["control_ids", "propagate_caller_authorization", "secrets", "egress", "writes", "sandbox"],
       "properties": {
         "control_ids": {
           "type": "array",
@@ -106,7 +170,6 @@
           "uniqueItems": true,
           "items": { "type": "string", "pattern": "^[A-Z]{3}-[0-9]{3}$" }
         },
-        "agent_identity": { "type": "string", "minLength": 3 },
         "propagate_caller_authorization": { "type": "boolean" },
         "secrets": { "enum": ["gateway_held", "none"] },
         "egress": { "enum": ["deny_all", "allowlist"] },
@@ -147,9 +210,88 @@
       }
     }
   },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "actor_identity": {
+            "type": "object",
+            "properties": { "mode": { "enum": ["interactive_delegated", "mixed"] } },
+            "required": ["mode"]
+          }
+        },
+        "required": ["actor_identity"]
+      },
+      "then": {
+        "properties": {
+          "controls": {
+            "type": "object",
+            "properties": { "propagate_caller_authorization": { "const": true } }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "autonomy": {
+            "type": "object",
+            "properties": { "level": { "enum": ["execute_reversible", "execute_bounded", "coordinate"] } },
+            "required": ["level"]
+          }
+        },
+        "required": ["autonomy"]
+      },
+      "then": {
+        "properties": {
+          "controls": {
+            "type": "object",
+            "properties": { "propagate_caller_authorization": { "const": true } }
+          }
+        }
+      }
+    }
+  ],
   "$defs": {
     "id": { "type": "string", "pattern": "^[a-z][a-z0-9_-]*$" },
     "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "callerBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["binding_type", "subject_claim", "tenant_claim", "session_id_claim", "max_session_age_seconds"],
+      "properties": {
+        "binding_type": { "enum": ["user_session", "delegation_token"] },
+        "subject_claim": { "type": "string", "minLength": 1 },
+        "tenant_claim": { "type": "string", "minLength": 1 },
+        "session_id_claim": { "type": "string", "minLength": 1 },
+        "max_session_age_seconds": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "capabilityBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["manifest_uri", "capability_id", "version", "manifest_digest", "authority_digest"],
+      "properties": {
+        "manifest_uri": { "type": "string", "minLength": 3 },
+        "capability_id": { "$ref": "#/$defs/id" },
+        "version": { "$ref": "#/$defs/version" },
+        "manifest_digest": { "$ref": "#/$defs/digest" },
+        "authority_digest": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "versionedComponent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["component_id", "uri", "version", "schema_version", "digest"],
+      "properties": {
+        "component_id": { "$ref": "#/$defs/id" },
+        "uri": { "type": "string", "minLength": 3 },
+        "version": { "$ref": "#/$defs/version" },
+        "schema_version": { "$ref": "#/$defs/version" },
+        "digest": { "$ref": "#/$defs/digest" }
+      }
+    },
     "nonEmptyIds": {
       "type": "array",
       "minItems": 1,

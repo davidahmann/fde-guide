@@ -1,7 +1,7 @@
 .PHONY: install validate test check
 
 install:
-	npm ci
+	npm ci --ignore-scripts
 
 validate:
 	npm run validate
@@ -9,5 +9,7 @@ validate:
 test:
 	npm test
 
-check: test
+
+check: install
+	npm test
 	git diff --check

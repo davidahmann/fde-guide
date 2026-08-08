@@ -32,11 +32,18 @@
   "scripts": {
     "validate": "node scripts/validate-repository.mjs",
     "test:markdown": "node --test tests/markdown-anchors.test.mjs",
+    "test:paths": "node --test tests/repository-paths.test.mjs",
+    "test:repository": "node --test tests/repository-validation.test.mjs",
     "test:contracts": "node --test tests/schema-contracts.test.mjs",
+    "test:tool-security": "node --test tests/tool-security.test.mjs",
+    "test:telemetry": "node --test tests/telemetry-contracts.test.mjs",
+    "test:governance": "node --test tests/governance-contracts.test.mjs",
+    "test:release-integrity": "node --test tests/release-integrity.test.mjs",
+    "test:release-gates": "node --test tests/release-gate-mappings.test.mjs",
     "test:policy": "node --test examples/invoice-exception/authorization-policy.test.mjs",
     "test:reference": "node --test examples/invoice-exception/reference-loop.test.mjs",
     "test:evals": "node --test examples/invoice-exception/run-evals.test.mjs",
-    "test": "npm run validate && npm run test:markdown && npm run test:contracts && npm run test:policy && npm run test:reference && npm run test:evals"
+    "test": "npm run validate && npm run test:markdown && npm run test:paths && npm run test:repository && npm run test:contracts && npm run test:tool-security && npm run test:telemetry && npm run test:governance && npm run test:release-integrity && npm run test:release-gates && npm run test:policy && npm run test:reference && npm run test:evals"
   },
   "devDependencies": {
     "ajv": "8.20.0",

@@ -17,7 +17,8 @@ Social, Reddit, YouTube, and news are research channels—not automatic authorit
 
 ## Current research sets
 
-- [Latest-six-month production-agent source ledger](2026-02-07--2026-08-07-production-agent-source-ledger.md) — vetted findings from 2026-02-07 through 2026-08-07, including implementation patterns, anti-patterns, and source-quality notes.
+- [Production-agent source ledger](2026-02-07--2026-08-07-production-agent-source-ledger.md) — vetted findings reviewed from 2026-02-07 through 2026-08-07, plus explicitly marked canonical sources published earlier and revalidated during that window; includes implementation patterns, anti-patterns, and source-quality notes.
+- [AI Engineer production-agent video index](2026-08-07--ai-engineer-production-agent-video-index.md) — chapter-level practitioner talks with corroboration and claim limits.
 
 ## Archive
 
@@ -25,4 +26,4 @@ Social, Reddit, YouTube, and news are research channels—not automatic authorit
 
 ## Source fields
 
-Each entry records a stable ID, date, source type, practical finding, portable pattern, and caveat. Library pages cite entries by ID so a recommendation can be traced back to its evidence and re-evaluated as platforms change.
+Each core-evidence entry records a stable ID, source date or review date, source type, practical finding, and portable pattern. Caveats are included when recency, methodology, attribution, maturity, or generalizability limits how the source should be used. Library pages cite entries by ID so a recommendation can be traced back to its evidence and re-evaluated as platforms change.

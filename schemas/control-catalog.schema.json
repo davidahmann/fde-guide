@@ -18,7 +18,7 @@
         "properties": {
           "id": { "type": "string", "pattern": "^[A-Z]{3}-[0-9]{3}$" },
           "domain": {
-            "enum": ["architecture", "context", "cost", "evaluation", "human_review", "identity", "operations", "reliability", "security", "state", "tools"]
+            "enum": ["adoption", "architecture", "context", "cost", "delivery", "evaluation", "human_review", "identity", "operations", "reliability", "security", "state", "tools", "value"]
           },
           "level": { "enum": ["MUST", "SHOULD", "MAY"] },
           "requirement": { "type": "string", "minLength": 20 },

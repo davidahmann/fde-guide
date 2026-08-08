@@ -2,19 +2,23 @@
 
 Use this page at the beginning of a design session. It routes you to the right material and prevents the common failure mode of starting with a model, framework, or multi-agent diagram before the work is understood.
 
-## The eleven design questions
+For an end-to-end customer engagement, use the [FDE playbooks](../playbooks/README.md). This page is the shorter design checkpoint for one workflow.
 
-1. What outcome changes if this works, and how will it be measured?
-2. What is the smallest workflow that creates that outcome?
-3. Which steps are deterministic, agentic, or human-owned?
-4. What evidence proves that the workflow completed correctly?
-5. Which systems are sources of truth, and how fresh must they be?
-6. Is the agent reading, recommending, drafting, or changing an external system?
-7. What identity, permissions, approvals, and spending limits apply to each action?
-8. What happens when a tool, retrieval, model, or downstream system fails?
-9. What trace, artifact, and evidence will a reviewer see?
-10. What exact condition lets you increase autonomy—or roll it back?
-11. Which realistic, high-risk, and adversarial conditions must the release suite cover?
+## The thirteen design questions
+
+1. Who performs the work today, and what did direct observation show?
+2. What outcome changes if this works, and what is the current baseline?
+3. What is the smallest workflow and user segment that can create that outcome?
+4. Which steps are deterministic, agentic, or human-owned?
+5. What evidence proves that the workflow completed correctly?
+6. Which systems are sources of truth, and how fresh must they be?
+7. Is the agent reading, recommending, drafting, or changing an external system?
+8. What identity, permissions, approvals, and spending limits apply to each action?
+9. What happens when a tool, retrieval, model, or downstream system fails?
+10. What persistent artifact, evidence, and control will a reviewer receive?
+11. What exact condition lets you increase autonomy—or roll it back?
+12. Which realistic, high-risk, and adversarial conditions must the release suite cover?
+13. Who will adopt, support, change, and eventually retire the workflow after delivery?
 
 If any answer is missing, you are still in discovery. Start with [Product, Process, and Human Collaboration](01-product-process-and-ux.md), not implementation.
 
@@ -22,7 +26,8 @@ If any answer is missing, you are still in discovery. Start with [Product, Proce
 
 | Situation | Start here | Do not skip |
 | --- | --- | --- |
-| You are choosing a workflow or validating ROI | [Product, Process, and Human Collaboration](01-product-process-and-ux.md) | A cheap verifier and named outcome owner |
+| You are leading a customer engagement | [FDE playbooks](../playbooks/README.md) | Field observation, value evidence, adoption, service ownership, and exit criteria |
+| You are choosing a workflow or validating value | [Discovery and Value](../playbooks/01-discovery-and-value.md) | A baseline, verifier, named outcome owner, and falsifiable value case |
 | The agent needs company knowledge or data | [Context and Knowledge Systems](02-context-and-knowledge-systems.md) | Source ownership, freshness, scope, and evidence provenance |
 | The agent will use tools, code, browser, or APIs | [Agent System Architecture](03-agent-system-architecture.md) | Identity, sandbox, structured contracts, idempotency, and budgets |
 | The agent will write to production systems | [Production, Evaluation, and Governance](04-production-evaluation-and-governance.md) | Staged writes, approval gates, rollback, audit, and kill switch |
@@ -52,22 +57,33 @@ This is intentionally narrower than most “agent platform” demos. Narrow scop
 
 | Artifact | Contract/template |
 | --- | --- |
-| Workflow discovery | [FDE discovery pack](../templates/fde-discovery-pack.md) |
+| Field evidence | [Field-observation log](../templates/field-observation-log.md) and [FDE discovery pack](../templates/fde-discovery-pack.md) |
+| Workflow decision | [Workflow charter](../templates/workflow-charter.json) and [value case](../templates/value-case.md) |
 | Operational domain | [Ontology template](../templates/operational-ontology.json) |
 | System design | [Agent-system template](../templates/agent-system.json) |
 | Tool boundary | [Tool-contract template](../templates/tool-contract.json) |
+| Capability provenance | [Capability-manifest template](../templates/capability-manifest.json) for each admitted tool, MCP server, skill, CLI, or code build |
+| Delegation boundary | [Handoff-envelope template](../templates/handoff-envelope.json) when work passes to a worker, agent, or reset context |
 | Release case | [Evaluation-case template](../templates/evaluation-case.json) |
+| Evaluation claim | [Evaluation-report template](../templates/evaluation-report.json) |
 | Threat boundary | [Threat-model template](../templates/threat-model.json) |
 | Design decision | [Architecture decision record](../templates/architecture-decision-record.md) |
 | Production promotion | [Release gates](../operations/release-gates.md) |
+| Compatible release | [Solution-release template](../templates/solution-release.json) |
+| Delivery and adoption | [Delivery and adoption plan](../templates/delivery-and-adoption-plan.md) |
+| Customer ownership | [Customer enablement handoff](../templates/customer-enablement-handoff.md) |
+| Ongoing service | [Production service review](../templates/production-service-review.md) |
+| Field-to-product learning | [Field-learning register](../templates/field-learning-register.md) |
 
-## Production-ready means all four are true
+## Production-ready means all six are true
 
 | Dimension | Question | Evidence |
 | --- | --- | --- |
 | Valuable | Does it improve a business outcome? | Outcome metric and baseline |
+| Adopted | Do intended users complete the changed workflow and trust its evidence? | Eligible use, completion, override, abandonment, and review load |
 | Reliable | Can it reach and prove the desired state? | Replay suite, postconditions, sampled review |
 | Safe | Can it be contained when inputs or behavior are hostile? | Scoped identity, sandbox, egress, staged writes |
 | Operable | Can a team diagnose, pause, recover, and improve it? | Traces, dashboards, runbook, rollback, ownership |
+| Owned | Can the receiving team support, change, govern, and retire it? | Named service owner and exercised handoff |
 
-An agent that is only capable is a demo. An agent that is valuable, reliable, safe, and operable is a production system.
+An agent that is only capable is a demo. A production system must be valuable, adopted, reliable, safe, operable, and owned.

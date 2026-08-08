@@ -1,6 +1,6 @@
 {
   "$schema": "./schemas/artifact-catalog.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "updated": "2026-08-07",
   "artifacts": [
     {
@@ -22,6 +22,48 @@
       "tags": ["discovery", "workflow", "value", "context"]
     },
     {
+      "id": "template.field-observation",
+      "type": "template",
+      "path": "templates/field-observation-log.md",
+      "tags": ["discovery", "workflow", "operators", "evidence"]
+    },
+    {
+      "id": "template.value-case",
+      "type": "template",
+      "path": "templates/value-case.md",
+      "tags": ["value", "outcome", "economics", "measurement"]
+    },
+    {
+      "id": "template.delivery-adoption",
+      "type": "template",
+      "path": "templates/delivery-and-adoption-plan.md",
+      "tags": ["delivery", "adoption", "release", "enablement"]
+    },
+    {
+      "id": "template.customer-handoff",
+      "type": "template",
+      "path": "templates/customer-enablement-handoff.md",
+      "tags": ["adoption", "operations", "support", "enablement"]
+    },
+    {
+      "id": "template.production-review",
+      "type": "template",
+      "path": "templates/production-service-review.md",
+      "tags": ["operations", "value", "adoption", "review"]
+    },
+    {
+      "id": "template.field-learning-register",
+      "type": "template",
+      "path": "templates/field-learning-register.md",
+      "tags": ["fde", "learning", "evidence", "product-feedback"]
+    },
+    {
+      "id": "template.workflow-charter",
+      "type": "template",
+      "path": "templates/workflow-charter.json",
+      "tags": ["discovery", "value", "outcome", "readiness"]
+    },
+    {
       "id": "template.ontology",
       "type": "template",
       "path": "templates/operational-ontology.json",
@@ -34,16 +76,88 @@
       "tags": ["architecture", "workflow", "controls", "operations"]
     },
     {
+      "id": "template.behavior-bundle",
+      "type": "template",
+      "path": "templates/behavior-bundle.json",
+      "tags": ["behavior", "model-route", "prompts", "tools"]
+    },
+    {
       "id": "template.tool-contract",
       "type": "template",
       "path": "templates/tool-contract.json",
       "tags": ["tools", "authorization", "effects", "reliability"]
     },
     {
+      "id": "template.capability-manifest",
+      "type": "template",
+      "path": "templates/capability-manifest.json",
+      "tags": ["capability", "provenance", "authority", "supply-chain"]
+    },
+    {
+      "id": "template.capability-sbom",
+      "type": "template",
+      "path": "templates/capability-sbom.spdx",
+      "tags": ["capability", "sbom", "provenance", "supply-chain"]
+    },
+    {
       "id": "template.evaluation-case",
       "type": "template",
       "path": "templates/evaluation-case.json",
       "tags": ["evaluation", "replay", "trajectory", "security"]
+    },
+    {
+      "id": "template.evaluation-report",
+      "type": "template",
+      "path": "templates/evaluation-report.json",
+      "tags": ["evaluation", "claims", "trials", "release"]
+    },
+    {
+      "id": "template.handoff-envelope",
+      "type": "template",
+      "path": "templates/handoff-envelope.json",
+      "tags": ["handoff", "delegation", "authority", "provenance"]
+    },
+    {
+      "id": "template.solution-release",
+      "type": "template",
+      "path": "templates/solution-release.json",
+      "tags": ["release", "compatibility", "canary", "rollback"]
+    },
+    {
+      "id": "template.authorization-policy-skeleton",
+      "type": "template",
+      "path": "templates/authorization-policy.mjs",
+      "tags": ["authorization", "deny-by-default", "skeleton"]
+    },
+    {
+      "id": "template.evaluation-runner-skeleton",
+      "type": "template",
+      "path": "templates/evaluation-runner.mjs",
+      "tags": ["evaluation", "runner", "skeleton"]
+    },
+    {
+      "id": "template.evaluation-world-skeleton",
+      "type": "template",
+      "path": "templates/evaluation-world.mjs",
+      "tags": ["evaluation", "world", "skeleton"]
+    },
+    {
+      "id": "template.reference-runtime-skeleton",
+      "type": "template",
+      "path": "templates/reference-runtime.mjs",
+      "tags": ["runtime", "fail-closed", "skeleton"]
+    },
+    {
+      "id": "template.operator-surface-skeleton",
+      "type": "template",
+      "path": "templates/operator-surface.mjs",
+      "tags": ["user-interface", "operator", "skeleton"]
+    },
+    {
+      "id": "template.operations-bundle-skeleton",
+      "type": "template",
+      "path": "templates/operations-bundle.mjs",
+      "tags": ["operations", "kill-switch", "rollback"]
     },
     {
       "id": "template.threat-model",
@@ -76,10 +190,22 @@
       "tags": ["ontology", "entities", "actions", "policies"]
     },
     {
+      "id": "schema.workflow-charter",
+      "type": "schema",
+      "path": "schemas/workflow-charter.schema.json",
+      "tags": ["discovery", "value", "outcome", "readiness"]
+    },
+    {
       "id": "schema.agent-system",
       "type": "schema",
       "path": "schemas/agent-system.schema.json",
       "tags": ["architecture", "workflow", "operations"]
+    },
+    {
+      "id": "schema.behavior-bundle",
+      "type": "schema",
+      "path": "schemas/behavior-bundle.schema.json",
+      "tags": ["behavior", "configuration", "provenance", "release"]
     },
     {
       "id": "schema.tool-contract",
@@ -88,10 +214,40 @@
       "tags": ["tools", "authorization", "idempotency"]
     },
     {
+      "id": "schema.capability-manifest",
+      "type": "schema",
+      "path": "schemas/capability-manifest.schema.json",
+      "tags": ["capability", "provenance", "authority", "supply-chain"]
+    },
+    {
       "id": "schema.evaluation-case",
       "type": "schema",
       "path": "schemas/evaluation-case.schema.json",
       "tags": ["evaluation", "trajectory", "replay"]
+    },
+    {
+      "id": "schema.evaluation-output",
+      "type": "schema",
+      "path": "schemas/evaluation-output.schema.json",
+      "tags": ["evaluation", "runner", "evidence", "integrity"]
+    },
+    {
+      "id": "schema.evaluation-report",
+      "type": "schema",
+      "path": "schemas/evaluation-report.schema.json",
+      "tags": ["evaluation", "claims", "trials", "contamination"]
+    },
+    {
+      "id": "schema.handoff-envelope",
+      "type": "schema",
+      "path": "schemas/handoff-envelope.schema.json",
+      "tags": ["handoff", "delegation", "authority", "provenance"]
+    },
+    {
+      "id": "schema.solution-release",
+      "type": "schema",
+      "path": "schemas/solution-release.schema.json",
+      "tags": ["release", "compatibility", "approvals", "rollback"]
     },
     {
       "id": "schema.threat-model",
@@ -142,6 +298,42 @@
       "tags": ["multi-agent", "coordination", "concurrency"]
     },
     {
+      "id": "blueprint.enterprise-platform",
+      "type": "blueprint",
+      "path": "blueprints/enterprise-agent-platform.md",
+      "tags": ["platform", "architecture", "fde", "operations"]
+    },
+    {
+      "id": "blueprint.data-analysis",
+      "type": "blueprint",
+      "path": "blueprints/data-analysis-agent.md",
+      "tags": ["analytics", "data", "semantic-layer", "verification"]
+    },
+    {
+      "id": "blueprint.controlled-improvement",
+      "type": "blueprint",
+      "path": "blueprints/controlled-improvement-agent.md",
+      "tags": ["improvement", "diagnosis", "evaluation", "canary"]
+    },
+    {
+      "id": "playbook.discovery-value",
+      "type": "standard",
+      "path": "playbooks/01-discovery-and-value.md",
+      "tags": ["fde", "discovery", "value", "workflow"]
+    },
+    {
+      "id": "playbook.solution-delivery",
+      "type": "standard",
+      "path": "playbooks/02-solution-and-delivery.md",
+      "tags": ["fde", "architecture", "delivery", "adoption"]
+    },
+    {
+      "id": "playbook.operate-scale",
+      "type": "standard",
+      "path": "playbooks/03-operate-and-scale.md",
+      "tags": ["fde", "operations", "maintenance", "scale"]
+    },
+    {
       "id": "operations.release-gates",
       "type": "runbook",
       "path": "operations/release-gates.md",
@@ -166,16 +358,40 @@
       "tags": ["slo", "capacity", "recovery", "cost"]
     },
     {
+      "id": "operations.change-management",
+      "type": "standard",
+      "path": "operations/change-management.md",
+      "tags": ["release", "change", "canary", "rollback"]
+    },
+    {
+      "id": "operations.behavior-monitoring",
+      "type": "standard",
+      "path": "operations/behavior-monitoring.md",
+      "tags": ["monitoring", "security", "behavior", "containment"]
+    },
+    {
+      "id": "operations.capability-supply-chain",
+      "type": "standard",
+      "path": "operations/capability-supply-chain.md",
+      "tags": ["security", "tools", "provenance", "supply-chain"]
+    },
+    {
       "id": "example.invoice-exception",
       "type": "example",
       "path": "examples/invoice-exception/README.md",
-      "tags": ["finance", "write", "approval", "end-to-end"]
+      "tags": ["finance", "write", "approval", "controlled-write"]
     },
     {
       "id": "evidence.current",
       "type": "evidence",
       "path": "research/2026-02-07--2026-08-07-production-agent-source-ledger.md",
       "tags": ["sources", "2026", "patterns", "failures"]
+    },
+    {
+      "id": "evidence.ai-engineer-video-index",
+      "type": "evidence",
+      "path": "research/2026-08-07--ai-engineer-production-agent-video-index.md",
+      "tags": ["sources", "2026", "youtube", "field-reports"]
     }
   ]
 }

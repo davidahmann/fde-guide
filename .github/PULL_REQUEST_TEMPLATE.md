@@ -8,7 +8,7 @@ List control IDs and paths. State compatibility and operational impact.
 
 ## Verification
 
-- [ ] `npm ci`
+- [ ] `npm ci --ignore-scripts`
 - [ ] `npm test`
 - [ ] `git diff --check`
 - [ ] Failure fixes include a regression case
