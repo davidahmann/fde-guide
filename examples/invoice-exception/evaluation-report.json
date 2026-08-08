@@ -109,9 +109,9 @@
         {
           "component_id": "node-dependency-lock",
           "uri": "../../package-lock.json",
-          "version": "1.0.1",
+          "version": "1.1.0",
           "schema_version": null,
-          "digest": "sha256:b12fb82e484d0618ca570a13c639bb82f2abfa2e5f19bad6364f0d40e17d5c55"
+          "digest": "sha256:7f0a8a6e7b8f5b409cf711e4da42237335a49ae0c5fa59059ddcc6bd3791d38c"
         },
         {
           "component_id": "invoice-ontology",
@@ -233,7 +233,7 @@
           "digest": "sha256:40067352fe535cda5aa86940b514d6b2c72ac032841378034800cc180558114e"
         }
       ],
-      "environment_digest": "sha256:8ad8a63826b95d2c24abf63bb416a36519d558ec81382368d5bdfb1fb80dbaae",
+      "environment_digest": "sha256:162141b20e28b3c1a3b2f6e8a579e25ebac836d756981a15b8f853abebbf0f70",
       "network_mode": "unenforced"
     }
   },
@@ -269,7 +269,7 @@
       "uri": "evaluation-output.json",
       "version": null,
       "schema_version": "1.0.0",
-      "digest": "sha256:149cb40471a912d6b7e00fa6ef1b5351c1c123ae828d3d43ea111597b2b87620"
+      "digest": "sha256:6a0e48c8e37da6233789ad5c9ca78583562c774090c6c8ad5c69866c64e72479"
     },
     "minimum_confidence": 1
   },

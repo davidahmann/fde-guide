@@ -74,3 +74,5 @@ Measure per decision route: eligible volume, route selection, evidence sufficien
 - Release evidence that binds the exact component versions, data/world revision, decision policy, user surface, and operations bundle.
 
 Do not promote a route because aggregate metrics look good. Promote the named decision, segment, effect class, and component versions with their own evidence.
+
+For a compact, illustrative application of this blueprint, follow the [shipment-risk triage walkthrough](../examples/shipment-risk-triage/README.md). It keeps ML prediction, deterministic policy, explanation, review, and outcome measurement separate without introducing an agent loop.

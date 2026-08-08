@@ -47,7 +47,8 @@ Work in this order: **outcome → workflow → decision → system → controlle
 | Build or repair evaluations | [Evaluation Corpus and Review Loops](library/09-evaluation-corpus-and-review-loops.md) | Repeatable success, failure, and adversarial scenarios |
 | Operate or improve a system | [Operate and Scale](playbooks/03-operate-and-scale.md) | A service cadence covering outcomes, adoption, reliability, safety, cost, change, and retirement |
 | Debug a production failure | [Telemetry contract](operations/telemetry-contract.md) and [incident runbook](operations/incident-runbook.md) | Evidence for diagnosis, containment, recovery, and a regression case |
-| Learn from working code | [Invoice-exception reference](examples/invoice-exception/README.md) | A tested example of approval, authorization, retry safety, and result verification |
+| Learn from controlled-write code | [Invoice-exception reference](examples/invoice-exception/README.md) | A tested example of approval, authorization, retry safety, and result verification |
+| Follow one FDE journey | [Shipment-risk triage walkthrough](examples/shipment-risk-triage/README.md) | An illustrative path from discovery and value case through hybrid design, adoption, and service review |
 | Understand why guidance exists | [Source index](library/05-source-index.md) and [dated research ledger](research/README.md) | The evidence, caveats, and review date behind a recommendation |
 
 ## From idea to production
@@ -82,7 +83,7 @@ flowchart LR
 
 Draft the threat model before the evaluation suite, then refine both together as failure paths become concrete. If the workflow has no measurable outcome or trustworthy verifier, stay in discovery. A more capable model does not repair an undefined task.
 
-## Learn from the reference system
+## Learn from the reference systems
 
 The [invoice-exception example](examples/invoice-exception/README.md) shows the controlled-write method on a small financial workflow:
 
@@ -95,6 +96,8 @@ The [invoice-exception example](examples/invoice-exception/README.md) shows the 
 7. Verify the result in the ledger before reporting completion.
 
 It includes machine-readable design files, a behavior bundle, tool and capability contracts, a threat model, executable policy, behavioral tests, adversarial evaluation cases, and a review-only release manifest. It is an in-memory teaching reference, not a deployable production service. Use the [checkout validation](#validate-a-checkout) to run it.
+
+The [shipment-risk triage walkthrough](examples/shipment-risk-triage/README.md) is the complementary end-to-end FDE reference. It follows an illustrative customer workflow through discovery, value measurement, intelligence selection, system design, adoption, handoff, and operation. Its compact executable core combines an ML risk score, deterministic routing, optional foundation-model explanation, and human dispatch review—without autonomous shipment intervention.
 
 ## Choose the smallest system shape
 
