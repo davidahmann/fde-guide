@@ -28,11 +28,18 @@ Record:
 - Threat and failure-mode delta
 - Evaluation claim, environment, trials, uncertainty, and limitations
 - Operator, service, security, and risk acceptance where applicable
+- Current system-map revision and a change-impact assessment for material or critical changes, including excluded sources and unresolved inferred impacts
 - Soak/canary scope, duration, sample, observability, and capacity
 - Automatic rollback triggers and verified prior configuration
 - Support, communication, training, and retirement impact
 
 Use the machine-readable [solution-release template](../templates/solution-release.json) and attach a valid [evaluation report](../templates/evaluation-report.json). An approval binds the exact release digest; a changed artifact invalidates that approval.
+
+## Map-supported impact review
+
+When a governed [system-map manifest](../templates/system-map-manifest.json) exists, use it to identify likely software and operational impacts. Record the result in a [change-impact assessment](../templates/change-impact-assessment.json). Material or critical changes require complete scope coverage plus technical, operational, and risk review; an inferred relationship remains a review lead until confirmed by the owner or source of truth.
+
+The map is derived context. It cannot authorize a tool, define policy, prove completion, or approve a release. See [map freshness and change impact](map-freshness-and-change-impact.md). `CTX-001`, `CTX-002`, `CTX-004`, `OPS-007`.
 
 ## Promotion sequence
 

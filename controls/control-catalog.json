@@ -486,8 +486,8 @@
       "id": "OPS-007",
       "domain": "operations",
       "level": "MUST",
-      "requirement": "Model, prompt, tool-description, routing, context-policy, guardrail, and evaluator changes MUST carry a versioned diff or digest, per-route evaluation, soak or canary plan, rollback trigger, and dependency end-of-life review.",
-      "evidence": ["R26-51", "R26-52", "R26-55"],
+      "requirement": "Model, prompt, tool-description, routing, context-policy, guardrail, evaluator, runtime, policy, or capability changes MUST carry a versioned diff or digest, assessed workflow, data, identity, evaluation, operations, and user-surface impacts, per-route evaluation, soak or canary plan, rollback trigger, and dependency end-of-life review.",
+      "evidence": ["R26-51", "R26-52", "R26-55", "R26-65", "R26-66", "R26-67"],
       "release_gates": ["shadow", "canary", "operations"]
     },
     {

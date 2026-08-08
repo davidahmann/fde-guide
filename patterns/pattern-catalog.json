@@ -541,6 +541,36 @@
       "evidence": ["R26-48", "R26-54", "R26-56"],
       "reviewed_at": "2026-08-07",
       "review_due": "2027-02-07"
+    },
+    {
+      "id": "PAT-020",
+      "kind": "pattern",
+      "title": "Versioned evidence map and change-impact review",
+      "status": "accepted",
+      "maturity": "field_tested",
+      "applies_when": ["a system has enough cross-team software and operational dependencies that delivery, incident, or release review repeatedly misses impact"],
+      "implementation": ["maintain separately scoped software and operational maps with source revision, owner, classification, extraction basis, confidence, and freshness", "use a named impact assessment to route confirmed and inferred impacts to owners, validation, rollout, and rollback evidence"],
+      "control_ids": ["CTX-001", "CTX-002", "CTX-004", "DEL-001", "OPS-007"],
+      "failure_signals": ["material changes omit a dependent workflow, policy, evaluation, runbook, or user surface", "a stale or inferred map link is treated as authorization or completion evidence"],
+      "verification": ["source revisions and stale-map behavior are visible", "material changes have complete impact coverage and technical, operational, and risk review", "map output cannot authorize an effect or prove completion"],
+      "evidence": ["R26-65", "R26-66", "R26-67", "R26-68", "R26-69"],
+      "reviewed_at": "2026-08-08",
+      "review_due": "2027-02-08"
+    },
+    {
+      "id": "ANTI-018",
+      "kind": "anti_pattern",
+      "title": "Inferred map as authority",
+      "status": "accepted",
+      "maturity": "normative",
+      "applies_when": ["a generated dependency or knowledge graph is used to decide access, effects, policy, completion, or release approval"],
+      "implementation": ["treat graph output as derived navigation context", "require source-of-truth policy, tool-boundary authorization, evaluation, approval, and readback for consequential decisions"],
+      "control_ids": ["ARC-002", "CTX-001", "CTX-002", "OPS-007"],
+      "failure_signals": ["an inferred edge grants a capability or suppresses a required review", "a graph outage changes authorization or completion behavior"],
+      "verification": ["generated map output cannot invoke, authorize, or complete an external effect", "unsupported relationships remain labelled inferred and require owner confirmation"],
+      "evidence": ["R26-65", "R26-67", "R26-68", "R26-69"],
+      "reviewed_at": "2026-08-08",
+      "review_due": "2027-02-08"
     }
   ]
 }

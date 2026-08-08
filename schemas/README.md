@@ -6,6 +6,8 @@ These JSON Schema 2020-12 contracts make design, runtime, evaluation, and releas
 | --- | --- |
 | [Artifact catalog](artifact-catalog.schema.json) | Stable repository IDs, types, paths, and tags |
 | [Control catalog](control-catalog.schema.json) | Normative project requirements, evidence, and release gates |
+| [System-map manifest](system-map-manifest.schema.json) | Derived software/operational views, provenance, freshness, classification, and prohibited authority uses |
+| [Change-impact assessment](change-impact-assessment.schema.json) | Material-change scope, impacts, validation, review, promotion, and rollback evidence |
 | [Workflow charter](workflow-charter.schema.json) | Problem, scope, outcome, value, readiness, owners, and disposition |
 | [Operational ontology](operational-ontology.schema.json) | Domain entities, relationships, policies, actions, and invariants |
 | [Agent system](agent-system.schema.json) | System topology, tools, state, verification, and operations dependencies |

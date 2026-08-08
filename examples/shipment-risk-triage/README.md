@@ -28,7 +28,7 @@ The accepted outcome is **a coordinator accepts or rejects a correctly routed re
 | Discover | Observe dispatch triage, exceptions, data gaps, and workarounds | [Workflow charter](workflow-charter.json) records the observed job and discovery assumptions | Continue only if coordinators validate the workflow and signal availability |
 | Value | Define eligible shipments, baseline, benefit, full cost, and guardrails | [Workflow charter](workflow-charter.json) and [design record](design-record.md) contain illustrative economics | Replace fixture values with measured baseline and a credible counterfactual |
 | Select | Compare rules, optimization, ML, model explanation, and human review | [Intelligence-selection record](intelligence-selection.md) | Retain each component only if it improves the accepted outcome within its ceiling |
-| Design | Own state, evidence, policy, trust boundaries, and effects | [Design record](design-record.md), [ontology](ontology.json), and [tool contracts](tools/) | Keep action authority with dispatch; use a review queue as the only system effect |
+| Design | Own state, evidence, policy, trust boundaries, and effects | [Design record](design-record.md), [ontology](ontology.json), [system map](system-map-manifest.json), and [tool contracts](tools/) | Keep action authority with dispatch; use a review queue as the only system effect |
 | Prove | Test routing, stale evidence, malformed scores, explanation failure, and budget limits | [Evaluation cases](evals/) and executable [tests](shipment-risk-triage.test.mjs) | Promote only the named segment and model/policy versions that pass representative checks |
 | Adopt | Train coordinators, expose routing evidence, and collect overrides | The adoption plan below | Expand only after usage, override, and support evidence meet the charter |
 | Operate | Review outcome, calibration, data freshness, service reliability, and full cost | The service review below | Constrain, roll back, or retire a route when a guardrail or value case fails |
@@ -90,6 +90,8 @@ The [production service review template](../../templates/production-service-revi
 | [intelligence-selection.md](intelligence-selection.md) | Why ML, policy, optional explanation, and human review are each retained or rejected |
 | [design-record.md](design-record.md) | System, state, trust, failure, rollout, and rollback decisions |
 | [ontology.json](ontology.json) | Domain entities, evidence, actions, invariants, and source ownership |
+| [system-map-manifest.json](system-map-manifest.json) | Illustrative software/operational dependency view with provenance, freshness, and prohibited authority uses |
+| [change-impact-assessment.json](change-impact-assessment.json) | Illustrative material policy-change review tied to the system-map revision |
 | [tools/](tools/) | Typed contract for evidence reads and non-binding review-case creation |
 | [threat-model.json](threat-model.json) | Threats and evaluation linkage |
 | [evals/](evals/) | Representative success, failure, and adversarial routing worlds |

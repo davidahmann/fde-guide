@@ -4,7 +4,7 @@
   "release_id": "invoice_exception_reference_release",
   "version": "3.0.0",
   "release_status": "review",
-  "release_digest": "sha256:0ec529210abe51ccacfdb5461c1e15051e3a83be3a9aa02b4edfd49e7a7a8381",
+  "release_digest": "sha256:3bf64d632a3fad8c4702670e15fcdf5cc043b1dc910168ba4c665f204d9e06f5",
   "owner": "reference-release-maintainer",
   "created_at": "2026-08-07T18:00:00Z",
   "workflow_charter_uri": "workflow-charter.json",
@@ -156,7 +156,7 @@
       "uri": "evaluation-report.json",
       "version": "2.0.0",
       "schema_version": "1.0.0",
-      "digest": "sha256:17802f0669e9bab6978e8fe6954ba763377fdc570de0e1d04910b07bfa576d98",
+      "digest": "sha256:392783deb386d8ee6f4799ee32014be05eaea567330e1b2caa3d6e94533450d1",
       "change_summary": "Bind the isolated deterministic regression claim and raw runner evidence."
     },
     {

@@ -9,6 +9,7 @@ Use these artifacts after design begins—not only after launch. They define how
 | Set service targets | [SLO scorecard](slo-scorecard.md) | Segment-specific objectives, budgets, capacity, and recovery policy |
 | Contain and recover | [Incident runbook](incident-runbook.md) | Scoped containment, reconciliation, regression, ownership, and re-enable decision |
 | Change behavior safely | [Change management](change-management.md) | Compatible release bundle, evaluation report, canary, rollback, and post-change decision |
+| Keep dependency views useful | [Map freshness and change impact](map-freshness-and-change-impact.md) | Derived maps with source provenance, freshness, impact review, and no shadow authority |
 | Detect dangerous divergence | [Behavior monitoring](behavior-monitoring.md) | Independent intent/action signal routed to trusted containment controls |
 | Govern capability provenance | [Capability supply chain](capability-supply-chain.md) | Admitted, pinned, constrained, monitored, and revocable tools, MCP servers, skills, CLIs, and code packages |
 | Measure adoption and transfer ownership | [Delivery and adoption plan](../templates/delivery-and-adoption-plan.md) and [customer handoff](../templates/customer-enablement-handoff.md) | Predeclared adoption contract, exercised harness ownership, and artifact lineage |

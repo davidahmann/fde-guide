@@ -38,6 +38,7 @@ This document keeps the guide coherent as research, controls, templates, example
 | Capability manifest | Source and artifact provenance, attestation and trust root, SBOM, registry decision, runtime authority, disable test |
 | Handoff contract | Parent authority, signed payload, expiry, nonce replay, budget/depth attenuation, consumer enforcement |
 | Domain model | Context, tool resources, policy, state migration, readback |
+| System map or impact assessment | Source revisions, classification, extraction/inference labels, freshness, owner review, validation, rollout, rollback, and authority boundaries |
 | Agent system | Charter, tools, eval suite, telemetry, runbook, release manifest |
 | Evaluation | Tested claim, environment, trials, contamination, calibration, release threshold |
 | Solution release | Bound artifact digests, compatibility, migration, evaluation report, rollout, approvals, and rollback |
@@ -69,6 +70,7 @@ This document keeps the guide coherent as research, controls, templates, example
 - Can a person and a coding agent find the new artifact from the task they are trying to complete?
 - Are evidence, recommendation, control, implementation, and verification clearly separated?
 - Does a failure have one owning layer and a regression path?
+- If a map is added, is it genuinely cheaper than navigating the primary artifacts, and is it clearly prevented from becoming a shadow source of truth or control plane?
 - Are customer-specific or confidential details excluded?
 - Is the simpler design still available and compared?
 - Can the artifact be retired or migrated without breaking navigation or hidden consumers?

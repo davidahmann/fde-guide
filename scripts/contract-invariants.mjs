@@ -626,6 +626,71 @@ export function ontologyIdentityErrors(ontology, label = "operational ontology")
   return errors;
 }
 
+export function systemMapManifestSemanticErrors(map, label = "system-map manifest") {
+  const errors = [];
+  const sources = map?.sources ?? [];
+  const nodes = map?.nodes ?? [];
+  const relations = map?.relations ?? [];
+  const sourceIds = new Set();
+  const nodeIds = new Set();
+  const relationIds = new Set();
+
+  for (const source of sources) {
+    if (sourceIds.has(source.source_id)) errors.push(`${label} duplicates source ${source.source_id}`);
+    sourceIds.add(source.source_id);
+  }
+  for (const node of nodes) {
+    if (nodeIds.has(node.node_id)) errors.push(`${label} duplicates node ${node.node_id}`);
+    nodeIds.add(node.node_id);
+    for (const sourceRef of node.source_refs ?? []) {
+      if (!sourceIds.has(sourceRef)) errors.push(`${label} node ${node.node_id} references missing source ${sourceRef}`);
+    }
+  }
+  for (const relation of relations) {
+    if (relationIds.has(relation.relation_id)) errors.push(`${label} duplicates relation ${relation.relation_id}`);
+    relationIds.add(relation.relation_id);
+    if (!nodeIds.has(relation.source_node_id)) errors.push(`${label} relation ${relation.relation_id} references missing source node ${relation.source_node_id}`);
+    if (!nodeIds.has(relation.target_node_id)) errors.push(`${label} relation ${relation.relation_id} references missing target node ${relation.target_node_id}`);
+    for (const sourceRef of relation.source_refs ?? []) {
+      if (!sourceIds.has(sourceRef)) errors.push(`${label} relation ${relation.relation_id} references missing source ${sourceRef}`);
+    }
+  }
+
+  const includedSources = new Set(sources.filter((source) => source.included).map((source) => source.source_id));
+  const coverageSources = new Set(map?.derivation?.coverage?.included_source_ids ?? []);
+  if (includedSources.size !== coverageSources.size
+    || [...includedSources].some((sourceId) => !coverageSources.has(sourceId))) {
+    errors.push(`${label} derivation coverage does not equal included source IDs`);
+  }
+  if (map?.status === "verified" && map?.derivation?.coverage?.status !== "complete") {
+    errors.push(`${label} verified status requires complete derivation coverage`);
+  }
+  return errors;
+}
+
+export function changeImpactAssessmentSemanticErrors(assessment, map = null, label = "change-impact assessment") {
+  const errors = [];
+  const impacts = assessment?.impacted_elements ?? [];
+  const impactIds = new Set();
+  const mapNodeIds = map ? new Set((map.nodes ?? []).map((node) => node.node_id)) : null;
+
+  if (assessment?.impact_summary?.impact_count !== impacts.length) {
+    errors.push(`${label} impact_summary.impact_count does not equal impacted_elements length`);
+  }
+  for (const impact of impacts) {
+    if (impactIds.has(impact.impact_id)) errors.push(`${label} duplicates impact ${impact.impact_id}`);
+    impactIds.add(impact.impact_id);
+    if (mapNodeIds && !mapNodeIds.has(impact.element_id)) {
+      errors.push(`${label} impact ${impact.impact_id} references missing mapped element ${impact.element_id}`);
+    }
+  }
+  if (["material", "critical"].includes(assessment?.change?.materiality)
+    && (assessment?.impact_summary?.unmapped_change_references ?? []).length > 0) {
+    errors.push(`${label} material change cannot retain unmapped change references`);
+  }
+  return errors;
+}
+
 export function patternCatalogErrors(catalog, evidenceIds, label = "pattern catalog", today = new Date()) {
   const errors = [];
   const patternIds = new Set();

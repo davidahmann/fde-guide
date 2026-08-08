@@ -30,6 +30,7 @@ If any answer is missing, you are still in discovery. Start with [Product, Proce
 | You are building reusable applied-AI capability | [FDE and applied AI engineering synthesis](10-fde-and-production-agent-synthesis.md) | A clear productization boundary, reusable artifacts, and a governed field-learning loop |
 | You are choosing a workflow or validating value | [Discovery and Value](../playbooks/01-discovery-and-value.md) | A baseline, verifier, named outcome owner, and falsifiable value case |
 | You are choosing rules, ML, models, or agents | [Software Architecture and Intelligence Selection](12-software-architecture-and-intelligence-selection.md) | The smallest sufficient mechanism, component boundary, fallback, and evidence plan |
+| You need to understand a complex system or assess a material change | [Evidence Graphs and Change Intelligence](13-evidence-graphs-and-change-intelligence.md) | A versioned, derived dependency view and owner-backed impact review—not a new control plane |
 | The agent needs company knowledge or data | [Context and Knowledge Systems](02-context-and-knowledge-systems.md) | Source ownership, freshness, scope, and evidence provenance |
 | The agent will use tools, code, browser, or APIs | [Agent System Architecture](03-agent-system-architecture.md) | Identity, sandbox, structured contracts, idempotency, and budgets |
 | The agent will write to production systems | [Production, Evaluation, and Governance](04-production-evaluation-and-governance.md) | Staged writes, approval gates, rollback, audit, and kill switch |
@@ -64,6 +65,7 @@ This is intentionally narrower than most “agent platform” demos. Narrow scop
 | Workflow decision | [Workflow charter](../templates/workflow-charter.json) and [value case](../templates/value-case.md) |
 | Intelligence choice | [Intelligence-selection record](../templates/intelligence-selection-record.md) and [architecture decision record](../templates/architecture-decision-record.md) |
 | Operational domain | [Ontology template](../templates/operational-ontology.json) |
+| Complex-system navigation | [System-map manifest](../templates/system-map-manifest.json) and [change-impact assessment](../templates/change-impact-assessment.json) when complexity justifies the maintenance cost |
 | System design | [Agent-system template](../templates/agent-system.json) |
 | Tool boundary | [Tool-contract template](../templates/tool-contract.json) |
 | Capability provenance | [Capability-manifest template](../templates/capability-manifest.json) for each admitted tool, MCP server, skill, CLI, or code build |

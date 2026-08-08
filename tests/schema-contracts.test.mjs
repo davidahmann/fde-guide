@@ -9,10 +9,12 @@ import addFormats from "ajv-formats";
 
 import {
   embeddedToolSchemaErrors,
+  changeImpactAssessmentSemanticErrors,
   evaluationReportSemanticErrors,
   ontologyIdentityErrors,
   patternCatalogErrors,
   solutionReleaseSemanticErrors,
+  systemMapManifestSemanticErrors,
   toolContractSemanticErrors,
 } from "../scripts/contract-invariants.mjs";
 
@@ -20,6 +22,7 @@ const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const pairs = [
   ["artifact-catalog.schema.json", "catalog.json"],
   ["control-catalog.schema.json", "controls/control-catalog.json"],
+  ["change-impact-assessment.schema.json", "templates/change-impact-assessment.json"],
   ["operational-ontology.schema.json", "templates/operational-ontology.json"],
   ["agent-system.schema.json", "templates/agent-system.json"],
   ["tool-contract.schema.json", "templates/tool-contract.json"],
@@ -29,6 +32,7 @@ const pairs = [
   ["workflow-charter.schema.json", "templates/workflow-charter.json"],
   ["evaluation-report.schema.json", "templates/evaluation-report.json"],
   ["solution-release.schema.json", "templates/solution-release.json"],
+  ["system-map-manifest.schema.json", "templates/system-map-manifest.json"],
 ];
 
 
@@ -216,6 +220,43 @@ test("evaluation schema rejects an agent-controlled pass signal", async () => {
   const fixture = await json("templates/evaluation-case.json");
   fixture.evaluator_boundary.agent_can_emit_pass_signal = true;
   assert.equal(validate(fixture), false);
+});
+
+test("system maps remain derived navigation context rather than authority", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/system-map-manifest.schema.json"));
+  const fixture = await json("templates/system-map-manifest.json");
+  fixture.usage.prohibited_purposes = ["authorization", "effect_authorization"];
+  assert.equal(validate(fixture), false);
+  assert.ok(validate.errors.some((error) => error.keyword === "contains"));
+});
+
+test("material change assessments require complete coverage and accountable review", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/change-impact-assessment.schema.json"));
+  const fixture = await json("templates/change-impact-assessment.json");
+  fixture.impact_summary.scope_coverage = "partial";
+  fixture.promotion.approval_required = false;
+  fixture.promotion.review_roles = ["technical"];
+  assert.equal(validate(fixture), false);
+  assert.ok(validate.errors.some((error) => error.keyword === "const"));
+  assert.ok(validate.errors.some((error) => error.keyword === "contains"));
+});
+
+test("system maps and impact assessments bind only declared evidence elements", async () => {
+  const map = await json("templates/system-map-manifest.json");
+  assert.deepEqual(systemMapManifestSemanticErrors(map, "map"), []);
+  const missingSource = structuredClone(map);
+  missingSource.relations[0].source_refs = ["missing_source"];
+  assert.ok(systemMapManifestSemanticErrors(missingSource, "map").some((error) => error.includes("missing source")));
+
+  const assessment = await json("templates/change-impact-assessment.json");
+  assert.deepEqual(changeImpactAssessmentSemanticErrors(assessment, map, "assessment"), []);
+  const missingElement = structuredClone(assessment);
+  missingElement.impacted_elements[0].element_id = "missing_node";
+  assert.ok(changeImpactAssessmentSemanticErrors(missingElement, map, "assessment").some((error) => error.includes("missing mapped element")));
 });
 
 test("evaluation reports reject mutable graders, cross-trial state, and missing trial semantics", async () => {
@@ -474,12 +515,12 @@ test("ontology identity keys resolve to declared attributes", async () => {
 test("pattern catalogs require unique IDs, defined evidence, and ordered current review dates", async () => {
   const fixture = await json("patterns/pattern-catalog.json");
   const evidenceIds = new Set(fixture.patterns.flatMap((pattern) => pattern.evidence).filter((id) => !id.startsWith("internal-")));
-  const reviewDate = new Date("2026-08-07T12:00:00Z");
+  const reviewDate = new Date("2026-08-08T12:00:00Z");
   assert.deepEqual(patternCatalogErrors(fixture, evidenceIds, "fixture", reviewDate), []);
 
   fixture.patterns[1].id = fixture.patterns[0].id;
   fixture.patterns[0].evidence = ["R26-99"];
-  fixture.patterns[0].reviewed_at = "2026-08-08";
+  fixture.patterns[0].reviewed_at = "2026-08-09";
   fixture.patterns[1].review_due = "2026-08-06";
   const errors = patternCatalogErrors(fixture, evidenceIds, "fixture", reviewDate);
   assert.ok(errors.some((error) => error.includes("duplicates pattern ID")));

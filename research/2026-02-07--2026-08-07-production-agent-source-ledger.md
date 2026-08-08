@@ -677,6 +677,61 @@ This is a curated implementation database, not a popularity list. It favors prim
 - **Anti-pattern:** Treating cost as a post-launch dashboard, or reducing spend without considering reliability, security, performance, or outcome impact.
 - **Caveat:** AWS implementation choices are cloud-provider-specific; the outcome-level and trade-off principles are the portable part.
 
+<a id="r26-65"></a>
+### R26-65 — C4 model: hierarchical software architecture views
+
+- **Date:** Undated; reviewed 2026-08-08
+- **Type / tier:** Official architecture guidance; A for the described model
+- **Source:** [The C4 model](https://c4model.com/)
+- **Finding:** C4 organizes software architecture into system context, containers, components, and code, with supplemental dynamic and deployment views.
+- **Portable pattern:** Use scoped, audience-appropriate software views to make owners, interfaces, deployments, and dependencies inspectable; link them to operational and release evidence instead of treating diagrams as authority.
+- **Anti-pattern:** One undifferentiated diagram that mixes business process, source-of-truth facts, policy, code, and infrastructure without provenance or intended use.
+- **Caveat:** C4 is a notation and communication approach, not a runtime graph model, change-control system, or AI architecture framework.
+
+<a id="r26-66"></a>
+### R26-66 — Backstage: source-controlled software catalog and ownership
+
+- **Date:** Current documentation reviewed 2026-08-08
+- **Type / tier:** Official project documentation; A for described catalog behavior
+- **Source:** [Backstage Software Catalog](https://backstage.io/docs/features/software-catalog/)
+- **Finding:** Backstage documents a centralized catalog that ingests metadata from source control and relates software entities, ownership, systems, and APIs.
+- **Portable pattern:** Keep software metadata and ownership reviewable at the source, with stable identifiers and explicit relationships; connect it to operational maps only through versioned evidence.
+- **Anti-pattern:** A manually maintained inventory that cannot identify an owner, source revision, or relationship evidence during an incident or release.
+- **Caveat:** Backstage is one implementation; the repository does not require it or its entity model.
+
+<a id="r26-67"></a>
+### R26-67 — OpenLineage: job, dataset, and run lineage vocabulary
+
+- **Date:** Current documentation reviewed 2026-08-08
+- **Type / tier:** Open standard documentation; A for the described model
+- **Source:** [OpenLineage documentation](https://openlineage.io/docs/)
+- **Finding:** OpenLineage defines an extensible event model centered on jobs, datasets, and runs for capturing lineage across data systems.
+- **Portable pattern:** Represent operational/data lineage as time-bound events with stable identifiers and provenance; do not conflate derived lineage with authorization or source-of-truth policy.
+- **Anti-pattern:** Inferring business truth, data permissions, or complete impact from an undocumented dependency edge.
+- **Caveat:** OpenLineage focuses on data lineage and does not itself govern agent context, effects, evaluations, or customer workflow ownership.
+
+<a id="r26-68"></a>
+### R26-68 — Graphify: deterministic and semantic project-map extraction
+
+- **Date:** Current README reviewed 2026-08-08
+- **Type / tier:** Project-maintained implementation documentation; C
+- **Source:** [Graphify](https://github.com/Graphify-Labs/graphify)
+- **Finding:** Graphify describes local Tree-sitter-based code extraction, optional semantic processing for unstructured material, explicit extracted versus inferred relationships, scoped graph queries, and incremental updates.
+- **Portable pattern:** Separate deterministic from semantic extraction, retain relationship basis and provenance, and use scoped map queries for exploration and change review.
+- **Anti-pattern:** Treating semantic edges or a generated graph as complete, authoritative, safe to expose, or safe to execute against without local verification.
+- **Caveat:** This is project documentation, not an independent accuracy, security, or cost evaluation; its implementation choices require local review.
+
+<a id="r26-69"></a>
+### R26-69 — Understand Anything: generated architecture views and impact exploration
+
+- **Date:** Current README reviewed 2026-08-08
+- **Type / tier:** Project-maintained implementation documentation; C
+- **Source:** [Understand Anything](https://github.com/Egonex-AI/Understand-Anything)
+- **Finding:** Understand Anything describes generated repository maps, architecture and domain views, guided exploration, diff-based impact analysis, incremental updates, and token-aware processing.
+- **Portable pattern:** Use generated views to accelerate orientation and candidate-impact discovery, then bind consequential conclusions to authoritative artifacts, owners, tests, and release evidence.
+- **Anti-pattern:** Allowing a generated map or multi-agent analysis to replace source inspection, independent evaluation, or change approval.
+- **Caveat:** Claims and implementation details are project-maintained; the repository treats them as design leads, not validated operating benchmarks.
+
 ## Social, Reddit, YouTube, and news screening notes
 
 ### Social and Reddit material admitted as leads or first-party field reports

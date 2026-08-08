@@ -17,6 +17,8 @@ Copy the smallest set needed for one workflow, replace the example values with e
 | Template | Decision it supports |
 | --- | --- |
 | [Operational ontology](operational-ontology.json) | Which objects, states, rules, actions, permissions, and evidence define the domain |
+| [System-map manifest](system-map-manifest.json) | Which versioned software and operational relationships help navigation and impact review when system complexity justifies it |
+| [Change-impact assessment](change-impact-assessment.json) | Which material-change impacts, owners, validation, review, rollout, and rollback evidence are required |
 | [Agent system](agent-system.json) | Where deterministic software, model judgment, tools, people, state, and operations meet when an agent workflow is selected |
 | [Behavior bundle](behavior-bundle.json) | Which exact model-route, prompt, harness, context, tool membership, and guardrail bytes the agent uses |
 | [Tool contract](tool-contract.json) | Which data and effects a capability exposes and how it is authorized, contained, and verified |

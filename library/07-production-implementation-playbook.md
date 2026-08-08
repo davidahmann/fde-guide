@@ -140,6 +140,8 @@ This is more effective than manually reading random traces or tracking a single 
 
 Treat every model, prompt, tool, retrieval, policy, evaluator, runtime, and professional-work-surface change as a versioned production change. Follow [change management](../operations/change-management.md), monitor the [full behavior path](../operations/behavior-monitoring.md), and use the [production service review](../templates/production-service-review.md) to decide whether to expand, constrain, pause, or retire the workflow.
 
+For a complex system, a versioned software/operational map can lower the cost of orientation and change review. Keep it derived, provenance-aware, and optional to runtime safety; use it to find impact, not to authorize it. See [Evidence Graphs and Change Intelligence](13-evidence-graphs-and-change-intelligence.md), the [system-map manifest](../templates/system-map-manifest.json), and [map freshness and change impact](../operations/map-freshness-and-change-impact.md).
+
 ### Runbook for an unsafe or failing run
 
 1. Freeze new writes and pause queued work.
@@ -156,6 +158,8 @@ Treat every model, prompt, tool, retrieval, policy, evaluator, runtime, and prof
 - [Production control catalog](../controls/control-catalog.json)
 - [Workflow-charter Schema](../schemas/workflow-charter.schema.json)
 - [Operational-ontology Schema](../schemas/operational-ontology.schema.json)
+- [System-map-manifest Schema](../schemas/system-map-manifest.schema.json) where dependency complexity justifies it
+- [Change-impact-assessment Schema](../schemas/change-impact-assessment.schema.json) for material or critical changes
 - [Agent-system Schema](../schemas/agent-system.schema.json)
 - [Behavior-bundle Schema](../schemas/behavior-bundle.schema.json)
 - [Tool-contract Schema](../schemas/tool-contract.schema.json)

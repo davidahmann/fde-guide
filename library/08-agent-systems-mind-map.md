@@ -68,6 +68,12 @@ flowchart TD
     K --> K3["Rollback and kill switches"]
     K --> K4["Improve, expand, or retire"]
 
+    A --> L["11. System maps and change intelligence"]
+    L --> L1["Software map: components and dependencies"]
+    L --> L2["Operational map: decisions and owners"]
+    L --> L3["Provenance, confidence, and freshness"]
+    L --> L4["Impact review, validation, rollout, rollback"]
+
     B --> C
     C --> D
     D --> G
@@ -93,6 +99,7 @@ flowchart TD
 | Customer workflow and value | [Discovery and Value](../playbooks/01-discovery-and-value.md) |
 | Value engineering and cost | [Value Engineering and Frugal Architecture](11-value-engineering-and-frugal-architecture.md) |
 | Architecture and intelligence selection | [Software Architecture and Intelligence Selection](12-software-architecture-and-intelligence-selection.md) and [hybrid intelligence blueprint](../blueprints/hybrid-intelligence-system.md) |
+| Complex-system navigation and material change | [Evidence Graphs and Change Intelligence](13-evidence-graphs-and-change-intelligence.md) and [map freshness and change impact](../operations/map-freshness-and-change-impact.md) |
 | Context and knowledge | [Context and Knowledge Systems](02-context-and-knowledge-systems.md) |
 | Harness, state, tools, and orchestration | [Agent System Architecture](03-agent-system-architecture.md) |
 | Capability admission and lifecycle | [Capability supply chain](../operations/capability-supply-chain.md) and [capability-manifest Schema](../schemas/capability-manifest.schema.json) |
@@ -121,3 +128,4 @@ Start at the center and move clockwise. A branch with no concrete artifact is a 
 - No typed handoff means delegation can lose provenance, budgets, caller ceilings, and unresolved work.
 - No compatible release manifest or rollback evidence means production change cannot be reviewed or reversed as one system.
 - No governed field-learning record means production evidence cannot safely drive improvement or retirement.
+- No source-provenanced map where complexity demands one means hidden software or operational dependencies can repeatedly escape design, handoff, incident, and release review; a map must still never become an authority system.

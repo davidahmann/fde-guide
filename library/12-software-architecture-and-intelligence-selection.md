@@ -31,6 +31,8 @@ At minimum, create these four views in an [architecture decision record](../temp
 
 The [operational ontology](../templates/operational-ontology.json) owns business objects, state, rules, actions, and evidence. The [agent-system](../templates/agent-system.json) owns workflow behavior and authority. Tool, capability, behavior, evaluation, and release contracts bind the pieces into a compatible deployable system.
 
+When those views cross enough systems and teams that change review repeatedly misses dependencies, add a [versioned system map](../templates/system-map-manifest.json) and [change-impact assessment](../templates/change-impact-assessment.json). They preserve derived relationships, provenance, freshness, and owner review; they do not replace the underlying contracts or become a graph-driven control plane. See [Evidence Graphs and Change Intelligence](13-evidence-graphs-and-change-intelligence.md).
+
 ## Use a cloud-native baseline
 
 Kevin Hoffman's *Beyond the Twelve-Factor App* adds API-first design, telemetry, and authentication/authorization to the classic cloud-native workload disciplines. Treat those as the baseline for an FDE solution—not as an agent-specific framework. [R26-62]
