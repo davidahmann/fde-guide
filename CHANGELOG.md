@@ -4,6 +4,10 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-08-08
+
+- Add a compact, end-to-end shipment-risk FDE walkthrough with a hybrid ML, deterministic-policy, foundation-model explanation, and human-review reference; include explicit value, adoption, service-review, threat, evaluation, and executable routing artifacts.
+- Add the complete Beyond Twelve-Factor workload crosswalk and link it to the FDE delivery and operating model.
 - Reposition the project as The FDE Guide: value engineering and production architecture for AI-enabled systems.
 - Add a value-engineering and frugal-architecture guide, software-architecture and intelligence-selection guide, hybrid-intelligence blueprint, and selection record.
 - Expand delivery guidance from agent-only design to explicit rules, optimization, ML, retrieval, foundation-model, agent, and human-review choices.
@@ -46,6 +50,7 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/davidahmann/fde-guide/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/davidahmann/fde-guide/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/davidahmann/fde-guide/releases/tag/v1.0.0

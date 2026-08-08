@@ -394,6 +394,12 @@
       "tags": ["finance", "write", "approval", "controlled-write"]
     },
     {
+      "id": "example.shipment-risk-triage",
+      "type": "example",
+      "path": "examples/shipment-risk-triage/README.md",
+      "tags": ["logistics", "hybrid-intelligence", "ml", "human-review", "value"]
+    },
+    {
       "id": "evidence.current",
       "type": "evidence",
       "path": "research/2026-02-07--2026-08-07-production-agent-source-ledger.md",

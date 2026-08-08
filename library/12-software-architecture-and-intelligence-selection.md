@@ -35,15 +35,25 @@ The [operational ontology](../templates/operational-ontology.json) owns business
 
 Kevin Hoffman's *Beyond the Twelve-Factor App* adds API-first design, telemetry, and authentication/authorization to the classic cloud-native workload disciplines. Treat those as the baseline for an FDE solution—not as an agent-specific framework. [R26-62]
 
-| Workload concern | FDE application |
+The full crosswalk is deliberately a workload baseline, not a second FDE framework:
+
+| Beyond Twelve-Factor concern | FDE application |
 | --- | --- |
-| API-first contracts | Typed source and tool contracts, versioned interfaces, compatibility tests |
-| Configuration, credentials, and dependencies | Immutable builds, externalized configuration, brokered short-lived credentials, explicit provenance |
-| Stateless processes and backing services | Durable workflow/domain state outside prompts and process memory; explicit source-of-truth dependencies |
-| Concurrency and disposability | Idempotency, cancellation, leases, retry budgets, replay, and safe restart |
-| Environment parity and release discipline | Versioned behavior bundles, evaluation worlds, compatible release manifests, canary and rollback |
-| Telemetry | Traces for decision, policy, tool, effect, readback, outcome, adoption, and cost |
-| Authentication and authorization | User or workload identity, tenant binding, least privilege, authorization at the effect boundary |
+| One codebase, one application | One reviewable workflow/release unit with named service ownership |
+| Dependencies | Pinned builds, SBOMs, capability provenance, and compatibility tests |
+| Configuration | Externalized, versioned configuration; no authority or secrets in prompts |
+| Backing services | Explicit source-of-truth, ownership, freshness, contract, and failure semantics for every dependency |
+| Build, release, run | Evaluated behavior bundle, admission, rollout, rollback, and retirement evidence |
+| Stateless processes | Durable workflow and domain state outside model/process memory |
+| Port binding | API-first, typed interfaces for people, systems, models, tools, and event consumers |
+| Concurrency | Bounded parallelism, idempotency, leases, cancellation, and replay-safe work |
+| Disposability | Fast shutdown, safe restart, recovery, and external-effect reconciliation |
+| Development/production parity | Versioned data/world assumptions, realistic evaluation, and explicit deployment topology |
+| Logs | Privacy-minimized traces for decisions, policies, tools, effects, outcomes, adoption, and cost |
+| Admin processes | Governed change, migration, repair, and retirement operations |
+| API-first design | Versioned source/tool/data contracts and compatibility checks |
+| Telemetry | Route-level quality, evidence, cost, reliability, and value attribution |
+| Authentication and authorization | User or workload identity, tenant binding, least privilege, and enforcement at the action boundary |
 
 FDE adds outcome definition, workflow observation, customer adoption, service ownership, and value measurement around this software baseline.
 
@@ -65,6 +75,8 @@ flowchart LR
 ```
 
 The [hybrid intelligence-system blueprint](../blueprints/hybrid-intelligence-system.md) gives the exact component, state, trust-boundary, failure, telemetry, and release-test checklist. The default is serial and simple: add parallelism, additional models, or multiple agents only when measured constraints justify them.
+
+The [shipment-risk triage walkthrough](../examples/shipment-risk-triage/README.md) is a compact executable companion: ML predicts, deterministic policy routes, a foundation model may explain, and a human retains the operational decision.
 
 ## Architectural non-negotiables
 
