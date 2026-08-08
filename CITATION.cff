@@ -1,16 +1,16 @@
 cff-version: 1.2.0
 message: "If this field guide informs your work, cite it using this metadata."
-title: "Production Agent Engineering: An FDE Field Guide"
+title: "The FDE Guide"
 type: software
 authors:
   - family-names: Ahmann
     given-names: David
-repository-code: "https://github.com/davidahmann/production-agent-engineering"
-url: "https://github.com/davidahmann/production-agent-engineering"
+repository-code: "https://github.com/davidahmann/fde-guide"
+url: "https://github.com/davidahmann/fde-guide"
 license: Apache-2.0
 version: 1.0.1
 date-released: 2026-08-07
-abstract: "Machine-readable controls, architecture blueprints, evaluation contracts, security patterns, runbooks, and executable reference behavior for production AI agents."
+abstract: "Value engineering and production architecture for AI-enabled systems: controls, blueprints, evaluation contracts, security patterns, runbooks, and executable reference behavior."
 keywords:
   - AI agents
   - agent engineering

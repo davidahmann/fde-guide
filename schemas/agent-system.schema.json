@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/davidahmann/production-agent-engineering/schemas/agent-system.schema.json",
+  "$id": "https://github.com/davidahmann/fde-guide/schemas/agent-system.schema.json",
   "title": "Production agent-system design record",
   "type": "object",
   "additionalProperties": false,

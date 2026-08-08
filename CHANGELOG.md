@@ -4,6 +4,9 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+- Reposition the project as The FDE Guide: value engineering and production architecture for AI-enabled systems.
+- Add a value-engineering and frugal-architecture guide, software-architecture and intelligence-selection guide, hybrid-intelligence blueprint, and selection record.
+- Expand delivery guidance from agent-only design to explicit rules, optimization, ML, retrieval, foundation-model, agent, and human-review choices.
 - Rework the README around plain-language user journeys, expected outputs, and a guided reference-system tour.
 - Expand `AGENTS.md` into a task-routed repository map and align the compact `llms.txt` index.
 - Validate repository-local links in `llms.txt` to prevent agent-navigation drift.
@@ -43,6 +46,6 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/production-agent-engineering/compare/v1.0.1...HEAD
-[1.0.1]: https://github.com/davidahmann/production-agent-engineering/compare/v1.0.0...v1.0.1
-[1.0.0]: https://github.com/davidahmann/production-agent-engineering/releases/tag/v1.0.0
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/davidahmann/fde-guide/compare/v1.0.0...v1.0.1
+[1.0.0]: https://github.com/davidahmann/fde-guide/releases/tag/v1.0.0

@@ -1,6 +1,6 @@
-# Production Agent Engineering: An FDE Field Guide
+# The FDE Guide
 
-Summary: A design and verification kit for moving bounded AI-agent workflows from discovery to controlled production use. It does not require a specific model or agent framework.
+Summary: A practical FDE guide to value engineering and production architecture for AI-enabled systems. It moves customer workflows from discovery to measurable, operated outcomes and does not require a specific model or agent framework.
 License: Apache-2.0
 
 Read [AGENTS.md](AGENTS.md) before modifying this repository.
@@ -13,6 +13,8 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - Production controls: [controls/control-catalog.json](controls/control-catalog.json)
 - End-to-end FDE lifecycle: [playbooks/README.md](playbooks/README.md)
 - Discovery and value: [playbooks/01-discovery-and-value.md](playbooks/01-discovery-and-value.md)
+- Value and frugal architecture: [library/11-value-engineering-and-frugal-architecture.md](library/11-value-engineering-and-frugal-architecture.md)
+- Software architecture and intelligence selection: [library/12-software-architecture-and-intelligence-selection.md](library/12-software-architecture-and-intelligence-selection.md)
 - Solution design and delivery: [playbooks/02-solution-and-delivery.md](playbooks/02-solution-and-delivery.md)
 - Operate and scale: [playbooks/03-operate-and-scale.md](playbooks/03-operate-and-scale.md)
 - Design starting point: [library/00-start-here.md](library/00-start-here.md)
@@ -20,7 +22,9 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - Architecture selection: [blueprints/README.md](blueprints/README.md)
 - Governed data-agent design: [blueprints/data-analysis-agent.md](blueprints/data-analysis-agent.md)
 - Controlled improvement design: [blueprints/controlled-improvement-agent.md](blueprints/controlled-improvement-agent.md)
+- Hybrid intelligence-system design: [blueprints/hybrid-intelligence-system.md](blueprints/hybrid-intelligence-system.md)
 - Starter design artifacts: [templates/README.md](templates/README.md)
+- Intelligence selection record: [templates/intelligence-selection-record.md](templates/intelligence-selection-record.md)
 - Machine-readable contracts: [schemas/README.md](schemas/README.md)
 - Versioned behavior contract: [schemas/behavior-bundle.schema.json](schemas/behavior-bundle.schema.json)
 - Evaluation claim contract: [schemas/evaluation-report.schema.json](schemas/evaluation-report.schema.json)
@@ -38,7 +42,7 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 
 Safety baseline: Model output does not authorize effects or prove completion. Side-effecting operations require boundary authorization and service-enforced duplicate safety; consequential effects also require source-of-truth verification.
 
-Build order: workflow charter → domain model → agent system → behavior bundle → tool contracts and capability manifests → threat model and evaluation → solution release. A tool change is incomplete until the exact build is admitted, included in the behavior bundle, evaluated, and bound into a new release digest.
+Build order: workflow charter and value case → intelligence-selection and architecture decisions → domain model → agent system/behavior bundle only when selected → tool contracts and capability manifests → threat model and evaluation → solution release. A tool change is incomplete until the exact build is admitted, included in the behavior bundle where applicable, evaluated, and bound into a new release digest.
 
 Contribution contract: [CONTRIBUTING.md](CONTRIBUTING.md)
 Security reports: [SECURITY.md](SECURITY.md)

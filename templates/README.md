@@ -10,13 +10,14 @@ Copy the smallest set needed for one workflow, replace the example values with e
 | [FDE discovery pack](fde-discovery-pack.md) | Whether the workflow is bounded, owned, verifiable, and ready |
 | [Workflow charter](workflow-charter.json) | Whether to discover, pilot, defer, do not build, promote, pause, or retire the workflow |
 | [Value case](value-case.md) | Whether measured outcome improvement justifies full delivery and operating cost |
+| [Intelligence selection record](intelligence-selection-record.md) | Which rules, optimization, ML, retrieval, foundation-model, agent, and human options were considered for a consequential decision |
 
 ## Solution and assurance
 
 | Template | Decision it supports |
 | --- | --- |
 | [Operational ontology](operational-ontology.json) | Which objects, states, rules, actions, permissions, and evidence define the domain |
-| [Agent system](agent-system.json) | Where deterministic software, model judgment, tools, people, state, and operations meet |
+| [Agent system](agent-system.json) | Where deterministic software, model judgment, tools, people, state, and operations meet when an agent workflow is selected |
 | [Behavior bundle](behavior-bundle.json) | Which exact model-route, prompt, harness, context, tool membership, and guardrail bytes the agent uses |
 | [Tool contract](tool-contract.json) | Which data and effects a capability exposes and how it is authorized, contained, and verified |
 | [Capability manifest](capability-manifest.json) | Which exact capability build is admitted, with what provenance, authority, assurance, and lifecycle |

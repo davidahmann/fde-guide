@@ -644,6 +644,39 @@ This is a curated implementation database, not a popularity list. It favors prim
 - **Portable pattern:** Use an ontology to define shared meaning; use SHACL, JSON Schema, policy rules, or another explicit closed-world validator to reject invalid operational state.
 - **Anti-pattern:** Claiming that RDFS or OWL vocabulary alone rejects undeclared or operationally invalid states.
 
+<a id="r26-62"></a>
+### R26-62 — Kevin Hoffman: Beyond the Twelve-Factor App
+
+- **Date:** 2016; revalidated 2026-08-08
+- **Type / tier:** Foundational cloud-native engineering guidance; A for the stated workload practices
+- **Source:** [Beyond the Twelve-Factor Application](https://connect.pivotal.io/rs/625-IUJ-009/images/ebook-beyond-the-12-factor-app.pdf)
+- **Finding:** Hoffman presents a fifteen-factor extension of the original twelve-factor application guidance, adding API-first design, telemetry, and authentication/authorization while retaining explicit build/release/run, configuration, dependency, backing-service, stateless-process, concurrency, disposability, parity, logging, and administrative-process disciplines.
+- **Portable pattern:** Treat an AI-enabled workload as ordinary production software first: versioned contracts and dependencies, externalized configuration and credentials, durable state, safe restart, telemetry, and authorization belong around any model or agent.
+- **Anti-pattern:** Treating a model runtime or prompt as the system while APIs, state, identity, release, and operations remain implicit.
+- **Caveat:** The methodology is a cloud-native application baseline, not an AI-agent or FDE framework; the repository maps it to its own controls rather than adopting it as a standard.
+
+<a id="r26-63"></a>
+### R26-63 — Werner Vogels: Frugal Architecture laws
+
+- **Date:** 2024-11-25; revalidated 2026-08-08
+- **Type / tier:** Primary architecture guidance; C for the named operating philosophy
+- **Sources:** [Return of The Frugal Architect(s)](https://www.allthingsdistributed.com/2024/11/return-of-the-frugal-architect.html) and [The Frugal Architect laws](https://www.thefrugalarchitect.com/laws/)
+- **Finding:** Vogels frames frugality as cost-aware, sustainable architecture: make cost a non-functional requirement, align systems to business value, make explicit trade-offs, observe costs, implement cost controls, optimize incrementally, and challenge legacy assumptions.
+- **Portable pattern:** Tie design and operations to an outcome-level cost allocation; choose the smallest adequate mechanism, set resource ceilings, observe trade-offs, and revisit decisions as workload behavior changes.
+- **Anti-pattern:** Equating frugality with indiscriminate cost cutting, or optimizing token spend while ignoring quality, recovery, human review, and business value.
+- **Caveat:** The seven laws are an architectural philosophy, not a prescriptive AI cost model or universal target.
+
+<a id="r26-64"></a>
+### R26-64 — AWS: cost and sustainability as non-functional requirements
+
+- **Date:** 2024-08-14; revalidated 2026-08-08
+- **Type / tier:** Official architecture guidance; A for the described Well-Architected interpretation
+- **Source:** [Achieving Frugal Architecture using AWS Well-Architected Framework guidance](https://aws.amazon.com/th/blogs/architecture/achieving-frugal-architecture-using-the-aws-well-architected-framework-guidance/)
+- **Finding:** AWS describes Frugal Architecture as continuous cost and sustainability work across design, development, and operation. It emphasizes transparent workload cost attribution, observing outputs against cost, rightsizing, managed-service trade-offs, and balancing cost with security, reliability, performance, and sustainability.
+- **Portable pattern:** Measure full workload cost against an owned business outcome, set explicit budgets, and make cost/reliability/security trade-offs visible in architecture and service reviews.
+- **Anti-pattern:** Treating cost as a post-launch dashboard, or reducing spend without considering reliability, security, performance, or outcome impact.
+- **Caveat:** AWS implementation choices are cloud-provider-specific; the outcome-level and trade-off principles are the portable part.
+
 ## Social, Reddit, YouTube, and news screening notes
 
 ### Social and Reddit material admitted as leads or first-party field reports

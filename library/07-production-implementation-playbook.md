@@ -13,11 +13,13 @@ For the customer-facing work before, around, and after these technical phases, u
 | Business outcome | Baseline, target, metric owner, measurement window |
 | Operational requirement | User, working surface, decision, inputs, action, and accepted outcome |
 | Workflow boundary | Trigger, inputs, sources of truth, output artifact, downstream actions |
-| Work allocation | Which steps are deterministic, agentic, and human-owned |
+| Work allocation | Which steps are deterministic, optimization/ML, retrieval, foundation-model/agent, and human-owned |
 | Verifier | Postcondition, reconciliation, policy test, or review rubric |
 | Risk | Consequence of a bad recommendation, bad write, data leak, or delay |
 
 Use the [field-observation log](../templates/field-observation-log.md), [FDE discovery pack](../templates/fde-discovery-pack.md), [workflow charter](../templates/workflow-charter.json), and [value case](../templates/value-case.md).
+
+Use the [intelligence-selection record](../templates/intelligence-selection-record.md) before adding a model or agent. The selected component must be the smallest sufficient mechanism for the decision, with a cost budget, fallback, monitor, and retirement trigger. `ARC-004`, `ARC-005`.
 
 **Exit gate:** one observed, narrow workflow has a measurable accepted outcome, verifier, owner, adoption path, and service-ownership hypothesis. If the team cannot explain how it will know the result is correct, deploy it as a research or copilot surface—not autonomous execution.
 

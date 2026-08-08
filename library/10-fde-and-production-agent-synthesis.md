@@ -1,4 +1,4 @@
-# FDE and Production-Agent Synthesis
+# FDE and Production AI-System Synthesis
 
 This page separates the most portable lessons from Palantir, OpenAI, Anthropic, and the AI Engineer practitioner corpus. It does not claim that any organization follows one universal method.
 
@@ -18,7 +18,7 @@ important customer decision
   -> observed current work and exceptions
   -> measurable accepted outcome and verifier
   -> operational domain: data + logic + action + security
-  -> smallest sufficient workflow/agent architecture
+  -> smallest sufficient rules, optimization, ML, model, agent, and human architecture
   -> persistent professional surface
   -> representative replay, shadow, and canary evidence
   -> customer-owned service and operating cadence
@@ -60,6 +60,8 @@ A pilot may pass one gate and fail another. Do not collapse them into a demo-suc
 - Evaluation reports name the claim, full version/environment manifest, trials, uncertainty, and contamination controls.
 - Behavioral configuration changes use per-model/route evaluation, canary, and rollback.
 - Production monitoring covers data, workflow, policies, effects, people, outcomes, and cost.
+- Each consequential decision uses the smallest sufficient mechanism—deterministic code, optimization, ML, retrieval, a foundation model, an agent, or human review—and retains the evidence, fallback, and cost rationale.
+- Cost is a non-functional requirement; the economic unit is an accepted outcome, not token or tool volume. [R26-63] [R26-64]
 - Customer operation and retirement are designed from the beginning.
 
 ## What not to infer
@@ -70,4 +72,7 @@ A pilot may pass one gate and fail another. Do not collapse them into a demo-suc
 - Self-review, monitoring, guardrails, and human approval do not replace authorization or source-of-truth verification.
 - A successful bootcamp, benchmark, or pilot is not production readiness or realized value.
 
-Evidence: [R26-37 through R26-46](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#fde-delivery-and-operating-model-evidence), [R26-47 through R26-56](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-47), and the [AI Engineer video index](../research/2026-08-07--ai-engineer-production-agent-video-index.md).
+[R26-63]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-63
+[R26-64]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-64
+
+Evidence: [R26-37 through R26-46](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#fde-delivery-and-operating-model-evidence), [R26-47 through R26-56](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-47), [R26-62 through R26-64](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-62), and the [AI Engineer video index](../research/2026-08-07--ai-engineer-production-agent-video-index.md).

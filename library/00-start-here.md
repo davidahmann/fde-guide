@@ -1,4 +1,4 @@
-# Start Here: Design a Production-Ready Agent
+# Start Here: Design a Production-Ready AI System
 
 Use this page at the beginning of a design session. It routes you to the right material and prevents the common failure mode of starting with a model, framework, or multi-agent diagram before the work is understood.
 
@@ -9,7 +9,7 @@ For an end-to-end customer engagement, use the [FDE playbooks](../playbooks/READ
 1. Who performs the work today, and what did direct observation show?
 2. What outcome changes if this works, and what is the current baseline?
 3. What is the smallest workflow and user segment that can create that outcome?
-4. Which steps are deterministic, agentic, or human-owned?
+4. Which steps belong in deterministic rules, optimization, ML, retrieval, a foundation model, an agent, or human review?
 5. What evidence proves that the workflow completed correctly?
 6. Which systems are sources of truth, and how fresh must they be?
 7. Is the agent reading, recommending, drafting, or changing an external system?
@@ -28,6 +28,7 @@ If any answer is missing, you are still in discovery. Start with [Product, Proce
 | --- | --- | --- |
 | You are leading a customer engagement | [FDE playbooks](../playbooks/README.md) | Field observation, value evidence, adoption, service ownership, and exit criteria |
 | You are choosing a workflow or validating value | [Discovery and Value](../playbooks/01-discovery-and-value.md) | A baseline, verifier, named outcome owner, and falsifiable value case |
+| You are choosing rules, ML, models, or agents | [Software Architecture and Intelligence Selection](12-software-architecture-and-intelligence-selection.md) | The smallest sufficient mechanism, component boundary, fallback, and evidence plan |
 | The agent needs company knowledge or data | [Context and Knowledge Systems](02-context-and-knowledge-systems.md) | Source ownership, freshness, scope, and evidence provenance |
 | The agent will use tools, code, browser, or APIs | [Agent System Architecture](03-agent-system-architecture.md) | Identity, sandbox, structured contracts, idempotency, and budgets |
 | The agent will write to production systems | [Production, Evaluation, and Governance](04-production-evaluation-and-governance.md) | Staged writes, approval gates, rollback, audit, and kill switch |
@@ -36,11 +37,12 @@ If any answer is missing, you are still in discovery. Start with [Product, Proce
 | You are debugging a weak or unsafe system | [Patterns and Anti-Patterns](06-patterns-and-anti-patterns.md) | Fix the owning layer rather than blaming the model |
 | You need the whole system in one view | [Agent Systems Mind Map](08-agent-systems-mind-map.md) | The dependencies between context, control, evidence, and operations |
 
-## The minimum viable production agent
+## The minimum viable production system
 
 Do not begin with a general autonomous worker. Begin with one bounded workflow that has:
 
 - One accountable owner and a measurable accepted outcome
+- A recorded choice of deterministic logic, optimization, ML, retrieval, model/agent, or human decision for each consequential step
 - A defined input contract and a limited set of source systems
 - A task-scoped tool bundle with typed parameters
 - An explicit agent or workload identity with least privilege
@@ -59,6 +61,7 @@ This is intentionally narrower than most “agent platform” demos. Narrow scop
 | --- | --- |
 | Field evidence | [Field-observation log](../templates/field-observation-log.md) and [FDE discovery pack](../templates/fde-discovery-pack.md) |
 | Workflow decision | [Workflow charter](../templates/workflow-charter.json) and [value case](../templates/value-case.md) |
+| Intelligence choice | [Intelligence-selection record](../templates/intelligence-selection-record.md) and [architecture decision record](../templates/architecture-decision-record.md) |
 | Operational domain | [Ontology template](../templates/operational-ontology.json) |
 | System design | [Agent-system template](../templates/agent-system.json) |
 | Tool boundary | [Tool-contract template](../templates/tool-contract.json) |
@@ -86,4 +89,4 @@ This is intentionally narrower than most “agent platform” demos. Narrow scop
 | Operable | Can a team diagnose, pause, recover, and improve it? | Traces, dashboards, runbook, rollback, ownership |
 | Owned | Can the receiving team support, change, govern, and retire it? | Named service owner and exercised handoff |
 
-An agent that is only capable is a demo. A production system must be valuable, adopted, reliable, safe, operable, and owned.
+An AI component that is only capable is a demo. A production system must be valuable, adopted, reliable, safe, operable, and owned.

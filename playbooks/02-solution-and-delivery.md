@@ -27,19 +27,23 @@ This is the portable architectural lesson from Palantir's decision-centric Ontol
 
 Control: `ARC-002`.
 
-## 3. Select the smallest sufficient execution model
+## 3. Select the smallest sufficient decision mechanism
 
-Evaluate these in order:
+Evaluate these in order when they fit the decision:
 
 1. Deterministic software
-2. One model call with typed input and output
-3. A coded workflow with model-assisted steps
-4. One bounded agent with tools and stop conditions
-5. Multiple workers only across a genuine context, permission, ownership, specialization, or latency boundary
+2. Optimization or constraint solver
+3. Classical ML or statistical model
+4. Search and retrieval
+5. One model call with typed input and output
+6. A coded workflow with model-assisted steps
+7. One bounded agent with tools and stop conditions
+8. Multiple workers only across a genuine context, permission, ownership, specialization, or latency boundary
+9. Human review where the decision remains weakly verifiable or high stakes
 
-Record the baseline and the measured failure that justifies each increase in agency. OpenAI and Anthropic both recommend incremental complexity and a single-agent baseline. [R26-40] [R26-56]
+Record the baseline, the measured failure that justifies each increase in agency, full cost, fallback, and monitor in the [intelligence-selection record](../templates/intelligence-selection-record.md). OpenAI and Anthropic both recommend incremental complexity and a single-agent baseline. [R26-40] [R26-56]
 
-Control: `ARC-004`.
+Controls: `ARC-004`, `ARC-005`.
 
 ## 4. Use a layered production architecture
 

@@ -1,6 +1,6 @@
 # Governance
 
-Production Agent Engineering is an independent, maintainer-led open-source project.
+The FDE Guide is an independent, maintainer-led open-source project.
 
 ## Roles
 

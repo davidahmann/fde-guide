@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/artifact-catalog.schema.json",
   "schema_version": "1.1.0",
-  "updated": "2026-08-07",
+  "updated": "2026-08-08",
   "artifacts": [
     {
       "id": "controls.production",
@@ -32,6 +32,12 @@
       "type": "template",
       "path": "templates/value-case.md",
       "tags": ["value", "outcome", "economics", "measurement"]
+    },
+    {
+      "id": "template.intelligence-selection",
+      "type": "template",
+      "path": "templates/intelligence-selection-record.md",
+      "tags": ["architecture", "decision", "value", "model-selection"]
     },
     {
       "id": "template.delivery-adoption",
@@ -314,6 +320,12 @@
       "type": "blueprint",
       "path": "blueprints/controlled-improvement-agent.md",
       "tags": ["improvement", "diagnosis", "evaluation", "canary"]
+    },
+    {
+      "id": "blueprint.hybrid-intelligence",
+      "type": "blueprint",
+      "path": "blueprints/hybrid-intelligence-system.md",
+      "tags": ["architecture", "decision", "ml", "optimization", "human-review"]
     },
     {
       "id": "playbook.discovery-value",

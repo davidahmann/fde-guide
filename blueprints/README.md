@@ -5,6 +5,7 @@
 | Condition | Default |
 | --- | --- |
 | Fixed steps, enumerated branches, deterministic rules | Deterministic workflow |
+| One workflow needs deliberate routing between rules, optimization, ML, retrieval, foundation models, and human review | [Hybrid intelligence system](hybrid-intelligence-system.md) |
 | Variable evidence path, read-only outcome, reliable sufficiency test | [Bounded retrieval agent](bounded-retrieval-agent.md) |
 | External mutation, policy constraints, approval or rollback | [Transactional write agent](transactional-write-agent.md) |
 | External trigger, long duration, retries, pause/resume | [Event-driven investigation agent](event-driven-investigation-agent.md) |
@@ -19,6 +20,8 @@
 | --- | --- |
 | Workflow discovery | [`templates/fde-discovery-pack.md`](../templates/fde-discovery-pack.md) |
 | Workflow and value decision | [`schemas/workflow-charter.schema.json`](../schemas/workflow-charter.schema.json) |
+| Intelligence selection | [`templates/intelligence-selection-record.md`](../templates/intelligence-selection-record.md) |
+| System-boundary decision | [`templates/architecture-decision-record.md`](../templates/architecture-decision-record.md) |
 | Operational ontology | [`schemas/operational-ontology.schema.json`](../schemas/operational-ontology.schema.json) |
 | Agent design | [`schemas/agent-system.schema.json`](../schemas/agent-system.schema.json) |
 | Versioned behavior configuration | [`schemas/behavior-bundle.schema.json`](../schemas/behavior-bundle.schema.json) |
@@ -40,6 +43,7 @@ Build the behavior bundle after the agent design establishes its authority ceili
 
 ```text
 workflow
+  -> deterministic, optimization, ML, retrieval, or human path when sufficient
   -> bounded single agent when path variance requires model judgment
   -> durable execution when time/failure boundaries exceed one request
   -> multiple agents only when context, permission, latency, or ownership boundaries are distinct

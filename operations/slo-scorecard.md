@@ -1,4 +1,4 @@
-# Agent SLO Scorecard
+# Production AI System SLO Scorecard
 
 | SLI | Example objective | Error budget policy |
 | --- | --- | --- |
