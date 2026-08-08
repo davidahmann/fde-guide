@@ -35,6 +35,14 @@
       "release_gates": ["design"]
     },
     {
+      "id": "ARC-005",
+      "domain": "architecture",
+      "level": "MUST",
+      "requirement": "Each consequential decision step MUST identify the selected deterministic, optimization, statistical or ML, foundation-model, agent, or human mechanism as applicable; justify it as the smallest sufficient option; and name its version, authority ceiling, evaluation evidence, cost allocation, monitor, fallback, and retirement trigger.",
+      "evidence": ["R26-40", "R26-56", "R26-63"],
+      "release_gates": ["design", "shadow", "operations"]
+    },
+    {
       "id": "FDE-001",
       "domain": "delivery",
       "level": "MUST",

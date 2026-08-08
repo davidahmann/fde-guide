@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/davidahmann/production-agent-engineering/schemas/trace-event.schema.json",
+  "$id": "https://github.com/davidahmann/fde-guide/schemas/trace-event.schema.json",
   "title": "Agent state-transition trace event",
   "type": "object",
   "additionalProperties": false,

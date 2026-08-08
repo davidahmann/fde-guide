@@ -370,7 +370,7 @@ for (const [file, body] of contents) {
 }
 
 const readme = contents.get(path.join(root, "README.md")) ?? "";
-if (!readme.startsWith("# Production Agent Engineering: An FDE Field Guide\n")) {
+if (!readme.startsWith("# The FDE Guide\n")) {
   fail("README.md does not use the canonical project title");
 }
 if (!readme.includes("not an external compliance standard")) {
@@ -380,8 +380,8 @@ if (!readme.includes("not an external compliance standard")) {
 const citation = contents.get(path.join(root, "CITATION.cff")) ?? "";
 for (const field of [
   "cff-version: 1.2.0",
-  "title: \"Production Agent Engineering: An FDE Field Guide\"",
-  "repository-code: \"https://github.com/davidahmann/production-agent-engineering\"",
+  "title: \"The FDE Guide\"",
+  "repository-code: \"https://github.com/davidahmann/fde-guide\"",
   "license: Apache-2.0",
 ]) {
   if (!citation.includes(field)) fail(`CITATION.cff is missing required metadata: ${field}`);
@@ -413,7 +413,7 @@ const schemaFiles = jsonFiles.filter((file) => relative(file).startsWith("schema
 for (const file of schemaFiles) {
   const schema = documents.get(file);
   if (!schema) continue;
-  const expectedSchemaId = `https://github.com/davidahmann/production-agent-engineering/${relative(file)}`;
+  const expectedSchemaId = `https://github.com/davidahmann/fde-guide/${relative(file)}`;
   if (schema.$id !== expectedSchemaId) {
     fail(`${relative(file)} has non-canonical $id ${schema.$id ?? "<missing>"}`);
   }
@@ -426,10 +426,10 @@ for (const file of schemaFiles) {
 
 const packageMetadata = documents.get(path.join(root, "package.json"));
 if (packageMetadata) {
-  if (packageMetadata.name !== "production-agent-engineering") fail("package.json has a non-canonical package name");
+  if (packageMetadata.name !== "fde-guide") fail("package.json has a non-canonical package name");
   if (packageMetadata.license !== "Apache-2.0") fail("package.json must declare Apache-2.0");
   if (packageMetadata.private !== true) fail("package.json must prevent accidental registry publication");
-  if (packageMetadata.repository?.url !== "git+https://github.com/davidahmann/production-agent-engineering.git") {
+  if (packageMetadata.repository?.url !== "git+https://github.com/davidahmann/fde-guide.git") {
     fail("package.json has a non-canonical repository URL");
   }
   if (!citation.includes(`version: ${packageMetadata.version}`)) {

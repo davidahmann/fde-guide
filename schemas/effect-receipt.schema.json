@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/davidahmann/production-agent-engineering/schemas/effect-receipt.schema.json",
+  "$id": "https://github.com/davidahmann/fde-guide/schemas/effect-receipt.schema.json",
   "title": "Verified external-effect receipt",
   "type": "object",
   "additionalProperties": false,

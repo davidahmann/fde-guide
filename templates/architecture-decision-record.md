@@ -14,16 +14,38 @@
 | Dimension | Requirement |
 | --- | --- |
 | Outcome | |
+| Operational decision and accepted outcome | |
+| System context and affected users/systems | |
 | Constraints | |
 | Invariants | |
+| Quality, latency, risk, adoption, and full-cost ceiling | |
 | Accepted residual risk | |
 | Revisit trigger | |
 
+## Architecture views
+
+| View | Link or summary |
+| --- | --- |
+| System context: users, sources, downstream systems, owner | |
+| Component boundaries: state, policy, model/ML, tools, UI, operations | |
+| Decision/state transitions and postconditions | |
+| Deployment/trust boundaries: identity, tenancy, credentials, egress, isolation | |
+
+## Intelligence selection
+
+| Field | Value |
+| --- | --- |
+| Intelligence-selection record | |
+| Deterministic/optimization/ML baseline | |
+| Foundation-model or agent rationale, if selected | |
+| Human-review and escalation path | |
+| Component versions, authority ceilings, monitors, and retirement triggers | |
+
 ## Options
 
-| Option | Quality | Latency | Cost | Security | Operability | Lock-in | Evidence |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| | | | | | | | |
+| Option | Quality | Latency | Full cost | Security | Operability | Adoption | Lock-in | Evidence |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| | | | | | | | | |
 
 ## Selected option
 

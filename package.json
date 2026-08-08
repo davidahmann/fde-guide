@@ -1,7 +1,7 @@
 {
-  "name": "production-agent-engineering",
+  "name": "fde-guide",
   "version": "1.0.1",
-  "description": "FDE field guide and executable reference kit for production AI agents.",
+  "description": "A practical FDE guide to value engineering and production AI systems.",
   "private": true,
   "license": "Apache-2.0",
   "author": {
@@ -10,17 +10,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davidahmann/production-agent-engineering.git"
+    "url": "git+https://github.com/davidahmann/fde-guide.git"
   },
   "bugs": {
-    "url": "https://github.com/davidahmann/production-agent-engineering/issues"
+    "url": "https://github.com/davidahmann/fde-guide/issues"
   },
-  "homepage": "https://github.com/davidahmann/production-agent-engineering#readme",
+  "homepage": "https://github.com/davidahmann/fde-guide#readme",
   "keywords": [
-    "ai-agents",
-    "agentic-ai",
     "fde",
+    "value-engineering",
+    "software-architecture",
     "production-ai",
+    "ai-systems",
+    "ai-agents",
     "evaluation",
     "ai-security",
     "observability"

@@ -1,25 +1,36 @@
-# Production Agent Engineering: An FDE Field Guide
+# The FDE Guide
 
-An independent, open-source forward-deployed engineering (FDE) guide for moving AI-agent workflows from discovery to controlled production use.
+> **Value engineering and production architecture for AI-enabled systems**
 
-[![Repository validation](https://github.com/davidahmann/production-agent-engineering/actions/workflows/validate.yml/badge.svg)](https://github.com/davidahmann/production-agent-engineering/actions/workflows/validate.yml)
+![The FDE Guide: Discover value, design the system, govern decisions, release safely, operate outcomes](assets/fde-guide-banner.svg)
+
+An independent, open-source forward-deployed engineering (FDE) guide for moving a customer workflow from discovery to a measurable, operated outcome.
+
+[![Repository validation](https://github.com/davidahmann/fde-guide/actions/workflows/validate.yml/badge.svg)](https://github.com/davidahmann/fde-guide/actions/workflows/validate.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
 Use this repository to:
 
-- Find operational work where an agent can create measurable value—and reject weak use cases early.
-- Turn field observations into a clear workflow, solution design, delivery plan, and controlled production service.
+- Find operational work where a software system can create measurable value—and reject weak use cases early.
+- Choose the smallest adequate mix of rules, optimization, ML, foundation models, agents, and human review.
+- Turn field observations into a clear workflow, architecture, delivery plan, and controlled production service.
 - Give customer teams the evidence, skills, ownership, and operating routines to maintain the result.
 
 Leading an engagement? Begin with the [FDE playbooks](playbooks/README.md). Designing one system? Use [Start Here](library/00-start-here.md). Building with a coding agent? Give it [`AGENTS.md`](AGENTS.md) as its working map.
 
-## What problem this guide solves
+## The promise
 
-A useful demo can call a model and a few tools. A production system must also know who is allowed to act, which information is current, how to handle failure, how to prove that work finished, and how operators can stop or recover it.
+**From customer workflow to measurable, operated outcome.**
 
-In this guide, a **production agent** is a bounded workflow in which a model makes some decisions, software controls tools and state, and people remain accountable for the outcome.
+A useful demo can call a model and a few tools. A production AI-enabled system must also know who is allowed to act, which information is current, how to handle failure, how to prove that work finished, how much it costs, and how operators can stop or recover it.
 
-This repository provides the design sequence, reusable contracts, tests, and operating checks around that workflow. It does not require a specific model or agent framework. It is not a drop-in runtime, a certification, or a substitute for your organization's security and risk review.
+In this guide, a **production agent** is a bounded workflow in which a foundation model makes some decisions, software controls tools and state, and people remain accountable for the outcome. An agent is one component option—not the default answer for every decision.
+
+This repository provides the design sequence, reusable contracts, tests, and operating checks around that system. It does not require a specific model, cloud, or agent framework. It is not a drop-in runtime, a certification, or a substitute for your organization's security and risk review.
+
+## Value engineering is the spine
+
+Work in this order: **outcome → workflow → decision → system → controlled action → accepted result → measured value**. Start with the user's operational decision and the economics of an accepted result. Only then choose the software architecture and the smallest adequate intelligence mechanism. The [value-engineering guide](library/11-value-engineering-and-frugal-architecture.md) and [intelligence-selection guide](library/12-software-architecture-and-intelligence-selection.md) are the two starting points for that work.
 
 ## Find your path
 
@@ -27,12 +38,14 @@ This repository provides the design sequence, reusable contracts, tests, and ope
 | --- | --- | --- |
 | Lead an FDE engagement | [FDE playbooks](playbooks/README.md) | A path from field discovery and value to customer-owned production operation |
 | Decide what to build | [Discovery and Value](playbooks/01-discovery-and-value.md) and [Start Here](library/00-start-here.md) | An observed workflow, owner, baseline, measurable outcome, verifier, and go/no-go decision |
+| Make the value and cost case | [Value Engineering and Frugal Architecture](library/11-value-engineering-and-frugal-architecture.md) | A full-cost, outcome-level case with guardrails, cost ceiling, and stop conditions |
+| Choose rules, ML, models, or agents | [Software Architecture and Intelligence Selection](library/12-software-architecture-and-intelligence-selection.md) | The smallest sufficient decision mechanism, fallback, and measurable selection rationale |
 | Design a production system | [Production Implementation Playbook](library/07-production-implementation-playbook.md) | A domain model, architecture, behavior bundle, tool and capability contracts, evaluation cases, and threat model |
 | Choose an architecture | [Blueprint selector](blueprints/README.md) | The smallest system shape that fits the workflow and its risks |
 | Deliver and transfer a solution | [Solution Design and Delivery](playbooks/02-solution-and-delivery.md) | A tested vertical slice, adoption evidence, release plan, and customer-owned handoff |
-| Review an existing agent | [Production, Evaluation, and Governance](library/04-production-evaluation-and-governance.md) and [release gates](operations/release-gates.md) | A list of control gaps, required tests, and a release decision |
+| Review an existing AI system | [Production, Evaluation, and Governance](library/04-production-evaluation-and-governance.md) and [release gates](operations/release-gates.md) | A list of control gaps, required tests, and a release decision |
 | Build or repair evaluations | [Evaluation Corpus and Review Loops](library/09-evaluation-corpus-and-review-loops.md) | Repeatable success, failure, and adversarial scenarios |
-| Operate or improve an agent | [Operate and Scale](playbooks/03-operate-and-scale.md) | A service cadence covering outcomes, adoption, reliability, safety, cost, change, and retirement |
+| Operate or improve a system | [Operate and Scale](playbooks/03-operate-and-scale.md) | A service cadence covering outcomes, adoption, reliability, safety, cost, change, and retirement |
 | Debug a production failure | [Telemetry contract](operations/telemetry-contract.md) and [incident runbook](operations/incident-runbook.md) | Evidence for diagnosis, containment, recovery, and a regression case |
 | Learn from working code | [Invoice-exception reference](examples/invoice-exception/README.md) | A tested example of approval, authorization, retry safety, and result verification |
 | Understand why guidance exists | [Source index](library/05-source-index.md) and [dated research ledger](research/README.md) | The evidence, caveats, and review date behind a recommendation |
@@ -44,7 +57,7 @@ The repository follows one delivery path. Each stage produces an artifact that t
 ```mermaid
 flowchart LR
     A["Observe the work"] --> B["Charter value and scope"]
-    B --> C["Design the decision system"]
+    B --> C["Select the decision mechanism"]
     C --> D["Build one controlled slice"]
     D --> E["Prove it with cases and users"]
     E --> F["Launch with owners and rollback"]
@@ -56,10 +69,11 @@ flowchart LR
 | Observe | How does the work actually happen, including exceptions and workarounds? | [Field-observation log](templates/field-observation-log.md) and [FDE discovery pack](templates/fde-discovery-pack.md) |
 | Charter | What narrow decision is worth improving, how will value be measured, and who owns the result? | [Workflow charter](templates/workflow-charter.json) and [value case](templates/value-case.md) |
 | Plan adoption | How will users test, adopt, support, change, and eventually own the workflow? | [Delivery and adoption plan](templates/delivery-and-adoption-plan.md) and draft [customer handoff](templates/customer-enablement-handoff.md) |
+| Select intelligence | Which decision steps belong in rules, optimization, ML, retrieval, a foundation model, an agent, or human review? | [Intelligence-selection record](templates/intelligence-selection-record.md) and [architecture guide](library/12-software-architecture-and-intelligence-selection.md) |
 | Model the domain | What objects, actions, rules, and sources of truth matter? | [Domain model template](templates/operational-ontology.json) |
-| Design | Where do models, deterministic code, and people make decisions? | [Agent-system template](templates/agent-system.json) |
+| Design | Where do deterministic software, optimization, ML, foundation models, tools, and people make decisions? | [Agent-system template](templates/agent-system.json) and [architecture decision record](templates/architecture-decision-record.md) |
 | Bind behavior | Which exact model route, prompt, harness, context policy, guardrails, and runtime work together? | [Behavior-bundle template](templates/behavior-bundle.json) |
-| Bound capabilities | What may each exact capability build read or change, for whom, and under what policy? | [Tool contract](templates/tool-contract.json), [capability manifest](templates/capability-manifest.json), and [capability supply-chain guide](operations/capability-supply-chain.md) |
+| Bind capabilities | What may each exact capability build read or change, for whom, and under what policy? | [Tool contract](templates/tool-contract.json), [capability manifest](templates/capability-manifest.json), and [capability supply-chain guide](operations/capability-supply-chain.md) |
 | Threat model | How could data, tools, identity, or evaluation be abused? | [Threat-model template](templates/threat-model.json) |
 | Prove | Does it succeed, fail safely, and help users on representative work? | [Evaluation cases](templates/evaluation-case.json) and [evaluation report](templates/evaluation-report.json) |
 | Launch | What compatible release and bounded autonomy are justified, who supports them, and what reverses them? | [Solution-release manifest](templates/solution-release.json), [release gates](operations/release-gates.md), and [customer handoff](templates/customer-enablement-handoff.md) |
@@ -93,8 +107,9 @@ It includes machine-readable design files, a behavior bundle, tool and capabilit
 | [Enterprise agent platform](blueprints/enterprise-agent-platform.md) | Several governed workflows need shared domain, capability, identity, evaluation, release, and operating services | A reusable control plane with customer-specific solution layers |
 | [Governed data analysis](blueprints/data-analysis-agent.md) | Iterative analysis depends on metric semantics, query/code execution, source revisions, and claim-level review | An evidence-linked notebook, report, or decision artifact |
 | [Controlled improvement](blueprints/controlled-improvement-agent.md) | Production signals should become isolated change candidates without giving the agent merge or deployment authority | A replay-tested candidate, independent decision, canary, or rollback |
+| [Hybrid intelligence system](blueprints/hybrid-intelligence-system.md) | One workflow needs deliberate rules, optimization, ML, retrieval, foundation-model, and human-review routing | A bounded decision system with route-specific evidence, fallback, and cost controls |
 
-Start with a deterministic workflow when the steps and branches are already known. Add an agent only where bounded judgment is useful. Add multiple agents only when a real permission, context, ownership, or latency boundary justifies the coordination cost.
+Start with a deterministic workflow when the steps and branches are already known. Use optimization for constrained allocation, classical ML for measured predictions, retrieval for governed evidence, and human review for weakly verifiable or high-stakes judgment. Add an agent only where bounded multi-step judgment is useful. Add multiple agents only when a real permission, context, ownership, or latency boundary justifies the coordination cost.
 
 ## Production rules in plain language
 
@@ -106,6 +121,7 @@ Start with a deterministic workflow when the steps and branches are already know
 - A retry of the same business operation must not create a second real-world change.
 - After a consequential change, check the system of record before claiming success.
 - Limit steps, time, retries, parallel work, and cost; every run needs an explicit stop reason.
+- Treat cost as a non-functional requirement: measure full cost per accepted outcome and prefer the smallest mechanism that satisfies the outcome and risk ceiling.
 - Keep evaluation data and pass signals outside the agent's control.
 - Capture enough evidence to explain, pause, recover, and improve the workflow.
 - Pass work between agents or context windows through a typed, expiring, authority-reducing handoff—not a free-form summary.
@@ -130,11 +146,11 @@ The machine-readable [control catalog](controls/control-catalog.json) contains t
 | [`catalog.json`](catalog.json) | Which governed artifacts have stable IDs, types, paths, and tags |
 | [`scripts/`](scripts/validate-repository.mjs) and [`tests/`](tests/schema-contracts.test.mjs) | How repository structure, contracts, and examples are verified |
 
-The [agent-systems mind map](library/08-agent-systems-mind-map.md) shows how customer value, domain context, tools, identity, verification, adoption, and operations depend on one another. The [FDE and production-agent synthesis](library/10-fde-and-production-agent-synthesis.md) records the portable lessons behind the lifecycle.
+The [production AI-systems mind map](library/08-agent-systems-mind-map.md) shows how customer value, architecture, intelligence selection, context, control, evidence, adoption, and operations depend on one another. The [FDE and production AI-system synthesis](library/10-fde-and-production-agent-synthesis.md) records the portable lessons behind the lifecycle.
 
 ## Evidence and scope
 
-The guide combines practice-informed patterns with technical sources. The foundational [source index](library/05-source-index.md) distinguishes supplied summaries, supplied full text, and directly reviewed references. The dated research ledger covers sources reviewed from 2026-02-07 through 2026-08-07 and records caveats alongside portable findings. A separate [practitioner-video index](research/2026-08-07--ai-engineer-production-agent-video-index.md) records exact talks, chapters, corroboration, and claim limits.
+The guide combines practice-informed patterns with technical sources. The foundational [source index](library/05-source-index.md) distinguishes supplied summaries, supplied full text, and directly reviewed references. The dated research ledger covers implementation sources reviewed from 2026-02-07 through 2026-08-07, plus explicitly revalidated foundations, and records caveats alongside portable findings. A separate [practitioner-video index](research/2026-08-07--ai-engineer-production-agent-video-index.md) records exact talks, chapters, corroboration, and claim limits.
 
 Vendor scale and performance figures remain attributed. Experimental findings remain labeled. Platform behavior changes, so apply the same controls to your own environment and verify claims against current primary documentation before deployment.
 
@@ -159,10 +175,11 @@ The suite checks repository links and anchors, JSON contracts, policy denials, a
 A useful starting prompt is:
 
 ```text
-Follow AGENTS.md. Help me design a production agent for [workflow].
+Follow AGENTS.md. Help me design a production AI-enabled system for [workflow].
 Start by observing and chartering the current work: actor, decision,
 inputs, action, owner, baseline, accepted outcome, verifier, adoption path,
-and risk ceiling. Recommend the smallest matching blueprint. Then produce
+and risk ceiling. Compare deterministic, optimization, ML, retrieval,
+foundation-model, agent, and human options. Recommend the smallest matching blueprint. Then produce
 the required design artifacts, threat model, evaluation cases, release
 plan, and operating handoff, citing repository control IDs. Do not begin
 implementation while a consequential discovery question is unresolved.
@@ -172,7 +189,7 @@ For an implementation or review task, state the target workflow, allowed autonom
 
 ## Contribute
 
-Start with [CONTRIBUTING.md](CONTRIBUTING.md). Use [GitHub Discussions](https://github.com/davidahmann/production-agent-engineering/discussions) for design questions, [Issues](https://github.com/davidahmann/production-agent-engineering/issues) for reproducible defects or evidence corrections, and the private vulnerability channel in [SECURITY.md](SECURITY.md) for security reports.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md). Use [GitHub Discussions](https://github.com/davidahmann/fde-guide/discussions) for design questions, [Issues](https://github.com/davidahmann/fde-guide/issues) for reproducible defects or evidence corrections, and the private vulnerability channel in [SECURITY.md](SECURITY.md) for security reports.
 
 Maintained by [David Ahmann](https://github.com/davidahmann) ([LinkedIn](https://www.linkedin.com/in/dahmann/)), a cloud, data, and AI platform leader with Field CTO experience. This is an independent project; no current or former employer endorsement is implied.
 

@@ -111,7 +111,7 @@
           "uri": "../../package-lock.json",
           "version": "1.0.1",
           "schema_version": null,
-          "digest": "sha256:a515e67f2c442a1b8a881fbf3514c888f02de66a87c0d2551dd42cee8b7efcfb"
+          "digest": "sha256:b12fb82e484d0618ca570a13c639bb82f2abfa2e5f19bad6364f0d40e17d5c55"
         },
         {
           "component_id": "invoice-ontology",
@@ -202,14 +202,14 @@
           "uri": "../../schemas/trace-event.schema.json",
           "version": null,
           "schema_version": null,
-          "digest": "sha256:84f89b501a6ce8136047b57a01e61368a4a4355c12af231de67e4a9bf37e4f49"
+          "digest": "sha256:4329d4ba2aa7e87f4f12064fb3b5e5c54aaf8ff124898e4d3764857a4c0f62cc"
         },
         {
           "component_id": "effect-receipt-contract",
           "uri": "../../schemas/effect-receipt.schema.json",
           "version": null,
           "schema_version": null,
-          "digest": "sha256:ffd1239984af22a227678826ec05da9e0a3df3604d7b5d52fcc59adc4ae784b2"
+          "digest": "sha256:d49c8e52abae3fbe80bc3071b80ddc575cac18d8a9d8a3420c97f3afd7062325"
         },
         {
           "component_id": "invoice-workflow-charter",
@@ -233,7 +233,7 @@
           "digest": "sha256:40067352fe535cda5aa86940b514d6b2c72ac032841378034800cc180558114e"
         }
       ],
-      "environment_digest": "sha256:df1e9a66817bd2c0f5857bc17be348f66b6a1bf04bad5e3833234c0070961f42",
+      "environment_digest": "sha256:8ad8a63826b95d2c24abf63bb416a36519d558ec81382368d5bdfb1fb80dbaae",
       "network_mode": "unenforced"
     }
   },
@@ -269,7 +269,7 @@
       "uri": "evaluation-output.json",
       "version": null,
       "schema_version": "1.0.0",
-      "digest": "sha256:85bcb7fdacb3f4f0255a084dae995a7384a4af376e7e20a0c72825515ed9bde5"
+      "digest": "sha256:149cb40471a912d6b7e00fa6ef1b5351c1c123ae828d3d43ea111597b2b87620"
     },
     "minimum_confidence": 1
   },

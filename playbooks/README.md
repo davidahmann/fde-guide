@@ -23,7 +23,7 @@ flowchart LR
 | Qualify | Is this problem important, owned, bounded, and verifiable? | Candidate brief and gate result | Discover, defer, or reject |
 | Discover | How does the work actually happen, including exceptions and workarounds? | Observation log, current-state workflow, source map, exception set | Charter or stop |
 | Charter | Which outcome, segment, verifier, value hypothesis, and risk ceiling define success? | [Workflow charter](../templates/workflow-charter.json) and [value case](../templates/value-case.md) | Pilot, defer, or do not build |
-| Design | How do data, logic, actions, security, users, and operations fit together? | Domain model, system design, behavior bundle, tool contracts, capability manifests, threat model, eval plan | Build or redesign |
+| Design | How do data, logic, actions, security, users, operations, and the selected intelligence mechanisms fit together? | Intelligence-selection record, domain model, system design, behavior bundle where needed, tool contracts, capability manifests, threat model, eval plan | Build or redesign |
 | Build | What is the smallest end-to-end slice that can prove the outcome? | Working vertical slice and delivery evidence | Continue or stop |
 | Prove | Does it work on representative cases, with users, within risk and cost limits? | Replay, shadow, adoption, value evidence, and [evaluation report](../templates/evaluation-report.json) | Canary, revise, or stop |
 | Launch | Can the compatible solution be contained, recovered, supported, and rolled back? | [Solution-release manifest](../templates/solution-release.json), runbooks, trained owners, cutover decision | Bounded production or hold |
@@ -47,6 +47,7 @@ The [production implementation playbook](../library/07-production-implementation
 | [FDE discovery pack](../templates/fde-discovery-pack.md) | Map workflow, sources, decisions, exceptions, and readiness |
 | [Workflow charter](../templates/workflow-charter.json) | Bind problem, scope, outcome, value, readiness, owners, and decision |
 | [Value case](../templates/value-case.md) | Separate estimated, measured, and realized value |
+| [Intelligence selection record](../templates/intelligence-selection-record.md) | Choose the smallest sufficient combination of rules, optimization, ML, retrieval, models, agents, and human review |
 | [Delivery and adoption plan](../templates/delivery-and-adoption-plan.md) | Coordinate the vertical slice, acceptance, rollout, and enablement |
 | [Production handoff](../templates/customer-enablement-handoff.md) | Prove the customer can operate, change, support, and retire the service |
 | [Production service review](../templates/production-service-review.md) | Review outcomes, SLOs, adoption, risk, cost, change, and ownership |

@@ -4,7 +4,7 @@ import test from "node:test";
 import { githubSlug, markdownAnchors, stripHtmlTags } from "../scripts/markdown-anchors.mjs";
 
 test("GitHub-style slugs normalize punctuation and whitespace", () => {
-  assert.equal(githubSlug("  Production Agent Engineering!  "), "production-agent-engineering");
+  assert.equal(githubSlug("  The FDE Guide!  "), "the-fde-guide");
 });
 
 test("inline HTML tags are removed without re-forming nested markup", () => {

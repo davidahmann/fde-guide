@@ -1,4 +1,4 @@
-# Discovery and Value
+# Discovery, Value Engineering, and Frugal Architecture
 
 The FDE's first deliverable is not code. It is a shared, evidence-backed definition of the work, the decision that matters, the value at stake, and the smallest intervention worth testing.
 
@@ -119,7 +119,15 @@ Use ranges when inputs are uncertain. Declare the attribution method: comparison
 
 Control: `VAL-002`.
 
-## 6. Assess readiness
+## 6. Make the cost and architecture decision explicit
+
+Record the full cost per accepted outcome before selecting an expensive model route or adding autonomy. Include model, retrieval, tools, compute, storage, waiting, retries, human review, recovery, support, and allocated delivery cost. Cost is a non-functional requirement, not a post-launch optimization. [R26-63] [R26-64]
+
+For each consequential decision, compare deterministic logic, optimization, classical ML, retrieval, foundation-model interpretation, bounded agency, and human review when relevant. Select the smallest sufficient mechanism and name its fallback. Use the [intelligence-selection record](../templates/intelligence-selection-record.md).
+
+Control: `ARC-005`.
+
+## 7. Assess readiness
 
 Score each dimension from `0` to `4`, and attach evidence:
 
@@ -133,7 +141,7 @@ Score each dimension from `0` to `4`, and attach evidence:
 
 Assess workflow clarity, context ownership/freshness, verifier quality, integration contracts, user adoption, risk controls, and production operations. A total score is not a release gate. A zero in verifier quality is blocking; missing authenticated authority, accountable operational/service ownership, or a lawful data path is a hard-gate failure outside the score.
 
-## 7. Charter or stop
+## 8. Charter or stop
 
 Complete the machine-readable [workflow charter](../templates/workflow-charter.json). The charter records:
 
@@ -171,3 +179,5 @@ Permitted decisions are discover, pilot, defer, do not build, promote, pause, or
 [R26-37]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-37
 [R26-39]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-39
 [R26-41]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-41
+[R26-63]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-63
+[R26-64]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-64

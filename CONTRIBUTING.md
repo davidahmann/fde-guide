@@ -5,7 +5,7 @@ Contributions that improve the technical accuracy, executable examples, controls
 ## Before opening a change
 
 1. Read [`AGENTS.md`](AGENTS.md) and follow the route for your change.
-2. Search existing [issues](https://github.com/davidahmann/production-agent-engineering/issues) and pull requests.
+2. Search existing [issues](https://github.com/davidahmann/fde-guide/issues) and pull requests.
 3. For a new control, schema, or blueprint, open a design proposal before a large implementation.
 4. For a security issue, follow [`SECURITY.md`](SECURITY.md) instead of opening a public issue.
 

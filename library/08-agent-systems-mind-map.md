@@ -1,75 +1,83 @@
-# Agent Systems Mind Map
+# Production AI Systems Mind Map
 
-Use this map to understand the dependency structure of a production agent. The central insight is that capability appears only when value, context, control, evidence, and operations work together.
+Use this map to understand the dependency structure of a production AI-enabled system. The central insight is that capability appears only when value, architecture, intelligence selection, context, control, evidence, and operations work together.
 
 ```mermaid
 flowchart TD
-    A["Production-ready agent"]
+    A["Production-ready AI system"]
 
     A --> B["1. Customer workflow and value"]
     B --> B1["Observed work, baseline, outcome"]
     B --> B2["Decision, action, and owner"]
     B --> B3["Verifier and value hypothesis"]
 
-    A --> C["2. Context and knowledge"]
-    C --> C1["Sources of truth and freshness"]
-    C --> C2["Scope, permissions, provenance"]
-    C --> C3["Retrieval portfolio"]
-    C --> C4["Sufficiency check and uncertainty"]
+    A --> C["2. Architecture and intelligence selection"]
+    C --> C1["System and trust boundaries"]
+    C --> C2["Rules, optimization, ML, model, agent, human"]
+    C --> C3["State, APIs, events, and failure semantics"]
+    C --> C4["Cost, quality, and fallback trade-offs"]
 
-    A --> D["3. Harness and action surfaces"]
-    D --> D1["Task-scoped typed tools"]
-    D --> D2["Progressive capability discovery"]
-    D --> D3["Sandbox, egress, and budgets"]
-    D --> D4["Explicit workflow state"]
-    D --> D5["Capability provenance and lifecycle"]
+    A --> D["3. Context and knowledge"]
+    D --> D1["Sources of truth and freshness"]
+    D --> D2["Scope, permissions, provenance"]
+    D --> D3["Retrieval portfolio"]
+    D --> D4["Sufficiency check and uncertainty"]
 
-    A --> E["4. Identity and governance"]
-    E --> E1["Dedicated agent identity"]
-    E --> E2["Caller authorization propagation"]
-    E --> E3["Gateway-held secrets"]
-    E --> E4["Staged writes and approval"]
+    A --> E["4. Harness and action surfaces"]
+    E --> E1["Task-scoped typed tools"]
+    E --> E2["Progressive capability discovery"]
+    E --> E3["Sandbox, egress, and budgets"]
+    E --> E4["Explicit workflow state"]
+    E --> E5["Capability provenance and lifecycle"]
 
-    A --> F["5. Evidence loop"]
-    F --> F1["Postconditions and readback"]
-    F --> F2["Bounded retry and error classes"]
-    F --> F3["Human escalation"]
-    F --> F4["Rollback or compensation"]
+    A --> F["5. Identity and governance"]
+    F --> F1["Dedicated agent identity"]
+    F --> F2["Caller authorization propagation"]
+    F --> F3["Gateway-held secrets"]
+    F --> F4["Staged writes and approval"]
 
-    A --> G["6. Evaluation"]
-    G --> G1["Contract and component tests"]
-    G --> G2["Trajectory and artifact evaluation"]
-    G --> G3["Safety and adversarial tests"]
-    G --> G4["Evaluator integrity"]
+    A --> G["6. Evidence loop"]
+    G --> G1["Postconditions and readback"]
+    G --> G2["Bounded retry and error classes"]
+    G --> G3["Human escalation"]
+    G --> G4["Rollback or compensation"]
 
-    A --> H["7. Adoption and operations"]
-    H --> H1["Trace, version, and provenance"]
-    H --> H2["Adoption, override, and review load"]
-    H --> H3["Behavior, value, and full cost"]
-    H --> H4["Customer owner, recovery, retirement"]
-    H --> H5["Governed field-learning loop"]
+    A --> H["7. Evaluation"]
+    H --> H1["Contract and component tests"]
+    H --> H2["Trajectory and artifact evaluation"]
+    H --> H3["Safety and adversarial tests"]
+    H --> H4["Evaluator integrity"]
 
-    A --> I["8. Scale and orchestration"]
-    I --> I1["Bounded fan-out"]
-    I --> I2["Idempotency, cancellation, merge"]
-    I --> I3["Durable execution and replay"]
-    I --> I4["Machine-scale quotas and rate limits"]
-    I --> I5["Typed, expiring handoffs"]
+    A --> I["8. Adoption and operations"]
+    I --> I1["Trace, version, and provenance"]
+    I --> I2["Adoption, override, and review load"]
+    I --> I3["Behavior, value, and full cost"]
+    I --> I4["Customer owner, recovery, retirement"]
+    I --> I5["Governed field-learning loop"]
 
-    A --> J["9. Release and lifecycle"]
-    J --> J1["Compatible solution manifest"]
-    J --> J2["Shadow, canary, and approval gates"]
-    J --> J3["Rollback and kill switches"]
-    J --> J4["Improve, expand, or retire"]
+    A --> J["9. Scale and orchestration"]
+    J --> J1["Bounded fan-out"]
+    J --> J2["Idempotency, cancellation, merge"]
+    J --> J3["Durable execution and replay"]
+    J --> J4["Machine-scale quotas and rate limits"]
+    J --> J5["Typed, expiring handoffs"]
 
-    C --> F
-    D --> E
+    A --> K["10. Release and lifecycle"]
+    K --> K1["Compatible solution manifest"]
+    K --> K2["Shadow, canary, and approval gates"]
+    K --> K3["Rollback and kill switches"]
+    K --> K4["Improve, expand, or retire"]
+
+    B --> C
+    C --> D
+    D --> G
     E --> F
     F --> G
     G --> H
-    H --> B
-    I --> D
-    J --> H
+    H --> I
+    I --> B
+    J --> E
+    K --> I
 ```
 
 ## Navigation
@@ -83,6 +91,8 @@ flowchart TD
 | Architecture topology | [Reference blueprints](../blueprints/README.md) |
 | Mandatory controls | [Production control catalog](../controls/control-catalog.json) |
 | Customer workflow and value | [Discovery and Value](../playbooks/01-discovery-and-value.md) |
+| Value engineering and cost | [Value Engineering and Frugal Architecture](11-value-engineering-and-frugal-architecture.md) |
+| Architecture and intelligence selection | [Software Architecture and Intelligence Selection](12-software-architecture-and-intelligence-selection.md) and [hybrid intelligence blueprint](../blueprints/hybrid-intelligence-system.md) |
 | Context and knowledge | [Context and Knowledge Systems](02-context-and-knowledge-systems.md) |
 | Harness, state, tools, and orchestration | [Agent System Architecture](03-agent-system-architecture.md) |
 | Capability admission and lifecycle | [Capability supply chain](../operations/capability-supply-chain.md) and [capability-manifest Schema](../schemas/capability-manifest.schema.json) |
@@ -99,6 +109,7 @@ flowchart TD
 Start at the center and move clockwise. A branch with no concrete artifact is a design gap:
 
 - No observed workflow, baseline, owner, or verifier means the workflow is not ready for delivery.
+- No explicit decision-mechanism choice means rules, optimization, ML, foundation-model, agent, and human responsibilities may drift into an unreviewable system.
 - No source-of-truth or provenance means context cannot support a consequential decision.
 - No scoped identity or staged write means tool use is unsafe by default.
 - No postcondition or rollback means the loop cannot prove success or recover.

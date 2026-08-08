@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/davidahmann/production-agent-engineering/schemas/handoff-envelope.schema.json",
+  "$id": "https://github.com/davidahmann/fde-guide/schemas/handoff-envelope.schema.json",
   "title": "Bounded agent handoff envelope",
   "type": "object",
   "additionalProperties": false,
