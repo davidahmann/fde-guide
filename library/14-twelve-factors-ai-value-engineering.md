@@ -138,6 +138,8 @@ Evaluate representative cases, difficult slices, known exceptions, adversarial c
 
 Every expansion needs explicit promotion and rollback criteria.
 
+For a pilot, predeclare its maximum duration, evidence cutoff, decision owner, and separate technical, operator, adoption, value, economics, and production-readiness graduation gates. A successful demonstration or composite score cannot average away a failed gate.
+
 **Evidence:** Evaluation suite, slice-level results, failure tests, applicable release decision, and rollback plan. For a model/agent release, use the [evaluation report](../templates/evaluation-report.json) and [solution-release decision](../templates/solution-release.json); deterministic, optimization, or classical-ML-only systems retain equivalent target software evaluation and release evidence. `EVA-001`, `EVA-003`, `DEL-001`.
 
 ## 11. Measure attributable realized value
@@ -164,6 +166,8 @@ Autonomy and investment must earn their way forward.
 Expand when accepted outcomes, adoption, economics, reliability, ownership, and recovery remain healthy for the relevant segment. Constrain when failures, cost, ambiguity, or reviewer load exceed agreed limits. Retire systems that no longer create sufficient value, have lost their owner, or cannot be operated responsibly.
 
 A stronger benchmark, larger model, or higher usage number does not automatically justify more authority.
+
+When several workflows compete for investment, an [FDE and applied-AI portfolio review](../templates/fde-portfolio-review.md) may compare stage flow, time to accepted outcome and value, full delivery economics, continuation health, capacity, and responsible reuse. Portfolio evidence routes attention; it never overrides an individual workflow's value, safety, release, ownership, or retirement gate.
 
 **Evidence:** [Service review](../templates/production-service-review.md), expansion decision, constraint triggers, [change assessment](../templates/change-impact-assessment.json), rollback evidence, and retirement plan. `VAL-003`, `ADP-002`, `OPS-007`.
 
@@ -193,7 +197,7 @@ The score supports a conversation. It is not a certification, and strong factors
 | 1–5: work, outcome, population, counterfactual, verifier | [Discovery and Value](../playbooks/01-discovery-and-value.md), [workflow charter](../templates/workflow-charter.json), [value case](../templates/value-case.md) |
 | 6–8: adoption, mechanism, authority | [Delivery plan](../templates/delivery-and-adoption-plan.md), [intelligence selection](../templates/intelligence-selection-record.md), [system design](../playbooks/02-solution-and-delivery.md) |
 | 9–10: full cost and representative proof | [Value engineering](11-value-engineering-and-frugal-architecture.md), applicable evaluation and release evidence, model/agent [evaluation report](../templates/evaluation-report.json) where selected, and [release gates](../operations/release-gates.md) |
-| 11–12: realized value and lifecycle decision | [Service review](../templates/production-service-review.md), [operate and scale](../playbooks/03-operate-and-scale.md), [change management](../operations/change-management.md) |
+| 11–12: realized value and lifecycle decision | [Service review](../templates/production-service-review.md), optional multi-workflow [portfolio review](../templates/fde-portfolio-review.md), [operate and scale](../playbooks/03-operate-and-scale.md), [change management](../operations/change-management.md) |
 
 The framework synthesizes this guide's controls and field method. It is informed by outcome-led FDE practice, accepted-outcome economics, Frugal Architecture, and the distinction between AI activity and value recorded in the [source index](05-source-index.md#s11) and [research ledger](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-63). It is project guidance, not an external standard.
 

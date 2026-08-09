@@ -6,6 +6,7 @@
 | --- | --- |
 | Workflow ID | |
 | Executive sponsor | |
+| Independent sponsor or business-owner backup | |
 | Operational owner | |
 | Technical owner | |
 | Risk owner | |
@@ -21,6 +22,8 @@
 | Verifier | |
 | Maximum acceptable failure | |
 | Pilot stop conditions | |
+| Pilot maximum duration / evidence cutoff / graduation decision date | |
+| Continuation mechanism and decision owner | External deployment or renewal / internal funding or sponsorship / other |
 
 Use the machine-readable [workflow-charter template](workflow-charter.json) for the governed decision after discovery.
 

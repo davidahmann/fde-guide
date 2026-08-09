@@ -243,6 +243,15 @@ The original sources below establish the library's foundational concepts. For cu
 - **Use in this library:** Workflow-native product surfaces, route-level model economics, and the connection between FDE delivery and reusable platform capability.
 - **Caution:** This is an executive practitioner viewpoint, not a technical specification, independent market analysis, or evidence that any product layer creates a durable moat.
 
+<a id="s24"></a>
+## S24 — Fan Bing / XDash: FDE Guidance Book
+
+- **Evidence:** [Direct external secondary reference](https://github.com/xdash/FDE-the-Guidance-Book-of-Forward-Deployed-Engineer); repository and selected chapters reviewed 2026-08-09
+- **Author:** Fan Bing / XDash
+- **Contribution:** The book organizes FDE work around problem selection, deployment activation, continuation, expansion, replication, operating metrics, and professional ethics. Useful research leads include a time-bounded pilot graduation event, sponsor-continuity and continuation signals, full delivery economics, customer-specific effort trends, field-to-product reuse, and explicit professional boundaries.
+- **Use in this library:** [FDE commercial and professional-practice research note](../research/2026-08-09--fde-commercial-and-professional-practice.md), portfolio review, pilot graduation, sponsor resilience, and field-learning economics.
+- **Caution:** This is a narrative synthesis rather than a primary technical or audited operating source. Quantitative benchmarks, vendor outcomes, forecasts, sales tactics, pricing recommendations, and case claims are not adopted as project standards. The source permits non-commercial sharing but requires written permission for commercial adaptation; no source text, tables, or named framework vocabulary is incorporated here.
+
 ## Cross-source convergence
 
 The most repeated ideas are:
@@ -263,3 +272,4 @@ The most repeated ideas are:
 14. Adoption, support, and customer operating ownership are production gates, not post-launch documentation tasks.
 15. Data, domain, behavior, tools, policy, evaluation, runtime, and user experience form one compatible release boundary.
 16. Evaluation results need explicit claims, environment versions, repeated trials, uncertainty, and contamination controls.
+17. Engagement conversion, continuation, and reuse are portfolio signals; they do not replace workflow-level accepted outcomes, realized value, or release evidence.

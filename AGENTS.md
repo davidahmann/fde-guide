@@ -55,7 +55,7 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 | Build evaluations | [`$build-ai-evaluation`](.agents/skills/build-ai-evaluation/SKILL.md) | Reproducible release evidence and limitations |
 | Secure actions | [`$secure-ai-action-boundary`](.agents/skills/secure-ai-action-boundary/SKILL.md) | Trusted read and effect boundaries with negative tests |
 | Review readiness | [`$review-ai-production-readiness`](.agents/skills/review-ai-production-readiness/SKILL.md) | Evidence-backed release decision and rollback conditions |
-| Operate the service | [`$operate-ai-service`](.agents/skills/operate-ai-service/SKILL.md) | Outcome, adoption, reliability, safety, cost, and change decision |
+| Operate the service or portfolio | [`$operate-ai-service`](.agents/skills/operate-ai-service/SKILL.md) | Outcome, adoption, reliability, safety, cost, continuation, capacity, and change decision |
 | Transfer ownership | [`$transfer-ai-service`](.agents/skills/transfer-ai-service/SKILL.md) | Exercised operating capability and exit decision |
 | Productize learning | [`$productize-field-learning`](.agents/skills/productize-field-learning/SKILL.md) | Sanitized reusable-capability disposition and release path |
 
@@ -64,6 +64,7 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 | Task | Read next | Expected result |
 | --- | --- | --- |
 | Lead an FDE or internal delivery engagement | [FDE playbooks](playbooks/README.md) → current lifecycle stage → required templates | Evidence-backed decisions from qualification through business-owned production operation |
+| Review an FDE or applied-AI portfolio | [Operate and Scale](playbooks/03-operate-and-scale.md) → [portfolio review](templates/fde-portfolio-review.md) → linked service reviews and field-learning records | Cohort-aware investment, continuation, productization, transfer, capacity, and exit decisions without overriding workflow gates |
 | Build shared applied-AI capability | [FDE and applied AI engineering synthesis](library/10-fde-and-production-agent-synthesis.md) → current lifecycle stage → relevant reusable artifact | A deliberate boundary between workflow-specific delivery, reusable product/platform capability, and sanitized field learning |
 | Select a workflow | [Discovery and Value](playbooks/01-discovery-and-value.md) → [Start Here](library/00-start-here.md) → [discovery pack](templates/fde-discovery-pack.md) → [workflow charter](templates/workflow-charter.json) | Observed workflow, owner, baseline, accepted outcome, verifier, value hypothesis, and risk ceiling |
 | Design an AI-enabled system | Approved workflow charter → [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md) → [Value and Frugal Architecture](library/11-value-engineering-and-frugal-architecture.md) → [Software Architecture and Intelligence Selection](library/12-software-architecture-and-intelligence-selection.md) → [Solution Design and Delivery](playbooks/02-solution-and-delivery.md) → [blueprint selector](blueprints/README.md) → relevant templates | Value/cost case, intelligence-selection record, domain model, system design, behavior bundle where needed, contracts, evals, release, and adoption plan |
@@ -102,7 +103,7 @@ Create the smallest complete design packet in this order:
 13. Reproducible target-system evaluation evidence; when model or agent behavior is selected, bind it in [`templates/evaluation-report.json`](templates/evaluation-report.json)
 14. Versioned target software-release evidence against [`operations/release-gates.md`](operations/release-gates.md); when model or agent behavior is selected, use [`templates/solution-release.json`](templates/solution-release.json) to bind the evaluated behavior bundle, tools, capabilities, and other release artifacts
 15. Finalized customer handoff before delivery-team exit
-16. Recurring [`templates/production-service-review.md`](templates/production-service-review.md) after launch
+16. Recurring [`templates/production-service-review.md`](templates/production-service-review.md) after launch; add [`templates/fde-portfolio-review.md`](templates/fde-portfolio-review.md) only when comparing multiple workflows
 
 Do not begin with multi-agent topology or framework selection. First establish the observed workflow, accepted outcome, baseline, verifier, source systems, permissions, adoption path, accountable service owner, and maximum tolerable effect.
 
@@ -141,6 +142,7 @@ If these disagree, do not silently choose one. Identify the conflict, preserve t
 - System maps and change-impact assessments are derived evidence. They may route review and retrieval, but must not authorize effects, define policy, prove completion, or replace a primary source, release manifest, evaluation, or readback.
 - General-purpose execution is isolated and bounded by time, compute, filesystem, and network policy.
 - Do not add employer-confidential material, private data, credentials, or machine-local paths.
+- Preserve negative, inconclusive, stopped, and retired evidence; do not manufacture customer dependence or let contract, funding, sponsor, or portfolio pressure override target-system authority, safety, confidentiality, value, release, or retirement gates.
 - Repository agents may edit evaluation artifacts when the task requires it, but must not weaken fixtures, graders, thresholds, validators, or gates merely to make a check pass or conceal a failure.
 - Changes from an untrusted branch to `AGENTS.md`, workflows, package scripts, validators, tests, or evaluation infrastructure remain untrusted until reviewed against the trusted base branch.
 

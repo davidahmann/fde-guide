@@ -154,6 +154,8 @@ An executive sponsor and an operator judge a pilot differently. Capture both con
 | Operator or domain expert | Work surface, evidence access, exception handling, review load, and support | Shadow comparison, correction/override evidence, training completion, abandonment and wait-time guardrails |
 | Product or applied-AI team | Reusable capability without unsafe generalization | Explicit customer-specific boundary, validated recurrence, destination, and normal release evidence |
 
+Before recommending `pilot`, freeze a time-bounded graduation contract in the [delivery and adoption plan](../templates/delivery-and-adoption-plan.md). Technical performance, operator acceptance, adoption, business-value evidence, full economics, and production readiness are separate gates. Name the evidence cutoff, decision date, owner, and stop, redesign, transfer, or promotion path; a composite score cannot average away a failed gate. `FDE-003`, `VAL-001`, `VAL-002`, `ADP-002`.
+
 The pilot should improve the work around current systems of record before forcing a platform migration. If data ownership, identity, access, or auditability is inadequate, make that remediation a readiness dependency rather than hiding it behind an AI layer. `FDE-003`, `ADP-001`, `ADP-002`.
 
 ## 8. Assess readiness
@@ -192,7 +194,7 @@ Permitted decisions are discover, pilot, defer, do not build, promote, pause, or
 - [ ] The verifier and maximum acceptable failure are named.
 - [ ] Context, integration, adoption, security, and operations readiness are evidenced.
 - [ ] Value assumptions are falsifiable and have owners.
-- [ ] Pilot segment, stop conditions, and post-pilot owner are explicit.
+- [ ] Pilot segment, duration, evidence cutoff, separate graduation gates, stop conditions, decision date, and post-pilot owner are explicit.
 - [ ] The workflow charter is approved for the next stage.
 
 ## Discovery anti-patterns

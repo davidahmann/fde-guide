@@ -67,6 +67,54 @@ test("working value artifacts carry residual loss without double counting avoide
   assert.match(valueControl.requirement, /not counted twice/i);
 });
 
+test("engagement, service, and portfolio artifacts keep value, continuation, capacity, and reuse distinct", async () => {
+  const [delivery, service, portfolio, learning, operations, synthesis, catalogText] = await Promise.all([
+    readFile(path.join(root, "templates", "delivery-and-adoption-plan.md"), "utf8"),
+    readFile(path.join(root, "templates", "production-service-review.md"), "utf8"),
+    readFile(path.join(root, "templates", "fde-portfolio-review.md"), "utf8"),
+    readFile(path.join(root, "templates", "field-learning-register.md"), "utf8"),
+    readFile(path.join(root, "playbooks", "03-operate-and-scale.md"), "utf8"),
+    readFile(path.join(root, "library", "10-fde-and-production-agent-synthesis.md"), "utf8"),
+    readFile(path.join(root, "catalog.json"), "utf8"),
+  ]);
+
+  for (const gate of ["Technical performance", "Operator acceptance", "Adoption", "Business-value evidence", "Full economics", "Production readiness"]) {
+    assert.ok(delivery.includes(gate), `pilot graduation omits ${gate}`);
+  }
+  assert.match(delivery, /strong technical result or composite score cannot average away/i);
+  assert.match(delivery, /Primary sponsor \/ independent backup \/ succession trigger/);
+  assert.match(service, /Continuation and sponsor resilience/);
+  assert.match(service, /does not independently prove an accepted outcome or realized value/i);
+
+  for (const term of [
+    "Time to first accepted outcome",
+    "Time to first accepted value",
+    "Pilots reaching bounded production",
+    "Full delivery cost per workflow",
+    "Customer-specific effort ratio",
+    "Supported-workflow load",
+    "Sponsor resilience and operating capacity",
+  ]) assert.ok(portfolio.includes(term), `portfolio review omits ${term}`);
+  assert.match(portfolio, /portfolio average to override a workflow's value, safety, release, or retirement gate/i);
+  assert.match(portfolio, /not profit/i);
+  assert.match(portfolio, /External delivery \/ internal applied-AI team \/ mixed/);
+
+  for (const body of [learning, operations]) {
+    assert.match(body, /customer-specific effort ratio/i);
+    assert.match(body, /support/i);
+    assert.match(body, /outcome/i);
+  }
+  assert.match(synthesis, /Keep engagement, service, and portfolio evidence separate/);
+  assert.match(synthesis, /Professional practice boundaries/);
+  assert.match(synthesis, /do not manufacture dependence/i);
+
+  const catalog = JSON.parse(catalogText);
+  assert.equal(
+    catalog.artifacts.find((artifact) => artifact.path === "templates/fde-portfolio-review.md")?.id,
+    "template.fde-portfolio-review",
+  );
+});
+
 test("the four hard gates cannot be averaged away", async () => {
   const body = await readFile(frameworkPath, "utf8");
   const gateSection = body.match(/## Use the factors as gates, not an average\n([\s\S]*?)\n## Apply the framework/)?.[1] ?? "";
