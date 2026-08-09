@@ -25,7 +25,7 @@ Copy the smallest set needed for one workflow, replace the example values with e
 | [Capability manifest](capability-manifest.json) | Which exact capability build is admitted, with what provenance, authority, assurance, and lifecycle |
 | [Threat model](threat-model.json) | Which abuses and failures must be prevented, detected, recovered, and tested |
 | [Evaluation case](evaluation-case.json) | Which representative condition must succeed, fail safely, or escalate |
-| [Evaluation report](evaluation-report.json) | Which claim was tested under which versions, trials, limits, and contamination controls |
+| [Evaluation report](evaluation-report.json) | Which model- or agent-system claim was tested under which versions, trials, limits, and contamination controls |
 | [Handoff envelope](handoff-envelope.json) | What verified state, evidence, remaining work, authority, and budget one worker may pass to another |
 | [Architecture decision record](architecture-decision-record.md) | Why a consequential design choice was accepted and how it can be reversed |
 
@@ -45,9 +45,11 @@ Copy the smallest set needed for one workflow, replace the example values with e
 | Template | Decision it supports |
 | --- | --- |
 | [Delivery and adoption plan](delivery-and-adoption-plan.md) | How the vertical slice, acceptance, rollout, enablement, and ownership transfer will run |
-| [Solution release](solution-release.json) | Which compatible artifact bundle is approved for which segment and rollout |
+| [Solution release](solution-release.json) | Which compatible model- or agent-system artifact bundle is approved for which segment and rollout |
 | [Customer enablement handoff](customer-enablement-handoff.md) | Whether the receiving team can operate, change, recover, and retire the service |
 | [Production service review](production-service-review.md) | Whether to expand, constrain, pause, improve, or retire the live workflow |
 | [Field-learning register](field-learning-register.md) | Which recurring field signal becomes a customer fix, platform change, documented pattern, or rejected proposal |
+
+The current evaluation-report and solution-release JSON contracts are model/agent release profiles. A deterministic, optimization, or classical-ML-only system should use the target software release process with equivalent versioned data, model/code, policy, evaluation, operations, rollout, rollback, and ownership evidence; do not invent an agent system merely to satisfy these templates.
 
 Follow the full sequence in the [FDE playbooks](../playbooks/README.md). JSON artifacts declare a local schema and are checked by `npm run validate`.

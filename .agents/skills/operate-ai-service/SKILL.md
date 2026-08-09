@@ -9,14 +9,15 @@ Operate the accepted business outcome, not only the model endpoint. Keep value, 
 
 ## Read first
 
-1. Read [Operate and Scale](../../../playbooks/03-operate-and-scale.md) and the [operations map](../../../operations/README.md).
+1. Read factors 11–12 in the [12 Factors of AI Value Engineering](../../../library/14-twelve-factors-ai-value-engineering.md), [Operate and Scale](../../../playbooks/03-operate-and-scale.md), and the [operations map](../../../operations/README.md).
 2. Use the [production service review](../../../templates/production-service-review.md), [SLO scorecard](../../../operations/slo-scorecard.md), [telemetry contract](../../../operations/telemetry-contract.md), [behavior monitoring](../../../operations/behavior-monitoring.md), [incident runbook](../../../operations/incident-runbook.md), and [change management](../../../operations/change-management.md).
-3. Apply `OPS-001` through `OPS-007`, `REL-002` through `REL-004`, `ADP-002`, `CST-001`, and `CST-002` from the [control catalog](../../../controls/control-catalog.json).
+3. If the service uses a solution artifact, resolve it through the [solution portfolio](../../../solutions/README.md) and read only the selected business-flow pattern and optional vertical profile. Use their operating measures as seeds; local denominators, objectives, and owners control.
+4. Apply `OPS-001` through `OPS-007`, `REL-002` through `REL-004`, `ADP-002`, `CST-001`, and `CST-002` from the [control catalog](../../../controls/control-catalog.json).
 
 ## Workflow
 
 1. Confirm the service owner, technical owner, risk owner, support path, release authority, and business metric owner.
-2. Define SLOs for accepted outcomes, prohibited and duplicate effects, cycle time, cost, dependency health, recovery, and adoption. Set alert routes and error-budget actions.
+2. Define target-specific SLOs for accepted outcomes, prohibited and duplicate effects, cycle time, cost, dependency health, recovery, and adoption. Validate any solution-profile measure against local denominators and sources; set alert routes and error-budget actions.
 3. Trace identity, context, decisions, tools, policy, approvals, state, effects, readback, cost, and stop reason with privacy-safe identifiers.
 4. Exercise kill switches for new work, writes, workload identities, egress, and capability bundles. Rehearse severe failure detection, containment, readback, recovery, and communication.
 5. Review behavior clusters, incidents, user corrections, adoption barriers, and cost per accepted outcome. Turn diagnosed failures into replayable regressions.

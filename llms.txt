@@ -38,8 +38,8 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - Intelligence selection record: [templates/intelligence-selection-record.md](templates/intelligence-selection-record.md)
 - Machine-readable contracts: [schemas/README.md](schemas/README.md)
 - Versioned behavior contract: [schemas/behavior-bundle.schema.json](schemas/behavior-bundle.schema.json)
-- Evaluation claim contract: [schemas/evaluation-report.schema.json](schemas/evaluation-report.schema.json)
-- Compatible release contract: [schemas/solution-release.schema.json](schemas/solution-release.schema.json)
+- Model/agent evaluation claim contract: [schemas/evaluation-report.schema.json](schemas/evaluation-report.schema.json)
+- Model/agent compatible release contract: [schemas/solution-release.schema.json](schemas/solution-release.schema.json)
 - System-map contract: [schemas/system-map-manifest.schema.json](schemas/system-map-manifest.schema.json)
 - Change-impact contract: [schemas/change-impact-assessment.schema.json](schemas/change-impact-assessment.schema.json)
 - Capability provenance contract: [schemas/capability-manifest.schema.json](schemas/capability-manifest.schema.json)
@@ -68,11 +68,11 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - Transfer service ownership: [.agents/skills/transfer-ai-service/SKILL.md](.agents/skills/transfer-ai-service/SKILL.md)
 - Productize field learning: [.agents/skills/productize-field-learning/SKILL.md](.agents/skills/productize-field-learning/SKILL.md)
 
-Skills are instruction-only routes over the same governed artifacts above. They do not grant runtime tools, authority, approval, or evidence.
+Skills are instruction-only routes over the same governed artifacts above. They do not grant runtime tools, authority, approval, or evidence. When a skill uses a business-flow or vertical solution artifact, load only the selected artifact and treat it as a design hypothesis—not customer evidence or release evidence.
 
 Safety baseline: Model output does not authorize effects or prove completion. Side-effecting operations require boundary authorization and service-enforced duplicate safety; consequential effects also require source-of-truth verification.
 
-Build order: workflow charter and value case → intelligence-selection and architecture decisions → domain model → agent system/behavior bundle only when selected → tool contracts and capability manifests → threat model and evaluation → solution release. A tool change is incomplete until the exact build is admitted, included in the behavior bundle where applicable, evaluated, and bound into a new release digest.
+Build order: workflow charter and value case → intelligence-selection and architecture decisions → domain model → agent system/behavior bundle only when selected → tool contracts and capability manifests → threat model and evaluation → model/agent solution release when applicable, otherwise equivalent target software-release evidence. A tool change is incomplete until the exact build is admitted, included in the behavior bundle where applicable, evaluated, and bound into a new release digest.
 
 Contribution contract: [CONTRIBUTING.md](CONTRIBUTING.md)
 Security reports: [SECURITY.md](SECURITY.md)

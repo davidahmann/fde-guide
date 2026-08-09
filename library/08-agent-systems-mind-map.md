@@ -1,6 +1,6 @@
 # Production AI Systems Mind Map
 
-Use this map to understand the dependency structure of a production AI-enabled system. The central insight is that capability appears only when value, architecture, intelligence selection, context, control, evidence, and operations work together.
+Use this map to understand the dependency structure of a production AI-enabled system. The central insight is that production fitness emerges only when value, architecture, intelligence selection, context, control, evidence, and operations work together.
 
 ```mermaid
 flowchart TD
@@ -31,7 +31,7 @@ flowchart TD
     E --> E5["Capability provenance and lifecycle"]
 
     A --> F["5. Identity and governance"]
-    F --> F1["Dedicated agent identity"]
+    F --> F1["Explicit actor identity and mode"]
     F --> F2["Caller authorization propagation"]
     F --> F3["Gateway-held secrets"]
     F --> F4["Staged writes and approval"]
@@ -97,7 +97,7 @@ flowchart TD
 | Architecture topology | [Reference blueprints](../blueprints/README.md) |
 | Mandatory controls | [Production control catalog](../controls/control-catalog.json) |
 | Customer workflow and value | [Discovery and Value](../playbooks/01-discovery-and-value.md) |
-| Value engineering and cost | [Value Engineering and Frugal Architecture](11-value-engineering-and-frugal-architecture.md) |
+| Value engineering and cost | [12 Factors of AI Value Engineering](14-twelve-factors-ai-value-engineering.md) and [Value Engineering and Frugal Architecture](11-value-engineering-and-frugal-architecture.md) |
 | Architecture and intelligence selection | [Software Architecture and Intelligence Selection](12-software-architecture-and-intelligence-selection.md) and [hybrid intelligence blueprint](../blueprints/hybrid-intelligence-system.md) |
 | Complex-system navigation and material change | [Evidence Graphs and Change Intelligence](13-evidence-graphs-and-change-intelligence.md) and [map freshness and change impact](../operations/map-freshness-and-change-impact.md) |
 | Context and knowledge | [Context and Knowledge Systems](02-context-and-knowledge-systems.md) |

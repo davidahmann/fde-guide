@@ -23,7 +23,7 @@
   ],
   "properties": {
     "$schema": { "type": "string" },
-    "schema_version": { "const": "1.1.0" },
+    "schema_version": { "const": "1.2.0" },
     "workflow_id": { "$ref": "#/$defs/id" },
     "version": { "$ref": "#/$defs/version" },
     "status": {
@@ -109,6 +109,7 @@
         "adoption_rate",
         "value_per_accepted_outcome_usd",
         "annual_avoided_loss_usd",
+        "annual_expected_residual_loss_usd",
         "implementation_cost_usd",
         "annual_fixed_operating_cost_usd",
         "annual_variable_operating_cost_usd",
@@ -128,6 +129,10 @@
         },
         "value_per_accepted_outcome_usd": { "$ref": "#/$defs/nullableNonNegative" },
         "annual_avoided_loss_usd": { "$ref": "#/$defs/nullableNonNegative" },
+        "annual_expected_residual_loss_usd": {
+          "$ref": "#/$defs/nullableNonNegative",
+          "$comment": "Expected loss deducted only when it is not already reflected in value_per_accepted_outcome_usd or annual_avoided_loss_usd. Use null when unmeasured; do not assume zero."
+        },
         "implementation_cost_usd": { "$ref": "#/$defs/nullableNonNegative" },
         "annual_fixed_operating_cost_usd": { "$ref": "#/$defs/nullableNonNegative" },
         "annual_variable_operating_cost_usd": { "$ref": "#/$defs/nullableNonNegative" },

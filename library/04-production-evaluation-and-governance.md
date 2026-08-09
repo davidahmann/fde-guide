@@ -24,7 +24,7 @@ The practical ceiling on autonomy is often verification, not generation. [S05]
 
 | Verification | Consequence | Default operating mode |
 | --- | --- | --- |
-| Cheap, deterministic, high coverage | Low or reversible | Autonomous execution with monitoring |
+| Cheap, deterministic, high coverage | Low or reversible | Eligible for bounded automated execution after authority, expected-loss, recovery, and release gates pass |
 | Reliable but semantic or sampled | Moderate | Agent executes; reviewer or grader checks |
 | Subjective, incomplete, or expensive | High | Copilot, recommendation, or staged approval |
 | No agreed definition of good | Severe or irreversible | Human-owned until standards exist |

@@ -29,6 +29,7 @@ The referenced `workflow-charter.json` is authoritative for shared workflow, seg
 | Accepted-outcome uplift | — | — | — | — |
 | Value per accepted outcome | — | — | — | — |
 | Annual avoided loss | — | — | — | — |
+| Annual expected residual loss not already netted from unit value or avoided loss | — | — | — | — |
 | One-time implementation and change cost | — | — | — | — |
 | Annual fixed operating cost | — | — | — | — |
 | Variable model, tool, compute, storage, retry, and wait cost per eligible run | — | — | — | — |
@@ -42,13 +43,21 @@ annual_gross_realized_value =
   × value_per_accepted_outcome
   + measured_avoided_loss
 
+annual_net_value_before_system_cost =
+  annual_gross_realized_value
+  - residual_loss_adjustment
+
+residual_loss_adjustment =
+  0 when the exposure is already netted from unit value or avoided loss
+  otherwise separately attributed residual or incremental harm
+
 annual_variable_cost =
   eligible_runs
   × (variable_system_cost_per_eligible_run
      + human_review_and_recovery_cost_per_eligible_run)
 
 steady_state_annual_net_value =
-  annual_gross_realized_value
+  annual_net_value_before_system_cost
   - annual_variable_cost
   - annual_fixed_operating_cost
 
@@ -61,7 +70,7 @@ payback_months =
   / positive_steady_state_monthly_net_value
 ```
 
-Do not calculate payback when steady-state monthly net value is zero or negative. Keep one-time, fixed, variable-system, and human-review/recovery costs mutually exclusive and state the currency, period, and allocation method.
+Do not calculate payback when steady-state monthly net value is zero or negative. Avoided loss is a measured reduction from the baseline; subtract residual loss separately only when it represents harm not already netted from avoided loss or unit value. For one loss class, use either gross exposure minus residual loss or net avoided loss—never both. If residual loss is unmeasured, keep it `null`, lower confidence, and do not claim a complete net-value result. Keep one-time, fixed, variable-system, and human-review/recovery costs mutually exclusive and state the currency, period, and allocation method.
 
 ## Evidence gates
 

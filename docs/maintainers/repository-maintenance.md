@@ -32,10 +32,10 @@ This document keeps the guide coherent as research, controls, templates, example
 
 | Changed artifact | Also inspect |
 | --- | --- |
-| Workflow charter | Agent system, discovery/value playbook, release gate, example |
+| Workflow charter | Value case and residual-loss definitions, agent system, discovery/value playbook, release gate, examples, and migration note |
 | Control | Evidence anchor, schema constraints, blueprint, operations, tests |
 | Schema | Canonical template, example documents, validator mapping, contract tests |
-| Breaking schema revision | Migration note under [`docs/migrations/`](../migrations/tool-contract-1.1.md), canonical template, every governed example, validator mapping, and negative tests |
+| Breaking schema revision | Migration note under [`docs/migrations/`](../migrations/README.md), canonical template, every governed example, validator mapping, and negative tests |
 | Tool contract | Authorization, data exposure, egress, threat model, evals, runtime |
 | Capability manifest | Source and artifact provenance, attestation and trust root, SBOM, registry decision, runtime authority, disable test |
 | Handoff contract | Parent authority, signed payload, expiry, nonce replay, budget/depth attenuation, consumer enforcement |
@@ -47,7 +47,7 @@ This document keeps the guide coherent as research, controls, templates, example
 | Behavior config | Per-model/route results, canary, rollback, dependency lifecycle |
 | Telemetry or receipt | Producer, exporter allowlist, DLP checks, schema, semantic bindings, retention, incident queries |
 | Operations contract | SLO, alert, runbook, incident query, game day, example telemetry |
-| Repository skill | Trigger neighbors, linked controls and artifacts, `agents/openai.yaml`, catalog entry, skill tests, README, AGENTS, and llms |
+| Repository skill | Trigger neighbors, value-framework and selected-solution routing, linked controls and artifacts, `agents/openai.yaml`, catalog entry, skill tests, README, AGENTS, and llms |
 | Solution artifact | Layer and coverage map, primary operating or technical boundary, referenced controls and templates, acceptance cases, operating measures, customer-specific decisions, catalog entry, navigation, and solution tests |
 | Public navigation | README, AGENTS, llms, catalog, contribution docs |
 

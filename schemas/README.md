@@ -2,6 +2,8 @@
 
 These JSON Schema 2020-12 contracts make design, runtime, evaluation, and release assumptions reviewable by people and enforceable by repository tooling.
 
+The current agent-system, evaluation-report, and solution-release contracts are scoped to model and agent releases: the evaluation report binds model-behavior components, and the solution release binds an agent-system artifact. Do not populate them with placeholder components for deterministic, optimization, or classical-ML-only systems. Those systems still need versioned software architecture, test, provenance, deployment, rollback, and operating evidence outside these schemas.
+
 | Schema | Governs |
 | --- | --- |
 | [Artifact catalog](artifact-catalog.schema.json) | Stable repository IDs, types, paths, and tags |
@@ -26,4 +28,4 @@ These JSON Schema 2020-12 contracts make design, runtime, evaluation, and releas
 
 Schema validity does not prove that a value is true or a control is implemented. Templates provide canonical structural examples; executable examples and release evidence must prove behavior.
 
-For a breaking change, update the schema version, canonical template, governed examples, validator mapping, positive and negative tests, and a migration note under [`docs/migrations/`](../docs/migrations/).
+For a breaking change, update the schema version, canonical template, governed examples, validator mapping, positive and negative tests, and the applicable note in the [`docs/migrations/` index](../docs/migrations/README.md). Workflow Charter 1.2 users should follow the [residual-loss migration](../docs/migrations/workflow-charter-1.2.md).

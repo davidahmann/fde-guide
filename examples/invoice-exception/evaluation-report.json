@@ -109,9 +109,9 @@
         {
           "component_id": "node-dependency-lock",
           "uri": "../../package-lock.json",
-          "version": "1.7.0",
+          "version": "1.8.0",
           "schema_version": null,
-          "digest": "sha256:133fb1382d4c8e28c398cddbfe94b4f6987ca7c8df283036c6af5b5564fb667f"
+          "digest": "sha256:9da94e7af18e61ebb102fc535829d95198a740b9df7adcefef29b69a806279b8"
         },
         {
           "component_id": "invoice-ontology",
@@ -215,8 +215,8 @@
           "component_id": "invoice-workflow-charter",
           "uri": "workflow-charter.json",
           "version": "0.1.0",
-          "schema_version": "1.1.0",
-          "digest": "sha256:0b8410d710103ef1865386e7b91469d395e775d196821f51d8e9dc348466e16a"
+          "schema_version": "1.2.0",
+          "digest": "sha256:9565fbd85246295cf572f37d14cdb6d2692566deb72a89c7b660894498da6c91"
         },
         {
           "component_id": "invoice-threat-model",
@@ -230,10 +230,10 @@
           "uri": "../../operations/telemetry-contract.md",
           "version": null,
           "schema_version": null,
-          "digest": "sha256:40067352fe535cda5aa86940b514d6b2c72ac032841378034800cc180558114e"
+          "digest": "sha256:6be09a856d1e40d69cf21a3147b686df866c474a4241ed3b24405347cd03eb97"
         }
       ],
-      "environment_digest": "sha256:dd2529c8350069222b9a2ca6cc675908ebf3c6b79cb63a95d365d84e5bf22137",
+      "environment_digest": "sha256:a118b3045eabd5f65f4fd074563fa1dc40afe3f3cf6c619285e5889ddac20957",
       "network_mode": "unenforced"
     }
   },
@@ -269,7 +269,7 @@
       "uri": "evaluation-output.json",
       "version": null,
       "schema_version": "1.0.0",
-      "digest": "sha256:907229e812b09100dbf2fe921f31ce475febea26b5b3493124bf615b83200836"
+      "digest": "sha256:442b5d56341a443e393d8e3b95b7939c10ae4ef8e0c344d04b415d419d42797b"
     },
     "minimum_confidence": 1
   },
@@ -285,7 +285,7 @@
     "turns": 0,
     "tool_calls": 30,
     "total_tokens": 0,
-    "wall_time_ms": 59,
+    "wall_time_ms": 62,
     "cost_usd": 0,
     "peak_parallel_workers": 1
   },

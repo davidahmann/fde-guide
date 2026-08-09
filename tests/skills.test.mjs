@@ -20,6 +20,19 @@ const expectedSkills = new Map([
   ["transfer-ai-service", ["handoff", "owner", "retire"]],
 ]);
 
+const expectedProgressiveRoutes = new Map([
+  ["build-ai-evaluation", ["../../../solutions/README.md", "not evaluation evidence"]],
+  ["design-production-ai-system", ["../../../solutions/README.md", "not target evidence"]],
+  ["engineer-ai-value", ["../../../library/14-twelve-factors-ai-value-engineering.md", "../../../solutions/README.md"]],
+  ["operate-ai-service", ["../../../library/14-twelve-factors-ai-value-engineering.md", "../../../solutions/README.md"]],
+  ["productize-field-learning", ["../../../solutions/README.md", "when evidence suggests that destination"]],
+  ["qualify-ai-workflow", ["../../../library/14-twelve-factors-ai-value-engineering.md", "../../../solutions/business-flows/README.md"]],
+  ["review-ai-production-readiness", ["../../../solutions/README.md", "not release evidence"]],
+  ["secure-ai-action-boundary", ["../../../solutions/README.md", "not authorization policy"]],
+  ["select-ai-mechanism", ["../../../solutions/README.md", "not target policy or evidence"]],
+  ["transfer-ai-service", ["../../../solutions/README.md", "not exercised evidence or acceptance"]],
+]);
+
 function parseFrontmatter(body) {
   const match = body.match(/^---\n([\s\S]+?)\n---\n/);
   assert.ok(match, "SKILL.md must begin with YAML frontmatter");
@@ -82,6 +95,91 @@ test("skill instructions and interface metadata are complete and distinct", asyn
     assert.ok(shortDescription.length >= 25 && shortDescription.length <= 64);
     assert.ok(defaultPrompt.includes(`$${skillName}`));
     assert.doesNotMatch(openaiBody, /^dependencies:/m, `${skillName} is instruction-only and must not claim tool authority`);
+  }
+});
+
+test("skills progressively route through the value framework and selected solution cases", async () => {
+  for (const [skillName, requiredFragments] of expectedProgressiveRoutes) {
+    const skillBody = await readFile(path.join(skillsRoot, skillName, "SKILL.md"), "utf8");
+    for (const fragment of requiredFragments) {
+      assert.ok(skillBody.includes(fragment), `${skillName} does not route through ${fragment}`);
+    }
+    assert.match(skillBody, /read only/i, `${skillName} must load only the selected solution context`);
+    const hardLinkedCases = skillBody.match(/solutions\/(?:business-flows|verticals)\/(?!README\.md)[^)\s]+\.md/g) ?? [];
+    assert.deepEqual(hardLinkedCases, [], `${skillName} hard-links individual solution cases`);
+  }
+});
+
+test("qualification and value engineering have distinct lifecycle triggers", async () => {
+  const [qualificationText, valueText, qualificationUi, valueUi] = await Promise.all([
+    readFile(path.join(skillsRoot, "qualify-ai-workflow", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "engineer-ai-value", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "qualify-ai-workflow", "agents", "openai.yaml"), "utf8"),
+    readFile(path.join(skillsRoot, "engineer-ai-value", "agents", "openai.yaml"), "utf8"),
+  ]);
+  const qualification = parseFrontmatter(qualificationText).metadata.description;
+  const value = parseFrontmatter(valueText).metadata.description;
+
+  assert.match(qualification, /before value modeling or solution design/i);
+  assert.match(value, /already bounded AI-enabled workflow/i);
+  assert.doesNotMatch(qualification, /portfolio (?:comparison|prioritization)/i);
+  assert.doesNotMatch(value, /workflow observation|field discovery/i);
+  assert.match(quotedYamlValue(qualificationUi, "short_description"), /before value modeling/i);
+  assert.match(quotedYamlValue(qualificationUi, "default_prompt"), /before value modeling or solution design/i);
+  assert.match(quotedYamlValue(valueUi, "short_description"), /bounded or live AI workflow/i);
+  assert.match(quotedYamlValue(valueUi, "default_prompt"), /bounded workflow or its continued live operation/i);
+});
+
+test("qualification, value engineering, and production review use bounded decision vocabularies", async () => {
+  const [qualification, value, review, charterSchemaText, releaseSchemaText] = await Promise.all([
+    readFile(path.join(skillsRoot, "qualify-ai-workflow", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "engineer-ai-value", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "review-ai-production-readiness", "SKILL.md"), "utf8"),
+    readFile(path.join(root, "schemas", "workflow-charter.schema.json"), "utf8"),
+    readFile(path.join(root, "schemas", "solution-release.schema.json"), "utf8"),
+  ]);
+  const charterSchema = JSON.parse(charterSchemaText);
+  const allowedDispositions = charterSchema.properties.decision.properties.disposition.enum;
+  const decisionLine = qualification.match(/^\d+\. Decide ([^\n]+)$/m)?.[1] ?? "";
+  const qualificationDecisions = [...decisionLine.matchAll(/`([^`]+)`/g)].map((match) => match[1]);
+  assert.deepEqual(qualificationDecisions, ["discover", "defer", "do_not_build"]);
+  for (const decision of qualificationDecisions) {
+    assert.ok(allowedDispositions.includes(decision), `qualification uses invalid disposition ${decision}`);
+  }
+
+  const valueDecisionLine = value.match(/^\d+\. Recommend ([^\n]+)$/m)?.[1] ?? "";
+  const valueDecisions = [...valueDecisionLine.matchAll(/`([^`]+)`/g)].map((match) => match[1]);
+  assert.deepEqual(valueDecisions, ["pilot", "defer", "do_not_build", "continue", "constrain", "pause", "retire"]);
+  for (const decision of valueDecisions.slice(0, 3)) {
+    assert.ok(allowedDispositions.includes(decision), `value engineering uses invalid charter disposition ${decision}`);
+  }
+  assert.doesNotMatch(qualification, /`pilot`/);
+  assert.match(valueDecisionLine, /For an already-live workflow, state a separate/);
+
+  const releaseSchema = JSON.parse(releaseSchemaText);
+  const rolloutStrategies = releaseSchema.properties.rollout.properties.strategy.enum;
+  for (const strategy of rolloutStrategies) assert.match(review, new RegExp("`" + strategy + "`"));
+  assert.match(review, /state any permitted manifest status change/);
+});
+
+test("skills do not force agent artifacts or solution accelerators onto simpler systems", async () => {
+  const [design, evaluation, review] = await Promise.all([
+    readFile(path.join(skillsRoot, "design-production-ai-system", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "build-ai-evaluation", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "review-ai-production-readiness", "SKILL.md"), "utf8"),
+  ]);
+
+  assert.match(design, /Record `none` for the pattern or foundation when no artifact fits/);
+  assert.match(design, /do not force a composition/i);
+  assert.match(design, /evaluation-report and solution-release profiles only when model or agent behavior is selected/i);
+  assert.match(evaluation, /When model or agent behavior is selected/);
+  assert.match(evaluation, /equivalent target-software evaluation record/);
+  assert.match(review, /target-software release record/);
+  assert.match(review, /Require a behavior bundle, capability manifest, and evaluation report only when they apply/);
+
+  for (const [name, body] of [["design", design], ["evaluation", evaluation], ["review", review]]) {
+    assert.match(body, /deterministic, optimization, or classical-ML-only/i, `${name} omits simpler system routes`);
+    assert.match(body, /(?:without|do not create) placeholder (?:model or )?agent artifacts/i, `${name} permits placeholder agent artifacts`);
   }
 });
 

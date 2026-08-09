@@ -6,7 +6,7 @@
 | --- | --- |
 | Workflow/system and versions | — |
 | Review period | — |
-| Supported segment and autonomy | — |
+| Supported segment and automation/autonomy | — |
 | Operational, technical, risk, and service owners | — |
 | Last release and incident | — |
 | Decision required | Expand, continue, improve, constrain, pause, or retire |
@@ -17,10 +17,11 @@
 | --- | ---: | ---: | ---: | ---: | --- | --- |
 | Accepted outcome | — | — | — | — | — | — |
 | Business value | — | — | — | — | — | — |
+| Realized residual loss | — | — | — | — | — | — |
 | Cost per accepted outcome | — | — | — | — | — | — |
 | Guardrail metric | — | — | — | — | — | — |
 
-Explain attribution, non-adoption, downstream rework, avoided-loss evidence, fixed cost, and any rebaseline.
+Explain attribution, non-adoption, downstream rework, avoided loss evidence, realized residual loss, fixed cost, and any rebaseline. Deduct residual loss separately only when it is not already netted from avoided loss or unit value.
 
 ## Declared adoption contract
 
@@ -71,7 +72,7 @@ List production behavior clusters, new regressions, evaluator calibration change
 | Support and escalation | — | — | — | — |
 | Incident response and reconciliation | — | — | — | — |
 | Evaluation and release | — | — | — | — |
-| Policy, data, tool, and model change | — | — | — | — |
+| Policy, data, capability, and selected-mechanism change | — | — | — | — |
 | Rollback and recovery | — | — | — | — |
 | Cost, value, and capacity review | — | — | — | — |
 | Retirement and state disposition | — | — | — | — |
@@ -98,4 +99,4 @@ Maintain detailed records in the [field-learning register](field-learning-regist
 | --- | --- | --- | --- | --- |
 | — | — | — | — | — |
 
-Record the final scope/autonomy decision, improve-or-retire disposition, conditions, dissent, next review, and automatic rollback triggers. A retire decision starts the [owned retirement sequence](../playbooks/03-operate-and-scale.md#10-run-the-improve-expand-or-retire-sequence) and is not complete until a new solution release carries verified `retirement_evidence` under the [solution-release contract](../schemas/solution-release.schema.json).
+Record the final scope and automation/autonomy decision, improve-or-retire disposition, conditions, dissent, next review, and automatic rollback triggers. A retire decision starts the [owned retirement sequence](../playbooks/03-operate-and-scale.md#10-run-the-improve-expand-or-retire-sequence) and is not complete until the target software release record carries verified shutdown evidence. For a model/agent release, record that evidence in a new solution release under [`solution-release.retirement_evidence`](../schemas/solution-release.schema.json); deterministic, optimization, or classical-ML-only systems use equivalent target software retirement evidence.

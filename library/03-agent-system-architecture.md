@@ -129,7 +129,7 @@ The separation is critical: deterministic state derivation may be replayed; mode
 
 Event sourcing creates privacy and storage obligations. A complete log can contain sensitive prompts, files, tool output, and intermediate reasoning artifacts. Retention, redaction, encryption, tenancy, and access must be designed with the state model.
 
-## Twelve production-oriented factors
+## HumanLayer's 12-Factor Agents: implementation factors
 
 HumanLayer's 12-Factor Agents is an open design essay, not a standard. Its factors compress into a coherent control philosophy: [S09]
 
@@ -216,9 +216,9 @@ Prefer the cheapest and fastest **allowed** model that clears the task's quality
 
 MCP sessions, request IDs, and tool caches are protocol concerns; they are not durable workflow memory, approval history, or business state. Keep those records in an explicit state layer with provenance, freshness, retention, and invalidation rules. Recent MCP SDK releases reinforce this direction through stateless requests, negotiated versions, scoped cache TTLs, typed continuations, and hardened payload/protocol handling. [R26-33](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-33)
 
-### Give agents a distinct identity and constrain delegation
+### Make actor mode and identity explicit
 
-An agent needs a dedicated workload identity distinct from both the initiating human and the backing service account. Delegated agents must inherit the caller's authorization ceiling, not acquire whatever the downstream runtime happens to permit. Use per-tool scopes and step-up authorization for sensitive operations. [R26-11](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-11) [R26-15](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-15) [R26-32](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-32)
+Unattended agents need a dedicated non-human workload identity. Interactive delegated agents may instead use a short-lived user-bound session only when trusted software enforces server-side authorization, scoped authority, mutation policy or approval, and user-plus-agent attribution. Delegation always inherits the caller's authorization ceiling; it never acquires whatever the downstream runtime happens to permit. Use per-tool scopes and step-up authorization for sensitive operations. [R26-11](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-11) [R26-15](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-15) [R26-32](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-32)
 
 ### Model-visible actions need a smaller trust domain
 

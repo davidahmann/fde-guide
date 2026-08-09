@@ -65,7 +65,7 @@ The [enterprise agent platform blueprint](../blueprints/enterprise-agent-platfor
 - Evaluation, observability, and evidence stores
 - Delivery control plane for versions, branches, promotion, and rollback
 
-The model proposes. Trusted software validates, authorizes, executes, persists, and proves.
+The model proposes. Trusted software validates, authorizes, executes, persists, and verifies.
 
 The product layer bridges intelligence and real work. Design it as one coherent chain:
 
@@ -111,7 +111,7 @@ Version these together:
 | --- | --- |
 | Data and context | Source, schema, freshness rule, retrieval/index revision |
 | Domain | Ontology/domain-model version and migration |
-| Behavior | Behavior-bundle ID/version/digest binding model, prompt/instruction, route, harness, context policy, complete tool membership, and guardrail |
+| Behavior | Behavior-bundle ID/version/digest that binds the model, prompt/instruction, route, harness, context policy, complete tool membership, and guardrail |
 | Capabilities | Tool contract plus exact capability-manifest ID/version/digest, implementation provenance, authorization, network policy, and lifecycle |
 | State | Workflow schema, checkpoint, migration, retention |
 | Assurance | Threat model, evaluation suite, grader, world fixture |
@@ -120,7 +120,9 @@ Version these together:
 
 Isolate cross-resource changes, review compatibility, and test them end to end. Merge is a source-control event; deployment is an independently gated production event. [R26-44]
 
-Every tool addition or change requires a new capability decision, behavior-bundle membership update, affected-route evaluation, and solution-release digest. A semantic version without exact artifact and authority digests is not a release binding.
+Every tool addition or change requires a new capability decision, affected-route evaluation, and an update to behavior-bundle membership and the solution-release digest when the current model/agent release contract applies. A semantic version without exact artifact and authority digests is not a release binding.
+
+The current behavior-bundle, evaluation-report, and solution-release contracts apply when model or agent behavior is selected. A deterministic, optimization, or classical-ML-only route retains equivalent mechanism, test, provenance, deployment, rollback, and operating evidence without placeholder agent components.
 
 Controls: `DEL-001`, `DEL-002`, `OPS-007`.
 

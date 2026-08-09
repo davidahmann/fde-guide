@@ -48,6 +48,7 @@ Repository skills live under [`.agents/skills/`](.agents/skills/) and remain thi
 
 - define a distinct trigger in `SKILL.md` frontmatter using only `name` and `description`;
 - route to existing controls, playbooks, templates, and examples instead of copying a second methodology;
+- load only the selected business-flow or vertical context and state that solution accelerators are hypotheses, not customer observations, policy, or release evidence;
 - name its output, stop conditions, and safety boundary without claiming tool or approval authority;
 - keep `agents/openai.yaml` consistent with the skill name and trigger;
 - be registered in [`catalog.json`](catalog.json) and covered by `npm run test:skills`;

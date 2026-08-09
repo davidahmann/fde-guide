@@ -44,6 +44,8 @@ The runtime envelope also requires `schema_version`, event time, trace/span iden
 | `agent.cost.usd` | number | 1 | confidential |
 | `agent.accepted_outcome` | boolean | 1 | internal |
 
+`agent.accepted_outcome` MUST be true only after confirmation by the workflow charter's declared independent verifier, authoritative source, or accountable reviewer. A terminal workflow state or model assertion is insufficient. The deployment MUST retain verifier provenance and the evidence reference in a separate closed verification event or domain record correlated to the trace; the shared trace-event schema does not encode those fields. Controls: `FDE-001`, `VAL-002`, `OPS-001`, `OPS-006`.
+
 ## Required tool span attributes
 
 These fields define the minimum deployment span. They are not accepted by the state-transition schema; emit them through a separate closed tool-span contract and correlate them by run, operation, release, trace, and parent span.
@@ -177,7 +179,7 @@ Control: `OPS-001`.
 ## Core SLIs
 
 ```text
-accepted_outcome_rate = accepted_outcomes / eligible_runs
+accepted_outcome_rate = verifier_confirmed_accepted_outcomes / eligible_runs
 unauthorized_effect_rate = unauthorized_effects / external_effects
 duplicate_effect_rate = duplicate_effects / external_effects
 postcondition_failure_rate = mismatched_readbacks / external_effects

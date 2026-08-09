@@ -36,9 +36,35 @@ test("the framework measures incremental accepted outcomes and full economics ra
     "cost per accepted outcome",
   ]) assert.ok(body.includes(term), `framework is missing ${term}`);
 
-  assert.match(body, /Do not count the same avoided loss/i);
+  assert.match(body, /For one loss class, use either gross exposure minus residual loss or net avoided loss/i);
   assert.match(body, /Tokens are an input\. Autonomy is a design choice\. Accepted outcomes are the product\./);
   assert.match(body, /not a certification/i);
+});
+
+test("working value artifacts carry residual loss without double counting avoided loss", async () => {
+  const [schema, charter, valueCase, serviceReview, discoveryPlaybook, controlCatalog] = await Promise.all([
+    readFile(path.join(root, "schemas", "workflow-charter.schema.json"), "utf8"),
+    readFile(path.join(root, "templates", "workflow-charter.json"), "utf8"),
+    readFile(path.join(root, "templates", "value-case.md"), "utf8"),
+    readFile(path.join(root, "templates", "production-service-review.md"), "utf8"),
+    readFile(path.join(root, "playbooks", "01-discovery-and-value.md"), "utf8"),
+    readFile(path.join(root, "controls", "control-catalog.json"), "utf8"),
+  ]);
+  for (const body of [schema, charter]) assert.match(body, /annual_expected_residual_loss_usd/);
+  for (const body of [valueCase, serviceReview, discoveryPlaybook]) {
+    assert.match(body, /residual loss/i);
+    assert.match(body, /avoided loss/i);
+  }
+  assert.match(valueCase, /- residual_loss_adjustment/);
+  assert.match(valueCase, /0 when the exposure is already netted from unit value or avoided loss/);
+  assert.match(valueCase, /gross exposure minus residual loss or net avoided loss/i);
+  assert.match(discoveryPlaybook, /- residual_loss_adjustment/);
+  assert.match(discoveryPlaybook, /0 when the exposure is already netted from unit value or avoided loss/);
+  assert.match(discoveryPlaybook, /gross exposure minus residual loss or net avoided loss/i);
+  const valueControl = JSON.parse(controlCatalog).controls.find((control) => control.id === "VAL-002");
+  assert.match(valueControl.requirement, /residual loss not already netted from either benefit term/i);
+  assert.match(valueControl.requirement, /Unit value, avoided loss, and residual loss MUST use non-overlapping definitions/);
+  assert.match(valueControl.requirement, /not counted twice/i);
 });
 
 test("the four hard gates cannot be averaged away", async () => {

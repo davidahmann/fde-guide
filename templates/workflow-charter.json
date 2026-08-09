@@ -1,6 +1,6 @@
 {
   "$schema": "../schemas/workflow-charter.schema.json",
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "workflow_id": "candidate_workflow",
   "version": "0.1.0",
   "status": "discovery",
@@ -77,6 +77,7 @@
     "adoption_rate": null,
     "value_per_accepted_outcome_usd": null,
     "annual_avoided_loss_usd": null,
+    "annual_expected_residual_loss_usd": null,
     "implementation_cost_usd": null,
     "annual_fixed_operating_cost_usd": null,
     "annual_variable_operating_cost_usd": null,

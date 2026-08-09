@@ -70,16 +70,18 @@ flowchart LR
 | Select intelligence | Which decision steps belong in rules, optimization, ML, retrieval, a foundation model, an agent, or human review? | [Intelligence-selection record](templates/intelligence-selection-record.md) and [architecture guide](library/12-software-architecture-and-intelligence-selection.md) |
 | Model the domain | What objects, actions, rules, and sources of truth matter? | [Domain model template](templates/operational-ontology.json) |
 | Map dependencies | Which software and operational relationships need active navigation or material-change review? | [System-map manifest](templates/system-map-manifest.json) and [change-impact assessment](templates/change-impact-assessment.json), only where their maintenance cost is justified |
-| Design | Where do deterministic software, optimization, ML, foundation models, tools, and people make decisions? | [Agent-system template](templates/agent-system.json) and [architecture decision record](templates/architecture-decision-record.md) |
-| Bind behavior | Which exact model route, prompt, harness, context policy, guardrails, and runtime work together? | [Behavior-bundle template](templates/behavior-bundle.json) |
+| Design | Where do deterministic software, optimization, ML, foundation models, tools, and people make decisions? | [Architecture decision record](templates/architecture-decision-record.md) and, when a foundation-model or agent workflow is selected, [agent-system template](templates/agent-system.json) |
+| Bind behavior | Which exact model route, prompt, harness, context policy, guardrails, and runtime work together? | [Behavior-bundle template](templates/behavior-bundle.json) when model behavior is selected |
 | Bind capabilities | What may each exact capability build read or change, for whom, and under what policy? | [Tool contract](templates/tool-contract.json), [capability manifest](templates/capability-manifest.json), and [capability supply-chain guide](operations/capability-supply-chain.md) |
 | Threat model | How could data, tools, identity, or evaluation be abused? | [Threat-model template](templates/threat-model.json) |
-| Prove | Does it succeed, fail safely, and help users on representative work? | [Evaluation cases](templates/evaluation-case.json) and [evaluation report](templates/evaluation-report.json) |
-| Launch | What compatible release and bounded autonomy are justified, who supports them, and what reverses them? | [Solution-release manifest](templates/solution-release.json), [release gates](operations/release-gates.md), and [customer handoff](templates/customer-enablement-handoff.md) |
+| Prove | Does it succeed, fail safely, and help users on representative work? | Representative tests and user evidence; add [evaluation cases](templates/evaluation-case.json) and an [evaluation report](templates/evaluation-report.json) when model or agent behavior is selected |
+| Launch | What compatible release and bounded authority are justified, who supports them, and what reverses them? | Target software release evidence and [customer handoff](templates/customer-enablement-handoff.md); add the [solution-release manifest](templates/solution-release.json) for model or agent releases and apply the [release gates](operations/release-gates.md) |
 | Operate | Is it valuable, adopted, reliable, safe, affordable, and supportable? | [Production service review](templates/production-service-review.md), [SLO scorecard](operations/slo-scorecard.md), and [incident runbook](operations/incident-runbook.md) |
 | Improve or retire | Which field evidence justifies a change, expansion, constraint, or verified shutdown? | [Field-learning register](templates/field-learning-register.md), [change management](operations/change-management.md), and [controlled improvement](blueprints/controlled-improvement-agent.md) |
 
 Draft the threat model before the evaluation suite, then refine both together as failure paths become concrete. If the workflow has no measurable outcome or trustworthy verifier, stay in discovery. A more capable model does not repair an undefined task.
+
+The current machine-readable evaluation-report and solution-release contracts bind model and agent releases. Deterministic, optimization, or classical-ML-only systems should retain equivalent ordinary software architecture, test, provenance, deployment, rollback, and operating evidence; do not create placeholder model or agent artifacts to satisfy these templates.
 
 ## Start from a business flow
 
@@ -142,7 +144,7 @@ Start with a deterministic workflow when the steps and branches are already know
 - Capture enough evidence to explain, pause, recover, and improve the workflow.
 - Pass work between agents or context windows through a typed, expiring, authority-reducing handoff—not a free-form summary.
 
-The machine-readable [control catalog](controls/control-catalog.json) contains the repository's engineering baseline, with each requirement mapped to release gates. The [evaluation-report](schemas/evaluation-report.schema.json) and [solution-release](schemas/solution-release.schema.json) contracts make the tested claim and compatible release bundle explicit. This is project guidance, not an external compliance standard.
+The machine-readable [control catalog](controls/control-catalog.json) contains the repository's engineering baseline, with each requirement mapped to release gates. For model and agent releases, the [evaluation-report](schemas/evaluation-report.schema.json) and [solution-release](schemas/solution-release.schema.json) contracts make the tested claim and compatible release bundle explicit. This is project guidance, not an external compliance standard.
 
 ## Repository map
 
@@ -184,6 +186,8 @@ The installer detects compatible agents and lets you choose project or global sc
 
 Then start with a concrete job:
 
+Each skill loads the applicable controls and only the selected business-flow or vertical context needed for that job; value-lifecycle skills also load the value framework. Solution artifacts remain design hypotheses; they never become customer observations, authorization policy, evaluation evidence, or release evidence merely because a skill referenced them.
+
 ```text
 Use $qualify-ai-workflow to assess this candidate workflow: [describe it].
 ```
@@ -193,7 +197,7 @@ Use $qualify-ai-workflow to assess this candidate workflow: [describe it].
 
 | Job | Skill | You should leave with |
 | --- | --- | --- |
-| Qualify the work | [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) | Observed workflow, owner, baseline, accepted outcome, verifier, risk ceiling, and go/defer/reject decision |
+| Qualify the work | [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) | Observed workflow, owner, baseline, accepted outcome, verifier, risk ceiling, and discover/defer/do-not-build decision |
 | Prove the economics | [`$engineer-ai-value`](.agents/skills/engineer-ai-value/SKILL.md) | Adoption-adjusted value case, full cost, guardrails, cost ceiling, and measurement plan |
 | Select the intelligence | [`$select-ai-mechanism`](.agents/skills/select-ai-mechanism/SKILL.md) | Smallest sufficient mechanism for each decision, with fallback and retirement rationale |
 | Design the system | [`$design-production-ai-system`](.agents/skills/design-production-ai-system/SKILL.md) | Coherent architecture and the smallest applicable design packet |

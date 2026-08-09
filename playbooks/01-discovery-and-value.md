@@ -119,15 +119,20 @@ annual_realized_value =
   × accepted_outcome_uplift
   × value_per_accepted_outcome
   + measured_avoided_loss
+  - residual_loss_adjustment
   - annual_variable_cost
   - annual_fixed_operating_cost
 
 annual_variable_cost =
   eligible_runs
   × (model + tool + compute + storage + retry + wait + human_review + recovery cost)
+
+residual_loss_adjustment =
+  0 when the exposure is already netted from unit value or avoided loss
+  otherwise separately attributed residual or incremental harm
 ```
 
-Use ranges when inputs are uncertain. Declare the attribution method: comparison group, before/after with controls, time-series intervention, reconciliation, or owner-approved proxy. Report confidence and sensitivity rather than hiding them inside a single ROI number.
+Use ranges when inputs are uncertain. Avoided loss is a measured reduction from the baseline; subtract residual loss separately only when it represents harm not already netted from avoided loss or unit value. For one loss class, use either gross exposure minus residual loss or net avoided loss—never both. If residual loss is unmeasured, keep it `null`, lower confidence, and do not claim a complete net-value result. Declare the attribution method: comparison group, before/after with controls, time-series intervention, reconciliation, or owner-approved proxy. Report confidence and sensitivity rather than hiding them inside a single ROI number.
 
 Control: `VAL-002`.
 

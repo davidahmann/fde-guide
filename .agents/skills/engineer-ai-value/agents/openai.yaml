@@ -1,4 +1,4 @@
 interface:
   display_name: "Engineer AI Value"
-  short_description: "Build an outcome and full-cost value case"
-  default_prompt: "Use $engineer-ai-value to build a measurable value case for this workflow."
+  short_description: "Decide value for a bounded or live AI workflow"
+  default_prompt: "Use $engineer-ai-value to decide the value case for this bounded workflow or its continued live operation."

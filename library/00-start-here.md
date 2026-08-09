@@ -66,26 +66,28 @@ This is intentionally narrower than most “agent platform” demos. Narrow scop
 | Intelligence choice | [Intelligence-selection record](../templates/intelligence-selection-record.md) and [architecture decision record](../templates/architecture-decision-record.md) |
 | Operational domain | [Ontology template](../templates/operational-ontology.json) |
 | Complex-system navigation | [System-map manifest](../templates/system-map-manifest.json) and [change-impact assessment](../templates/change-impact-assessment.json) when complexity justifies the maintenance cost |
-| System design | [Agent-system template](../templates/agent-system.json) |
+| System design when a foundation-model or agent workflow is selected | [Agent-system template](../templates/agent-system.json) |
 | Tool boundary | [Tool-contract template](../templates/tool-contract.json) |
 | Capability provenance | [Capability-manifest template](../templates/capability-manifest.json) for each admitted tool, MCP server, skill, CLI, or code build |
 | Delegation boundary | [Handoff-envelope template](../templates/handoff-envelope.json) when work passes to a worker, agent, or reset context |
 | Release case | [Evaluation-case template](../templates/evaluation-case.json) |
-| Evaluation claim | [Evaluation-report template](../templates/evaluation-report.json) |
+| Model or agent evaluation claim | [Evaluation-report template](../templates/evaluation-report.json) |
 | Threat boundary | [Threat-model template](../templates/threat-model.json) |
 | Design decision | [Architecture decision record](../templates/architecture-decision-record.md) |
 | Production promotion | [Release gates](../operations/release-gates.md) |
-| Compatible release | [Solution-release template](../templates/solution-release.json) |
+| Compatible model or agent release | [Solution-release template](../templates/solution-release.json) |
 | Delivery and adoption | [Delivery and adoption plan](../templates/delivery-and-adoption-plan.md) |
 | Customer ownership | [Customer enablement handoff](../templates/customer-enablement-handoff.md) |
 | Ongoing service | [Production service review](../templates/production-service-review.md) |
 | Field-to-product learning | [Field-learning register](../templates/field-learning-register.md) |
 
+For deterministic, optimization, or classical-ML-only systems, retain equivalent ordinary software architecture, evaluation, provenance, deployment, rollback, and operating records. Do not create placeholder model or agent artifacts merely to fill the current model/agent release contracts.
+
 ## Production-ready means all six are true
 
 | Dimension | Question | Evidence |
 | --- | --- | --- |
-| Valuable | Does it improve a business outcome? | Outcome metric and baseline |
+| Valuable | Does it improve a business outcome with positive net value after full lifecycle cost and realized loss? | Baseline, counterfactual, independently accepted outcomes, residual loss, and full-cost value case |
 | Adopted | Do intended users complete the changed workflow and trust its evidence? | Eligible use, completion, override, abandonment, and review load |
 | Reliable | Can it reach and prove the desired state? | Replay suite, postconditions, sampled review |
 | Safe | Can it be contained when inputs or behavior are hostile? | Scoped identity, sandbox, egress, staged writes |

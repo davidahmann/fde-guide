@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/workflow-charter.schema.json",
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "workflow_id": "shipment_risk_triage",
   "version": "0.1.0",
   "status": "pilot",
@@ -69,6 +69,7 @@
     "adoption_rate": 0.7,
     "value_per_accepted_outcome_usd": 18,
     "annual_avoided_loss_usd": 241920,
+    "annual_expected_residual_loss_usd": null,
     "implementation_cost_usd": 85000,
     "annual_fixed_operating_cost_usd": 24000,
     "annual_variable_operating_cost_usd": 9600,

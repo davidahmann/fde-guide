@@ -110,6 +110,22 @@ test("workflow-charter schema requires the operational requirement, stop conditi
   assert.ok(validate.errors.some((error) => error.keyword === "required" && error.params.missingProperty === "risk"));
 });
 
+test("workflow-charter value cases cannot silently omit expected residual loss", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/workflow-charter.schema.json"));
+  const fixture = await json("templates/workflow-charter.json");
+  delete fixture.value_case.annual_expected_residual_loss_usd;
+  assert.equal(validate(fixture), false);
+  assert.ok(validate.errors.some(
+    (error) => error.keyword === "required" && error.params.missingProperty === "annual_expected_residual_loss_usd",
+  ));
+  fixture.value_case.annual_expected_residual_loss_usd = -1;
+  assert.equal(validate(fixture), false);
+  fixture.value_case.annual_expected_residual_loss_usd = null;
+  assert.equal(validate(fixture), true, JSON.stringify(validate.errors));
+});
+
 test("workflow-charter measured baselines require a numeric value and observation date", async () => {
   const ajv = new Ajv2020({ allErrors: true, strict: true });
   addFormats(ajv);
@@ -211,6 +227,22 @@ test("agent-system outcomes, segments, owners, and economics stay aligned with t
     assert.equal(agent.owners.risk, charter.owners.risk);
     assert.equal(agent.economics.max_cost_per_accepted_outcome_usd, charter.value_case.max_cost_per_accepted_outcome_usd);
   }
+});
+
+test("the current release contracts are scoped honestly when an agent is not selected", async () => {
+  const [catalog, evaluationSchema, releaseSchema, templateGuide] = await Promise.all([
+    json("controls/control-catalog.json"),
+    json("schemas/evaluation-report.schema.json"),
+    json("schemas/solution-release.schema.json"),
+    readFile(path.join(root, "templates", "README.md"), "utf8"),
+  ]);
+  const deliveryControl = catalog.controls.find((control) => control.id === "DEL-001");
+  assert.match(deliveryControl.requirement, /When model or agent behavior is selected/);
+  assert.match(deliveryControl.requirement, /equivalent target software-release evidence/);
+  assert.match(evaluationSchema.title, /agent/i);
+  assert.match(releaseSchema.title, /agent/i);
+  assert.match(templateGuide, /model\/agent release profiles/);
+  assert.match(templateGuide, /do not invent an agent system/i);
 });
 
 test("evaluation schema rejects an agent-controlled pass signal", async () => {
