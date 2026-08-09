@@ -12,14 +12,34 @@ Use [`README.md`](README.md) for the human-facing introduction. Use this file as
 
 Before producing or changing a technical artifact:
 
-1. If the user's job matches a repository skill below, read that `SKILL.md` completely and follow its workflow.
-2. Inspect [`catalog.json`](catalog.json) to resolve governed artifact IDs and paths.
-3. Select the applicable task route below. A skill narrows the route; it does not replace the canonical controls, schemas, or target-system policy.
-4. Follow that route's order; load controls, schemas, blueprints, examples, and evidence only when applicable.
+1. Inspect [`catalog.json`](catalog.json) to resolve governed artifact IDs and paths.
+2. Select the applicable task route below.
+3. If the user's job matches a repository skill, read that `SKILL.md` completely and follow its workflow. A skill narrows the route; it does not replace the canonical controls, schemas, or target-system policy.
+4. Follow the route's order; load controls, schemas, blueprints, examples, and evidence only when applicable.
 5. Read [`README.md`](README.md) when changing public positioning or navigation.
 6. Expand context only when the inspected artifact reveals another dependency.
 
 Do not load the entire repository by default. Use one skill or task route, then follow only the direct links needed to complete the work.
+
+## Repository map
+
+| Path | Role | Treat it as |
+| --- | --- | --- |
+| [`catalog.json`](catalog.json) | Lists governed artifacts, types, paths, and tags | Registry; update when a cataloged artifact is added, moved, or removed |
+| [`controls/`](controls/control-catalog.json) | Defines production requirements and release gates | Engineering policy normative within this guide |
+| [`schemas/`](schemas/README.md) | Defines valid structures for machine-readable artifacts | Structural source of truth |
+| [`playbooks/`](playbooks/README.md) | Connects field discovery, value, delivery, adoption, handoff, and operation | End-to-end FDE lifecycle |
+| [`blueprints/`](blueprints/README.md) | Defines reference components, boundaries, states, failures, and release tests | Architecture starting points, not mandatory frameworks |
+| [`templates/`](templates/README.md) | Provides starter design artifacts | Starting material that must be adapted and completed for the target workflow |
+| [`examples/`](examples/invoice-exception/README.md) | Shows a controlled-write system and an end-to-end hybrid FDE walkthrough | In-memory teaching implementations and regression surfaces |
+| [`patterns/`](patterns/pattern-catalog.json) | Records patterns, anti-patterns, controls, evidence, and review dates | Machine-readable decision catalog |
+| [`library/`](library/00-start-here.md) | Explains design decisions, implementation sequence, and failure modes | Human-readable guidance |
+| [`operations/`](operations/README.md) | Defines release, telemetry, service objectives, incident response, and change | Operating contract |
+| [`research/`](research/README.md) | Records dated sources, portable findings, and caveats | Evidence for claims that can change |
+| [`docs/maintainers/`](docs/maintainers/repository-maintenance.md) | Defines repository stewardship and release maintenance | Internal maintainer runbook |
+| [`.agents/skills/`](.agents/skills/) | Provides focused FDE and AI-engineering workflows | Optional task interfaces over canonical repository artifacts; not authority or runtime capabilities |
+| [`scripts/`](scripts/validate-repository.mjs) | Validates repository-wide structure and cross-references | Automated repository guardrail |
+| [`tests/`](tests/) | Exercises shared schemas, path containment, and Markdown behavior | Repository-level regression suite |
 
 ## Skill routes
 
@@ -37,26 +57,6 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 | Operate the service | [`$operate-ai-service`](.agents/skills/operate-ai-service/SKILL.md) | Outcome, adoption, reliability, safety, cost, and change decision |
 | Transfer ownership | [`$transfer-ai-service`](.agents/skills/transfer-ai-service/SKILL.md) | Exercised operating capability and exit decision |
 | Productize learning | [`$productize-field-learning`](.agents/skills/productize-field-learning/SKILL.md) | Sanitized reusable-capability disposition and release path |
-
-## Repository map
-
-| Path | Role | Treat it as |
-| --- | --- | --- |
-| [`.agents/skills/`](.agents/skills/) | Provides focused FDE and AI-engineering workflows | Progressive task interfaces over canonical repository artifacts; not authority or runtime capabilities |
-| [`catalog.json`](catalog.json) | Lists governed artifacts, types, paths, and tags | Registry; update when a cataloged artifact is added, moved, or removed |
-| [`controls/`](controls/control-catalog.json) | Defines production requirements and release gates | Engineering policy normative within this guide |
-| [`schemas/`](schemas/README.md) | Defines valid structures for machine-readable artifacts | Structural source of truth |
-| [`playbooks/`](playbooks/README.md) | Connects field discovery, value, delivery, adoption, handoff, and operation | End-to-end FDE lifecycle |
-| [`blueprints/`](blueprints/README.md) | Defines reference components, boundaries, states, failures, and release tests | Architecture starting points, not mandatory frameworks |
-| [`templates/`](templates/README.md) | Provides starter design artifacts | Starting material that must be adapted and completed for the target workflow |
-| [`examples/`](examples/invoice-exception/README.md) | Shows a controlled-write system and an end-to-end hybrid FDE walkthrough | In-memory teaching implementations and regression surfaces |
-| [`patterns/`](patterns/pattern-catalog.json) | Records patterns, anti-patterns, controls, evidence, and review dates | Machine-readable decision catalog |
-| [`library/`](library/00-start-here.md) | Explains design decisions, implementation sequence, and failure modes | Human-readable guidance |
-| [`operations/`](operations/README.md) | Defines release, telemetry, service objectives, incident response, and change | Operating contract |
-| [`research/`](research/README.md) | Records dated sources, portable findings, and caveats | Evidence for claims that can change |
-| [`docs/maintainers/`](docs/maintainers/repository-maintenance.md) | Defines repository stewardship and release maintenance | Internal maintainer runbook |
-| [`scripts/`](scripts/validate-repository.mjs) | Validates repository-wide structure and cross-references | Automated repository guardrail |
-| [`tests/`](tests/) | Exercises shared schemas, path containment, and Markdown behavior | Repository-level regression suite |
 
 ## Route by task
 

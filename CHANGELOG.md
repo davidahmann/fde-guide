@@ -4,6 +4,14 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-08-09
+
+- Rebuild the public README around audience responsibilities, business outcomes, delivery decisions, reference systems, and operating needs before optional agent interfaces.
+- Add a verified one-command discovery and installation path for the ten-skill workflow pack through the open `skills` CLI, with source-review and production-pinning guidance.
+- Reorder AGENTS and llms navigation so governed artifacts and repository authority remain visibly upstream of optional task skills.
+- Add regression coverage for the public information hierarchy and skill-install entry point.
+- Align maintainer release checks and public citation metadata with the revised distribution model.
+
 ## [1.4.0] - 2026-08-09
 
 - Add ten focused, repository-local skills spanning workflow qualification, value engineering, intelligence selection, system design, evaluation, action security, production readiness, service operation, ownership transfer, and field-learning productization.
@@ -71,7 +79,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.4.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.5.0...HEAD
+[1.5.0]: https://github.com/davidahmann/fde-guide/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/davidahmann/fde-guide/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/davidahmann/fde-guide/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/davidahmann/fde-guide/compare/v1.1.0...v1.2.0

@@ -63,8 +63,9 @@ This document keeps the guide coherent as research, controls, templates, example
 3. Run spelling, action workflow, dependency, and secret scans used by the current project.
 4. Confirm all new governed artifacts are cataloged and every new source ID resolves.
 5. Proofread README, AGENTS, llms, playbook routes, changelog, package/citation versions, and release links.
-6. Use a scoped commit and draft pull request; do not bypass protected `main`.
-7. Require CI and review before merge; tag only after the release tree and metadata agree.
+6. When skill discovery or packaging changes, verify `npx skills add davidahmann/fde-guide --list` from a disposable environment; do not add this network-dependent smoke test to the deterministic CI gate.
+7. Use a scoped commit and draft pull request; do not bypass protected `main`.
+8. Require CI and review before merge; tag only after the release tree and metadata agree.
 
 ## Maintainer acceptance questions
 

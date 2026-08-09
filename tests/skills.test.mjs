@@ -111,3 +111,16 @@ test("the skill pack routes every control domain", async () => {
 
   assert.deepEqual([...routedPrefixes].sort(), [...expectedPrefixes].sort());
 });
+
+test("public navigation leads with audience outcomes and keeps skills optional", async () => {
+  const readme = await readFile(path.join(root, "README.md"), "utf8");
+  const agents = await readFile(path.join(root, "AGENTS.md"), "utf8");
+  const llms = await readFile(path.join(root, "llms.txt"), "utf8");
+
+  assert.ok(readme.indexOf("## Who this is for") < readme.indexOf("## Optional: use it with a coding agent"));
+  assert.ok(readme.indexOf("## From idea to production") < readme.indexOf("## Optional: use it with a coding agent"));
+  assert.match(readme, /npx skills add davidahmann\/fde-guide/);
+  assert.match(readme, /The guide is complete as documentation/);
+  assert.ok(agents.indexOf("## Repository map") < agents.indexOf("## Skill routes"));
+  assert.ok(llms.indexOf("## Core entry points") < llms.indexOf("## Optional task skills"));
+});
