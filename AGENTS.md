@@ -10,20 +10,39 @@ Use [`README.md`](README.md) for the human-facing introduction. Use this file as
 
 ## Required orientation
 
-Before changing a technical artifact:
+Before producing or changing a technical artifact:
 
-1. Inspect [`catalog.json`](catalog.json) to resolve governed artifact IDs and paths.
-2. Select the applicable task route below.
-3. Follow that route's order; load controls, schemas, blueprints, examples, and evidence only when applicable.
-4. Read [`README.md`](README.md) when changing public positioning or navigation.
-5. Expand context only when the inspected artifact reveals another dependency.
+1. If the user's job matches a repository skill below, read that `SKILL.md` completely and follow its workflow.
+2. Inspect [`catalog.json`](catalog.json) to resolve governed artifact IDs and paths.
+3. Select the applicable task route below. A skill narrows the route; it does not replace the canonical controls, schemas, or target-system policy.
+4. Follow that route's order; load controls, schemas, blueprints, examples, and evidence only when applicable.
+5. Read [`README.md`](README.md) when changing public positioning or navigation.
+6. Expand context only when the inspected artifact reveals another dependency.
 
-Do not load the entire repository by default. Use the task routes below, then follow only the direct links needed to complete the work.
+Do not load the entire repository by default. Use one skill or task route, then follow only the direct links needed to complete the work.
+
+## Skill routes
+
+Repository-local skills are instruction-only workflows. They grant no tool access, credentials, authorization, approval, or evidence. Invoke one explicitly when the host supports `$skill-name`, or read its `SKILL.md` as the human-readable procedure. Production admission remains subject to the exact-build, authority, lifecycle, and disable requirements in `TOL-006`.
+
+| Job | Skill | Primary result |
+| --- | --- | --- |
+| Qualify a workflow | [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) | Observed workflow and go/defer/redesign/reject decision |
+| Engineer value | [`$engineer-ai-value`](.agents/skills/engineer-ai-value/SKILL.md) | Outcome economics, cost ceiling, guardrails, and measurement plan |
+| Select intelligence | [`$select-ai-mechanism`](.agents/skills/select-ai-mechanism/SKILL.md) | Smallest sufficient mechanism per decision route |
+| Design the system | [`$design-production-ai-system`](.agents/skills/design-production-ai-system/SKILL.md) | Coherent architecture and applicable design packet |
+| Build evaluations | [`$build-ai-evaluation`](.agents/skills/build-ai-evaluation/SKILL.md) | Reproducible release evidence and limitations |
+| Secure actions | [`$secure-ai-action-boundary`](.agents/skills/secure-ai-action-boundary/SKILL.md) | Trusted read and effect boundaries with negative tests |
+| Review readiness | [`$review-ai-production-readiness`](.agents/skills/review-ai-production-readiness/SKILL.md) | Evidence-backed release decision and rollback conditions |
+| Operate the service | [`$operate-ai-service`](.agents/skills/operate-ai-service/SKILL.md) | Outcome, adoption, reliability, safety, cost, and change decision |
+| Transfer ownership | [`$transfer-ai-service`](.agents/skills/transfer-ai-service/SKILL.md) | Exercised operating capability and exit decision |
+| Productize learning | [`$productize-field-learning`](.agents/skills/productize-field-learning/SKILL.md) | Sanitized reusable-capability disposition and release path |
 
 ## Repository map
 
 | Path | Role | Treat it as |
 | --- | --- | --- |
+| [`.agents/skills/`](.agents/skills/) | Provides focused FDE and AI-engineering workflows | Progressive task interfaces over canonical repository artifacts; not authority or runtime capabilities |
 | [`catalog.json`](catalog.json) | Lists governed artifacts, types, paths, and tags | Registry; update when a cataloged artifact is added, moved, or removed |
 | [`controls/`](controls/control-catalog.json) | Defines production requirements and release gates | Engineering policy normative within this guide |
 | [`schemas/`](schemas/README.md) | Defines valid structures for machine-readable artifacts | Structural source of truth |
@@ -60,6 +79,7 @@ Do not load the entire repository by default. Use the task routes below, then fo
 | Update changing guidance | [Research policy](research/README.md) → dated primary source → affected pattern, control, or library page | Attributed claim, caveat, review date, and linked implementation impact |
 | Change operations or a runbook | Relevant OPS controls → trace and effect contracts → affected operations document → example and recovery tests | Consistent telemetry, SLO, detection, containment, recovery, and release behavior |
 | Change repository, CI, or community metadata | [README](README.md) → package metadata, citation, and changelog → workflow or community file → validator | Consistent public metadata, safe automation, navigation, and validation |
+| Add or change a repository skill | Target [`SKILL.md`](.agents/skills/) → directly linked controls and artifacts → `agents/openai.yaml` → skill and repository tests → public navigation | Focused trigger, bounded workflow, clear output, no duplicate methodology, catalog registration, and validated metadata |
 
 ## Artifact sequence for a new system
 
@@ -104,6 +124,7 @@ If these disagree, do not silently choose one. Identify the conflict, preserve t
 - Recommendations based on changing platform behavior cite a dated primary source in `research/`.
 - Vendor metrics remain attributed; experimental patterns remain labeled.
 - Every new reusable canonical artifact is added to `catalog.json` with a stable ID and repository-contained path. Community files and explanatory library pages remain uncataloged unless explicitly designated.
+- Repository skills remain thin interfaces over canonical artifacts: frontmatter contains only `name` and `description`, trigger scopes do not overlap materially, UI metadata names the skill explicitly, and no skill claims tool or approval authority.
 - Schema changes update the matching template, examples, validator assumptions, and positive and negative contract tests.
 - Failure fixes add or update a replayable regression case.
 
@@ -145,7 +166,7 @@ npm test
 git diff --check
 ```
 
-For a focused iteration, use `npm run test:markdown`, `npm run test:paths`, `npm run test:repository`, `npm run test:contracts`, `npm run test:tool-security`, `npm run test:telemetry`, `npm run test:governance`, `npm run test:release-integrity`, `npm run test:release-gates`, `npm run test:policy`, `npm run test:reference`, or `npm run test:evals`; run the full gate before declaring the repository change complete.
+For a focused iteration, use `npm run test:markdown`, `npm run test:paths`, `npm run test:repository`, `npm run test:contracts`, `npm run test:tool-security`, `npm run test:telemetry`, `npm run test:governance`, `npm run test:release-integrity`, `npm run test:release-gates`, `npm run test:skills`, `npm run test:policy`, `npm run test:reference`, or `npm run test:evals`; run the full gate before declaring the repository change complete.
 
 A change is complete only when:
 

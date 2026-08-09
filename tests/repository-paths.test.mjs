@@ -132,6 +132,7 @@ test("agent dependency discovery includes the required trace contract", () => {
 });
 
 test("governed path classes map to allowed catalog types", () => {
+  assert.deepEqual([...expectedCatalogTypes(".agents/skills/qualify-ai-workflow/SKILL.md")], ["standard"]);
   assert.deepEqual([...expectedCatalogTypes("schemas/tool-contract.schema.json")], ["schema"]);
   assert.deepEqual([...expectedCatalogTypes("operations/telemetry-contract.md")], ["runbook", "standard"]);
   assert.deepEqual([...expectedCatalogTypes("research/2026-01-01--2026-02-01-ledger.md")], ["evidence"]);

@@ -4,6 +4,13 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-08-09
+
+- Add ten focused, repository-local skills spanning workflow qualification, value engineering, intelligence selection, system design, evaluation, action security, production readiness, service operation, ownership transfer, and field-learning productization.
+- Keep every skill instruction-only, cataloged, progressively disclosed, and routed through the guide's existing controls, playbooks, templates, examples, and safety boundaries.
+- Add skill metadata and catalog regression tests to the full repository gate.
+- Rework README, AGENTS, llms, contribution, and maintainer navigation around direct human and coding-agent jobs, outputs, and safe skill use.
+
 ## [1.3.0] - 2026-08-08
 
 - Add optional, versioned system-map and change-impact contracts for FDEs and applied-AI teams operating complex or fast-changing systems.
@@ -64,7 +71,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.3.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.4.0...HEAD
+[1.4.0]: https://github.com/davidahmann/fde-guide/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/davidahmann/fde-guide/compare/v1.2.0...v1.3.0
 [1.2.0]: https://github.com/davidahmann/fde-guide/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/davidahmann/fde-guide/compare/v1.0.1...v1.1.0

@@ -5,6 +5,21 @@ License: Apache-2.0
 
 Read [AGENTS.md](AGENTS.md) before modifying this repository.
 
+## Task skills
+
+- Qualify a workflow: [.agents/skills/qualify-ai-workflow/SKILL.md](.agents/skills/qualify-ai-workflow/SKILL.md)
+- Engineer the value case: [.agents/skills/engineer-ai-value/SKILL.md](.agents/skills/engineer-ai-value/SKILL.md)
+- Select the smallest sufficient mechanism: [.agents/skills/select-ai-mechanism/SKILL.md](.agents/skills/select-ai-mechanism/SKILL.md)
+- Design a production system: [.agents/skills/design-production-ai-system/SKILL.md](.agents/skills/design-production-ai-system/SKILL.md)
+- Build release evaluations: [.agents/skills/build-ai-evaluation/SKILL.md](.agents/skills/build-ai-evaluation/SKILL.md)
+- Secure reads and actions: [.agents/skills/secure-ai-action-boundary/SKILL.md](.agents/skills/secure-ai-action-boundary/SKILL.md)
+- Review production readiness: [.agents/skills/review-ai-production-readiness/SKILL.md](.agents/skills/review-ai-production-readiness/SKILL.md)
+- Operate the service: [.agents/skills/operate-ai-service/SKILL.md](.agents/skills/operate-ai-service/SKILL.md)
+- Transfer service ownership: [.agents/skills/transfer-ai-service/SKILL.md](.agents/skills/transfer-ai-service/SKILL.md)
+- Productize field learning: [.agents/skills/productize-field-learning/SKILL.md](.agents/skills/productize-field-learning/SKILL.md)
+
+Skills are instruction-only routes over the same governed artifacts below. They do not grant runtime tools, authority, approval, or evidence.
+
 ## Entry points
 
 - Human overview: [README.md](README.md)
