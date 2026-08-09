@@ -15,6 +15,8 @@
 | Iterative analysis needs governed semantics, query/code execution, and claim-level evidence | [Governed data analysis agent](data-analysis-agent.md) |
 | Production signals should create isolated, reviewable improvement candidates | [Controlled improvement agent](controlled-improvement-agent.md) |
 
+For recurring enterprise combinations—tenant and identity foundations, integration runtimes, secure AI workloads, or deployment and operations—use the [reference-solution accelerators](../solutions/README.md) after selecting the primary system boundary. They compose these blueprints and canonical templates; they do not replace workflow qualification or release evidence.
+
 ## Mandatory design packet
 
 | Artifact | Contract |

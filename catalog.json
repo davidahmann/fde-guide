@@ -358,6 +358,30 @@
       "tags": ["architecture", "dependencies", "change-impact", "provenance"]
     },
     {
+      "id": "solution.enterprise-foundation",
+      "type": "blueprint",
+      "path": "solutions/enterprise-foundation.md",
+      "tags": ["solution", "multi-tenant", "identity", "billing", "onboarding"]
+    },
+    {
+      "id": "solution.integration-runtime",
+      "type": "blueprint",
+      "path": "solutions/integration-runtime.md",
+      "tags": ["solution", "connectors", "webhooks", "reliability", "credentials"]
+    },
+    {
+      "id": "solution.secure-ai-workload",
+      "type": "blueprint",
+      "path": "solutions/secure-ai-workload.md",
+      "tags": ["solution", "retrieval", "permissions", "citations", "privacy"]
+    },
+    {
+      "id": "solution.deployment-operations",
+      "type": "blueprint",
+      "path": "solutions/deployment-and-operations.md",
+      "tags": ["solution", "deployment", "operations", "incident", "evidence"]
+    },
+    {
       "id": "playbook.discovery-value",
       "type": "standard",
       "path": "playbooks/01-discovery-and-value.md",
@@ -518,6 +542,12 @@
       "type": "evidence",
       "path": "research/2026-08-08--evidence-graphs-and-change-intelligence.md",
       "tags": ["sources", "2026", "architecture", "change-impact"]
+    },
+    {
+      "id": "evidence.reference-solution-standards",
+      "type": "evidence",
+      "path": "research/2026-08-09--reference-solution-standards.md",
+      "tags": ["sources", "standards", "identity", "billing", "observability"]
     }
   ]
 }

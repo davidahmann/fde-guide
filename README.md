@@ -10,7 +10,7 @@ An independent, open-source field guide for FDEs and internal applied-AI teams m
 [![Latest release](https://img.shields.io/github/v/release/davidahmann/fde-guide)](https://github.com/davidahmann/fde-guide/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-[Choose your starting point](#who-this-is-for) · [Follow the lifecycle](#from-idea-to-production) · [Inspect the examples](#learn-from-the-reference-systems) · [Use with a coding agent](#optional-use-it-with-a-coding-agent)
+[Choose your starting point](#who-this-is-for) · [Follow the lifecycle](#from-idea-to-production) · [Start from a solution](#start-from-a-reference-solution) · [Inspect the examples](#learn-from-the-reference-systems) · [Use with a coding agent](#optional-use-it-with-a-coding-agent)
 
 ## Who this is for
 
@@ -20,7 +20,7 @@ Start with the decision your role owns. You do not need to adopt the whole repos
 | --- | --- | --- |
 | Business value, product, or use-case selection | Is this workflow worth changing, and how will an accepted outcome be measured? | [Discovery and Value](playbooks/01-discovery-and-value.md) and [Value Engineering](library/11-value-engineering-and-frugal-architecture.md) |
 | FDE or applied-AI delivery | How do we move one real workflow from observation through adoption and accountable operation? | [FDE playbooks](playbooks/README.md) and [FDE discovery pack](templates/fde-discovery-pack.md) |
-| AI engineering or software architecture | Which decisions belong in rules, optimization, ML, retrieval, a foundation model, an agent, or human review? | [Software Architecture and Intelligence Selection](library/12-software-architecture-and-intelligence-selection.md) and [blueprint selector](blueprints/README.md) |
+| AI engineering or software architecture | Which decisions belong in rules, optimization, ML, retrieval, a foundation model, an agent, or human review? | [Software Architecture and Intelligence Selection](library/12-software-architecture-and-intelligence-selection.md), [blueprint selector](blueprints/README.md), and [reference solutions](solutions/README.md) |
 | Platform, security, release, or reliability | Can this exact release act safely, fail predictably, and be operated within its value and risk limits? | [Release gates](operations/release-gates.md), [control catalog](controls/control-catalog.json), and [operations](operations/README.md) |
 | Technical review or enablement | What does a complete delivery packet look like in practice? | [Shipment-risk walkthrough](examples/shipment-risk-triage/README.md) and [invoice-exception reference](examples/invoice-exception/README.md) |
 
@@ -77,6 +77,19 @@ flowchart LR
 
 Draft the threat model before the evaluation suite, then refine both together as failure paths become concrete. If the workflow has no measurable outcome or trustworthy verifier, stay in discovery. A more capable model does not repair an undefined task.
 
+## Start from a reference solution
+
+After the workflow and value case are approved, the [reference-solution accelerators](solutions/README.md) provide a practical starting architecture for recurring enterprise delivery problems. They group twelve common FDE projects into four coherent systems instead of twelve disconnected demos.
+
+| Accelerator | Start here when the dominant problem is | Smallest useful result |
+| --- | --- | --- |
+| [Enterprise foundation](solutions/enterprise-foundation.md) | Tenant isolation, enterprise identity, entitlements, usage billing, or onboarding | One tenant lifecycle from identity setup to accepted use and reconciled usage |
+| [Integration runtime](solutions/integration-runtime.md) | Connectors, webhooks, credentials, retries, dead letters, or replay | One verified inbound event and one duplicate-safe, reconciled outbound action |
+| [Secure AI workload](solutions/secure-ai-workload.md) | Permission-aware retrieval, sensitive content, citations, or redaction | One read-only evidence path with current access, minimization, citations, and escalation |
+| [Deployment and operations](solutions/deployment-and-operations.md) | Controlled customer deployment, health, incidents, rollback, or a public case study | One admitted environment, canary, rollback exercise, operating view, and evidence packet |
+
+These are design accelerators: architecture, boundaries, acceptance cases, operating measures, and links to the canonical starter artifacts. They are not deployable products or compliance evidence. The executable teaching systems below show how named invariants can be tested locally.
+
 ## Learn from the reference systems
 
 The [invoice-exception example](examples/invoice-exception/README.md) shows the controlled-write method on a small financial workflow:
@@ -132,6 +145,7 @@ The machine-readable [control catalog](controls/control-catalog.json) contains t
 | [`playbooks/`](playbooks/README.md) | How an FDE or internal delivery team moves from workflow discovery and value to delivery, adoption, handoff, and post-production improvement |
 | [`library/`](library/00-start-here.md) | Why the design choices matter, what tends to fail, and how to work through a design |
 | [`blueprints/`](blueprints/README.md) | Which reference architecture fits the workflow |
+| [`solutions/`](solutions/README.md) | How recurring enterprise projects compose the blueprints, controls, and templates into a starter delivery slice |
 | [`templates/`](templates/README.md) | Which starter artifacts to adapt and complete for a new system |
 | [`controls/`](controls/control-catalog.json) | Which production requirements and release gates apply |
 | [`schemas/`](schemas/README.md) | What valid machine-readable artifacts look like |

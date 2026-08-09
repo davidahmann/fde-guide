@@ -12,6 +12,7 @@ This document keeps the guide coherent as research, controls, templates, example
 | `schemas/` | Machine-readable structural contracts | Update template, examples, validator mapping, positive and negative tests |
 | `patterns/` | Evidence-linked decisions and anti-patterns | Add detection, response, verification, and review date |
 | `blueprints/` | Reference system designs | Cover components, boundaries, state, failure, telemetry, and release tests |
+| `solutions/` | Composite enterprise delivery accelerators | Keep one primary failure boundary, honest maturity, a bounded slice, acceptance and operating contracts, and links to canonical artifacts |
 | `playbooks/` | FDE delivery and operating sequence | Keep entry/exit evidence, owners, and decisions explicit |
 | `templates/` | Reusable working artifacts | Remain valid, scoped, and consistent with controls and playbooks |
 | `examples/` | Executable teaching evidence | Keep claims limited to tested behavior; add regressions for fixes |
@@ -47,6 +48,7 @@ This document keeps the guide coherent as research, controls, templates, example
 | Telemetry or receipt | Producer, exporter allowlist, DLP checks, schema, semantic bindings, retention, incident queries |
 | Operations contract | SLO, alert, runbook, incident query, game day, example telemetry |
 | Repository skill | Trigger neighbors, linked controls and artifacts, `agents/openai.yaml`, catalog entry, skill tests, README, AGENTS, and llms |
+| Solution accelerator | Coverage map, primary boundary, referenced controls and templates, acceptance cases, operating measures, catalog entry, navigation, and solution tests |
 | Public navigation | README, AGENTS, llms, catalog, contribution docs |
 
 ## Research refresh
@@ -70,6 +72,7 @@ This document keeps the guide coherent as research, controls, templates, example
 ## Maintainer acceptance questions
 
 - Does the change improve a real user path or contract rather than add parallel prose?
+- Does a solution accelerator reduce delivery ambiguity without becoming a parallel methodology or implying deployable completeness?
 - Can a person and a coding agent find the new artifact from the task they are trying to complete?
 - Are evidence, recommendation, control, implementation, and verification clearly separated?
 - Does a failure have one owning layer and a regression path?
