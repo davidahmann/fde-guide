@@ -1,0 +1,4 @@
+interface:
+  display_name: "Qualify AI Workflow"
+  short_description: "Turn a use case into a qualified workflow"
+  default_prompt: "Use $qualify-ai-workflow to qualify this workflow before we design a solution."

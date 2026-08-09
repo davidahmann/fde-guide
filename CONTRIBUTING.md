@@ -41,6 +41,17 @@ Source corrections should identify the affected claim, stable source URL, public
 
 Agent-assisted contributions are welcome. The human submitter remains responsible for scope, provenance, licensing, secret removal, test evidence, and the final diff. Include the commands and material evidence used to validate the change; do not submit hidden reasoning or credentials.
 
+## Skill changes
+
+Repository skills live under [`.agents/skills/`](.agents/skills/) and remain thin task interfaces over the guide's canonical controls and artifacts. A new or changed skill must:
+
+- define a distinct trigger in `SKILL.md` frontmatter using only `name` and `description`;
+- route to existing controls, playbooks, templates, and examples instead of copying a second methodology;
+- name its output, stop conditions, and safety boundary without claiming tool or approval authority;
+- keep `agents/openai.yaml` consistent with the skill name and trigger;
+- be registered in [`catalog.json`](catalog.json) and covered by `npm run test:skills`;
+- update `README.md`, `AGENTS.md`, and `llms.txt` when public navigation changes.
+
 ## Pull requests
 
 Keep each pull request reviewable and scoped to one outcome. Explain:

@@ -4,19 +4,57 @@
 
 ![The FDE Guide: Discover value, design the system, govern decisions, release safely, operate outcomes](assets/fde-guide-banner.svg)
 
-An independent, open-source guide for FDEs and internal applied-AI teams moving a customer or internal workflow from discovery to a measurable, operated outcome.
+An independent, open-source field guide for FDEs and internal applied-AI teams moving a customer or internal workflow from discovery to a measurable, operated outcome.
 
 [![Repository validation](https://github.com/davidahmann/fde-guide/actions/workflows/validate.yml/badge.svg)](https://github.com/davidahmann/fde-guide/actions/workflows/validate.yml)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-Use this repository to:
+Use it to:
 
 - Find operational work where a software system can create measurable value—and reject weak use cases early.
 - Choose the smallest adequate mix of rules, optimization, ML, foundation models, agents, and human review.
 - Turn field observations into a clear workflow, architecture, delivery plan, and controlled production service.
-- Give operating and engineering teams the evidence, skills, ownership, and operating routines to maintain the result.
+- Give operating and engineering teams the evidence, ownership, and routines to maintain the result.
 
-Leading an engagement? Begin with the [FDE playbooks](playbooks/README.md). Designing one system? Use [Start Here](library/00-start-here.md). Building with a coding agent? Give it [`AGENTS.md`](AGENTS.md) as its working map.
+## Start here
+
+Choose the path that matches the work in front of you:
+
+| Your situation | Start |
+| --- | --- |
+| You have an idea or a request, but no qualified workflow | Run [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) or begin with [Discovery and Value](playbooks/01-discovery-and-value.md) |
+| You know the workflow and need to prove its value | Run [`$engineer-ai-value`](.agents/skills/engineer-ai-value/SKILL.md) |
+| You need to choose rules, ML, a model, an agent, or human review | Run [`$select-ai-mechanism`](.agents/skills/select-ai-mechanism/SKILL.md) |
+| You are ready to design and deliver the system | Run [`$design-production-ai-system`](.agents/skills/design-production-ai-system/SKILL.md) or follow the [FDE playbooks](playbooks/README.md) |
+| You are evaluating, securing, or reviewing a release | Use the matching skill in the [skill library](#skill-library) |
+| You want to inspect working examples | Open the [invoice-exception](examples/invoice-exception/README.md) or [shipment-risk](examples/shipment-risk-triage/README.md) walkthrough |
+
+If your coding agent does not discover repository-local skills, give it [`AGENTS.md`](AGENTS.md) as the working map and name the relevant `SKILL.md` explicitly.
+
+## Skill library
+
+The repository includes ten focused, repository-local skills under [`.agents/skills/`](.agents/skills/). Each one is a thin workflow over the same controls, templates, and playbooks humans can read directly.
+
+| Job | Skill | You should leave with |
+| --- | --- | --- |
+| Qualify the work | [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) | Observed workflow, owner, baseline, accepted outcome, verifier, risk ceiling, and go/defer/reject decision |
+| Prove the economics | [`$engineer-ai-value`](.agents/skills/engineer-ai-value/SKILL.md) | Adoption-adjusted value case, full cost, guardrails, cost ceiling, and measurement plan |
+| Select the intelligence | [`$select-ai-mechanism`](.agents/skills/select-ai-mechanism/SKILL.md) | Smallest sufficient mechanism for each decision, with fallback and retirement rationale |
+| Design the system | [`$design-production-ai-system`](.agents/skills/design-production-ai-system/SKILL.md) | Coherent architecture and the smallest applicable design packet |
+| Build release evidence | [`$build-ai-evaluation`](.agents/skills/build-ai-evaluation/SKILL.md) | Representative cases, isolated evaluation, slice-level results, limitations, and decision |
+| Secure reads and actions | [`$secure-ai-action-boundary`](.agents/skills/secure-ai-action-boundary/SKILL.md) | Typed boundaries, authority matrix, capability provenance, denials, and recovery tests |
+| Decide production readiness | [`$review-ai-production-readiness`](.agents/skills/review-ai-production-readiness/SKILL.md) | Release decision, control gaps, owners, rollout limits, and rollback triggers |
+| Operate the service | [`$operate-ai-service`](.agents/skills/operate-ai-service/SKILL.md) | Service scorecard, incidents and changes, value and cost trend, and next decision |
+| Transfer ownership | [`$transfer-ai-service`](.agents/skills/transfer-ai-service/SKILL.md) | Exercised operating capability, support model, blockers, and exit decision |
+| Reuse field learning | [`$productize-field-learning`](.agents/skills/productize-field-learning/SKILL.md) | Sanitized learning record, productization boundary, validation, owner, and release path |
+
+In hosts that support explicit skill invocation, start with a prompt such as:
+
+```text
+Use $qualify-ai-workflow to assess this candidate workflow: [describe it].
+```
+
+The skills are instruction-only: they do not grant tools, credentials, permissions, or approval. The [control catalog](controls/control-catalog.json), schemas, target-system policy, and human authority remain controlling. Pin the repository release or commit you reviewed; before admitting a skill into a production workflow, apply the provenance, authority, lifecycle, and disable controls in `TOL-006`.
 
 ## The promise
 
@@ -31,27 +69,6 @@ This repository provides the design sequence, reusable contracts, tests, and ope
 ## Value engineering is the spine
 
 Work in this order: **outcome → workflow → decision → system → controlled action → accepted result → measured value**. Start with the user's operational decision and the economics of an accepted result. Only then choose the software architecture and the smallest adequate intelligence mechanism. The [value-engineering guide](library/11-value-engineering-and-frugal-architecture.md) and [intelligence-selection guide](library/12-software-architecture-and-intelligence-selection.md) are the two starting points for that work.
-
-## Find your path
-
-| If you need to… | Start with | You should leave with… |
-| --- | --- | --- |
-| Lead an FDE or internal delivery engagement | [FDE playbooks](playbooks/README.md) | A path from field discovery and value to business-owned production operation |
-| Build shared applied-AI capability | [FDE and applied AI engineering synthesis](library/10-fde-and-production-agent-synthesis.md) | A clear boundary between workflow-specific delivery, reusable product/platform capability, and safe field learning |
-| Decide what to build | [Discovery and Value](playbooks/01-discovery-and-value.md) and [Start Here](library/00-start-here.md) | An observed workflow, owner, baseline, measurable outcome, verifier, and go/no-go decision |
-| Make the value and cost case | [Value Engineering and Frugal Architecture](library/11-value-engineering-and-frugal-architecture.md) | A full-cost, outcome-level case with guardrails, cost ceiling, and stop conditions |
-| Choose rules, ML, models, or agents | [Software Architecture and Intelligence Selection](library/12-software-architecture-and-intelligence-selection.md) | The smallest sufficient decision mechanism, fallback, and measurable selection rationale |
-| Map a complex system or assess a material change | [Evidence Graphs and Change Intelligence](library/13-evidence-graphs-and-change-intelligence.md) | A provenance-aware dependency view and impact review that cannot become a shadow control plane |
-| Design a production system | [Production Implementation Playbook](library/07-production-implementation-playbook.md) | A domain model, architecture, behavior bundle, tool and capability contracts, evaluation cases, and threat model |
-| Choose an architecture | [Blueprint selector](blueprints/README.md) | The smallest system shape that fits the workflow and its risks |
-| Deliver and transfer a solution | [Solution Design and Delivery](playbooks/02-solution-and-delivery.md) | A tested vertical slice, adoption evidence, release plan, and business-owned handoff |
-| Review an existing AI system | [Production, Evaluation, and Governance](library/04-production-evaluation-and-governance.md) and [release gates](operations/release-gates.md) | A list of control gaps, required tests, and a release decision |
-| Build or repair evaluations | [Evaluation Corpus and Review Loops](library/09-evaluation-corpus-and-review-loops.md) | Repeatable success, failure, and adversarial scenarios |
-| Operate or improve a system | [Operate and Scale](playbooks/03-operate-and-scale.md) | A service cadence covering outcomes, adoption, reliability, safety, cost, change, and retirement |
-| Debug a production failure | [Telemetry contract](operations/telemetry-contract.md) and [incident runbook](operations/incident-runbook.md) | Evidence for diagnosis, containment, recovery, and a regression case |
-| Learn from controlled-write code | [Invoice-exception reference](examples/invoice-exception/README.md) | A tested example of approval, authorization, retry safety, and result verification |
-| Follow one FDE journey | [Shipment-risk triage walkthrough](examples/shipment-risk-triage/README.md) | An illustrative path from discovery and value case through hybrid design, adoption, and service review |
-| Understand why guidance exists | [Source index](library/05-source-index.md) and [dated research ledger](research/README.md) | The evidence, caveats, and review date behind a recommendation |
 
 ## From idea to production
 
@@ -138,6 +155,7 @@ The machine-readable [control catalog](controls/control-catalog.json) contains t
 
 | Path | What it answers |
 | --- | --- |
+| [`.agents/skills/`](.agents/skills/) | Which focused workflow an AI coding agent should follow for the current FDE or AI-engineering job |
 | [`playbooks/`](playbooks/README.md) | How an FDE or internal delivery team moves from workflow discovery and value to delivery, adoption, handoff, and post-production improvement |
 | [`library/`](library/00-start-here.md) | Why the design choices matter, what tends to fail, and how to work through a design |
 | [`blueprints/`](blueprints/README.md) | Which reference architecture fits the workflow |
@@ -176,22 +194,22 @@ The suite checks repository links and anchors, JSON contracts, policy denials, a
 
 ## Use this repository with a coding agent
 
-[`AGENTS.md`](AGENTS.md) tells coding agents what is authoritative, how the folders relate, which files to read for each task, and what must pass before a change is complete. [`catalog.json`](catalog.json) is the governed-artifact registry; [`llms.txt`](llms.txt) is the compact navigation index.
+Start with the closest skill in the [skill library](#skill-library). Each skill progressively loads only the playbook, controls, templates, and examples needed for its job. [`AGENTS.md`](AGENTS.md) remains the repository-wide working contract: it explains authority, change routes, safety boundaries, and completion checks. [`catalog.json`](catalog.json) is the governed-artifact registry; [`llms.txt`](llms.txt) is the compact navigation index.
 
-A useful starting prompt is:
+A useful fallback when no single skill fits is:
 
 ```text
 Follow AGENTS.md. Help me design a production AI-enabled system for [workflow].
 Start by observing and chartering the current work: actor, decision,
 inputs, action, owner, baseline, accepted outcome, verifier, adoption path,
 and risk ceiling. Compare deterministic, optimization, ML, retrieval,
-foundation-model, agent, and human options. Recommend the smallest matching blueprint. Then produce
-the required design artifacts, threat model, evaluation cases, release
-plan, and operating handoff, citing repository control IDs. Do not begin
-implementation while a consequential discovery question is unresolved.
+foundation-model, agent, and human options. Recommend the smallest matching
+blueprint. Produce only the artifacts justified by the workflow, citing
+repository control IDs. Do not begin implementation while a consequential
+discovery question is unresolved.
 ```
 
-For an implementation or review task, state the target workflow, allowed autonomy, systems in scope, and expected deliverable. The agent can then route itself through the repository instead of loading every document.
+For an implementation or review task, state the target workflow, allowed authority, systems in scope, evidence available, and expected deliverable. The skill or agent map can then route through the repository without loading every document.
 
 ## Contribute
 

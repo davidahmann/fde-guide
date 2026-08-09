@@ -6,6 +6,7 @@ This document keeps the guide coherent as research, controls, templates, example
 
 | Layer | Authority | Change obligation |
 | --- | --- | --- |
+| `.agents/skills/` | Focused human- and agent-readable task routes | Keep triggers distinct, procedures thin, outputs explicit, metadata valid, and links bound to canonical artifacts |
 | `research/` | Dated evidence and caveats | Verify source, date, attribution, and claim boundary |
 | `controls/` | Normative project requirements | Link evidence and release gates; update affected verification |
 | `schemas/` | Machine-readable structural contracts | Update template, examples, validator mapping, positive and negative tests |
@@ -45,6 +46,7 @@ This document keeps the guide coherent as research, controls, templates, example
 | Behavior config | Per-model/route results, canary, rollback, dependency lifecycle |
 | Telemetry or receipt | Producer, exporter allowlist, DLP checks, schema, semantic bindings, retention, incident queries |
 | Operations contract | SLO, alert, runbook, incident query, game day, example telemetry |
+| Repository skill | Trigger neighbors, linked controls and artifacts, `agents/openai.yaml`, catalog entry, skill tests, README, AGENTS, and llms |
 | Public navigation | README, AGENTS, llms, catalog, contribution docs |
 
 ## Research refresh
@@ -57,7 +59,7 @@ This document keeps the guide coherent as research, controls, templates, example
 ## Release procedure
 
 1. Inspect branch, remotes, status, and full diff.
-2. Run `npm ci --ignore-scripts`, `npm test`, and `git diff --check`.
+2. Run `npm ci --ignore-scripts`, `npm test`, and `git diff --check`; `npm test` includes skill metadata and catalog checks.
 3. Run spelling, action workflow, dependency, and secret scans used by the current project.
 4. Confirm all new governed artifacts are cataloged and every new source ID resolves.
 5. Proofread README, AGENTS, llms, playbook routes, changelog, package/citation versions, and release links.

@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/artifact-catalog.schema.json",
   "schema_version": "1.1.0",
-  "updated": "2026-08-08",
+  "updated": "2026-08-09",
   "artifacts": [
     {
       "id": "controls.production",
@@ -422,6 +422,66 @@
       "type": "standard",
       "path": "operations/capability-supply-chain.md",
       "tags": ["security", "tools", "provenance", "supply-chain"]
+    },
+    {
+      "id": "skill.qualify-ai-workflow",
+      "type": "standard",
+      "path": ".agents/skills/qualify-ai-workflow/SKILL.md",
+      "tags": ["skill", "discovery", "workflow", "qualification"]
+    },
+    {
+      "id": "skill.engineer-ai-value",
+      "type": "standard",
+      "path": ".agents/skills/engineer-ai-value/SKILL.md",
+      "tags": ["skill", "value", "economics", "measurement"]
+    },
+    {
+      "id": "skill.select-ai-mechanism",
+      "type": "standard",
+      "path": ".agents/skills/select-ai-mechanism/SKILL.md",
+      "tags": ["skill", "architecture", "intelligence", "selection"]
+    },
+    {
+      "id": "skill.design-production-ai-system",
+      "type": "standard",
+      "path": ".agents/skills/design-production-ai-system/SKILL.md",
+      "tags": ["skill", "architecture", "design", "production"]
+    },
+    {
+      "id": "skill.build-ai-evaluation",
+      "type": "standard",
+      "path": ".agents/skills/build-ai-evaluation/SKILL.md",
+      "tags": ["skill", "evaluation", "evidence", "release"]
+    },
+    {
+      "id": "skill.secure-ai-action-boundary",
+      "type": "standard",
+      "path": ".agents/skills/secure-ai-action-boundary/SKILL.md",
+      "tags": ["skill", "security", "identity", "tools"]
+    },
+    {
+      "id": "skill.review-ai-production-readiness",
+      "type": "standard",
+      "path": ".agents/skills/review-ai-production-readiness/SKILL.md",
+      "tags": ["skill", "review", "release", "readiness"]
+    },
+    {
+      "id": "skill.operate-ai-service",
+      "type": "standard",
+      "path": ".agents/skills/operate-ai-service/SKILL.md",
+      "tags": ["skill", "operations", "monitoring", "reliability"]
+    },
+    {
+      "id": "skill.transfer-ai-service",
+      "type": "standard",
+      "path": ".agents/skills/transfer-ai-service/SKILL.md",
+      "tags": ["skill", "adoption", "handoff", "enablement"]
+    },
+    {
+      "id": "skill.productize-field-learning",
+      "type": "standard",
+      "path": ".agents/skills/productize-field-learning/SKILL.md",
+      "tags": ["skill", "learning", "productization", "reuse"]
     },
     {
       "id": "example.invoice-exception",

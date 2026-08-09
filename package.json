@@ -1,7 +1,7 @@
 {
   "name": "fde-guide",
-  "version": "1.3.0",
-  "description": "A practical FDE and applied AI engineering guide to value engineering and production systems.",
+  "version": "1.4.0",
+  "description": "An FDE and applied AI engineering guide for measurable value and production systems.",
   "private": true,
   "license": "Apache-2.0",
   "author": {
@@ -23,6 +23,7 @@
     "production-ai",
     "ai-systems",
     "ai-agents",
+    "agent-skills",
     "evaluation",
     "ai-security",
     "observability"
@@ -42,11 +43,12 @@
     "test:governance": "node --test tests/governance-contracts.test.mjs",
     "test:release-integrity": "node --test tests/release-integrity.test.mjs",
     "test:release-gates": "node --test tests/release-gate-mappings.test.mjs",
+    "test:skills": "node --test tests/skills.test.mjs",
     "test:policy": "node --test examples/invoice-exception/authorization-policy.test.mjs",
     "test:reference": "node --test examples/invoice-exception/reference-loop.test.mjs",
     "test:evals": "node --test examples/invoice-exception/run-evals.test.mjs",
     "test:hybrid": "node --test examples/shipment-risk-triage/shipment-risk-triage.test.mjs",
-    "test": "npm run validate && npm run test:markdown && npm run test:paths && npm run test:repository && npm run test:contracts && npm run test:tool-security && npm run test:telemetry && npm run test:governance && npm run test:release-integrity && npm run test:release-gates && npm run test:policy && npm run test:reference && npm run test:evals && npm run test:hybrid"
+    "test": "npm run validate && npm run test:markdown && npm run test:paths && npm run test:repository && npm run test:contracts && npm run test:tool-security && npm run test:telemetry && npm run test:governance && npm run test:release-integrity && npm run test:release-gates && npm run test:skills && npm run test:policy && npm run test:reference && npm run test:evals && npm run test:hybrid"
   },
   "devDependencies": {
     "ajv": "8.20.0",

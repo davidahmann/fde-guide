@@ -1,0 +1,4 @@
+interface:
+  display_name: "Engineer AI Value"
+  short_description: "Build an outcome and full-cost value case"
+  default_prompt: "Use $engineer-ai-value to build a measurable value case for this workflow."

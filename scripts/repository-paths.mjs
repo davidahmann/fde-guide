@@ -345,6 +345,7 @@ export function expectedDocumentSchema(repositoryPath, document = null) {
 }
 
 export function expectedCatalogTypes(repositoryPath) {
+  if (/^\.agents\/skills\/[a-z0-9-]+\/SKILL\.md$/.test(repositoryPath)) return new Set(["standard"]);
   if (/^blueprints\/(?!README\.md$).+\.md$/.test(repositoryPath)) return new Set(["blueprint"]);
   if (/^controls\/.+\.json$/.test(repositoryPath)) return new Set(["control_catalog"]);
   if (/^examples\/[^/]+\/README\.md$/.test(repositoryPath)) return new Set(["example"]);
