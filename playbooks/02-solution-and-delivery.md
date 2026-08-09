@@ -12,6 +12,8 @@ Create one row for every functional requirement:
 
 If a component cannot be traced to a requirement, justify or remove it. If a requirement cannot be traced to state, action, verification, and ownership, the design is incomplete. Palantir's solution-design method uses object models, lifecycle diagrams, enrichments, and interface expectations to preserve this traceability. [R26-41]
 
+When the approved workflow falls into a recurring enterprise delivery shape, use the [reference-solution accelerators](../solutions/README.md) to start from a bounded vertical slice. Select one primary accelerator by its dominant failure boundary; copy its canonical starter packet into the delivery repository and replace every assumption with target-specific evidence. The accelerators are design inputs, not release artifacts.
+
 Controls: `FDE-001`, `ARC-001`, `DEL-001`.
 
 ## 2. Model data, logic, action, and security together

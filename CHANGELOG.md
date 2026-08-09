@@ -4,6 +4,13 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.6.0] - 2026-08-09
+
+- Add four reference-solution accelerators for enterprise foundations, integration runtimes, secure AI workloads, and deployment operations.
+- Map twelve common FDE implementation projects onto coherent system boundaries, bounded first slices, acceptance contracts, operating measures, starter artifacts, and explicit non-claims.
+- Add automated coverage, maturity, navigation, and catalog checks for the reference-solution layer.
+- Integrate the accelerators into human, coding-agent, delivery, contribution, and maintainer routes without displacing workflow qualification, value engineering, or executable release evidence.
+
 ## [1.5.0] - 2026-08-09
 
 - Rebuild the public README around audience responsibilities, business outcomes, delivery decisions, reference systems, and operating needs before optional agent interfaces.
@@ -79,7 +86,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.6.0...HEAD
+[1.6.0]: https://github.com/davidahmann/fde-guide/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/davidahmann/fde-guide/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/davidahmann/fde-guide/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/davidahmann/fde-guide/compare/v1.2.0...v1.3.0

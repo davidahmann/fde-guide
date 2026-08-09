@@ -21,6 +21,7 @@ Social, Reddit, YouTube, and news are research channels—not automatic authorit
 - [AI Engineer production-agent video index](2026-08-07--ai-engineer-production-agent-video-index.md) — chapter-level practitioner talks with corroboration and claim limits.
 - [Operational-redesign and applied-AI practice note](2026-08-08--operational-redesign-and-applied-ai-practice.md) — supplied practitioner material and one directly reviewed organizational-change framework, with portable lessons separated from attribution and forecast claims.
 - [Evidence graphs and change intelligence](2026-08-08--evidence-graphs-and-change-intelligence.md) — architecture/catalog/lineage sources and project implementation leads, scoped to derived maps and impact review rather than graph-driven authority.
+- [Reference-solution standards note](2026-08-09--reference-solution-standards.md) — primary identity, provisioning, usage-metering, and telemetry anchors for the enterprise-foundation and deployment accelerators, with provider and conformance limits.
 
 ## Archive
 

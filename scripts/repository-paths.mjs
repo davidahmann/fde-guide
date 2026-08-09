@@ -354,6 +354,7 @@ export function expectedCatalogTypes(repositoryPath) {
   if (/^playbooks\/(?!README\.md$).+\.md$/.test(repositoryPath)) return new Set(["standard"]);
   if (/^research\/[0-9]{4}-[0-9]{2}-[0-9]{2}--.+\.md$/.test(repositoryPath)) return new Set(["evidence"]);
   if (/^schemas\/.+\.json$/.test(repositoryPath)) return new Set(["schema"]);
+  if (/^solutions\/(?!README\.md$).+\.md$/.test(repositoryPath)) return new Set(["blueprint"]);
   if (/^templates\/(?!README\.md$).+\.(?:json|md|spdx)$/.test(repositoryPath)) return new Set(["template"]);
   return null;
 }
