@@ -28,7 +28,7 @@ Pull requests must keep the repository validator green and include regression co
 - New or changed normative production requirements use `MUST`, `SHOULD`, or `MAY` and cite control IDs.
 - Runtime contracts use JSON Schema 2020-12; new or changed safety constraints include positive and negative tests.
 - Blueprints define components, trust boundaries, state transitions, failure behavior, telemetry, and release tests.
-- Solution accelerators compose existing artifacts around one recurring delivery boundary, declare their maturity, and include a smallest useful slice, acceptance and operating contracts, and explicit non-claims.
+- Solution artifacts compose existing methods around one recurring business flow, industry specialization, or horizontal delivery boundary. They declare maturity and include a smallest useful slice, acceptance and operating contracts, customer-specific work, and explicit non-claims.
 - Examples include a design record, ontology, tool contracts, eval cases, threat model, and executable verification when feasible.
 - Changeable platform claims cite a dated primary source in `research/`.
 - Vendor metrics remain attributed; experimental findings remain labeled.

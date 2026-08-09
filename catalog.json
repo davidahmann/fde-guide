@@ -382,6 +382,60 @@
       "tags": ["solution", "deployment", "operations", "incident", "evidence"]
     },
     {
+      "id": "solution.flow.exception-resolution",
+      "type": "blueprint",
+      "path": "solutions/business-flows/exception-to-resolution.md",
+      "tags": ["solution", "business-flow", "exceptions", "effects", "verification"]
+    },
+    {
+      "id": "solution.flow.index",
+      "type": "blueprint",
+      "path": "solutions/business-flows/README.md",
+      "tags": ["solution", "business-flow", "selection", "index"]
+    },
+    {
+      "id": "solution.flow.signal-investigation",
+      "type": "blueprint",
+      "path": "solutions/business-flows/signal-to-investigation.md",
+      "tags": ["solution", "business-flow", "investigation", "evidence", "case-management"]
+    },
+    {
+      "id": "solution.flow.risk-prioritization",
+      "type": "blueprint",
+      "path": "solutions/business-flows/risk-to-prioritized-action.md",
+      "tags": ["solution", "business-flow", "prioritization", "ml", "human-review"]
+    },
+    {
+      "id": "solution.flow.request-activation",
+      "type": "blueprint",
+      "path": "solutions/business-flows/request-to-activation.md",
+      "tags": ["solution", "business-flow", "onboarding", "activation", "adoption"]
+    },
+    {
+      "id": "solution.vertical.healthcare-access",
+      "type": "blueprint",
+      "path": "solutions/verticals/healthcare-access-coordination.md",
+      "tags": ["solution", "vertical", "healthcare", "coordination", "human-review"]
+    },
+    {
+      "id": "solution.vertical.index",
+      "type": "blueprint",
+      "path": "solutions/verticals/README.md",
+      "tags": ["solution", "vertical", "selection", "index"]
+    },
+    {
+      "id": "solution.vertical.financial-investigation",
+      "type": "blueprint",
+      "path": "solutions/verticals/financial-services-investigation.md",
+      "tags": ["solution", "vertical", "financial-services", "investigation", "confidentiality"]
+    },
+    {
+      "id": "solution.vertical.industrial-response",
+      "type": "blueprint",
+      "path": "solutions/verticals/industrial-operations-response.md",
+      "tags": ["solution", "vertical", "industrial", "operations", "ot"]
+    },
+    {
       "id": "playbook.discovery-value",
       "type": "standard",
       "path": "playbooks/01-discovery-and-value.md",
@@ -542,6 +596,12 @@
       "type": "evidence",
       "path": "research/2026-08-08--evidence-graphs-and-change-intelligence.md",
       "tags": ["sources", "2026", "architecture", "change-impact"]
+    },
+    {
+      "id": "evidence.business-flow-vertical-solutions",
+      "type": "evidence",
+      "path": "research/2026-08-09--business-flow-and-vertical-solutions.md",
+      "tags": ["sources", "2026", "business-flow", "vertical", "solutions"]
     },
     {
       "id": "evidence.reference-solution-standards",

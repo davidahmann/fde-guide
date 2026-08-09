@@ -10,7 +10,7 @@ An independent, open-source field guide for FDEs and internal applied-AI teams m
 [![Latest release](https://img.shields.io/github/v/release/davidahmann/fde-guide)](https://github.com/davidahmann/fde-guide/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-[Choose your starting point](#who-this-is-for) · [Follow the lifecycle](#from-idea-to-production) · [Start from a solution](#start-from-a-reference-solution) · [Inspect the examples](#learn-from-the-reference-systems) · [Use with a coding agent](#optional-use-it-with-a-coding-agent)
+[Choose your starting point](#who-this-is-for) · [Follow the lifecycle](#from-idea-to-production) · [Start from a business flow](#start-from-a-business-flow) · [Inspect the examples](#learn-from-the-reference-systems) · [Use with a coding agent](#optional-use-it-with-a-coding-agent)
 
 ## Who this is for
 
@@ -18,7 +18,7 @@ Start with the decision your role owns. You do not need to adopt the whole repos
 
 | You are responsible for | The question to answer first | Start here |
 | --- | --- | --- |
-| Business value, product, or use-case selection | Is this workflow worth changing, and how will an accepted outcome be measured? | [Discovery and Value](playbooks/01-discovery-and-value.md) and [Value Engineering](library/11-value-engineering-and-frugal-architecture.md) |
+| Business value, product, or use-case selection | Is this workflow worth changing, and how will an accepted outcome be measured? | [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md), then [Discovery and Value](playbooks/01-discovery-and-value.md) |
 | FDE or applied-AI delivery | How do we move one real workflow from observation through adoption and accountable operation? | [FDE playbooks](playbooks/README.md) and [FDE discovery pack](templates/fde-discovery-pack.md) |
 | AI engineering or software architecture | Which decisions belong in rules, optimization, ML, retrieval, a foundation model, an agent, or human review? | [Software Architecture and Intelligence Selection](library/12-software-architecture-and-intelligence-selection.md), [blueprint selector](blueprints/README.md), and [reference solutions](solutions/README.md) |
 | Platform, security, release, or reliability | Can this exact release act safely, fail predictably, and be operated within its value and risk limits? | [Release gates](operations/release-gates.md), [control catalog](controls/control-catalog.json), and [operations](operations/README.md) |
@@ -42,7 +42,11 @@ In this guide, a **production agent** is a bounded workflow in which a foundatio
 
 This repository provides the design sequence, reusable contracts, tests, and operating checks around that system. It does not require a specific model, cloud, or agent framework. It is not a drop-in runtime, a certification, or a substitute for your organization's security and risk review.
 
-Work in this order: **outcome → workflow → decision → system → controlled action → accepted result → measured value**. Start with the user's operational decision and the economics of an accepted result. Only then choose the software architecture and the smallest adequate intelligence mechanism. The [value-engineering guide](library/11-value-engineering-and-frugal-architecture.md) and [intelligence-selection guide](library/12-software-architecture-and-intelligence-selection.md) are the two starting points for that work.
+Work in this order: **outcome → workflow → decision → system → controlled action → accepted result → measured value**. Start with the user's operational decision and the economics of an accepted result. Only then choose the software architecture and the smallest adequate intelligence mechanism.
+
+> **Tokens are an input. Autonomy is a design choice. Accepted outcomes are the product.**
+
+The [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md) turn that principle into an operating framework: observe real work, own and verify the outcome, bound eligibility and authority, engineer adoption, select the smallest sufficient intelligence, price the whole service, prove it on representative work, and expand or retire from evidence. Apply it through the detailed [value-engineering](library/11-value-engineering-and-frugal-architecture.md) and [intelligence-selection](library/12-software-architecture-and-intelligence-selection.md) guides.
 
 ## From idea to production
 
@@ -77,18 +81,20 @@ flowchart LR
 
 Draft the threat model before the evaluation suite, then refine both together as failure paths become concrete. If the workflow has no measurable outcome or trustworthy verifier, stay in discovery. A more capable model does not repair an undefined task.
 
-## Start from a reference solution
+## Start from a business flow
 
-After the workflow and value case are approved, the [reference-solution accelerators](solutions/README.md) provide a practical starting architecture for recurring enterprise delivery problems. They group twelve common FDE projects into four coherent systems instead of twelve disconnected demos.
+After approving the workflow and value case, choose the recurring operating loop that best matches the work. The [operational solution portfolio](solutions/README.md) connects that business flow to optional industry profiles, horizontal platform foundations, and executable teaching evidence.
 
-| Accelerator | Start here when the dominant problem is | Smallest useful result |
+| Business flow | Start here when | Smallest useful result |
 | --- | --- | --- |
-| [Enterprise foundation](solutions/enterprise-foundation.md) | Tenant isolation, enterprise identity, entitlements, usage billing, or onboarding | One tenant lifecycle from identity setup to accepted use and reconciled usage |
-| [Integration runtime](solutions/integration-runtime.md) | Connectors, webhooks, credentials, retries, dead letters, or replay | One verified inbound event and one duplicate-safe, reconciled outbound action |
-| [Secure AI workload](solutions/secure-ai-workload.md) | Permission-aware retrieval, sensitive content, citations, or redaction | One read-only evidence path with current access, minimization, citations, and escalation |
-| [Deployment and operations](solutions/deployment-and-operations.md) | Controlled customer deployment, health, incidents, rollback, or a public case study | One admitted environment, canary, rollback exercise, operating view, and evidence packet |
+| [Exception to resolution](solutions/business-flows/exception-to-resolution.md) | A transaction, request, or record cannot continue normally | One exception reaches verified resolution, recovery, or owned escalation |
+| [Signal to investigation](solutions/business-flows/signal-to-investigation.md) | A signal needs attributable evidence and an authorized disposition | One persistent case with bounded evidence, review, and obligations |
+| [Risk to prioritized action](solutions/business-flows/risk-to-prioritized-action.md) | Limited human capacity must focus on the most consequential work | One eligible item is scored or optimized, policy-routed, reviewed, and measured |
+| [Request to activation](solutions/business-flows/request-to-activation.md) | A user, customer, service, or resource must become safely usable | One request reaches an independently accepted first outcome or safe rejection |
 
-These are design accelerators: architecture, boundaries, acceptance cases, operating measures, and links to the canonical starter artifacts. They are not deployable products or compliance evidence. The executable teaching systems below show how named invariants can be tested locally.
+Then apply an industry profile where it adds real domain constraints: [healthcare access coordination](solutions/verticals/healthcare-access-coordination.md), [financial-services investigation](solutions/verticals/financial-services-investigation.md), or [industrial operations response](solutions/verticals/industrial-operations-response.md). Finally, select the horizontal foundation for identity and tenancy, integrations, sensitive evidence, or deployment and operations.
+
+These are design accelerators, not deployable products or compliance evidence. They make the business decision, domain model, action boundary, operating measures, and customer-specific work visible. The executable teaching systems below prove only their named local invariants.
 
 ## Learn from the reference systems
 
@@ -145,7 +151,7 @@ The machine-readable [control catalog](controls/control-catalog.json) contains t
 | [`playbooks/`](playbooks/README.md) | How an FDE or internal delivery team moves from workflow discovery and value to delivery, adoption, handoff, and post-production improvement |
 | [`library/`](library/00-start-here.md) | Why the design choices matter, what tends to fail, and how to work through a design |
 | [`blueprints/`](blueprints/README.md) | Which reference architecture fits the workflow |
-| [`solutions/`](solutions/README.md) | How recurring enterprise projects compose the blueprints, controls, and templates into a starter delivery slice |
+| [`solutions/`](solutions/README.md) | How business-flow patterns, industry profiles, and horizontal foundations compose into a starter operational solution |
 | [`templates/`](templates/README.md) | Which starter artifacts to adapt and complete for a new system |
 | [`controls/`](controls/control-catalog.json) | Which production requirements and release gates apply |
 | [`schemas/`](schemas/README.md) | What valid machine-readable artifacts look like |

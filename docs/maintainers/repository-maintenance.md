@@ -12,7 +12,7 @@ This document keeps the guide coherent as research, controls, templates, example
 | `schemas/` | Machine-readable structural contracts | Update template, examples, validator mapping, positive and negative tests |
 | `patterns/` | Evidence-linked decisions and anti-patterns | Add detection, response, verification, and review date |
 | `blueprints/` | Reference system designs | Cover components, boundaries, state, failure, telemetry, and release tests |
-| `solutions/` | Composite enterprise delivery accelerators | Keep one primary failure boundary, honest maturity, a bounded slice, acceptance and operating contracts, and links to canonical artifacts |
+| `solutions/` | Business-flow patterns, industry profiles, and horizontal delivery accelerators | Keep the layer explicit, maturity honest, the operating decision and boundary narrow, and acceptance, operations, customer-specific work, non-claims, and canonical links complete |
 | `playbooks/` | FDE delivery and operating sequence | Keep entry/exit evidence, owners, and decisions explicit |
 | `templates/` | Reusable working artifacts | Remain valid, scoped, and consistent with controls and playbooks |
 | `examples/` | Executable teaching evidence | Keep claims limited to tested behavior; add regressions for fixes |
@@ -48,7 +48,7 @@ This document keeps the guide coherent as research, controls, templates, example
 | Telemetry or receipt | Producer, exporter allowlist, DLP checks, schema, semantic bindings, retention, incident queries |
 | Operations contract | SLO, alert, runbook, incident query, game day, example telemetry |
 | Repository skill | Trigger neighbors, linked controls and artifacts, `agents/openai.yaml`, catalog entry, skill tests, README, AGENTS, and llms |
-| Solution accelerator | Coverage map, primary boundary, referenced controls and templates, acceptance cases, operating measures, catalog entry, navigation, and solution tests |
+| Solution artifact | Layer and coverage map, primary operating or technical boundary, referenced controls and templates, acceptance cases, operating measures, customer-specific decisions, catalog entry, navigation, and solution tests |
 | Public navigation | README, AGENTS, llms, catalog, contribution docs |
 
 ## Research refresh
@@ -61,7 +61,7 @@ This document keeps the guide coherent as research, controls, templates, example
 ## Release procedure
 
 1. Inspect branch, remotes, status, and full diff.
-2. Run `npm ci --ignore-scripts`, `npm test`, and `git diff --check`; `npm test` includes skill metadata and catalog checks.
+2. Run `npm ci --ignore-scripts`, `npm test`, and `git diff --check`; `npm test` includes solution, value-framework, skill-metadata, and catalog checks.
 3. Run spelling, action workflow, dependency, and secret scans used by the current project.
 4. Confirm all new governed artifacts are cataloged and every new source ID resolves.
 5. Proofread README, AGENTS, llms, playbook routes, changelog, package/citation versions, and release links.
@@ -72,7 +72,7 @@ This document keeps the guide coherent as research, controls, templates, example
 ## Maintainer acceptance questions
 
 - Does the change improve a real user path or contract rather than add parallel prose?
-- Does a solution accelerator reduce delivery ambiguity without becoming a parallel methodology or implying deployable completeness?
+- Does a solution artifact make the business decision and delivery boundary clearer without becoming a parallel methodology, shallow industry wrapper, or claim of deployable completeness?
 - Can a person and a coding agent find the new artifact from the task they are trying to complete?
 - Are evidence, recommendation, control, implementation, and verification clearly separated?
 - Does a failure have one owning layer and a regression path?

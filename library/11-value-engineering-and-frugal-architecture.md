@@ -1,5 +1,7 @@
 # Value Engineering and Frugal Architecture
 
+The [12 Factors of AI Value Engineering](14-twelve-factors-ai-value-engineering.md) state the compact value framework. This page turns those principles into a delivery and operating method.
+
 The point of an FDE engagement is not to install an agent. It is to improve a customer outcome through a system that can be operated responsibly.
 
 Use this loop as the design spine:

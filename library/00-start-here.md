@@ -28,7 +28,7 @@ If any answer is missing, you are still in discovery. Start with [Product, Proce
 | --- | --- | --- |
 | You are leading a field or internal delivery engagement | [FDE playbooks](../playbooks/README.md) | Field observation, value evidence, adoption, service ownership, and exit criteria |
 | You are building reusable applied-AI capability | [FDE and applied AI engineering synthesis](10-fde-and-production-agent-synthesis.md) | A clear productization boundary, reusable artifacts, and a governed field-learning loop |
-| You are choosing a workflow or validating value | [Discovery and Value](../playbooks/01-discovery-and-value.md) | A baseline, verifier, named outcome owner, and falsifiable value case |
+| You are choosing a workflow or validating value | [12 Factors of AI Value Engineering](14-twelve-factors-ai-value-engineering.md) → [Discovery and Value](../playbooks/01-discovery-and-value.md) | A baseline, verifier, named outcome owner, full-cost case, and bounded authority |
 | You are choosing rules, ML, models, or agents | [Software Architecture and Intelligence Selection](12-software-architecture-and-intelligence-selection.md) | The smallest sufficient mechanism, component boundary, fallback, and evidence plan |
 | You need to understand a complex system or assess a material change | [Evidence Graphs and Change Intelligence](13-evidence-graphs-and-change-intelligence.md) | A versioned, derived dependency view and owner-backed impact review—not a new control plane |
 | The agent needs company knowledge or data | [Context and Knowledge Systems](02-context-and-knowledge-systems.md) | Source ownership, freshness, scope, and evidence provenance |
