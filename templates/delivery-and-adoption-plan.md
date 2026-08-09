@@ -12,8 +12,11 @@
 | Technical and service owner | — |
 | Risk and data owners | — |
 | Target pilot and production dates | — |
+| Pilot graduation decision and evidence-cutoff dates | — |
 | Pilot adoption owner and instrumentation-ready date | — |
 | Receiving harness owner and paired-operation start | — |
+| Primary sponsor / independent backup / succession trigger | — |
+| Continuation mechanism, owner, and decision date | External renewal / internal funding or sponsorship / other |
 | Stop conditions | — |
 
 ## Requirement-to-release trace
@@ -32,6 +35,28 @@
 | Shadow complete | Real inputs, no production effect | Trace and reviewer capacity | Outcome, safety, cost, UX thresholds | — |
 | Canary complete | Named segment and reversible/staged effect | On-call and rollback | SLO, adoption, value, recovery evidence | — |
 | Bounded production | Supported service | Customer ownership exercised | Review cadence and expansion decision | — |
+
+## Pilot graduation contract
+
+Freeze this contract before pilot work begins. A pilot graduates only when each applicable gate passes independently; a strong technical result or composite score cannot average away failed adoption, value, economics, safety, or operating ownership.
+
+| Gate | Named segment and threshold | Evidence source and cutoff | Decision owner | If the gate fails |
+| --- | --- | --- | --- | --- |
+| Technical performance | — | — | — | Revise / stop |
+| Operator acceptance | — | — | — | Redesign workflow or surface / stop |
+| Adoption | — | — | — | Remove friction / narrow segment / stop |
+| Business-value evidence | — | — | — | Extend measurement once with reason / defer / stop |
+| Full economics | — | — | — | Reduce cost or scope / defer / stop |
+| Production readiness | — | — | — | Hold release / remediate / stop |
+
+| Graduation field | Value |
+| --- | --- |
+| Approved pilot start and maximum duration | — |
+| Allowed evidence extension and approver | None / one bounded extension with reason and date |
+| Resulting charter or release decision | — |
+| Graceful exit, state disposition, and restart conditions | — |
+
+Control: `FDE-003`.
 
 ## Adoption measurement contract
 
@@ -60,6 +85,17 @@ The production surface must expose evidence, state, uncertainty, alternatives, a
 | Product or applied-AI team | | | | Reusable only after governed validation | |
 
 Keep confidential workflow context, local policy, identities, and evidence with the owning organization. A repeated field signal may become a shared pattern or product candidate only after sanitization, recurrence review, a named destination, independent validation, and the normal compatible-release gate. Record that decision in the [field-learning register](field-learning-register.md). `FDE-004`, `DEL-002`.
+
+## Sponsor, owner, and continuation resilience
+
+| Role or decision | Primary | Independent backup | Last evidence-backed review | Succession or escalation trigger | Next decision date |
+| --- | --- | --- | --- | --- | --- |
+| Business outcome and continuation | — | — | — | — | — |
+| Operational ownership | — | — | — | — | — |
+| Technical/service ownership | — | — | — | — | — |
+| Risk acceptance | — | — | — | — | — |
+
+For an external engagement, continuation may be a deployment, renewal, or expansion decision. For an internal team, it may be sponsorship, funding, or roadmap commitment. Record it as organizational context; it does not prove accepted outcomes or realized value.
 
 ## Pilot adoption and harness handoff
 

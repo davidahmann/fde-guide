@@ -27,7 +27,7 @@ flowchart LR
 | Build | What is the smallest end-to-end slice that can prove the outcome? | Working vertical slice and delivery evidence | Continue or stop |
 | Prove | Does it work on representative cases, with users, within risk and cost limits? | Replay, shadow, adoption, value evidence, and the applicable evaluation record; use the [evaluation report](../templates/evaluation-report.json) for a model/agent release | Canary, revise, or stop |
 | Launch | Can the compatible solution be contained, recovered, supported, and rolled back? | Target software release record, runbooks, trained owners, and cutover decision; use the [solution-release manifest](../templates/solution-release.json) for a model/agent release | Bounded production or hold |
-| Operate | Is the workflow valuable, reliable, safe, adopted, and supportable? | Service reviews, incidents, regressions, value realization | Expand, constrain, pause, or retire |
+| Operate | Is the workflow valuable, reliable, safe, adopted, supportable, and still organizationally owned? | Service reviews, incidents, regressions, value realization, and continuation evidence | Expand, constrain, pause, or retire |
 | Improve or expand | Which field learning warrants a customer configuration, compatible product change, or bounded expansion? | [Field-learning register](../templates/field-learning-register.md) and validated disposition | Investigate, configure, fix, productize, standardize, defer, reject, or retire |
 | Retire | When should the workflow stop, and how will authority, capabilities, state, evidence, support, and users be closed safely? | Owned [retirement sequence](03-operate-and-scale.md#10-run-the-improve-expand-or-retire-sequence) and verified target software retirement evidence; for a model/agent release, use [`solution-release.retirement_evidence`](../schemas/solution-release.schema.json) | Retire or remediate |
 
@@ -52,6 +52,7 @@ The [production implementation playbook](../library/07-production-implementation
 | [Delivery and adoption plan](../templates/delivery-and-adoption-plan.md) | Coordinate the vertical slice, acceptance, rollout, and enablement |
 | [Production handoff](../templates/customer-enablement-handoff.md) | Prove the customer can operate, change, support, and retire the service |
 | [Production service review](../templates/production-service-review.md) | Review outcomes, SLOs, adoption, risk, cost, change, and ownership |
+| [FDE and applied-AI portfolio review](../templates/fde-portfolio-review.md) | Compare stage flow, accepted value, continuation, full delivery economics, reuse, and capacity across multiple workflows without overriding service gates |
 | [Field-learning register](../templates/field-learning-register.md) | Route validated field evidence into customer configuration, product change, shared pattern, or retirement |
 
 Controls `FDE-001` through `FDE-004`, `VAL-001` through `VAL-003`, `ADP-001` through `ADP-002`, and `DEL-001` through `DEL-002` define the lifecycle baseline within this guide.

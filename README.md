@@ -31,6 +31,7 @@ Start with the decision your role owns. You do not need to adopt the whole repos
 - The smallest adequate mix of deterministic code, optimization, ML, retrieval, foundation models, bounded agents, and human review.
 - A tested release packet with explicit authority, failure behavior, rollout limits, rollback, and source-of-truth evidence.
 - A service that an operating team can observe, support, improve, constrain, and retire.
+- A portfolio view that separates accepted value from continuation, full delivery economics, reusable capability, and team capacity.
 
 ## The core idea: engineer value before autonomy
 
@@ -76,7 +77,7 @@ flowchart LR
 | Threat model | How could data, tools, identity, or evaluation be abused? | [Threat-model template](templates/threat-model.json) |
 | Prove | Does it succeed, fail safely, and help users on representative work? | Representative tests and user evidence; add [evaluation cases](templates/evaluation-case.json) and an [evaluation report](templates/evaluation-report.json) when model or agent behavior is selected |
 | Launch | What compatible release and bounded authority are justified, who supports them, and what reverses them? | Target software release evidence and [customer handoff](templates/customer-enablement-handoff.md); add the [solution-release manifest](templates/solution-release.json) for model or agent releases and apply the [release gates](operations/release-gates.md) |
-| Operate | Is it valuable, adopted, reliable, safe, affordable, and supportable? | [Production service review](templates/production-service-review.md), [SLO scorecard](operations/slo-scorecard.md), and [incident runbook](operations/incident-runbook.md) |
+| Operate | Is it valuable, adopted, reliable, safe, affordable, supportable, and still owned? | [Production service review](templates/production-service-review.md), optional multi-workflow [portfolio review](templates/fde-portfolio-review.md), [SLO scorecard](operations/slo-scorecard.md), and [incident runbook](operations/incident-runbook.md) |
 | Improve or retire | Which field evidence justifies a change, expansion, constraint, or verified shutdown? | [Field-learning register](templates/field-learning-register.md), [change management](operations/change-management.md), and [controlled improvement](blueprints/controlled-improvement-agent.md) |
 
 Draft the threat model before the evaluation suite, then refine both together as failure paths become concrete. If the workflow has no measurable outcome or trustworthy verifier, stay in discovery. A more capable model does not repair an undefined task.
@@ -204,7 +205,7 @@ Use $qualify-ai-workflow to assess this candidate workflow: [describe it].
 | Build release evidence | [`$build-ai-evaluation`](.agents/skills/build-ai-evaluation/SKILL.md) | Representative cases, isolated evaluation, slice-level results, limitations, and decision |
 | Secure reads and actions | [`$secure-ai-action-boundary`](.agents/skills/secure-ai-action-boundary/SKILL.md) | Typed boundaries, authority matrix, capability provenance, denials, and recovery tests |
 | Decide production readiness | [`$review-ai-production-readiness`](.agents/skills/review-ai-production-readiness/SKILL.md) | Release decision, control gaps, owners, rollout limits, and rollback triggers |
-| Operate the service | [`$operate-ai-service`](.agents/skills/operate-ai-service/SKILL.md) | Service scorecard, incidents and changes, value and cost trend, and next decision |
+| Operate the service or portfolio | [`$operate-ai-service`](.agents/skills/operate-ai-service/SKILL.md) | Service or portfolio scorecard, incidents and changes, value, cost, capacity, and next decision |
 | Transfer ownership | [`$transfer-ai-service`](.agents/skills/transfer-ai-service/SKILL.md) | Exercised operating capability, support model, blockers, and exit decision |
 | Reuse field learning | [`$productize-field-learning`](.agents/skills/productize-field-learning/SKILL.md) | Sanitized learning record, productization boundary, validation, owner, and release path |
 

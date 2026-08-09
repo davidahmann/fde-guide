@@ -97,6 +97,30 @@ Neither is a proxy for the other. Adoption can fail when an executive value case
 
 A pilot may pass one gate and fail another. Do not collapse them into a demo-success label.
 
+## Keep engagement, service, and portfolio evidence separate
+
+The same workflow appears in three different decision views. Do not merge them into one health score.
+
+| View | Decision | Primary evidence |
+| --- | --- | --- |
+| Pilot or engagement | Did this bounded workflow pass its declared graduation gates by the evidence cutoff? | [Delivery and adoption plan](../templates/delivery-and-adoption-plan.md), separate technical, operator, adoption, value, economics, and production-readiness gates |
+| Production service | Should this workflow continue, improve, expand, constrain, pause, or retire? | [Production service review](../templates/production-service-review.md), accepted outcomes, attributable value, adoption, SLOs, cost, ownership, and recovery |
+| Delivery portfolio | Where should the organization invest, transfer, productize, build capacity, or exit? | [FDE and applied-AI portfolio review](../templates/fde-portfolio-review.md), cohort stage flow, time to accepted value, full delivery economics, target-specific effort, reuse, continuation, and capacity |
+
+For an external FDE organization, continuation may be a paid deployment, renewal, or expansion decision. For an internal applied-AI team, it may be continued sponsorship, funding, or roadmap commitment. These signals matter operationally, but they do not prove accepted outcomes or realized value. A portfolio decision does not override a failing workflow gate. `FDE-003`, `VAL-002`, `VAL-003`, `OPS-004`.
+
+## Professional practice boundaries
+
+FDEs and internal applied-AI engineers receive unusual access to operational context, organizational relationships, data, and decision paths. Preserve five boundaries:
+
+1. **Customer and business-unit context stays owned.** Minimize access, retain provenance and classification, and never move confidential data, policy, or workflow detail into shared product learning without authorization and sanitization.
+2. **Report what the evidence says.** Preserve negative, inconclusive, stopped, and retired results. Do not rename launch, usage, contract value, sponsorship, or a correlated metric as realized value.
+3. **Do not manufacture dependence.** Transfer operating capability, record an exit path, and avoid opaque customer-specific mechanisms whose primary purpose is continued delivery-team control.
+4. **Account for affected people.** Record changed responsibilities, reviewer load, displaced work, training, escalation, and operator acceptance rather than treating people only as cost or approval capacity.
+5. **Decline unauthorized or harmful requests.** A customer request, executive sponsor, or commercial opportunity does not override lawful use, policy, identity, authority, confidentiality, safety, or independent review.
+
+These are professional-practice boundaries over the guide's existing value, security, human-review, adoption, and field-learning controls—not a separate compliance standard. The [secondary FDE practice review](../research/2026-08-09--fde-commercial-and-professional-practice.md) supplied research leads; the normative requirements remain grounded in the guide's primary evidence and controls.
+
 ## Architectural non-negotiables
 
 - The model proposes; deterministic controls authorize and commit.
@@ -121,6 +145,7 @@ A pilot may pass one gate and fail another. Do not collapse them into a demo-suc
 - Self-review, monitoring, guardrails, and human approval do not replace authorization or source-of-truth verification.
 - A successful bootcamp, benchmark, or pilot is not production readiness or realized value.
 - A practitioner's claimed ROI, efficiency gain, or organizational forecast is not a portfolio target or release criterion without local measurement.
+- Renewal, funding, sponsor activity, delivery throughput, or reuse is not accepted-outcome or realized-value evidence.
 - “AI-native” is not a reason to replace systems of record, remove accountable human judgment, or weaken ordinary software-engineering disciplines.
 
 [R26-63]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-63

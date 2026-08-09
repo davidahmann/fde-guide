@@ -23,6 +23,7 @@ Social, Reddit, YouTube, and news are research channels—not automatic authorit
 - [Evidence graphs and change intelligence](2026-08-08--evidence-graphs-and-change-intelligence.md) — architecture/catalog/lineage sources and project implementation leads, scoped to derived maps and impact review rather than graph-driven authority.
 - [Reference-solution standards note](2026-08-09--reference-solution-standards.md) — primary identity, provisioning, usage-metering, and telemetry anchors for the enterprise-foundation and deployment accelerators, with provider and conformance limits.
 - [Business-flow and vertical-solution evidence note](2026-08-09--business-flow-and-vertical-solutions.md) — outcome-led solution design, operational applications, healthcare access workflows, financial-investigation evidence, and OT context boundaries used by the business-flow and industry profiles.
+- [FDE commercial and professional-practice note](2026-08-09--fde-commercial-and-professional-practice.md) — secondary-source leads for pilot graduation, continuation health, delivery-portfolio economics, responsible reuse, and professional boundaries; excludes copied content, commercial adaptation, benchmarks, and pricing doctrine.
 
 ## Archive
 

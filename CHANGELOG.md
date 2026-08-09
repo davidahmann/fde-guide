@@ -4,6 +4,14 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.9.0] - 2026-08-09
+
+- Add an optional FDE and applied-AI portfolio review that keeps workflow value and safety gates separate from continuation, delivery economics, capacity, and reuse signals.
+- Add time-bounded pilot graduation contracts with distinct technical, operator, adoption, value, economics, and production-readiness gates across discovery, delivery, value engineering, and adoption artifacts.
+- Strengthen sponsor resilience, continuation planning, customer operating ownership, and succession evidence from discovery through service operation and handoff.
+- Extend field-learning evidence with comparable cohorts, target-specific effort, governed reuse validation, productization cost, and responsible effort-reduction tests.
+- Record the external FDE guidance book as a bounded secondary research lead, preserve its commercial-use restrictions, and add original professional-practice boundaries without importing its benchmarks, pricing doctrine, or content.
+
 ## [1.8.0] - 2026-08-09
 
 - Align all ten optional task skills with the 12 Factors of AI Value Engineering and the operational solution portfolio while keeping business-flow and vertical artifacts conditional, progressively disclosed design hypotheses rather than evidence.
@@ -103,7 +111,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.8.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.9.0...HEAD
+[1.9.0]: https://github.com/davidahmann/fde-guide/compare/v1.8.0...v1.9.0
 [1.8.0]: https://github.com/davidahmann/fde-guide/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/davidahmann/fde-guide/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/davidahmann/fde-guide/compare/v1.5.0...v1.6.0

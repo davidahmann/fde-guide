@@ -110,6 +110,23 @@ test("skills progressively route through the value framework and selected soluti
   }
 });
 
+test("operating, value, transfer, and productization skills carry the portfolio-health extensions", async () => {
+  const [operate, value, transfer, productize] = await Promise.all([
+    readFile(path.join(skillsRoot, "operate-ai-service", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "engineer-ai-value", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "transfer-ai-service", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "productize-field-learning", "SKILL.md"), "utf8"),
+  ]);
+
+  assert.match(operate, /templates\/fde-portfolio-review\.md/);
+  assert.match(operate, /continuation signals as realized value/i);
+  assert.match(value, /maximum duration, evidence cutoff, separate technical, operator, adoption, value, economics, and production-readiness graduation thresholds/i);
+  assert.match(transfer, /independent backup/i);
+  assert.match(transfer, /succession or escalation path/i);
+  assert.match(productize, /target-specific delivery\/support effort/i);
+  assert.match(productize, /lower customer-specific effort does not weaken outcomes, safety, adoption, supportability, or local-policy validation/i);
+});
+
 test("qualification and value engineering have distinct lifecycle triggers", async () => {
   const [qualificationText, valueText, qualificationUi, valueUi] = await Promise.all([
     readFile(path.join(skillsRoot, "qualify-ai-workflow", "SKILL.md"), "utf8"),

@@ -16,12 +16,12 @@ Make handoff an exercised capability, not a document delivery event. Start adopt
 
 ## Workflow
 
-1. Name the customer or internal service owner, technical owner, support owner, release authority, risk owner, and business metric owner. Resolve approval-role separation required by the release gate.
+1. Name the customer or internal service owner, technical owner, support owner, release authority, risk owner, business metric owner, sponsor or business owner, and an independent backup for material ownership or continuation decisions. Resolve approval-role separation required by the release gate.
 2. Map affected users, workflow changes, persistent review surfaces, access, training, communications, feedback, adoption measurements, and unresolved profile-specific operating decisions.
 3. Transfer the exact release, architecture, data and context sources, tools and capabilities, evaluations, dashboards, runbooks, costs, known limitations, and retirement plan.
 4. Exercise routine operation, permission changes, release and rollback, incident containment and recovery, evaluation refresh, vendor or model change, and verified shutdown.
 5. Record gaps, owner, due date, evidence, and whether each gap blocks delivery-team exit or autonomy expansion.
-6. Confirm the receiving team can perform the work without delivery-team heroics. Keep a time-bounded support and escalation path after exit.
+6. Confirm the receiving team can perform the work without delivery-team heroics, and exercise the succession or escalation path for a sponsor or owner change. Keep a time-bounded support and escalation path after exit.
 
 ## Output contract
 

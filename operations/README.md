@@ -14,6 +14,7 @@ Use these artifacts after design begins—not only after launch. They define how
 | Govern capability provenance | [Capability supply chain](capability-supply-chain.md) | Admitted, pinned, constrained, monitored, and revocable tools, MCP servers, skills, CLIs, and code packages |
 | Measure adoption and transfer ownership | [Delivery and adoption plan](../templates/delivery-and-adoption-plan.md) and [customer handoff](../templates/customer-enablement-handoff.md) | Predeclared adoption contract, exercised harness ownership, and artifact lineage |
 | Review production value and service health | [Production service review](../templates/production-service-review.md) | Expand, continue, constrain, pause, improve, or retire decision |
+| Review an FDE or applied-AI portfolio | [FDE and applied-AI portfolio review](../templates/fde-portfolio-review.md) | Cohort-aware investment, continuation, productization, transfer, capacity, or exit decision |
 | Route field learning | [Field-learning register](../templates/field-learning-register.md) | Confidentiality-reviewed customer configuration, product backlog, reusable artifact, or retirement input |
 | Improve or retire | [Operate and Scale](../playbooks/03-operate-and-scale.md#10-run-the-improve-expand-or-retire-sequence) | Gated compatible release or verified decommission |
 

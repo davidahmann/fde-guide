@@ -22,7 +22,7 @@ Make value an operating contract rather than a slide-deck estimate. Measure acce
 4. Model expected or realized residual loss separately only when it is not already netted from avoided loss or unit value; state the risk owner, period, and attribution method.
 5. Set a maximum cost per accepted outcome and run-level resource budgets. Define the escalation or stop response when either is breached.
 6. Test sensitivity to adoption, acceptance rate, unit value, residual loss, incident cost, review load, and volume. Distinguish measured values from assumptions and show a downside case.
-7. Recommend `pilot`, `defer`, or `do_not_build`. For an already-live workflow, state a separate `continue`, `constrain`, `pause`, or `retire` decision. Preserve the assumptions that would reverse either decision.
+7. Recommend `pilot`, `defer`, or `do_not_build` only after defining the pilot's maximum duration, evidence cutoff, separate technical, operator, adoption, value, economics, and production-readiness graduation thresholds, decision owners, and stop path. For an already-live workflow, state a separate `continue`, `constrain`, `pause`, or `retire` decision. Preserve the assumptions that would reverse either decision.
 
 ## Output contract
 
@@ -31,7 +31,7 @@ Return:
 - an updated value case linked to its workflow charter;
 - a formula with units, sources, owners, and measured-versus-assumed labels;
 - base and downside economics, cost ceiling, and guardrails;
-- pilot measurement plan and decision thresholds;
+- time-bounded pilot measurement and graduation plan with separate gate thresholds;
 - forecast, demonstrated, or realized evidence status, factor-gate blockers, a value decision, and the next evidence needed.
 
 Do not claim realized value from a pilot forecast, technical pass rate, generated output, or gross time saved. If adoption, acceptance, or attribution cannot be measured credibly, narrow the claim or keep it explicitly provisional.

@@ -8,7 +8,9 @@
 | Review period | — |
 | Supported segment and automation/autonomy | — |
 | Operational, technical, risk, and service owners | — |
+| Business sponsor or owner and independent backup | — |
 | Last release and incident | — |
+| Continuation mechanism, owner, and decision date | External renewal / internal funding or sponsorship / other |
 | Decision required | Expand, continue, improve, constrain, pause, or retire |
 
 ## Outcome and value
@@ -78,6 +80,18 @@ List production behavior clusters, new regressions, evaluator calibration change
 | Retirement and state disposition | — | — | — | — |
 
 Compare open gaps with the [customer enablement handoff](customer-enablement-handoff.md). A recurring gap needs an owner, exercise, and due date; delivery-team availability is not a substitute for customer operating capability.
+
+## Continuation and sponsor resilience
+
+| Signal or dependency | Current evidence | Trend | Owner / backup | Decision or action |
+| --- | --- | --- | --- | --- |
+| Business outcome still matters | — | — | — | — |
+| Sponsor or business-owner continuity | — | — | — | — |
+| Receiving service ownership | — | — | — | — |
+| External renewal or internal funding readiness | — | — | — | — |
+| Delivery-team dependency and exit readiness | — | — | — | — |
+
+Continuation signals route attention and planning. A contract, budget, sponsor, reference, or high usage level does not independently prove an accepted outcome or realized value. If this workflow is part of a multi-service program, link its evidence into the [FDE and applied-AI portfolio review](fde-portfolio-review.md) without replacing this service-level decision.
 
 ## Incidents and reconciliation
 

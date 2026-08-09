@@ -164,6 +164,8 @@ Before pilot entry, define the adoption metric independently of the observed res
 
 Instrument eligible exposure, completion, accepted outcome, override, rejection, abandonment, reviewer wait, and support events during the pilot. A denominator, source, window, or exclusion change creates a new metric revision; it is not an in-place correction to an unfavorable result.
 
+At pilot entry, re-confirm the predeclared graduation contract without changing thresholds after seeing results. Technical performance, operator acceptance, adoption, business value, full economics, and production readiness remain separate decisions. A strong result in one dimension cannot compensate for a failed authority, safety, ownership, or value gate.
+
 Use the [delivery and adoption plan](../templates/delivery-and-adoption-plan.md).
 
 Controls: `FDE-003`, `VAL-001`, `VAL-002`, `OPS-006`.
@@ -207,6 +209,7 @@ Control: `ADP-002`.
 - [ ] Cross-resource versions form one compatible release candidate.
 - [ ] Replay, shadow, safety, cost, and adoption evidence meet their separate thresholds.
 - [ ] Adoption denominator, baseline, target, guardrail, window, source, and owner were fixed before pilot evidence was reviewed.
+- [ ] Pilot graduation gates, evidence cutoff, decision date, and stop or redesign path remained frozen or changed through an explicit revision.
 - [ ] Prototype debt has an owner and blocking disposition.
 - [ ] Customer owners have exercised harness change, measurement, release, support, and incident paths.
 - [ ] Production artifacts resolve to owned immutable versions or digests with upstream lineage and promotion paths.

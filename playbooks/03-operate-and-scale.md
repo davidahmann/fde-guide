@@ -24,10 +24,34 @@ Control: `ADP-002`.
 | Continuous | Prohibited effects, authorization denials, data freshness, kill switches, queue and dependency health | Contain, degrade, or continue |
 | Daily | Incidents, failed or effect-unknown runs, reviewer backlog, SLO burn | Assign owner, reconcile, pause segment |
 | Weekly | Behavior clusters, evaluation failures, overrides, abandonment, support themes, candidate regressions | Fix, add replay, redesign, or accept debt |
-| Monthly | Accepted outcomes, adoption, value realization, full cost, evaluator calibration, model/tool/policy changes | Expand, constrain, reprioritize, or retire |
-| Quarterly | Portfolio value, operating maturity, autonomy, dependency lifecycle, customer self-sufficiency | Invest, standardize, transfer, or exit |
+| Monthly | Accepted outcomes, adoption, value realization, full cost, evaluator calibration, sponsor continuity, continuation timing, model/tool/policy changes | Expand, constrain, reprioritize, or retire |
+| Quarterly | Portfolio value, stage flow, full delivery economics, target-specific effort, reuse, operating maturity, dependency lifecycle, receiving-team capability, and delivery capacity | Invest, standardize, productize, transfer, or exit |
 
-Use the [production service review](../templates/production-service-review.md). Governance is a recurring set of decision rights and feedback loops, not a launch checklist. [R26-45]
+Use the [production service review](../templates/production-service-review.md) for one workflow and the [FDE and applied-AI portfolio review](../templates/fde-portfolio-review.md) across multiple workflows. Governance is a recurring set of decision rights and feedback loops, not a launch checklist. [R26-45]
+
+### Review the delivery portfolio without hiding weak services
+
+A portfolio review is an investment and capacity view over service-level evidence. It must not turn weak workflows into a healthy average or authorize expansion that failed its own value, safety, release, adoption, or ownership gate.
+
+| Portfolio question | External provider signal | Internal applied-AI signal | Evidence discipline |
+| --- | --- | --- | --- |
+| Is work moving to durable operation? | Paid deployment or renewal path | Continued sponsorship, funding, or roadmap commitment | Keep organizational continuation separate from accepted outcomes and realized value |
+| How quickly is value first evidenced? | Time from approved pilot start to first accepted value | Same | Distinguish first accepted outcome from first measured attributable business effect |
+| Is delivery becoming more repeatable? | Customer-specific effort ratio and full delivery cost | Business-unit-specific effort ratio and full delivery cost | Compare only like cohorts; preserve local policy and validation |
+| Is field learning becoming product capability? | Reusable component or platform path | Shared platform, control, or pattern path | Require sanitized recurrence, target validation, owner, and compatible release |
+| Can the organization support the load? | Delivery, support, travel, review, and on-call capacity | Platform, domain, review, support, and on-call capacity | Capacity gains cannot depend on hidden customer or operator work |
+
+Use five core measures before adding more:
+
+1. **Time to first accepted outcome:** approved pilot start to the first independently accepted outcome.
+2. **Time to first accepted value:** approved pilot start to an accepted outcome with a measured attributable business effect.
+3. **Pilot-to-bounded-production flow:** an explicit cohort count with admission, graduation, stop, and exclusion reasons—not a universal conversion target.
+4. **Full delivery and operating cost:** the declared discovery, implementation, change, assurance, support, incident, recovery, and maintenance allocation.
+5. **Customer-specific effort ratio:** target-specific delivery and support effort divided by total comparable effort, interpreted beside outcome, adoption, safety, and supportability.
+
+Optional external contribution or renewal measures belong in the portfolio review only with a declared accounting definition. For internal teams, use the equivalent funding, sponsorship, capacity, and value-to-full-cost decision. Contract value, budget, sponsor activity, reuse, or throughput alone is not realized value.
+
+Controls: `FDE-003`, `FDE-004`, `VAL-002`, `VAL-003`, `ADP-002`, `OPS-004`, `CST-001`.
 
 ## 3. Monitor the full decision system
 
@@ -157,6 +181,8 @@ Never transfer customer data, proprietary policy, or confidential workflow detai
 
 Record each candidate in the [field-learning register](../templates/field-learning-register.md). Preserve recurrence, supporting and counter-evidence, confidentiality, permitted destination, product owner, disposition, and validation. A repeated anecdote is not yet a reusable pattern; a sanitized reproducible case with an owner and acceptance test is a product input.
 
+For comparable delivery cohorts, also preserve target-specific delivery and support effort, actual governed-artifact reuse, productization and maintenance cost, and the expected effect on future delivery time, quality, safety, support load, or full cost. A declining customization ratio is evidence of leverage only while the target workflow continues to pass its own gates.
+
 Control: `FDE-004`.
 
 ## 10. Run the improve, expand, or retire sequence
@@ -205,6 +231,9 @@ Controls: `FDE-004`, `ADP-002`, `DEL-001`, `OPS-002`, `OPS-007`.
 - Token cost optimized while reviewer, recovery, or failure cost rises
 - Use-case count treated as operating maturity
 - Permanent customer dependence on the FDE
+- Portfolio averages hiding a failed workflow or exhausted delivery team
+- Renewal, funding, sponsor activity, or reuse presented as realized value
+- Falling custom effort achieved by skipping target-specific policy, evaluation, or handoff work
 - Zombie agent with no value owner, service owner, or retirement trigger
 
 [R26-45]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-45

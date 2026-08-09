@@ -44,6 +44,10 @@ Use one record per candidate learning. Store source evidence in its governed sys
 | Counter-evidence and alternative explanations | — |
 | First divergent state or violated invariant | — |
 | Sanitized replay/regression case | — |
+| Comparable deployment or workflow cohort | — |
+| Target-specific delivery and support effort | — |
+| Customer-specific effort ratio and prior comparable result | — |
+| Existing governed artifact reused and target validation | — |
 | Recurrence confidence and reviewer | — |
 
 ### Confidentiality and portability
@@ -69,6 +73,8 @@ Do not move raw customer data, proprietary policy, credentials, identifiers, or 
 | Disposition | Investigate / configure / fix / productize / standardize / defer / reject / retire |
 | Decision, rationale, and approver | — |
 | Target artifact, issue, or release | — |
+| Productization and ongoing maintenance cost | — |
+| Expected effect on future delivery time, support load, quality, safety, or full cost | — |
 | Required artifact owner and lineage update | — |
 | Due date or reconsideration trigger | — |
 
@@ -88,5 +94,7 @@ Do not move raw customer data, proprietary policy, credentials, identifiers, or 
 | Closure evidence and next recurrence query | — |
 
 An accepted learning changes production only through its destination's normal review, compatible-release, evaluation, approval, and rollback gates. The learning record is evidence for a decision; it is not release authorization.
+
+A lower customer-specific effort ratio is useful only when outcomes, adoption, safety, supportability, and full cost remain healthy across comparable contexts. Template reuse, copied customer policy, or skipped local validation does not establish product leverage.
 
 Evidence: [R26-37](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-37), [R26-45](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-45), and [R26-54](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-54).

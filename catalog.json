@@ -58,6 +58,12 @@
       "tags": ["operations", "value", "adoption", "review"]
     },
     {
+      "id": "template.fde-portfolio-review",
+      "type": "template",
+      "path": "templates/fde-portfolio-review.md",
+      "tags": ["fde", "portfolio", "value", "operations"]
+    },
+    {
       "id": "template.field-learning-register",
       "type": "template",
       "path": "templates/field-learning-register.md",
@@ -608,6 +614,12 @@
       "type": "evidence",
       "path": "research/2026-08-09--reference-solution-standards.md",
       "tags": ["sources", "standards", "identity", "billing", "observability"]
+    },
+    {
+      "id": "evidence.fde-commercial-professional-practice",
+      "type": "evidence",
+      "path": "research/2026-08-09--fde-commercial-and-professional-practice.md",
+      "tags": ["sources", "fde", "portfolio", "professional-practice"]
     }
   ]
 }
