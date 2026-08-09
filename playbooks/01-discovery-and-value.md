@@ -2,6 +2,8 @@
 
 The first deliverable for an FDE or internal applied-AI team is not code. It is a shared, evidence-backed definition of the work, the decision that matters, the value at stake, and the smallest intervention worth testing.
 
+Use the [12 Factors of AI Value Engineering](../library/14-twelve-factors-ai-value-engineering.md) as the compact principles layer and this playbook as the evidence and decision sequence. The factors do not replace hard gates, target-specific economics, or accountable owners.
+
 Palantir's use-case guidance starts with a time-bounded operational outcome rather than a source integration, dashboard, or model technique. OpenAI describes FDE ownership across discovery, design, rollout, adoption, and measurable workflow impact. The portable synthesis is an outcome-backward engagement with continuous operator contact. [R26-37] [R26-41]
 
 ## Joint delivery team

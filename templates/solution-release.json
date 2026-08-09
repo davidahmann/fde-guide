@@ -4,7 +4,7 @@
   "release_id": "bounded_workflow_release",
   "version": "0.1.0",
   "release_status": "draft",
-  "release_digest": "sha256:6d8a4fa082c05737354f8b6f97fe1fe4cdad83ae9f1b988e7eec23c718058e95",
+  "release_digest": "sha256:b7d92a316c609abf0bf5264e78b3a06002727fbd355582c24892359dba7ab43c",
   "owner": "technical-owner",
   "created_at": "2026-08-07T16:00:00Z",
   "workflow_charter_uri": "workflow-charter.json",
@@ -92,7 +92,7 @@
       "uri": "evaluation-report.json",
       "version": "0.1.0",
       "schema_version": "1.0.0",
-      "digest": "sha256:c3fc8fee619441884dba7649e2e032bd6781bb6ffdf6ef13bdccda252e318634",
+      "digest": "sha256:ccd8551cc73216c20dd6b15ac1abcbed86c9ba823846ad9dc81156596221c000",
       "change_summary": "Bind the tested claim and evaluation environment."
     },
     {

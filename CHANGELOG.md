@@ -4,6 +4,15 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.7.0] - 2026-08-09
+
+- Add the 12 Factors of AI Value Engineering as the concise value framework above the guide's implementation method, with expected and realized net-value models, hard gates, evidence mappings, and a compact README entry.
+- Reorganize the solution layer around operational business flows before industry specialization or horizontal platform architecture.
+- Add reusable patterns for exception resolution, investigation, prioritization, and activation, each with a decision model, bounded first slice, acceptance contract, operating measures, reuse boundary, and explicit non-claims.
+- Add worked healthcare access-coordination, financial-services investigation, and industrial operations-response profiles with domain objects, mechanism allocation, retained human authority, customer-specific decisions, and primary-source caveats.
+- Preserve the invoice and shipment systems as executable evidence while making their reusable business-flow shapes directly discoverable.
+- Add a dated primary-source note and expand catalog, human, coding-agent, playbook, contribution, maintenance, path, and solution-contract coverage for the new portfolio.
+
 ## [1.6.0] - 2026-08-09
 
 - Add four reference-solution accelerators for enterprise foundations, integration runtimes, secure AI workloads, and deployment operations.
@@ -86,7 +95,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.6.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.7.0...HEAD
+[1.7.0]: https://github.com/davidahmann/fde-guide/compare/v1.6.0...v1.7.0
 [1.6.0]: https://github.com/davidahmann/fde-guide/compare/v1.5.0...v1.6.0
 [1.5.0]: https://github.com/davidahmann/fde-guide/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/davidahmann/fde-guide/compare/v1.3.0...v1.4.0

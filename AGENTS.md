@@ -30,7 +30,7 @@ Do not load the entire repository by default. Use one skill or task route, then 
 | [`schemas/`](schemas/README.md) | Defines valid structures for machine-readable artifacts | Structural source of truth |
 | [`playbooks/`](playbooks/README.md) | Connects field discovery, value, delivery, adoption, handoff, and operation | End-to-end FDE lifecycle |
 | [`blueprints/`](blueprints/README.md) | Defines reference components, boundaries, states, failures, and release tests | Architecture starting points, not mandatory frameworks |
-| [`solutions/`](solutions/README.md) | Composes recurring enterprise delivery concerns into four starter solution slices | Design accelerators, not deployable products or release evidence |
+| [`solutions/`](solutions/README.md) | Connects business-flow patterns, industry profiles, and horizontal foundations | Design accelerators, not deployable products or release evidence |
 | [`templates/`](templates/README.md) | Provides starter design artifacts | Starting material that must be adapted and completed for the target workflow |
 | [`examples/`](examples/invoice-exception/README.md) | Shows a controlled-write system and an end-to-end hybrid FDE walkthrough | In-memory teaching implementations and regression surfaces |
 | [`patterns/`](patterns/pattern-catalog.json) | Records patterns, anti-patterns, controls, evidence, and review dates | Machine-readable decision catalog |
@@ -49,7 +49,7 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 | Job | Skill | Primary result |
 | --- | --- | --- |
 | Qualify a workflow | [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) | Observed workflow and go/defer/redesign/reject decision |
-| Engineer value | [`$engineer-ai-value`](.agents/skills/engineer-ai-value/SKILL.md) | Outcome economics, cost ceiling, guardrails, and measurement plan |
+| Engineer value | [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md) → [`$engineer-ai-value`](.agents/skills/engineer-ai-value/SKILL.md) | Outcome economics, cost ceiling, guardrails, and measurement plan |
 | Select intelligence | [`$select-ai-mechanism`](.agents/skills/select-ai-mechanism/SKILL.md) | Smallest sufficient mechanism per decision route |
 | Design the system | [`$design-production-ai-system`](.agents/skills/design-production-ai-system/SKILL.md) | Coherent architecture and applicable design packet |
 | Build evaluations | [`$build-ai-evaluation`](.agents/skills/build-ai-evaluation/SKILL.md) | Reproducible release evidence and limitations |
@@ -66,8 +66,8 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 | Lead an FDE or internal delivery engagement | [FDE playbooks](playbooks/README.md) → current lifecycle stage → required templates | Evidence-backed decisions from qualification through business-owned production operation |
 | Build shared applied-AI capability | [FDE and applied AI engineering synthesis](library/10-fde-and-production-agent-synthesis.md) → current lifecycle stage → relevant reusable artifact | A deliberate boundary between workflow-specific delivery, reusable product/platform capability, and sanitized field learning |
 | Select a workflow | [Discovery and Value](playbooks/01-discovery-and-value.md) → [Start Here](library/00-start-here.md) → [discovery pack](templates/fde-discovery-pack.md) → [workflow charter](templates/workflow-charter.json) | Observed workflow, owner, baseline, accepted outcome, verifier, value hypothesis, and risk ceiling |
-| Design an AI-enabled system | Approved workflow charter → [Value and Frugal Architecture](library/11-value-engineering-and-frugal-architecture.md) → [Software Architecture and Intelligence Selection](library/12-software-architecture-and-intelligence-selection.md) → [Solution Design and Delivery](playbooks/02-solution-and-delivery.md) → [blueprint selector](blueprints/README.md) → relevant templates | Value/cost case, intelligence-selection record, domain model, system design, behavior bundle where needed, contracts, evals, release, and adoption plan |
-| Start from a recurring enterprise solution | Approved workflow charter → [reference-solution index](solutions/README.md) → selected accelerator → relevant blueprint and canonical templates | One bounded vertical slice with explicit architecture, acceptance cases, operations, non-claims, and target-specific evidence work |
+| Design an AI-enabled system | Approved workflow charter → [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md) → [Value and Frugal Architecture](library/11-value-engineering-and-frugal-architecture.md) → [Software Architecture and Intelligence Selection](library/12-software-architecture-and-intelligence-selection.md) → [Solution Design and Delivery](playbooks/02-solution-and-delivery.md) → [blueprint selector](blueprints/README.md) → relevant templates | Value/cost case, intelligence-selection record, domain model, system design, behavior bundle where needed, contracts, evals, release, and adoption plan |
+| Start from a recurring enterprise solution | Approved workflow charter → [operational solution portfolio](solutions/README.md) → [business-flow pattern](solutions/business-flows/README.md) → optional [industry profile](solutions/verticals/README.md) → primary horizontal accelerator → canonical templates | One bounded vertical slice with explicit business decision, domain model, architecture, acceptance cases, operations, non-claims, and target-specific evidence work |
 | Map a complex system or assess a material change | [Evidence graph and change-intelligence blueprint](blueprints/evidence-graph-and-change-intelligence.md) → [system-map manifest](templates/system-map-manifest.json) → [change-impact assessment](templates/change-impact-assessment.json) → [change management](operations/change-management.md) | Derived dependency views with provenance/freshness plus owner-backed validation, rollout, rollback, and no shadow authority |
 | Add or change a tool | [Tool-contract Schema](schemas/tool-contract.schema.json) → [capability-manifest schema](schemas/capability-manifest.schema.json) → [capability supply chain](operations/capability-supply-chain.md) → affected behavior bundle, release manifest, examples, and tests | Narrow typed contract, verified build and authority provenance, admitted bundle membership, updated release digest, and regression coverage |
 | Add or change a control | [Control-catalog Schema](schemas/control-catalog.schema.json) → [current control catalog](controls/control-catalog.json) → dated evidence → affected blueprints, operations, and tests | Unique control ID, evidence, release gate, and enforceable verification |
@@ -122,7 +122,7 @@ If these disagree, do not silently choose one. Identify the conflict, preserve t
 - New or changed normative production requirements use `MUST`, `SHOULD`, or `MAY` and reference control IDs.
 - Runtime contracts are machine-readable JSON validated by JSON Schema 2020-12.
 - New blueprints define components, trust boundaries, state transitions, failure behavior, telemetry, and release tests.
-- New solution accelerators compose existing controls, blueprints, templates, and examples around one recurring delivery boundary; they state maturity, smallest useful slice, acceptance and operating contracts, and what they do not prove.
+- New solution artifacts compose existing controls, blueprints, templates, and examples around one recurring business flow, industry specialization, or horizontal delivery boundary. They state maturity, smallest useful slice, acceptance and operating contracts, customer-specific work, and what they do not prove.
 - New examples include a design record, decision-mechanism rationale, domain model, tool contracts where applicable, eval cases, threat model, and executable verification when feasible.
 - Recommendations based on changing platform behavior cite a dated primary source in `research/`.
 - Vendor metrics remain attributed; experimental patterns remain labeled.
@@ -169,7 +169,7 @@ npm test
 git diff --check
 ```
 
-For a focused iteration, use `npm run test:markdown`, `npm run test:paths`, `npm run test:repository`, `npm run test:contracts`, `npm run test:tool-security`, `npm run test:telemetry`, `npm run test:governance`, `npm run test:release-integrity`, `npm run test:release-gates`, `npm run test:skills`, `npm run test:policy`, `npm run test:reference`, or `npm run test:evals`; run the full gate before declaring the repository change complete.
+For a focused iteration, use `npm run test:markdown`, `npm run test:paths`, `npm run test:repository`, `npm run test:contracts`, `npm run test:tool-security`, `npm run test:telemetry`, `npm run test:governance`, `npm run test:release-integrity`, `npm run test:release-gates`, `npm run test:solutions`, `npm run test:value-framework`, `npm run test:skills`, `npm run test:policy`, `npm run test:reference`, or `npm run test:evals`; run the full gate before declaring the repository change complete.
 
 A change is complete only when:
 
