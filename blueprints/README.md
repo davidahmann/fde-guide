@@ -17,7 +17,9 @@
 
 For recurring operational decisions, use the [solution portfolio](../solutions/README.md) to select a business-flow pattern, apply an industry profile where useful, and then choose the horizontal foundation for tenant and identity, integrations, sensitive evidence, or deployment and operations. These artifacts compose the blueprints and canonical templates; they do not replace workflow qualification or release evidence.
 
-## Mandatory design packet
+## Applicable design packet
+
+Use only the artifacts justified by the selected decision mechanisms. The current agent-system, behavior-bundle, evaluation-report, and solution-release contracts form the machine-readable path for model and agent releases. A deterministic, optimization, or classical-ML-only system retains equivalent ordinary software architecture, test, provenance, deployment, rollback, and operating evidence instead of placeholder agent artifacts.
 
 | Artifact | Contract |
 | --- | --- |
@@ -27,21 +29,21 @@ For recurring operational decisions, use the [solution portfolio](../solutions/R
 | System-boundary decision | [`templates/architecture-decision-record.md`](../templates/architecture-decision-record.md) |
 | Operational ontology | [`schemas/operational-ontology.schema.json`](../schemas/operational-ontology.schema.json) |
 | System map and material-change impact review when justified by complexity | [`schemas/system-map-manifest.schema.json`](../schemas/system-map-manifest.schema.json) and [`schemas/change-impact-assessment.schema.json`](../schemas/change-impact-assessment.schema.json) |
-| Agent design | [`schemas/agent-system.schema.json`](../schemas/agent-system.schema.json) |
-| Versioned behavior configuration | [`schemas/behavior-bundle.schema.json`](../schemas/behavior-bundle.schema.json) |
+| Agent design when a foundation-model or agent workflow is selected | [`schemas/agent-system.schema.json`](../schemas/agent-system.schema.json) |
+| Versioned behavior configuration when model behavior is selected | [`schemas/behavior-bundle.schema.json`](../schemas/behavior-bundle.schema.json) |
 | Tool contract | [`schemas/tool-contract.schema.json`](../schemas/tool-contract.schema.json) |
 | Capability provenance for each admitted build | [`schemas/capability-manifest.schema.json`](../schemas/capability-manifest.schema.json) |
 | Delegation handoff when a worker, agent, or context reset is used | [`schemas/handoff-envelope.schema.json`](../schemas/handoff-envelope.schema.json) |
 | Evaluation cases | [`schemas/evaluation-case.schema.json`](../schemas/evaluation-case.schema.json) |
-| Evaluation report | [`schemas/evaluation-report.schema.json`](../schemas/evaluation-report.schema.json) |
+| Model or agent evaluation report | [`schemas/evaluation-report.schema.json`](../schemas/evaluation-report.schema.json) |
 | Threat model | [`schemas/threat-model.schema.json`](../schemas/threat-model.schema.json) |
 | Controls | [`controls/control-catalog.json`](../controls/control-catalog.json) |
 | Release gate | [`operations/release-gates.md`](../operations/release-gates.md) |
-| Compatible release | [`schemas/solution-release.schema.json`](../schemas/solution-release.schema.json) |
+| Compatible model or agent release | [`schemas/solution-release.schema.json`](../schemas/solution-release.schema.json) |
 | Adoption and handoff | [`templates/delivery-and-adoption-plan.md`](../templates/delivery-and-adoption-plan.md) and [`templates/customer-enablement-handoff.md`](../templates/customer-enablement-handoff.md) |
 | Field learning and lifecycle | [`templates/field-learning-register.md`](../templates/field-learning-register.md) and [`templates/production-service-review.md`](../templates/production-service-review.md) |
 
-Build the behavior bundle after the agent design establishes its authority ceiling. Every admitted tool build then needs a tool contract and capability manifest, membership in the bundle, evaluation under that exact bundle, and inclusion in the solution-release digest.
+When model behavior is selected, build the behavior bundle after the agent design establishes its authority ceiling. Every tool build admitted to that bundle then needs a tool contract and capability manifest, membership in the bundle, evaluation under that exact bundle, and inclusion in the solution-release digest.
 
 ## Architecture escalation rule
 

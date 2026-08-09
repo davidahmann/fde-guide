@@ -48,7 +48,7 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 
 | Job | Skill | Primary result |
 | --- | --- | --- |
-| Qualify a workflow | [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) | Observed workflow and go/defer/redesign/reject decision |
+| Qualify a workflow | [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) | Observed workflow, preliminary factor gates, selected pattern or none, and discover/defer/do-not-build decision |
 | Engineer value | [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md) → [`$engineer-ai-value`](.agents/skills/engineer-ai-value/SKILL.md) | Outcome economics, cost ceiling, guardrails, and measurement plan |
 | Select intelligence | [`$select-ai-mechanism`](.agents/skills/select-ai-mechanism/SKILL.md) | Smallest sufficient mechanism per decision route |
 | Design the system | [`$design-production-ai-system`](.agents/skills/design-production-ai-system/SKILL.md) | Coherent architecture and applicable design packet |
@@ -99,8 +99,8 @@ Create the smallest complete design packet in this order:
 10. [`templates/handoff-envelope.json`](templates/handoff-envelope.json) for any worker, agent, or context-reset delegation
 11. A draft [`templates/threat-model.json`](templates/threat-model.json)
 12. Realistic [`templates/evaluation-case.json`](templates/evaluation-case.json) cases, followed by finalized threat-to-test mappings
-13. A reproducible [`templates/evaluation-report.json`](templates/evaluation-report.json)
-14. A versioned [`templates/solution-release.json`](templates/solution-release.json) decision that binds the evaluated behavior bundle, tools, capabilities, and other release artifacts against [`operations/release-gates.md`](operations/release-gates.md)
+13. Reproducible target-system evaluation evidence; when model or agent behavior is selected, bind it in [`templates/evaluation-report.json`](templates/evaluation-report.json)
+14. Versioned target software-release evidence against [`operations/release-gates.md`](operations/release-gates.md); when model or agent behavior is selected, use [`templates/solution-release.json`](templates/solution-release.json) to bind the evaluated behavior bundle, tools, capabilities, and other release artifacts
 15. Finalized customer handoff before delivery-team exit
 16. Recurring [`templates/production-service-review.md`](templates/production-service-review.md) after launch
 
@@ -178,5 +178,5 @@ A change is complete only when:
 - Mandatory controls retain evidence and release gates.
 - Runtime contract changes have positive and negative coverage.
 - Corrected failures have a regression case.
-- No tracked file is empty, contains an unresolved placeholder, or exposes a machine-local path.
+- No tracked file outside designated templates and illustrative fixtures is empty or contains an unresolved placeholder, and no tracked file exposes a machine-local path.
 - Public metadata, citation metadata, and repository versioning remain consistent.

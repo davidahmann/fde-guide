@@ -20,16 +20,16 @@ flowchart LR
 
 | Stage | Primary question | Required output | Decision |
 | --- | --- | --- | --- |
-| Qualify | Is this problem important, owned, bounded, and verifiable? | Candidate brief and gate result | Discover, defer, or reject |
+| Qualify | Is this problem important, owned, bounded, and verifiable? | Candidate brief and gate result | Discover, defer, or do not build |
 | Discover | How does the work actually happen, including exceptions and workarounds? | Observation log, current-state workflow, source map, exception set | Charter or stop |
 | Charter | Which outcome, segment, verifier, value hypothesis, and risk ceiling define success? | [Workflow charter](../templates/workflow-charter.json) and [value case](../templates/value-case.md) | Pilot, defer, or do not build |
-| Design | How do data, logic, actions, security, users, operations, and the selected intelligence mechanisms fit together? | Intelligence-selection record, domain model, system design, behavior bundle where needed, tool contracts, capability manifests, threat model, eval plan, and a system map only when dependency complexity warrants it | Build or redesign |
+| Design | How do data, logic, actions, security, users, operations, and the selected intelligence mechanisms fit together? | Intelligence-selection record, domain model, target system design, agent-system when a foundation-model or agent workflow is selected, behavior bundle when model behavior is selected, applicable tool contracts and capability manifests, threat model, eval plan, and a system map only when dependency complexity warrants it | Build or redesign |
 | Build | What is the smallest end-to-end slice that can prove the outcome? | Working vertical slice and delivery evidence | Continue or stop |
-| Prove | Does it work on representative cases, with users, within risk and cost limits? | Replay, shadow, adoption, value evidence, and [evaluation report](../templates/evaluation-report.json) | Canary, revise, or stop |
-| Launch | Can the compatible solution be contained, recovered, supported, and rolled back? | [Solution-release manifest](../templates/solution-release.json), runbooks, trained owners, cutover decision | Bounded production or hold |
+| Prove | Does it work on representative cases, with users, within risk and cost limits? | Replay, shadow, adoption, value evidence, and the applicable evaluation record; use the [evaluation report](../templates/evaluation-report.json) for a model/agent release | Canary, revise, or stop |
+| Launch | Can the compatible solution be contained, recovered, supported, and rolled back? | Target software release record, runbooks, trained owners, and cutover decision; use the [solution-release manifest](../templates/solution-release.json) for a model/agent release | Bounded production or hold |
 | Operate | Is the workflow valuable, reliable, safe, adopted, and supportable? | Service reviews, incidents, regressions, value realization | Expand, constrain, pause, or retire |
 | Improve or expand | Which field learning warrants a customer configuration, compatible product change, or bounded expansion? | [Field-learning register](../templates/field-learning-register.md) and validated disposition | Investigate, configure, fix, productize, standardize, defer, reject, or retire |
-| Retire | When should the workflow stop, and how will authority, capabilities, state, evidence, support, and users be closed safely? | Owned [retirement sequence](03-operate-and-scale.md#10-run-the-improve-expand-or-retire-sequence) and verified [`solution-release.retirement_evidence`](../schemas/solution-release.schema.json) | Retire or remediate |
+| Retire | When should the workflow stop, and how will authority, capabilities, state, evidence, support, and users be closed safely? | Owned [retirement sequence](03-operate-and-scale.md#10-run-the-improve-expand-or-retire-sequence) and verified target software retirement evidence; for a model/agent release, use [`solution-release.retirement_evidence`](../schemas/solution-release.schema.json) | Retire or remediate |
 
 ## Read in order
 

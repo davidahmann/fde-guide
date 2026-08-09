@@ -11,11 +11,12 @@ Treat prompts and model reasoning as untrusted proposals. Authorization, secrets
 
 1. Read the [tool-contract schema](../../../schemas/tool-contract.schema.json), [capability-manifest schema](../../../schemas/capability-manifest.schema.json), and [capability supply-chain guide](../../../operations/capability-supply-chain.md).
 2. Use the [transactional-write blueprint](../../../blueprints/transactional-write-agent.md) for consequential effects and the [invoice example](../../../examples/invoice-exception/README.md) for executable behavior.
-3. Apply `TOL-001` through `TOL-006`, `IAM-001` through `IAM-003`, `SEC-001` through `SEC-007`, and `REL-001`, `REL-003`, and `REL-005` from the [control catalog](../../../controls/control-catalog.json).
+3. If the target design uses a solution artifact, resolve it through the [solution portfolio](../../../solutions/README.md) and read only the selected business-flow pattern and optional vertical profile. Treat their domain, action, and customer-specific decisions as threat inputs, not authorization policy.
+4. Apply `TOL-001` through `TOL-006`, `IAM-001` through `IAM-003`, `SEC-001` through `SEC-007`, and `REL-001`, `REL-003`, and `REL-005` from the [control catalog](../../../controls/control-catalog.json).
 
 ## Workflow
 
-1. Inventory every disclosure and effect. Classify data, operation, target resource, tenant, credential, destination, and maximum consequence.
+1. Inventory every disclosure and effect, including deviations from the selected flow or profile. Classify data, operation, target resource, tenant, credential, destination, and maximum consequence.
 2. Split read, stage, commit, administrative, and destructive operations into narrow typed contracts with owners and closed failure taxonomies.
 3. Bind the current user or workload identity, tenant, target resource, scopes, policy revision, and approval when required. Recheck at the action boundary and fail closed.
 4. Keep secrets behind a broker. Deny egress by default and bind allowed traffic to exact protocol, operation, destination, address, credential provenance, account, tenant, and limits.

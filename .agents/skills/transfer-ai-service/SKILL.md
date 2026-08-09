@@ -11,12 +11,13 @@ Make handoff an exercised capability, not a document delivery event. Start adopt
 
 1. Read [Solution Design and Delivery](../../../playbooks/02-solution-and-delivery.md) and [Operate and Scale](../../../playbooks/03-operate-and-scale.md).
 2. Use the [delivery and adoption plan](../../../templates/delivery-and-adoption-plan.md) and [customer-enablement handoff](../../../templates/customer-enablement-handoff.md).
-3. Apply `ADP-001`, `ADP-002`, `FDE-003`, `DEL-001`, `OPS-002`, `OPS-003`, and `OPS-007` from the [control catalog](../../../controls/control-catalog.json).
+3. If the service uses a solution artifact, resolve it through the [solution portfolio](../../../solutions/README.md) and read only the selected business-flow pattern and optional vertical profile. Use customer-specific decisions and operating contracts as checklist inputs, not exercised evidence or acceptance.
+4. Apply `ADP-001`, `ADP-002`, `FDE-003`, `DEL-001`, `OPS-002`, `OPS-003`, and `OPS-007` from the [control catalog](../../../controls/control-catalog.json).
 
 ## Workflow
 
 1. Name the customer or internal service owner, technical owner, support owner, release authority, risk owner, and business metric owner. Resolve approval-role separation required by the release gate.
-2. Map affected users, workflow changes, persistent review surfaces, access, training, communications, feedback, and adoption measurements.
+2. Map affected users, workflow changes, persistent review surfaces, access, training, communications, feedback, adoption measurements, and unresolved profile-specific operating decisions.
 3. Transfer the exact release, architecture, data and context sources, tools and capabilities, evaluations, dashboards, runbooks, costs, known limitations, and retirement plan.
 4. Exercise routine operation, permission changes, release and rollback, incident containment and recovery, evaluation refresh, vendor or model change, and verified shutdown.
 5. Record gaps, owner, due date, evidence, and whether each gap blocks delivery-team exit or autonomy expansion.

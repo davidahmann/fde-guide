@@ -1,4 +1,4 @@
-# Production Agent Change Management
+# Production AI System Change Management
 
 Every change that can alter context, behavior, authority, effects, evaluation, user decisions, or operating evidence is a production change.
 
@@ -33,7 +33,7 @@ Record:
 - Automatic rollback triggers and verified prior configuration
 - Support, communication, training, and retirement impact
 
-Use the machine-readable [solution-release template](../templates/solution-release.json) and attach a valid [evaluation report](../templates/evaluation-report.json). An approval binds the exact release digest; a changed artifact invalidates that approval.
+When model or agent behavior is selected, use the machine-readable [solution-release template](../templates/solution-release.json) and attach a valid [evaluation report](../templates/evaluation-report.json). For a deterministic, optimization, or classical-ML-only system, retain equivalent mechanism, evaluation, build/configuration, approval, deployment, rollback, and retirement evidence in the target software delivery system. In every route, an approval binds the exact release digest; a changed artifact invalidates that approval.
 
 ## Map-supported impact review
 
@@ -57,7 +57,9 @@ isolated branch/environment
 
 Merge, deploy, healthy runtime, accepted outcome, and realized value are different events. Record each separately.
 
-## Behavioral-change rules
+## Model/agent behavioral-change rules
+
+Apply these additional rules when a model or agent route changes. Other selected mechanisms still require route-specific regression, effect, safety, cost, and rollback evidence under the same promotion sequence.
 
 - Run the suite on every affected model and route; aggregate pass rate cannot hide one failing route.
 - Compare against the current production candidate using identical worlds and enforced resources.

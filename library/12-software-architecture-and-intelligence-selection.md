@@ -18,18 +18,18 @@ Do not ask “where should we use an LLM?” Ask “what mechanism can make this
 | Open-ended but bounded multi-step coordination | Agent workflow | The path varies and feedback changes the next step | Tool ceilings, durable state, stop rules, verification |
 | High-stakes, unclear, or weakly verifiable judgment | Human decision | The system cannot credibly bound or verify the decision | Review surface, evidence packet, and accountability |
 
-Use a [selection record](../templates/intelligence-selection-record.md) for each consequential decision. The record must show the deterministic, optimization, classic-ML, foundation-model, and human alternatives considered when relevant; it is not a mandate to introduce every component. [R26-40] [R26-56]
+Use a [selection record](../templates/intelligence-selection-record.md) for each consequential decision. The record must show the deterministic, optimization, classical ML, foundation-model, and human alternatives considered when relevant; it is not a mandate to introduce every component. [R26-40] [R26-56]
 
-## Draw the system before the agent loop
+## Draw the system before any model or agent loop
 
 At minimum, create these four views in an [architecture decision record](../templates/architecture-decision-record.md):
 
 1. **System context:** users, working surface, upstream sources, downstream systems, external parties, and outcome owner.
-2. **Container/component view:** user surface, workflow runtime, domain/state service, context assembly, deterministic policy, model route, tool gateway, evaluation, and operations.
+2. **Container/component view:** user surface, workflow runtime, domain/state service, context assembly, selected decision mechanisms, capability gateway, evaluation, and operations.
 3. **Decision and state view:** decision inputs, state owner, invariants, allowed transitions, effects, postconditions, and recovery.
 4. **Deployment and trust view:** identities, tenancy, credentials, network/egress, isolation, data classification, observability, release, and rollback.
 
-The [operational ontology](../templates/operational-ontology.json) owns business objects, state, rules, actions, and evidence. The [agent-system](../templates/agent-system.json) owns workflow behavior and authority. Tool, capability, behavior, evaluation, and release contracts bind the pieces into a compatible deployable system.
+The [operational ontology](../templates/operational-ontology.json) owns business objects, state, rules, actions, and evidence. The system design owns workflow behavior and authority. When a foundation-model or agent workflow is selected, the [agent-system](../templates/agent-system.json) records that route and the current model/agent behavior, evaluation, and release contracts bind it into the deployable system. Deterministic, optimization, or classical-ML-only routes retain equivalent target software design, evaluation, release, rollback, and retirement evidence.
 
 When those views cross enough systems and teams that change review repeatedly misses dependencies, add a [versioned system map](../templates/system-map-manifest.json) and [change-impact assessment](../templates/change-impact-assessment.json). They preserve derived relationships, provenance, freshness, and owner review; they do not replace the underlying contracts or become a graph-driven control plane. See [Evidence Graphs and Change Intelligence](13-evidence-graphs-and-change-intelligence.md).
 
@@ -45,7 +45,7 @@ The full crosswalk is deliberately a workload baseline, not a second FDE framewo
 | Dependencies | Pinned builds, SBOMs, capability provenance, and compatibility tests |
 | Configuration | Externalized, versioned configuration; no authority or secrets in prompts |
 | Backing services | Explicit source-of-truth, ownership, freshness, contract, and failure semantics for every dependency |
-| Build, release, run | Evaluated behavior bundle, admission, rollout, rollback, and retirement evidence |
+| Build, release, run | Evaluated mechanism configuration, admission, rollout, rollback, and retirement evidence; use a behavior bundle when model behavior is selected |
 | Stateless processes | Durable workflow and domain state outside model/process memory |
 | Port binding | API-first, typed interfaces for people, systems, models, tools, and event consumers |
 | Concurrency | Bounded parallelism, idempotency, leases, cancellation, and replay-safe work |
@@ -82,7 +82,7 @@ The [shipment-risk triage walkthrough](../examples/shipment-risk-triage/README.m
 
 ## Architectural non-negotiables
 
-- A model proposes; deterministic software validates, authorizes, executes, persists, and verifies consequential work. `ARC-002`
+- When a model is used, it proposes; deterministic software validates, authorizes, executes, persists, and verifies consequential work. `ARC-002`
 - Each component has a named purpose, version, owner, authority ceiling, evidence, cost allocation, monitor, fallback, and retirement path. `ARC-005`, `DEL-001`
 - Source-of-truth state, identity, approvals, and completion proof live outside prompts and transient model context. `CTX-001`, `IAM-001`, `REL-003`
 - The release unit binds data, domain, intelligence components, tools, policy, evaluation, user surface, and operations—not code alone. `DEL-001`

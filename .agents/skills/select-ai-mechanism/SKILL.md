@@ -12,11 +12,12 @@ Choose intelligence route by route. An agent is an option, not the starting assu
 1. Require a qualified [workflow charter](../../../templates/workflow-charter.json) and value case.
 2. Read [Software Architecture and Intelligence Selection](../../../library/12-software-architecture-and-intelligence-selection.md) and the [hybrid-intelligence blueprint](../../../blueprints/hybrid-intelligence-system.md).
 3. Use the [intelligence-selection record](../../../templates/intelligence-selection-record.md) and an [architecture decision record](../../../templates/architecture-decision-record.md).
-4. Apply `ARC-002` through `ARC-005`, `REL-002`, `CST-001`, and `CST-002` from the [control catalog](../../../controls/control-catalog.json).
+4. If the approved workflow uses a solution artifact, resolve it through the [solution portfolio](../../../solutions/README.md) and read only the selected business-flow pattern and optional vertical profile. Treat their mechanism allocations as candidates, not target policy or evidence.
+5. Apply `ARC-002` through `ARC-005`, `REL-002`, `CST-001`, and `CST-002` from the [control catalog](../../../controls/control-catalog.json).
 
 ## Workflow
 
-1. Decompose the workflow into consequential decision steps, evidence dependencies, actions, and fallback paths.
+1. Decompose the workflow into consequential decision steps, evidence dependencies, actions, and fallback paths; record where the selected pattern or profile does not fit.
 2. Establish deterministic, single-call, and coded-workflow baselines before proposing model-directed agency.
 3. Compare rules, optimization, classical ML, retrieval, a foundation-model call, a bounded agent workflow, and human review where applicable.
 4. Select the smallest mechanism that meets the accepted outcome, risk ceiling, latency, maintainability, and cost constraints.

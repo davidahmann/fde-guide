@@ -3,12 +3,12 @@
 ## Gate progression
 
 ```text
-design -> sandbox -> shadow -> canary -> autonomy -> operations
+design -> sandbox -> shadow -> canary -> bounded execution or autonomy -> operations
 any active gate -> pause or rollback
 operations -> improve, expand, constrain, or retire
 ```
 
-These are review milestones, not values for `solution-release.release_status`. Record the exact release lifecycle with the closed machine contract:
+These review milestones apply to every selected decision mechanism. The table below shows the current closed machine representation for model and agent releases; its milestones are not values for `solution-release.release_status`.
 
 | Gate decision | Solution-release representation |
 | --- | --- |
@@ -20,7 +20,9 @@ These are review milestones, not values for `solution-release.release_status`. R
 | Reverted release | `release_status: rolled_back` with rollback evidence |
 | Verified shutdown | `release_status: retired` with retirement evidence |
 
-`paused`, `remediated`, and `retirement_planned` are service-control states outside the release-status vocabulary. Preserve the last admitted manifest, record the operational decision, and issue a new digest-bound release or retirement record before resuming or changing deployment.
+`paused`, `remediated`, and `retirement_planned` are service-control states outside the model/agent release-status vocabulary. Preserve the last admitted manifest, record the operational decision, and issue a new digest-bound release or retirement record before resuming or changing deployment.
+
+For a deterministic, optimization, or classical-ML-only system, use the target software delivery system to retain equivalent immutable design, build, configuration, data/policy, evaluation, approval, deployment, rollback, and retirement evidence. Do not create placeholder agent-system, behavior-bundle, evaluation-report, or solution-release artifacts. The gates and control requirements below do not become optional.
 
 ## Gate 0 — Design
 
@@ -30,7 +32,7 @@ These are review milestones, not values for `solution-release.release_status`. R
 | Workflow charter | User, decision, action, accepted outcome, baseline, target, owner, verifier, risk ceiling, and disposition |
 | Value case | Assumptions, attribution, full cost, guardrails, and stop threshold are falsifiable |
 | Operational ontology | Entities, actions, policies, invariants, evidence lineage |
-| Agent-system record | Valid against `agent-system.schema.json` |
+| System design | Architecture and mechanism records bind behavior, authority, state, failure, and operations; when a foundation-model or agent workflow is selected, the agent-system record is valid against `agent-system.schema.json` |
 | Tool contracts | Valid against `tool-contract.schema.json` |
 | Threat model | Every high/critical threat has prevention, detection, recovery, and test |
 | Evaluation plan | Claim, suite, environment, trial semantics, contamination controls, and decision owner |
@@ -44,11 +46,11 @@ Controls: `ARC-001`, `ARC-002`, `ARC-003`, `ARC-004`, `ARC-005`, `FDE-001`, `FDE
 | Verification | Pass condition |
 | --- | --- |
 | Contract tests | 100% valid/invalid fixtures behave as declared |
-| Authorization | Deny-by-default; caller-agent intersection enforced |
-| Secrets | No secret material in model, sandbox, tool output, or telemetry |
+| Authorization | Deny-by-default; caller-actor authority intersection enforced |
+| Secrets | No secret material exposed to a model, untrusted sandbox, capability output, or telemetry |
 | Egress | Denied except explicit operation, identity, data-class, destination, method, redirect, and credential rules |
 | Idempotency | Duplicate delivery produces one business effect |
-| Evaluator boundary | Agent cannot mutate fixtures, graders, or pass signal |
+| Evaluator boundary | Candidate runtime cannot mutate fixtures, graders, or pass signal |
 | Budget controls | Steps, time, retries, parallelism, and spend terminate safely |
 
 Controls: `ARC-002`, `DEL-002`, `CTX-002`, `CTX-005`, `TOL-001`, `TOL-002`, `TOL-003`, `TOL-004`, `TOL-005`, `TOL-006`, `IAM-001`, `IAM-002`, `IAM-003`, `SEC-001`, `SEC-002`, `SEC-003`, `SEC-005`, `SEC-006`, `SEC-007`, `REL-001`, `REL-002`, `REL-005`, `STA-002`, `EVA-002`, `CST-002`.
@@ -61,8 +63,8 @@ Controls: `ARC-002`, `DEL-002`, `CTX-002`, `CTX-005`, `TOL-001`, `TOL-002`, `TOL
 | Prohibited effects | `0` |
 | High-severity slice | Meets independent threshold |
 | Trace completeness | `100%` required span/event fields |
-| Retrieval/context | Freshness and provenance SLOs pass |
-| Human review | Evidence packets judged sufficient by named reviewers |
+| Retrieval/context | Freshness and provenance SLOs pass where retrieval or governed context is used |
+| Human review | Evidence packets judged sufficient by named reviewers where review is required |
 | Adoption | Eligible use, completion, override, abandonment, and reviewer load meet predeclared thresholds |
 | Cost | P95 cost/accepted-outcome within budget |
 
@@ -79,12 +81,14 @@ Controls: `ARC-005`, `FDE-003`, `VAL-001`, `ADP-001`, `DEL-001`, `DEL-002`, `CTX
 | On-call | Named owner, alert routes, tested kill switch |
 | Customer ownership | Receiving service team has exercised support, incident, change, and rollback procedures |
 | Rollback | Trigger and restoration procedure exercised |
-| Compatibility | Model, prompt, tool, policy, schema, runtime versions recorded |
-| Release manifest | Complete artifact bundle, digests, environment, migration, canary, rollback, and approvals validate against `solution-release.schema.json` |
+| Compatibility | Selected mechanism, policy, schema, runtime, and applicable model, prompt, and tool versions are recorded |
+| Release record | Complete artifact bundle, digests, environment, migration, canary, rollback, and approvals are valid in the target delivery system; a model/agent release also validates against `solution-release.schema.json` |
 
 Controls: `FDE-003`, `VAL-002`, `ADP-001`, `ADP-002`, `DEL-001`, `DEL-002`, `CTX-002`, `SEC-002`, `SEC-006`, `SEC-007`, `REL-003`, `REL-005`, `EVA-001`, `EVA-003`, `EVA-006`, `HUM-001`, `HUM-003`, `OPS-002`, `OPS-004`, `OPS-006`, `OPS-007`.
 
 ## Gate 4 — Autonomy promotion
+
+Use this gate whenever effect authority expands. For a non-agent route, read autonomy promotion as bounded-execution authority expansion. The machine-readable promotion unit below applies to model/agent releases; other target systems bind the same segment, effect class, evidence, approvals, and rollback conditions in their release record.
 
 | Requirement | Pass condition |
 | --- | --- |
@@ -116,7 +120,7 @@ Promotion unit:
 }
 ```
 
-This is an excerpt, not a complete release artifact. Use the [solution-release template](../templates/solution-release.json) and [change management](change-management.md) for the full release bundle and rollback evidence. Production approval is invalidated when a bound behavioral dependency changes.
+This is an excerpt, not a complete model/agent release artifact. When that route is selected, use the [solution-release template](../templates/solution-release.json) and [change management](change-management.md) for the full release bundle and rollback evidence. Other routes retain the equivalent digest-bound record in the target software delivery system. Production approval is invalidated when any bound behavioral dependency changes.
 
 Controls: `ADP-002`, `DEL-001`, `CTX-004`, `IAM-002`, `IAM-003`, `SEC-005`, `REL-001`, `REL-003`, `REL-004`, `REL-005`, `STA-002`, `EVA-001`, `EVA-003`, `EVA-006`.
 
@@ -125,7 +129,7 @@ Controls: `ADP-002`, `DEL-001`, `CTX-004`, `IAM-002`, `IAM-003`, `SEC-005`, `REL
 | Decision | Pass condition |
 | --- | --- |
 | Field learning | Evidence, recurrence, confidentiality, owner, destination, disposition, and validation are recorded |
-| Improvement | Compatible artifacts, affected segments, evaluation evidence, canary, rollback, and post-change outcome check are bound to a new release |
+| Improvement | Compatible artifacts, affected segments, evaluation evidence, canary, rollback, and post-change outcome check are bound to a new applicable release record |
 | Expansion | Value, adoption, SLO, safety, reviewer capacity, service ownership, and rollback evidence pass for the named segment and effect class |
 | Retirement | Owner, affected users, admission freeze, authority and capability revocation, pending-effect reconciliation, state disposition, communications, and shutdown verification are complete |
 

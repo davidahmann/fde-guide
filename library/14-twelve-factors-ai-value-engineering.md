@@ -17,7 +17,7 @@ expected net value =
   × expected incremental accepted-outcome rate
   × value per accepted outcome
   − expected lifecycle cost
-  − expected residual loss
+  − expected residual loss not already netted from avoided loss or unit value
 ```
 
 ```text
@@ -25,10 +25,12 @@ realized net value =
   attributable incremental accepted outcomes
   × realized value per accepted outcome
   − actual lifecycle cost
-  − realized loss
+  − realized loss not already netted from avoided loss or unit value
 ```
 
-Keep units, periods, currencies, populations, and attribution explicit. Do not count the same avoided loss inside both `value per accepted outcome` and `loss`. Lifecycle cost includes delivery, change, models, tools, infrastructure, security and assurance, human review, support, recovery, and ongoing maintenance.
+Keep units, periods, currencies, populations, and attribution explicit. Avoided loss is a measured reduction from the baseline; residual loss is deducted separately only when it represents harm not already netted from avoided loss or unit value. For one loss class, use either gross exposure minus residual loss or net avoided loss—never both. Lifecycle cost includes delivery, change, models, tools, infrastructure, security and assurance, human review, support, recovery, and ongoing maintenance.
+
+If residual loss is unmeasured, keep it unknown, lower confidence, and do not present the net-value result as complete. Zero is evidence, not a default.
 
 The objective is not to maximize intelligence, tokens, automation, or autonomy. It is to improve an owned outcome within accepted cost and risk ceilings.
 
@@ -136,7 +138,7 @@ Evaluate representative cases, difficult slices, known exceptions, adversarial c
 
 Every expansion needs explicit promotion and rollback criteria.
 
-**Evidence:** Evaluation suite, slice-level results, failure tests, [evaluation report](../templates/evaluation-report.json), [release decision](../templates/solution-release.json), and rollback plan. `EVA-001`, `EVA-003`, `DEL-001`.
+**Evidence:** Evaluation suite, slice-level results, failure tests, applicable release decision, and rollback plan. For a model/agent release, use the [evaluation report](../templates/evaluation-report.json) and [solution-release decision](../templates/solution-release.json); deterministic, optimization, or classical-ML-only systems retain equivalent target software evaluation and release evidence. `EVA-001`, `EVA-003`, `DEL-001`.
 
 ## 11. Measure attributable realized value
 
@@ -190,7 +192,7 @@ The score supports a conversation. It is not a certification, and strong factors
 | --- | --- |
 | 1–5: work, outcome, population, counterfactual, verifier | [Discovery and Value](../playbooks/01-discovery-and-value.md), [workflow charter](../templates/workflow-charter.json), [value case](../templates/value-case.md) |
 | 6–8: adoption, mechanism, authority | [Delivery plan](../templates/delivery-and-adoption-plan.md), [intelligence selection](../templates/intelligence-selection-record.md), [system design](../playbooks/02-solution-and-delivery.md) |
-| 9–10: full cost and representative proof | [Value engineering](11-value-engineering-and-frugal-architecture.md), [evaluation report](../templates/evaluation-report.json), [release gates](../operations/release-gates.md) |
+| 9–10: full cost and representative proof | [Value engineering](11-value-engineering-and-frugal-architecture.md), applicable evaluation and release evidence, model/agent [evaluation report](../templates/evaluation-report.json) where selected, and [release gates](../operations/release-gates.md) |
 | 11–12: realized value and lifecycle decision | [Service review](../templates/production-service-review.md), [operate and scale](../playbooks/03-operate-and-scale.md), [change management](../operations/change-management.md) |
 
 The framework synthesizes this guide's controls and field method. It is informed by outcome-led FDE practice, accepted-outcome economics, Frugal Architecture, and the distinction between AI activity and value recorded in the [source index](05-source-index.md#s11) and [research ledger](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-63). It is project guidance, not an external standard.

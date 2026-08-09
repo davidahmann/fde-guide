@@ -86,7 +86,7 @@
       "id": "VAL-002",
       "domain": "value",
       "level": "MUST",
-      "requirement": "Realized value MUST be calculated from eligible adopted use, independently accepted outcomes, avoided loss or unit value, and full delivery and operating cost rather than activity or token volume.",
+      "requirement": "Realized value MUST be calculated from eligible adopted use, independently accepted outcomes, avoided loss or unit value, residual loss not already netted from either benefit term, and full delivery and operating cost rather than activity or token volume. Unit value, avoided loss, and residual loss MUST use non-overlapping definitions so the same outcome or exposure is not counted twice.",
       "evidence": ["R26-22", "R26-37", "R26-39"],
       "release_gates": ["canary", "operations"]
     },
@@ -118,7 +118,7 @@
       "id": "DEL-001",
       "domain": "delivery",
       "level": "MUST",
-      "requirement": "Each production candidate MUST version the compatible data, domain model, agent, tools, policy, evaluation, runtime, and user-surface revisions as one reviewable solution release.",
+      "requirement": "Each production candidate MUST version its compatible data, domain model, policy, evaluation, runtime, user surface, operations, rollout, and rollback evidence as one reviewable release. When model or agent behavior is selected, the agent system, behavior bundle, tools, and capability manifests MUST also be bound by the solution-release contract; deterministic, optimization, or classical-ML-only systems MUST use equivalent target software-release evidence until this guide provides a generalized system-release schema.",
       "evidence": ["R26-44", "R26-51", "R26-52"],
       "release_gates": ["shadow", "canary", "autonomy"]
     },

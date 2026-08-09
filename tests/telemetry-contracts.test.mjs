@@ -38,6 +38,20 @@ test("reference traces and effect receipts satisfy the closed telemetry contract
   assert.equal(validateReceipt(result.effect_receipt), true, JSON.stringify(validateReceipt.errors));
 });
 
+test("accepted-outcome telemetry is verifier-derived rather than a terminal-state assertion", async () => {
+  const [contract, result] = await Promise.all([
+    readFile(path.join(root, "operations", "telemetry-contract.md"), "utf8"),
+    completedRun(),
+  ]);
+  assert.match(contract, /MUST be true only after confirmation by the workflow charter's declared independent verifier/i);
+  assert.match(contract, /terminal workflow state or model assertion is insufficient/i);
+  assert.match(contract, /accepted_outcome_rate = verifier_confirmed_accepted_outcomes \/ eligible_runs/);
+  const terminalEvent = result.trace.at(-1);
+  assert.equal(terminalEvent.telemetry["agent.accepted_outcome"], true);
+  assert.equal(result.effect_receipt.readback.status, "matched");
+  assert.equal(result.effect_receipt.readback.verifier, "invoice-postcondition-verifier");
+});
+
 test("trace details reject credentials, raw prompts, PII, and unrestricted retrieved content", async () => {
   const validateTrace = await validator("trace-event.schema.json");
   const result = await completedRun();

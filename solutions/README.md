@@ -69,7 +69,7 @@ Do not combine every pattern, profile, and accelerator by default. A useful solu
 
 ## Twelve-project coverage
 
-The original twelve project ideas remain mapped to the four horizontal foundations. The business-flow and vertical layers now show how those foundations participate in an actual operating decision.
+Twelve common FDE project archetypes are mapped to the four horizontal foundations. The business-flow and vertical layers show how those foundations participate in an actual operating decision.
 
 | Project ID | Common project | Primary accelerator | Why it belongs there |
 | --- | --- | --- | --- |
