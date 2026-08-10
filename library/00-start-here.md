@@ -1,5 +1,7 @@
 # Start Here: Design a Production-Ready AI System
 
+For a linear introduction, read the concise [FDE Guide](../guide/README.md). This page is the Handbook's design-entry checklist.
+
 Use this page at the beginning of a design session. It routes you to the right material and prevents the common failure mode of starting with a model, framework, or multi-agent diagram before the work is understood.
 
 For an end-to-end customer or internal engagement, use the [FDE playbooks](../playbooks/README.md). This page is the shorter design checkpoint for one workflow.

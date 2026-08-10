@@ -52,7 +52,7 @@ Repository skills live under [`.agents/skills/`](.agents/skills/) and remain thi
 - name its output, stop conditions, and safety boundary without claiming tool or approval authority;
 - keep `agents/openai.yaml` consistent with the skill name and trigger;
 - be registered in [`catalog.json`](catalog.json) and covered by `npm run test:skills`;
-- update `README.md`, `AGENTS.md`, and `llms.txt` when public navigation changes.
+- update `README.md`, `guide/README.md`, `AGENTS.md`, and `llms.txt` when public navigation or the shared method changes.
 
 ## Pull requests
 
