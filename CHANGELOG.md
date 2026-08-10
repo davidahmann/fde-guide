@@ -4,6 +4,8 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.11.0] - 2026-08-10
+
 - Add an owned field-contribution path that classifies customer configuration, target-owned extensions, shared product/platform work, time-bounded experiments, and prohibited or deferred work before implementation.
 - Add field-owned shadow-product detection, normal product-engineering destination requirements, and portfolio signals for unresolved parallel production assets.
 - Strengthen capability transfer with receiving-team change evidence, delivery-team dependency measures, and explicit contract, intellectual-property, license, confidentiality, and reuse-rights decisions.
@@ -122,7 +124,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.10.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.11.0...HEAD
+[1.11.0]: https://github.com/davidahmann/fde-guide/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/davidahmann/fde-guide/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/davidahmann/fde-guide/compare/v1.8.0...v1.9.0
 [1.8.0]: https://github.com/davidahmann/fde-guide/compare/v1.7.0...v1.8.0
