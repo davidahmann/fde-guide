@@ -4,6 +4,8 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.10.0] - 2026-08-10
+
 - Add a concise, linear FDE Guide as the human mental model above the detailed Handbook and executable Engineering Kit.
 - Rebuild the README as a progressive entry door that exposes the executable reference systems, code, contracts, tests, lifecycle, business-flow portfolio, and optional agent workflows without presenting them as one giant first read.
 - Align human, agent, playbook, design, catalog, and maintainer navigation around the three-depth information architecture without adding a parallel methodology.
@@ -115,7 +117,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.9.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.10.0...HEAD
+[1.10.0]: https://github.com/davidahmann/fde-guide/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/davidahmann/fde-guide/compare/v1.8.0...v1.9.0
 [1.8.0]: https://github.com/davidahmann/fde-guide/compare/v1.7.0...v1.8.0
 [1.7.0]: https://github.com/davidahmann/fde-guide/compare/v1.6.0...v1.7.0
