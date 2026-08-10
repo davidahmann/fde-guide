@@ -237,6 +237,10 @@ Candidates for reuse include:
 
 Productize only after recurrence is evidenced across independent contexts, the candidate is sanitized, a destination and owner exist, target-specific validation succeeds, and the normal release path is followed. Lower custom effort counts as improvement only when value, safety, adoption, supportability, and local-policy correctness remain healthy.
 
+Classify field-built work before implementation: customer configuration, a target-owned extension, a shared product or platform capability, a time-bounded experiment, or prohibited/deferred work. The destination determines contribution rights, repository, release, support, and retirement. Do not leave a field-owned parallel service as a shadow product.
+
+Transfer is proven when the receiving team can safely change, evaluate, release, recover, support, and retire the system—not when documents were delivered. Clear contract, intellectual-property, license, confidentiality, and reuse rights before customer-funded or jointly developed work becomes shared capability.
+
 Do not manufacture dependence. Preserve negative and stopped evidence, transfer operating capability, and keep an exit path.
 
 **Use in the repository:** [field-learning register](../templates/field-learning-register.md), [FDE and applied-AI synthesis](../library/10-fde-and-production-agent-synthesis.md), and optional [portfolio review](../templates/fde-portfolio-review.md).

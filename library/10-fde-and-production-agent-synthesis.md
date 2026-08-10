@@ -75,6 +75,22 @@ For an internal deployment, “customer” below means the business unit or oper
 
 The boundary matters. Field learning should improve the product without extracting customer data or turning one customer's accidental workaround into a universal feature. A candidate pattern becomes reusable only after it is sanitized, recurrence is evidenced without cross-customer data transfer, an owner accepts it, and the normal design, evaluation, release, and rollback gates are satisfied. Use the [field-learning register](../templates/field-learning-register.md) to make that decision explicit. `FDE-004`.
 
+## Give every field contribution an owned destination
+
+Classify a proposed field change before implementation. The label does not authorize the work; it determines which owner, repository, runtime, review, release, support, and exit path must govern it.
+
+| Contribution path | Appropriate use | Required ownership and evidence |
+| --- | --- | --- |
+| Customer or business-unit configuration | Existing governed capability meets the need through tenant-bound configuration | Target owner, configuration lineage, local policy validation, rollback, and support path |
+| Target-owned extension | The need is specific to one target but requires code or integration | Target repository and engineering standards, named service owner, release and on-call path, maintenance and retirement plan |
+| Shared product or platform capability | Comparable recurrence and product strategy justify reusable behavior | Product/platform owner, normal architecture and security review, governed product repository, evaluation, compatible release, telemetry, support, and lifecycle ownership |
+| Time-bounded experiment | A narrow learning objective requires temporary implementation | Non-production or explicitly bounded scope, owner, expiry, data disposition, and migration or destruction evidence |
+| Prohibited or deferred | Authority, value, evidence, rights, support, or product fit is absent | Recorded rationale, owner, and reconsideration trigger; no hidden implementation |
+
+A field-owned parallel service outside normal architecture, security, release, telemetry, support, and lifecycle ownership is a **shadow product**. Temporary infrastructure may be necessary, but it must have an explicit production ceiling, owner, deadline, and migration or retirement path. Repeated demand is a signal for a product or platform decision—not permission to scale the workaround. [R26-70] [R26-71]
+
+Before promoting field work into shared capability, record customer funding and ownership, contract and intellectual-property terms, license constraints, confidentiality and attribution requirements, sanitization, and reuse approval. Recurrence across customers does not create transfer rights. Use the [delivery and adoption plan](../templates/delivery-and-adoption-plan.md) for the initial contribution boundary and the [field-learning register](../templates/field-learning-register.md) for reuse disposition. `FDE-004`, `DEL-001`, `ADP-002`.
+
 ## Make adoption valuable on both sides
 
 Every production workflow has at least two value propositions:
@@ -136,6 +152,7 @@ These are professional-practice boundaries over the guide's existing value, secu
 - Cost is a non-functional requirement; the economic unit is an accepted outcome, not token or tool volume. [R26-63] [R26-64]
 - When complexity warrants a system map, it is derived navigation and impact evidence with provenance and freshness—not a replacement for source policy, release evidence, or source-of-truth verification. [R26-65] [R26-66] [R26-67]
 - Customer operation and retirement are designed from the beginning.
+- Field-built work has an owned destination, normal release and support path, and explicit reuse rights before it becomes shared capability.
 
 ## What not to infer
 
@@ -153,5 +170,7 @@ These are professional-practice boundaries over the guide's existing value, secu
 [R26-65]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-65
 [R26-66]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-66
 [R26-67]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-67
+[R26-70]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-70
+[R26-71]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-71
 
-Evidence: [R26-37 through R26-46](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#fde-delivery-and-operating-model-evidence), [R26-47 through R26-56](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-47), [R26-62 through R26-64](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-62), the [AI Engineer video index](../research/2026-08-07--ai-engineer-production-agent-video-index.md), and the [operational-redesign research note](../research/2026-08-08--operational-redesign-and-applied-ai-practice.md).
+Evidence: [R26-37 through R26-46](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#fde-delivery-and-operating-model-evidence), [R26-47 through R26-56](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-47), [R26-62 through R26-64](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-62), [R26-70 through R26-72](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-70), the [AI Engineer video index](../research/2026-08-07--ai-engineer-production-agent-video-index.md), the [operational-redesign note](../research/2026-08-08--operational-redesign-and-applied-ai-practice.md), and the [FDE product-boundaries note](../research/2026-08-10--fde-product-boundaries-and-capability-transfer.md).

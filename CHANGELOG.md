@@ -4,6 +4,11 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+- Add an owned field-contribution path that classifies customer configuration, target-owned extensions, shared product/platform work, time-bounded experiments, and prohibited or deferred work before implementation.
+- Add field-owned shadow-product detection, normal product-engineering destination requirements, and portfolio signals for unresolved parallel production assets.
+- Strengthen capability transfer with receiving-team change evidence, delivery-team dependency measures, and explicit contract, intellectual-property, license, confidentiality, and reuse-rights decisions.
+- Admit bounded practitioner evidence from PagerDuty, Legion Intelligence, and Nasser Ghanemzadeh while retaining unsupported profile and social references as research leads only.
+
 ## [1.10.0] - 2026-08-10
 
 - Add a concise, linear FDE Guide as the human mental model above the detailed Handbook and executable Engineering Kit.

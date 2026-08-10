@@ -115,6 +115,44 @@ test("engagement, service, and portfolio artifacts keep value, continuation, cap
   );
 });
 
+test("field contributions have owned destinations, reuse rights, and capability-transfer evidence", async () => {
+  const [delivery, learning, handoff, portfolio, synthesis, guide, patternsText, catalogText, research] = await Promise.all([
+    readFile(path.join(root, "templates", "delivery-and-adoption-plan.md"), "utf8"),
+    readFile(path.join(root, "templates", "field-learning-register.md"), "utf8"),
+    readFile(path.join(root, "templates", "customer-enablement-handoff.md"), "utf8"),
+    readFile(path.join(root, "templates", "fde-portfolio-review.md"), "utf8"),
+    readFile(path.join(root, "library", "10-fde-and-production-agent-synthesis.md"), "utf8"),
+    readFile(path.join(root, "guide", "README.md"), "utf8"),
+    readFile(path.join(root, "patterns", "pattern-catalog.json"), "utf8"),
+    readFile(path.join(root, "catalog.json"), "utf8"),
+    readFile(path.join(root, "research", "2026-08-10--fde-product-boundaries-and-capability-transfer.md"), "utf8"),
+  ]);
+
+  for (const body of [delivery, synthesis, guide]) {
+    assert.match(body, /customer (?:or business-unit )?configuration/i);
+    assert.match(body, /target-owned extension/i);
+    assert.match(body, /shared product or platform/i);
+    assert.match(body, /time-bounded experiment/i);
+    assert.match(body, /shadow product/i);
+  }
+  for (const body of [learning, handoff, portfolio, synthesis, guide]) assert.match(body, /reuse(?: and transfer)? rights/i);
+  for (const body of [handoff, portfolio, synthesis, guide]) assert.match(body, /delivery-team|FDE involvement|target-specific intervention/i);
+  assert.match(handoff, /representative changes completed by the receiving team without delivery-team intervention/i);
+  assert.match(portfolio, /Unresolved parallel production assets/);
+  assert.match(research, /Leads not promoted into core guidance/);
+  assert.match(research, /popularity or job title is not evidence/i);
+
+  const patterns = JSON.parse(patternsText).patterns;
+  assert.equal(patterns.find((pattern) => pattern.id === "PAT-021")?.title, "Owned field contribution path");
+  assert.equal(patterns.find((pattern) => pattern.id === "ANTI-019")?.title, "Field-owned shadow product");
+
+  const catalog = JSON.parse(catalogText).artifacts;
+  assert.equal(
+    catalog.find((artifact) => artifact.path === "research/2026-08-10--fde-product-boundaries-and-capability-transfer.md")?.type,
+    "evidence",
+  );
+});
+
 test("the four hard gates cannot be averaged away", async () => {
   const body = await readFile(frameworkPath, "utf8");
   const gateSection = body.match(/## Use the factors as gates, not an average\n([\s\S]*?)\n## Apply the framework/)?.[1] ?? "";

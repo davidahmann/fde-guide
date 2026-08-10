@@ -2,7 +2,7 @@
 
 This folder holds dated evidence that supports the implementation library.
 
-**Repository source review:** 2026-08-09. For the current dated ledger and solution evidence notes, source location, publication date, attribution, and evidence tier were rechecked. Link reachability and first-party publication do not establish general validity; every implementation pattern still requires local evaluation.
+**Repository source review:** 2026-08-10. For the current dated ledger and solution evidence notes, source location, publication date, attribution, and evidence tier were rechecked. Link reachability and first-party publication do not establish general validity; every implementation pattern still requires local evaluation.
 
 ## How sources are admitted
 
@@ -24,6 +24,7 @@ Social, Reddit, YouTube, and news are research channels—not automatic authorit
 - [Reference-solution standards note](2026-08-09--reference-solution-standards.md) — primary identity, provisioning, usage-metering, and telemetry anchors for the enterprise-foundation and deployment accelerators, with provider and conformance limits.
 - [Business-flow and vertical-solution evidence note](2026-08-09--business-flow-and-vertical-solutions.md) — outcome-led solution design, operational applications, healthcare access workflows, financial-investigation evidence, and OT context boundaries used by the business-flow and industry profiles.
 - [FDE commercial and professional-practice note](2026-08-09--fde-commercial-and-professional-practice.md) — secondary-source leads for pilot graduation, continuation health, delivery-portfolio economics, responsible reuse, and professional boundaries; excludes copied content, commercial adaptation, benchmarks, and pricing doctrine.
+- [FDE product-boundaries and capability-transfer note](2026-08-10--fde-product-boundaries-and-capability-transfer.md) — directly inspectable practitioner evidence for contribution zones, product feedback, shadow-product avoidance, receiving-team capability, and reuse-rights decisions, with organizational claims kept non-normative.
 
 ## Archive
 

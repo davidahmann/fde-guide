@@ -25,6 +25,16 @@
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | — | — | — | — | — | — | — | — | — |
 
+## Field contribution boundary
+
+Classify each material field-built asset before implementation. The classification does not authorize the change; it binds the work to an owner and the destination's normal engineering, security, release, support, and lifecycle path.
+
+| Asset or change | Contribution path | Contribution rights | Authoritative repo/runtime | Required review and release path | Production/support owner | Reuse-rights decision | Migration, exit, or retirement evidence |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| — | Customer configuration / target-owned extension / shared product or platform / time-bounded experiment / prohibited or deferred | Independent / collaborative / destination-owner only / none | — | — | — | Cleared / restricted / pending / prohibited | — |
+
+For product or platform work, use the destination team's normal codebase, architecture, security, testing, release, telemetry, on-call, and maintenance standards. A temporary parallel service is a potential shadow product and MUST name its production ceiling, expiry, migration or destruction path, and blocking gate. `FDE-004`, `DEL-001`, `OPS-003`.
+
 ## Milestones
 
 | Milestone | Demonstrable vertical slice | Entry evidence | Exit evidence | Owner |
@@ -129,9 +139,9 @@ Each production release resolves these rows to immutable versions or digests; al
 
 ## Prototype-debt register
 
-| Shortcut | Risk | Production disposition | Owner | Blocking gate |
-| --- | --- | --- | --- | --- |
-| — | — | — | — | — |
+| Shortcut or parallel asset | Risk | Authoritative destination | Production disposition | Owner | Deadline | Blocking gate |
+| --- | --- | --- | --- | --- | --- | --- |
+| — | — | — | Migrate / replace / accept as governed target asset / destroy / retire | — | — | — |
 
 ## Dependencies
 
