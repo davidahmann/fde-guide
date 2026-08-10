@@ -14,7 +14,7 @@ Use one record per candidate learning. Store source evidence in its governed sys
 
 ## Index
 
-| Learning ID | Short claim | Class | Recurrence | Confidentiality | Destination | Product owner | Disposition | Validation status | Review due |
+| Learning ID | Short claim | Class | Recurrence | Confidentiality | Destination | Destination owner | Disposition | Validation status | Review due |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | — | — | — | — | — | — | — | — | — | — |
 
@@ -62,14 +62,27 @@ Use one record per candidate learning. Store source evidence in its governed sys
 | Reuse constraints and prohibited transfer | — |
 | Portable scope boundary | — |
 
+### Ownership and reuse rights
+
+| Field | Value |
+| --- | --- |
+| Customer-funded or jointly developed work | Yes / no / mixed / unknown |
+| Contract and statement-of-work reference | — |
+| Intellectual-property owner and permitted uses | — |
+| License, attribution, confidentiality, or publication constraints | — |
+| Evidence and code that must remain target-specific | — |
+| Sanitized reusable subject and provenance | — |
+| Reuse decision owner, legal/contract reviewer when required, and date | — |
+| Reuse status | Cleared / restricted / pending / prohibited |
+
 Do not move raw customer data, proprietary policy, credentials, identifiers, or confidential workflow detail into a shared or public destination. A cross-customer recurrence label records independently reviewed evidence; it does not authorize evidence transfer between customers.
 
 ### Destination and disposition
 
 | Field | Value |
 | --- | --- |
-| Destination | Customer configuration / customer backlog / product backlog / pattern / blueprint / template / tool contract / evaluation suite / model-routing policy / operating procedure / retirement record |
-| Product owner | — |
+| Destination | Customer configuration / target-owned extension / product backlog / platform backlog / pattern / blueprint / template / tool contract / evaluation suite / model-routing policy / operating procedure / temporary-asset retirement record |
+| Destination owner | — |
 | Disposition | Investigate / configure / fix / productize / standardize / defer / reject / retire |
 | Decision, rationale, and approver | — |
 | Target artifact, issue, or release | — |
@@ -77,6 +90,7 @@ Do not move raw customer data, proprietary policy, credentials, identifiers, or 
 | Expected effect on future delivery time, support load, quality, safety, or full cost | — |
 | Required artifact owner and lineage update | — |
 | Due date or reconsideration trigger | — |
+| Existing parallel or shadow asset, owner, and deadline | None / — |
 
 ### Validation and closure
 
@@ -93,8 +107,8 @@ Do not move raw customer data, proprietary policy, credentials, identifiers, or 
 | Status | Proposed / triaged / validating / accepted / implemented / rejected / deferred / retired |
 | Closure evidence and next recurrence query | — |
 
-An accepted learning changes production only through its destination's normal review, compatible-release, evaluation, approval, and rollback gates. The learning record is evidence for a decision; it is not release authorization.
+An accepted learning changes production only through its destination's normal architecture, security, review, compatible-release, evaluation, approval, support, and rollback gates. The learning record is evidence for a decision; it is not release authorization. Recurrence does not establish ownership, license, confidentiality clearance, or reuse permission.
 
 A lower customer-specific effort ratio is useful only when outcomes, adoption, safety, supportability, and full cost remain healthy across comparable contexts. Template reuse, copied customer policy, or skipped local validation does not establish product leverage.
 
-Evidence: [R26-37](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-37), [R26-45](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-45), and [R26-54](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-54).
+Evidence: [R26-37](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-37), [R26-45](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-45), [R26-54](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-54), [R26-70](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-70), and [R26-71](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-71).

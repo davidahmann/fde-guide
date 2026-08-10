@@ -626,6 +626,12 @@
       "type": "evidence",
       "path": "research/2026-08-09--fde-commercial-and-professional-practice.md",
       "tags": ["sources", "fde", "portfolio", "professional-practice"]
+    },
+    {
+      "id": "evidence.fde-product-boundaries-capability-transfer",
+      "type": "evidence",
+      "path": "research/2026-08-10--fde-product-boundaries-and-capability-transfer.md",
+      "tags": ["sources", "fde", "product-boundary", "handoff"]
     }
   ]
 }

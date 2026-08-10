@@ -571,6 +571,36 @@
       "evidence": ["R26-65", "R26-67", "R26-68", "R26-69"],
       "reviewed_at": "2026-08-08",
       "review_due": "2027-02-08"
+    },
+    {
+      "id": "PAT-021",
+      "kind": "pattern",
+      "title": "Owned field contribution path",
+      "status": "accepted",
+      "maturity": "field_tested",
+      "applies_when": ["a delivery team discovers a customer-specific need or a recurring product or platform gap"],
+      "implementation": ["classify the contribution before implementation as configuration, target-owned extension, shared product or platform capability, time-bounded experiment, or prohibited or deferred work", "bind the destination's contribution rights, repository or runtime, owner, engineering and release path, support obligation, reuse rights, and migration or retirement evidence"],
+      "control_ids": ["FDE-004", "DEL-001", "ADP-002", "OPS-003"],
+      "failure_signals": ["field-built production code has no accepted target, product, platform, service, or retirement owner", "the same custom service recurs outside the normal product engineering and operating path"],
+      "verification": ["every field-built production asset has one approved destination and owner before release", "shared product changes pass the destination team's normal architecture, security, evaluation, release, telemetry, support, and lifecycle gates", "the receiving team completes a representative change and recovery exercise without delivery-team intervention"],
+      "evidence": ["R26-70", "R26-71", "R26-72"],
+      "reviewed_at": "2026-08-10",
+      "review_due": "2027-02-10"
+    },
+    {
+      "id": "ANTI-019",
+      "kind": "anti_pattern",
+      "title": "Field-owned shadow product",
+      "status": "accepted",
+      "maturity": "field_tested",
+      "applies_when": ["a delivery team operates customer-specific production code outside the destination organization's normal architecture, security, release, telemetry, support, or lifecycle ownership"],
+      "implementation": ["route the capability to an approved target-owned or shared-product destination", "give any temporary parallel asset a production ceiling, owner, expiry, migration or destruction plan, and blocking release gate"],
+      "control_ids": ["FDE-004", "DEL-001", "ADP-002", "OPS-003"],
+      "failure_signals": ["the field team is the only on-call or change authority", "production assets lack an SLA, release path, security owner, or retirement date", "repeated customer gaps create separate stacks instead of a product or platform decision"],
+      "verification": ["parallel production assets are zero or have approved time-bounded exceptions", "each exception has exercised migration or retirement evidence before delivery-team exit"],
+      "evidence": ["R26-70", "R26-71"],
+      "reviewed_at": "2026-08-10",
+      "review_due": "2027-02-10"
     }
   ]
 }

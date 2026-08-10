@@ -53,17 +53,19 @@ Agree the accounting boundary with the owning finance or portfolio role. Include
 | Realized net value to full-cost ratio | — | — | — | — | — | — |
 | External delivery contribution, if applicable | — | — | — | Recognized revenue minus declared directly attributable cost; not profit | — | — |
 | Customer-specific effort ratio | — | — | — | Target-specific delivery and support effort / total comparable effort | — | — |
+| Delivery-team interventions per compatible change or accepted outcome | — | — | — | Count hands-on field actions separately from ordinary receiving-team operation | — | — |
+| Unresolved parallel production assets | — | — | — | Field-owned services without an accepted target, product/platform, or retirement owner | 0 or approved time-bounded exceptions | — |
 | Supported-workflow load per delivery/operator capacity | — | — | — | Include severity, support window, and on-call burden | — | — |
 
 A falling customer-specific effort ratio is useful only when accepted outcomes, adoption, safety, supportability, and full cost remain healthy. Capacity gains that depend on hidden operator or customer work are not improvements.
 
 ## Reuse and field-to-product learning
 
-| Candidate | Comparable recurrence | Current target-specific effort | Reused governed artifact and validation | Productization cost and owner | Expected future effect | Decision |
-| --- | --- | ---: | --- | ---: | --- | --- |
-| — | — | — | — | — | Delivery time / support load / quality / safety / cost | — |
+| Candidate | Comparable recurrence | Current target-specific effort | Reused governed artifact and validation | Ownership and reuse-rights status | Productization cost and owner | Expected future effect | Decision |
+| --- | --- | ---: | --- | --- | ---: | --- | --- |
+| — | — | — | — | Cleared / restricted / pending / prohibited | — | Delivery time / support load / quality / safety / cost | — |
 
-Use the [field-learning register](field-learning-register.md) for evidence, confidentiality, portability, and release disposition. Count reuse only when the artifact was actually used and validated in the target context. Reusing a template, copying customer policy, or avoiding necessary local work is not product leverage.
+Use the [field-learning register](field-learning-register.md) for evidence, confidentiality, ownership, reuse rights, portability, and release disposition. Count reuse only when the artifact was actually used and validated in the target context. Reusing a template, copying customer policy, or avoiding necessary local work is not product leverage.
 
 ## Sponsor resilience and operating capacity
 

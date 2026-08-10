@@ -732,6 +732,39 @@ This is a curated implementation database, not a popularity list. It favors prim
 - **Anti-pattern:** Allowing a generated map or multi-agent analysis to replace source inspection, independent evaluation, or change approval.
 - **Caveat:** Claims and implementation details are project-maintained; the repository treats them as design leads, not validated operating benchmarks.
 
+<a id="r26-70"></a>
+### R26-70 — PagerDuty: field delivery inside the product engineering path
+
+- **Date:** 2026-03-24; reviewed 2026-08-10
+- **Type / tier:** First-party operating report from an identifiable engineering leader; C
+- **Source:** [From Embedded to Everywhere: How Forward Deployed Engineering Was Born at PagerDuty](https://www.pagerduty.com/eng/from-embedded-to-everywhere-how-forward-deployed-engineering-was-born-at-pagerduty/)
+- **Finding:** PagerDuty describes moving its FDE function into Product Development after customer-specific work in separate infrastructure accumulated outside normal architecture, security, service-level, and on-call standards. It uses explicit contribution zones to distinguish independent, collaborative, and core-product-owned work, and routes recurring field signals through a product feedback loop.
+- **Portable pattern:** Classify a field change before implementation; name its destination, repository or runtime, owner, contribution rights, release path, support obligation, and exit. Shared product changes use the product team's normal engineering, evaluation, release, and operating standards.
+- **Anti-pattern:** A field-owned parallel stack that repeatedly solves product gaps without a durable product, customer, service, or retirement owner.
+- **Caveat:** This is one vendor's retrospective and operating model. Its organizational shape and reported speed are not universal targets.
+
+<a id="r26-71"></a>
+### R26-71 — Legion Intelligence: FDE dependency as a product-maturity risk
+
+- **Date:** 2026-07-03; modified 2026-07-16; reviewed 2026-08-10
+- **Type / tier:** First-party vendor position paper from an identifiable practitioner; C
+- **Source:** [The Forward Deployed Engineering Model Is Backward](https://www.legionintel.com/command-papers/forward-deployed-engineering)
+- **Finding:** Legion argues that repeated one-off work and permanent reliance on field staff can indicate a product feedback loop that is not closing. It distinguishes customer-funded implementation from vendor-owned product development and asks whether the receiving organization can safely adapt the system as field support decreases.
+- **Portable pattern:** Measure capability transfer and target-specific dependency directly; route recurring gaps to an owned product or platform decision; record contractual, intellectual-property, confidentiality, and reuse rights before promoting field work into shared capability.
+- **Anti-pattern:** Treating a larger field organization, continuing staff dependence, or repeated bespoke delivery as proof of product leverage.
+- **Caveat:** The article advances Legion's product strategy and intentionally argues against large FDE organizations. Team size is not a quality metric; local outcomes, economics, risk, and operating capability remain controlling.
+
+<a id="r26-72"></a>
+### R26-72 — Nasser Ghanemzadeh: narrow workflow ownership through handoff
+
+- **Date:** 2026-06; reviewed 2026-08-10
+- **Type / tier:** Practitioner-authored working guide; C
+- **Sources:** [What Is a Forward Deployed AI Engineer?](https://ghanemzadeh.com/forward-deployed-ai-engineer/) and [Forward Deployed AI Engineering](https://ghanemzadeh.com/books/forward-deployed-ai-engineering/)
+- **Finding:** Ghanemzadeh describes an end-to-end engagement that narrows a use case, places the workflow in the user's product, defines review and evaluation, implements production behavior, and hands over code plus an operating rubric that the receiving team can maintain.
+- **Portable pattern:** Keep one delivery owner across scoping, work-surface design, implementation, evaluation, and handoff while making receiving-team operation and maintenance an explicit completion condition.
+- **Anti-pattern:** A strategy deck, demo, or isolated workflow that never enters the target product and cannot survive the delivery engineer's exit.
+- **Caveat:** This is practitioner synthesis and commercial positioning, not an independent outcome study. Pricing, role definitions, and market forecasts are not repository requirements.
+
 ## Social, Reddit, YouTube, and news screening notes
 
 ### Social and Reddit material admitted as leads or first-party field reports
@@ -758,3 +791,5 @@ This is a curated implementation database, not a popularity list. It favors prim
 5. **Concurrency needs semantics.** Idempotency, cancellation, merge rules, capacity, and compatibility are not optional implementation details.
 6. **Observe populations, not only samples.** Behavior clusters and capability curves expose failures that global averages and hand-picked demos hide.
 7. **The economic unit is accepted work.** Count tools, retries, waiting, human review, and recovery—not just model tokens.
+8. **Field work needs an owned destination.** Classify a change before building it, use the destination team's normal engineering and operating path, and retire temporary parallel infrastructure.
+9. **Transfer is measured capability.** Track whether the receiving team can operate, change, recover, and retire the system while target-specific delivery dependence falls without weakening outcomes or safety.
