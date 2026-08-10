@@ -179,7 +179,7 @@ test("public navigation exposes business solutions without displacing the lifecy
   ]);
 
   assert.ok(readme.indexOf("## From idea to production") < readme.indexOf("## Start from a business flow"));
-  assert.ok(readme.indexOf("## Start from a business flow") < readme.indexOf("## Learn from the reference systems"));
+  assert.ok(readme.indexOf("## Start from a business flow") < readme.indexOf("## Optional: use it with a coding agent"));
   for (const body of [readme, agents, llms, playbook]) assert.match(body, /solutions\/README\.md/);
   for (const body of [readme, agents, llms]) assert.match(body, /solutions\/business-flows\/README\.md|solutions\/business-flows\/exception-to-resolution\.md/);
   for (const body of [readme, agents, llms]) assert.match(body, /solutions\/verticals\/README\.md|solutions\/verticals\/healthcare-access-coordination\.md/);

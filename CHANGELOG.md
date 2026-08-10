@@ -4,6 +4,10 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+- Add a concise, linear FDE Guide as the human mental model above the detailed Handbook and executable Engineering Kit.
+- Rebuild the README as a progressive entry door that exposes the executable reference systems, code, contracts, tests, lifecycle, business-flow portfolio, and optional agent workflows without presenting them as one giant first read.
+- Align human, agent, playbook, design, catalog, and maintainer navigation around the three-depth information architecture without adding a parallel methodology.
+
 ## [1.9.0] - 2026-08-09
 
 - Add an optional FDE and applied-AI portfolio review that keeps workflow value and safety gates separate from continuation, delivery economics, capacity, and reuse signals.

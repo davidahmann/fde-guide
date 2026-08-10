@@ -6,7 +6,7 @@ This repository is a design and verification kit for production AI-enabled syste
 
 Treat an agent as one component option. For each consequential decision, first compare deterministic code, optimization, classical ML, retrieval, a foundation-model call, a bounded agent workflow, and human review as applicable. Select the smallest sufficient mechanism and preserve the authority, evidence, cost, fallback, and retirement rationale. `ARC-004`, `ARC-005`.
 
-Use [`README.md`](README.md) for the human-facing introduction. Use this file as the working contract for repository navigation and changes.
+Use [`README.md`](README.md) for the public entry door, the concise [`guide/README.md`](guide/README.md) for the human mental model, and this file as the working contract for repository navigation and changes.
 
 ## Required orientation
 
@@ -25,6 +25,7 @@ Do not load the entire repository by default. Use one skill or task route, then 
 
 | Path | Role | Treat it as |
 | --- | --- | --- |
+| [`guide/`](guide/README.md) | Gives a concise, linear explanation of the FDE method | Human orientation; narrative, not a normative production contract |
 | [`catalog.json`](catalog.json) | Lists governed artifacts, types, paths, and tags | Registry; update when a cataloged artifact is added, moved, or removed |
 | [`controls/`](controls/control-catalog.json) | Defines production requirements and release gates | Engineering policy normative within this guide |
 | [`schemas/`](schemas/README.md) | Defines valid structures for machine-readable artifacts | Structural source of truth |
@@ -63,7 +64,8 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 
 | Task | Read next | Expected result |
 | --- | --- | --- |
-| Lead an FDE or internal delivery engagement | [FDE playbooks](playbooks/README.md) → current lifecycle stage → required templates | Evidence-backed decisions from qualification through business-owned production operation |
+| Learn or explain the method | [Concise FDE Guide](guide/README.md) → relevant Handbook or Engineering Kit link | Shared mental model without loading the complete repository |
+| Lead an FDE or internal delivery engagement | [Concise FDE Guide](guide/README.md) when orientation is needed → [FDE playbooks](playbooks/README.md) → current lifecycle stage → required templates | Evidence-backed decisions from qualification through business-owned production operation |
 | Review an FDE or applied-AI portfolio | [Operate and Scale](playbooks/03-operate-and-scale.md) → [portfolio review](templates/fde-portfolio-review.md) → linked service reviews and field-learning records | Cohort-aware investment, continuation, productization, transfer, capacity, and exit decisions without overriding workflow gates |
 | Build shared applied-AI capability | [FDE and applied AI engineering synthesis](library/10-fde-and-production-agent-synthesis.md) → current lifecycle stage → relevant reusable artifact | A deliberate boundary between workflow-specific delivery, reusable product/platform capability, and sanitized field learning |
 | Select a workflow | [Discovery and Value](playbooks/01-discovery-and-value.md) → [Start Here](library/00-start-here.md) → [discovery pack](templates/fde-discovery-pack.md) → [workflow charter](templates/workflow-charter.json) | Observed workflow, owner, baseline, accepted outcome, verifier, value hypothesis, and risk ceiling |
@@ -81,7 +83,7 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 | Run a service review | [Production service review](templates/production-service-review.md) → [SLO scorecard](operations/slo-scorecard.md) → [behavior monitoring](operations/behavior-monitoring.md) → [change management](operations/change-management.md) | Outcome, adoption, reliability, safety, cost, change, ownership, and retirement decisions |
 | Update changing guidance | [Research policy](research/README.md) → dated primary source → affected pattern, control, or library page | Attributed claim, caveat, review date, and linked implementation impact |
 | Change operations or a runbook | Relevant OPS controls → trace and effect contracts → affected operations document → example and recovery tests | Consistent telemetry, SLO, detection, containment, recovery, and release behavior |
-| Change repository, CI, or community metadata | [README](README.md) → package metadata, citation, and changelog → workflow or community file → validator | Consistent public metadata, safe automation, navigation, and validation |
+| Change repository, CI, or community metadata | [README](README.md) → [concise Guide](guide/README.md) when public method or hierarchy changes → package metadata, citation, and changelog → workflow or community file → validator | Consistent public metadata, safe automation, navigation, and validation |
 | Add or change a repository skill | Target [`SKILL.md`](.agents/skills/) → directly linked controls and artifacts → `agents/openai.yaml` → skill and repository tests → public navigation | Focused trigger, bounded workflow, clear output, no duplicate methodology, catalog registration, and validated metadata |
 
 ## Artifact sequence for a new system
@@ -114,6 +116,7 @@ Do not begin with multi-agent topology or framework selection. First establish t
 - JSON Schemas define valid artifact structure.
 - Executable tests provide regression evidence for the behavior they exercise; passing does not certify production readiness.
 - Blueprints and templates translate controls into reusable designs.
+- The concise Guide explains the shared mental model and routes readers to authoritative deeper artifacts.
 - Library pages explain the reasoning; research records the evidence and its limits.
 
 If these disagree, do not silently choose one. Identify the conflict, preserve the safer behavior, and update every affected layer in the same change when feasible.

@@ -1,5 +1,7 @@
 # FDE Playbooks
 
+New to the method? Read the concise [FDE Guide](../guide/README.md) first. This Handbook starts where a team is ready to run a real engagement or internal delivery lifecycle.
+
 Use these playbooks to move one customer or internal workflow from an important problem to business-owned production operation. For an internal team, read “customer” as the business unit or operating team that owns the workflow after delivery.
 
 ## Lifecycle

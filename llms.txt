@@ -8,6 +8,7 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 ## Core entry points
 
 - Human overview: [README.md](README.md)
+- Concise linear FDE Guide: [guide/README.md](guide/README.md)
 - Agent editing and routing contract: [AGENTS.md](AGENTS.md)
 - Governed-artifact registry: [catalog.json](catalog.json)
 - Production controls: [controls/control-catalog.json](controls/control-catalog.json)

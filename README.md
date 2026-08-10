@@ -1,240 +1,174 @@
 # The FDE Guide
 
-> **Value engineering and production architecture for FDEs, applied AI engineers, product teams, and operations leaders**
+> **Value engineering and production architecture for FDEs, applied-AI engineers, product teams, and operators**
 
 ![The FDE Guide: Discover value, design the system, govern decisions, release safely, operate outcomes](assets/fde-guide-banner.svg)
 
-An independent, open-source field guide for FDEs and internal applied-AI teams moving a customer or internal workflow from discovery to a measurable, operated outcome.
+An independent, open-source guide and engineering kit for turning a real customer or internal workflow into a measurable, operated AI-enabled service.
 
 [![Repository validation](https://github.com/davidahmann/fde-guide/actions/workflows/validate.yml/badge.svg)](https://github.com/davidahmann/fde-guide/actions/workflows/validate.yml)
 [![Latest release](https://img.shields.io/github/v/release/davidahmann/fde-guide)](https://github.com/davidahmann/fde-guide/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-[Choose your starting point](#who-this-is-for) · [Follow the lifecycle](#from-idea-to-production) · [Start from a business flow](#start-from-a-business-flow) · [Inspect the examples](#learn-from-the-reference-systems) · [Use with a coding agent](#optional-use-it-with-a-coding-agent)
+[Read the Guide](guide/README.md) · [Use the Handbook](playbooks/README.md) · [Run the code](#see-it-working) · [Browse solutions](solutions/README.md) · [Use with an agent](#optional-use-it-with-a-coding-agent)
 
-## Who this is for
+## Choose your depth
 
-Start with the decision your role owns. You do not need to adopt the whole repository at once.
+This is one method at three levels. Start with only the depth your job requires.
 
-| You are responsible for | The question to answer first | Start here |
+| Layer | Use it when | Start here |
 | --- | --- | --- |
-| Business value, product, or use-case selection | Is this workflow worth changing, and how will an accepted outcome be measured? | [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md), then [Discovery and Value](playbooks/01-discovery-and-value.md) |
-| FDE or applied-AI delivery | How do we move one real workflow from observation through adoption and accountable operation? | [FDE playbooks](playbooks/README.md) and [FDE discovery pack](templates/fde-discovery-pack.md) |
-| AI engineering or software architecture | Which decisions belong in rules, optimization, ML, retrieval, a foundation model, an agent, or human review? | [Software Architecture and Intelligence Selection](library/12-software-architecture-and-intelligence-selection.md), [blueprint selector](blueprints/README.md), and [reference solutions](solutions/README.md) |
-| Platform, security, release, or reliability | Can this exact release act safely, fail predictably, and be operated within its value and risk limits? | [Release gates](operations/release-gates.md), [control catalog](controls/control-catalog.json), and [operations](operations/README.md) |
-| Technical review or enablement | What does a complete delivery packet look like in practice? | [Shipment-risk walkthrough](examples/shipment-risk-triage/README.md) and [invoice-exception reference](examples/invoice-exception/README.md) |
+| **The Guide** | You want the mental model, core principles, and complete FDE delivery loop in about 20 minutes | [Read the concise Guide](guide/README.md) |
+| **The Handbook** | You are qualifying, designing, delivering, transferring, or operating a real workflow | [Follow the lifecycle playbooks](playbooks/README.md) and [human-readable library](library/00-start-here.md) |
+| **The Engineering Kit** | You need implementation artifacts, architecture, machine-readable contracts, release controls, executable examples, or tests | [Inspect the kit](#what-is-in-the-engineering-kit), [controlled-write system](examples/invoice-exception/README.md), and [hybrid system](examples/shipment-risk-triage/README.md) |
 
-## What this guide helps you deliver
-
-- A qualified workflow with a named owner, baseline, accepted outcome, verifier, adoption path, and risk ceiling.
-- A full-cost value case and a deliberate software architecture—not a model looking for a problem.
-- The smallest adequate mix of deterministic code, optimization, ML, retrieval, foundation models, bounded agents, and human review.
-- A tested release packet with explicit authority, failure behavior, rollout limits, rollback, and source-of-truth evidence.
-- A service that an operating team can observe, support, improve, constrain, and retire.
-- A portfolio view that separates accepted value from continuation, full delivery economics, reusable capability, and team capacity.
+The Guide explains the method. The Handbook supports judgment. The Engineering Kit makes claims, authority, behavior, and changes inspectable and testable. They are not separate frameworks.
 
 ## The core idea: engineer value before autonomy
 
-**From a real workflow to a measurable, operated outcome.**
+**Start with the work and the accepted outcome—not with a model or agent topology.**
 
-A useful demo can call a model and a few tools. A production AI-enabled system must also know who is allowed to act, which information is current, how to handle failure, how to prove that work finished, how much it costs, and how operators can stop or recover it.
+A production AI-enabled system must do more than produce a plausible answer. It must know who may act, which information is current, how failure is contained, how completion is verified, what the full service costs, and who can operate or stop it.
 
-In this guide, a **production agent** is a bounded workflow in which a foundation model makes some decisions, software controls tools and state, and people remain accountable for the outcome. An agent is one component option—not the default answer for every decision.
-
-This repository provides the design sequence, reusable contracts, tests, and operating checks around that system. It does not require a specific model, cloud, or agent framework. It is not a drop-in runtime, a certification, or a substitute for your organization's security and risk review.
-
-Work in this order: **outcome → workflow → decision → system → controlled action → accepted result → measured value**. Start with the user's operational decision and the economics of an accepted result. Only then choose the software architecture and the smallest adequate intelligence mechanism.
+An agent is one component option. For each consequential decision, compare deterministic software, optimization, classical ML, retrieval, a foundation-model call, a bounded agent workflow, and human review. Select the smallest sufficient mechanism and preserve its evidence, authority, cost, fallback, and retirement path.
 
 > **Tokens are an input. Autonomy is a design choice. Accepted outcomes are the product.**
 
-The [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md) turn that principle into an operating framework: observe real work, own and verify the outcome, bound eligibility and authority, engineer adoption, select the smallest sufficient intelligence, price the whole service, prove it on representative work, and expand or retire from evidence. Apply it through the detailed [value-engineering](library/11-value-engineering-and-frugal-architecture.md) and [intelligence-selection](library/12-software-architecture-and-intelligence-selection.md) guides.
+The [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md) turn that principle into explicit value, verifier, adoption, authority, cost, proof, and lifecycle gates.
+
+## See it working
+
+This repository is not only documentation. It contains JavaScript runtimes, policies, evaluation runners, typed JSON contracts, capability manifests, threat models, release evidence, and regression tests.
+
+| Executable system | What it demonstrates | Inspect the implementation |
+| --- | --- | --- |
+| [Invoice-exception resolution](examples/invoice-exception/README.md) | A model proposes; trusted software authorizes, stages, commits, deduplicates, and verifies a reversible ledger effect | [runtime](examples/invoice-exception/reference-loop.mjs), [authorization policy](examples/invoice-exception/authorization-policy.mjs), [tool contracts](examples/invoice-exception/tools/), [adversarial cases](examples/invoice-exception/evals/), and [tests](examples/invoice-exception/reference-loop.test.mjs) |
+| [Shipment-risk triage](examples/shipment-risk-triage/README.md) | Classical ML scoring, deterministic routing, optional model explanation, and human review in one bounded workflow | [runtime](examples/shipment-risk-triage/shipment-risk-triage.mjs), [selection record](examples/shipment-risk-triage/intelligence-selection.md), [evaluation cases](examples/shipment-risk-triage/evals/), and [tests](examples/shipment-risk-triage/shipment-risk-triage.test.mjs) |
+
+Run the executable evidence with Node.js 22 or later:
+
+```bash
+npm ci --ignore-scripts
+npm run test:reference
+npm run test:evals
+npm run test:hybrid
+```
+
+The examples are in-memory teaching systems, not deployable products. Their tests prove only the declared local behavior. The full repository gate also validates links, schemas, controls, release integrity, security contracts, telemetry, and solution coverage.
+
+## Who this is for
+
+| You own | Start with | You should leave with |
+| --- | --- | --- |
+| Business value or use-case selection | [Concise Guide](guide/README.md) → [Discovery and Value](playbooks/01-discovery-and-value.md) | Bounded workflow, baseline, accepted outcome, verifier, value case, guardrails, and decision |
+| FDE or internal applied-AI delivery | [Handbook](playbooks/README.md) → current lifecycle stage | Evidence-backed path from observation through adoption, handoff, operation, and field learning |
+| AI engineering or software architecture | [Intelligence selection](library/12-software-architecture-and-intelligence-selection.md) → [blueprints](blueprints/README.md) | Smallest sufficient mechanism, coherent system boundary, contracts, failure behavior, and test plan |
+| Platform, security, release, or reliability | [Controls](controls/control-catalog.json) → [release gates](operations/release-gates.md) → [operations](operations/README.md) | Explicit authority, compatible release, telemetry, recovery, change, and retirement evidence |
+| Technical enablement or review | [Worked systems](#see-it-working) → [templates](templates/README.md) | A concrete view of the code, design packet, evaluation, and operating evidence |
 
 ## From idea to production
 
-The repository follows one delivery path. Each stage produces an artifact that the next stage can inspect or test.
+The entire repository follows one delivery loop.
 
 ```mermaid
 flowchart LR
     A["Observe the work"] --> B["Charter value and scope"]
-    B --> C["Select the decision mechanism"]
+    B --> C["Select the mechanism"]
     C --> D["Build one controlled slice"]
     D --> E["Prove it with cases and users"]
-    E --> F["Launch with owners and rollback"]
-    F --> G["Operate, improve, or retire"]
+    E --> F["Launch and transfer ownership"]
+    F --> G["Operate, learn, or retire"]
 ```
 
-| Stage | Plain-language question | Main artifact |
+| Stage | Question | Working artifact |
 | --- | --- | --- |
-| Observe | How does the work actually happen, including exceptions and workarounds? | [Field-observation log](templates/field-observation-log.md) and [FDE discovery pack](templates/fde-discovery-pack.md) |
-| Charter | What narrow decision is worth improving, how will value be measured, and who owns the result? | [Workflow charter](templates/workflow-charter.json) and [value case](templates/value-case.md) |
-| Plan adoption | How will users test, adopt, support, change, and eventually own the workflow? | [Delivery and adoption plan](templates/delivery-and-adoption-plan.md) and draft [customer handoff](templates/customer-enablement-handoff.md) |
-| Select intelligence | Which decision steps belong in rules, optimization, ML, retrieval, a foundation model, an agent, or human review? | [Intelligence-selection record](templates/intelligence-selection-record.md) and [architecture guide](library/12-software-architecture-and-intelligence-selection.md) |
-| Model the domain | What objects, actions, rules, and sources of truth matter? | [Domain model template](templates/operational-ontology.json) |
-| Map dependencies | Which software and operational relationships need active navigation or material-change review? | [System-map manifest](templates/system-map-manifest.json) and [change-impact assessment](templates/change-impact-assessment.json), only where their maintenance cost is justified |
-| Design | Where do deterministic software, optimization, ML, foundation models, tools, and people make decisions? | [Architecture decision record](templates/architecture-decision-record.md) and, when a foundation-model or agent workflow is selected, [agent-system template](templates/agent-system.json) |
-| Bind behavior | Which exact model route, prompt, harness, context policy, guardrails, and runtime work together? | [Behavior-bundle template](templates/behavior-bundle.json) when model behavior is selected |
-| Bind capabilities | What may each exact capability build read or change, for whom, and under what policy? | [Tool contract](templates/tool-contract.json), [capability manifest](templates/capability-manifest.json), and [capability supply-chain guide](operations/capability-supply-chain.md) |
-| Threat model | How could data, tools, identity, or evaluation be abused? | [Threat-model template](templates/threat-model.json) |
-| Prove | Does it succeed, fail safely, and help users on representative work? | Representative tests and user evidence; add [evaluation cases](templates/evaluation-case.json) and an [evaluation report](templates/evaluation-report.json) when model or agent behavior is selected |
-| Launch | What compatible release and bounded authority are justified, who supports them, and what reverses them? | Target software release evidence and [customer handoff](templates/customer-enablement-handoff.md); add the [solution-release manifest](templates/solution-release.json) for model or agent releases and apply the [release gates](operations/release-gates.md) |
-| Operate | Is it valuable, adopted, reliable, safe, affordable, supportable, and still owned? | [Production service review](templates/production-service-review.md), optional multi-workflow [portfolio review](templates/fde-portfolio-review.md), [SLO scorecard](operations/slo-scorecard.md), and [incident runbook](operations/incident-runbook.md) |
-| Improve or retire | Which field evidence justifies a change, expansion, constraint, or verified shutdown? | [Field-learning register](templates/field-learning-register.md), [change management](operations/change-management.md), and [controlled improvement](blueprints/controlled-improvement-agent.md) |
+| Observe | How does the work really happen, including exceptions and recovery? | [Observation log](templates/field-observation-log.md) and [discovery pack](templates/fde-discovery-pack.md) |
+| Charter | Is the workflow worth changing, and how will an outcome be accepted? | [Workflow charter](templates/workflow-charter.json) and [value case](templates/value-case.md) |
+| Select | Which steps belong in software, optimization, ML, retrieval, a model, an agent, or human review? | [Intelligence-selection record](templates/intelligence-selection-record.md) |
+| Build | What is the smallest end-to-end slice that exercises the real boundaries and work surface? | [Delivery plan](templates/delivery-and-adoption-plan.md), [domain model](templates/operational-ontology.json), and applicable [blueprint](blueprints/README.md) |
+| Prove | Does it work safely, economically, and usefully on representative cases? | [Evaluation cases](templates/evaluation-case.json), user evidence, failure tests, and applicable release record |
+| Launch | Can the exact release be contained, recovered, supported, and rolled back? | [Release gates](operations/release-gates.md), [customer handoff](templates/customer-enablement-handoff.md), and model/agent [solution release](templates/solution-release.json) where applicable |
+| Operate | Should the service continue, improve, expand, constrain, pause, or retire? | [Service review](templates/production-service-review.md), [operations](operations/README.md), and [field-learning register](templates/field-learning-register.md) |
 
-Draft the threat model before the evaluation suite, then refine both together as failure paths become concrete. If the workflow has no measurable outcome or trustworthy verifier, stay in discovery. A more capable model does not repair an undefined task.
+If the workflow has no measurable outcome, credible verifier, accountable owner, accessible context, adoption path, or tolerable risk boundary, stay in discovery. A more capable model will not repair an undefined task.
 
-The current machine-readable evaluation-report and solution-release contracts bind model and agent releases. Deterministic, optimization, or classical-ML-only systems should retain equivalent ordinary software architecture, test, provenance, deployment, rollback, and operating evidence; do not create placeholder model or agent artifacts to satisfy these templates.
+## What is in the Engineering Kit
+
+| Path | What it provides |
+| --- | --- |
+| [`examples/`](examples/invoice-exception/README.md) | Executable reference runtimes, policies, worlds, evaluation runners, threats, release evidence, and regression tests |
+| [`solutions/`](solutions/README.md) | Business-flow patterns, industry profiles, and horizontal accelerators—design starting points, not deployable products |
+| [`blueprints/`](blueprints/README.md) | Reference architectures with components, trust boundaries, state, failures, telemetry, and release tests |
+| [`templates/`](templates/README.md) | Discovery, value, architecture, domain, evaluation, release, adoption, handoff, and service-review artifacts |
+| [`controls/`](controls/control-catalog.json) | Machine-readable production requirements and release-gate mappings normative within this guide |
+| [`schemas/`](schemas/README.md) | JSON Schema 2020-12 contracts for governed design, evaluation, capability, handoff, telemetry, and release records |
+| [`patterns/`](patterns/pattern-catalog.json) | Evidence-linked implementation patterns and anti-patterns |
+| [`operations/`](operations/README.md) | Release, telemetry, SLO, incident, behavior-monitoring, change, recovery, and retirement guidance |
+| [`research/`](research/README.md) | Dated sources, portable findings, attribution, and caveats behind changing recommendations |
+| [`scripts/`](scripts/validate-repository.mjs) and [`tests/`](tests/) | Repository validation, semantic invariants, security regressions, release-integrity checks, and executable examples |
+
+The current machine-readable evaluation-report and solution-release profiles bind model and agent releases. Deterministic, optimization, or classical-ML-only systems retain equivalent ordinary software architecture, test, provenance, deployment, rollback, and operating evidence; do not create placeholder agent artifacts.
 
 ## Start from a business flow
 
-After approving the workflow and value case, choose the recurring operating loop that best matches the work. The [operational solution portfolio](solutions/README.md) connects that business flow to optional industry profiles, horizontal platform foundations, and executable teaching evidence.
+After the workflow and value case are approved, the [operational solution portfolio](solutions/README.md) can accelerate design without replacing target-specific discovery or evidence.
 
-| Business flow | Start here when | Smallest useful result |
-| --- | --- | --- |
-| [Exception to resolution](solutions/business-flows/exception-to-resolution.md) | A transaction, request, or record cannot continue normally | One exception reaches verified resolution, recovery, or owned escalation |
-| [Signal to investigation](solutions/business-flows/signal-to-investigation.md) | A signal needs attributable evidence and an authorized disposition | One persistent case with bounded evidence, review, and obligations |
-| [Risk to prioritized action](solutions/business-flows/risk-to-prioritized-action.md) | Limited human capacity must focus on the most consequential work | One eligible item is scored or optimized, policy-routed, reviewed, and measured |
-| [Request to activation](solutions/business-flows/request-to-activation.md) | A user, customer, service, or resource must become safely usable | One request reaches an independently accepted first outcome or safe rejection |
-
-Then apply an industry profile where it adds real domain constraints: [healthcare access coordination](solutions/verticals/healthcare-access-coordination.md), [financial-services investigation](solutions/verticals/financial-services-investigation.md), or [industrial operations response](solutions/verticals/industrial-operations-response.md). Finally, select the horizontal foundation for identity and tenancy, integrations, sensitive evidence, or deployment and operations.
-
-These are design accelerators, not deployable products or compliance evidence. They make the business decision, domain model, action boundary, operating measures, and customer-specific work visible. The executable teaching systems below prove only their named local invariants.
-
-## Learn from the reference systems
-
-The [invoice-exception example](examples/invoice-exception/README.md) shows the controlled-write method on a small financial workflow:
-
-1. Read an invoice and the current policy.
-2. Propose a resolution without giving the model authority to commit it.
-3. Validate the proposal and stage it for approval.
-4. Bind approval to the exact proposal.
-5. Recheck permission and the current policy at commit time.
-6. Make duplicate retries safe.
-7. Verify the result in the ledger before reporting completion.
-
-It includes machine-readable design files, a behavior bundle, tool and capability contracts, a threat model, executable policy, behavioral tests, adversarial evaluation cases, and a review-only release manifest. It is an in-memory teaching reference, not a deployable production service. Use the [checkout validation](#validate-a-checkout) to run it.
-
-The [shipment-risk triage walkthrough](examples/shipment-risk-triage/README.md) is the complementary end-to-end FDE reference. It follows an illustrative customer workflow through discovery, value measurement, intelligence selection, system design, adoption, handoff, and operation. Its compact executable core combines an ML risk score, deterministic routing, optional foundation-model explanation, and human dispatch review—without autonomous shipment intervention.
-
-## Choose the smallest system shape
-
-| Blueprint | Use it when | Typical result |
-| --- | --- | --- |
-| [Bounded retrieval](blueprints/bounded-retrieval-agent.md) | The path to evidence varies, but the agent only reads and cites information | An evidence-backed answer or escalation |
-| [Transactional write](blueprints/transactional-write-agent.md) | The workflow may change a real system and needs policy, approval, duplicate safety, and result verification | A verified write receipt or safe rollback/escalation |
-| [Event-driven investigation](blueprints/event-driven-investigation-agent.md) | Work begins from an event, may pause, and must survive restarts | A durable case record with evidence and a terminal state |
-| [Multi-agent coordinator](blueprints/multi-agent-coordinator.md) | Specialists genuinely require different tools, permissions, context, or parallel execution | Scoped worker results merged and verified by a parent workflow |
-| [Enterprise agent platform](blueprints/enterprise-agent-platform.md) | Several governed workflows need shared domain, capability, identity, evaluation, release, and operating services | A reusable control plane with customer-specific solution layers |
-| [Governed data analysis](blueprints/data-analysis-agent.md) | Iterative analysis depends on metric semantics, query/code execution, source revisions, and claim-level review | An evidence-linked notebook, report, or decision artifact |
-| [Controlled improvement](blueprints/controlled-improvement-agent.md) | Production signals should become isolated change candidates without giving the agent merge or deployment authority | A replay-tested candidate, independent decision, canary, or rollback |
-| [Hybrid intelligence system](blueprints/hybrid-intelligence-system.md) | One workflow needs deliberate rules, optimization, ML, retrieval, foundation-model, and human-review routing | A bounded decision system with route-specific evidence, fallback, and cost controls |
-
-Start with a deterministic workflow when the steps and branches are already known. Use optimization for constrained allocation, classical ML for measured predictions, retrieval for governed evidence, and human review for weakly verifiable or high-stakes judgment. Add an agent only where bounded multi-step judgment is useful. Add multiple agents only when a real permission, context, ownership, or latency boundary justifies the coordination cost.
-
-## Production rules in plain language
-
-- A model may propose an action; trusted software must authorize and execute it.
-- Keep the acting principal unambiguous: bind interactive work to the current user with agent attribution, and give unattended work its own narrow workload identity.
-- Keep credentials behind a trusted tool boundary and restrict where runtime traffic can go.
-- Admit tools, MCP servers, skills, CLIs, and code packages by verified publisher, pinned build, digest, authority, assurance, and lifecycle—not by name alone.
-- Treat retrieved documents, user input, tool results, and memory as data—not instructions with higher authority.
-- A retry of the same business operation must not create a second real-world change.
-- After a consequential change, check the system of record before claiming success.
-- Limit steps, time, retries, parallel work, and cost; every run needs an explicit stop reason.
-- Treat cost as a non-functional requirement: measure full cost per accepted outcome and prefer the smallest mechanism that satisfies the outcome and risk ceiling.
-- Keep evaluation data and pass signals outside the agent's control.
-- Capture enough evidence to explain, pause, recover, and improve the workflow.
-- Pass work between agents or context windows through a typed, expiring, authority-reducing handoff—not a free-form summary.
-
-The machine-readable [control catalog](controls/control-catalog.json) contains the repository's engineering baseline, with each requirement mapped to release gates. For model and agent releases, the [evaluation-report](schemas/evaluation-report.schema.json) and [solution-release](schemas/solution-release.schema.json) contracts make the tested claim and compatible release bundle explicit. This is project guidance, not an external compliance standard.
-
-## Repository map
-
-| Path | What it answers |
+| Business flow | Smallest useful result |
 | --- | --- |
-| [`playbooks/`](playbooks/README.md) | How an FDE or internal delivery team moves from workflow discovery and value to delivery, adoption, handoff, and post-production improvement |
-| [`library/`](library/00-start-here.md) | Why the design choices matter, what tends to fail, and how to work through a design |
-| [`blueprints/`](blueprints/README.md) | Which reference architecture fits the workflow |
-| [`solutions/`](solutions/README.md) | How business-flow patterns, industry profiles, and horizontal foundations compose into a starter operational solution |
-| [`templates/`](templates/README.md) | Which starter artifacts to adapt and complete for a new system |
-| [`controls/`](controls/control-catalog.json) | Which production requirements and release gates apply |
-| [`schemas/`](schemas/README.md) | What valid machine-readable artifacts look like |
-| [`patterns/`](patterns/pattern-catalog.json) | Which implementation patterns and anti-patterns are cataloged |
-| [`examples/`](examples/invoice-exception/README.md) | How the artifacts and controls work together in executable code |
-| [`operations/`](operations/README.md) | How to release, observe, recover, change, and measure the system |
-| [`research/`](research/README.md) | Which dated sources support changing implementation guidance |
-| [`docs/maintainers/`](docs/maintainers/repository-maintenance.md) | How maintainers keep controls, evidence, contracts, navigation, and releases coherent |
-| [`catalog.json`](catalog.json) | Which governed artifacts have stable IDs, types, paths, and tags |
-| [`.agents/skills/`](.agents/skills/) | Which optional, focused workflow a compatible coding agent can follow for the current delivery job |
-| [`scripts/`](scripts/validate-repository.mjs) and [`tests/`](tests/schema-contracts.test.mjs) | How repository structure, contracts, and examples are verified |
+| [Exception to resolution](solutions/business-flows/exception-to-resolution.md) | One exception reaches verified resolution, recovery, or owned escalation |
+| [Signal to investigation](solutions/business-flows/signal-to-investigation.md) | One persistent case contains attributable evidence, bounded review, and owned obligations |
+| [Risk to prioritized action](solutions/business-flows/risk-to-prioritized-action.md) | One eligible item is scored or optimized, policy-routed, reviewed, and measured |
+| [Request to activation](solutions/business-flows/request-to-activation.md) | One request reaches an independently accepted first outcome or safe rejection |
 
-The [production AI-systems mind map](library/08-agent-systems-mind-map.md) shows how customer value, architecture, intelligence selection, context, control, evidence, adoption, and operations depend on one another. The [FDE and applied AI engineering synthesis](library/10-fde-and-production-agent-synthesis.md) explains how field delivery and internal product/platform engineering share one lifecycle without transferring customer-specific context.
+Apply an industry profile only when it adds real domain constraints: [healthcare access coordination](solutions/verticals/healthcare-access-coordination.md), [financial-services investigation](solutions/verticals/financial-services-investigation.md), or [industrial operations response](solutions/verticals/industrial-operations-response.md). Then select only the required horizontal foundation for identity, integrations, sensitive evidence, or deployment and operations.
 
-## Evidence and scope
-
-The guide combines practice-informed patterns with technical sources. The foundational [source index](library/05-source-index.md) distinguishes supplied summaries, supplied full text, and directly reviewed references. The dated research ledger covers implementation sources reviewed from 2026-02-07 through 2026-08-07, plus explicitly revalidated foundations, and records caveats alongside portable findings. A separate [practitioner-video index](research/2026-08-07--ai-engineer-production-agent-video-index.md) records exact talks, chapters, corroboration, and claim limits.
-
-Vendor scale and performance figures remain attributed. Experimental findings remain labeled. Platform behavior changes, so apply the same controls to your own environment and verify claims against current primary documentation before deployment.
+These artifacts are design hypotheses. They are not customer observations, compliance evidence, authorization policy, or release evidence.
 
 ## Optional: use it with a coding agent
 
-The guide is complete as documentation; the skills are an optional way to make its workflows easier to invoke from Codex, Claude Code, Cursor, and other compatible agents. Install the ten-skill workflow pack with the open [`skills` CLI](https://github.com/vercel-labs/skills):
+The guide is complete as documentation. The optional task skills make ten focused jobs easier to invoke from Codex, Claude Code, Cursor, and other compatible agents:
 
 ```bash
 npx skills add davidahmann/fde-guide
 ```
 
-The installer detects compatible agents and lets you choose project or global scope. Review the CLI and skill source before installation, and pin the repository release or commit you have reviewed for production use. To use the guide without installing anything, clone or open the repository and give your agent [`AGENTS.md`](AGENTS.md).
-
-Then start with a concrete job:
-
-Each skill loads the applicable controls and only the selected business-flow or vertical context needed for that job; value-lifecycle skills also load the value framework. Solution artifacts remain design hypotheses; they never become customer observations, authorization policy, evaluation evidence, or release evidence merely because a skill referenced them.
+Review the CLI and skill source before installation, and pin the repository release or commit you reviewed for production use. To use the repository without installing anything, clone it and give your agent [`AGENTS.md`](AGENTS.md).
 
 ```text
 Use $qualify-ai-workflow to assess this candidate workflow: [describe it].
 ```
 
 <details>
-<summary>See all ten workflow skills</summary>
+<summary>See all ten optional workflow skills</summary>
 
-| Job | Skill | You should leave with |
-| --- | --- | --- |
-| Qualify the work | [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) | Observed workflow, owner, baseline, accepted outcome, verifier, risk ceiling, and discover/defer/do-not-build decision |
-| Prove the economics | [`$engineer-ai-value`](.agents/skills/engineer-ai-value/SKILL.md) | Adoption-adjusted value case, full cost, guardrails, cost ceiling, and measurement plan |
-| Select the intelligence | [`$select-ai-mechanism`](.agents/skills/select-ai-mechanism/SKILL.md) | Smallest sufficient mechanism for each decision, with fallback and retirement rationale |
-| Design the system | [`$design-production-ai-system`](.agents/skills/design-production-ai-system/SKILL.md) | Coherent architecture and the smallest applicable design packet |
-| Build release evidence | [`$build-ai-evaluation`](.agents/skills/build-ai-evaluation/SKILL.md) | Representative cases, isolated evaluation, slice-level results, limitations, and decision |
-| Secure reads and actions | [`$secure-ai-action-boundary`](.agents/skills/secure-ai-action-boundary/SKILL.md) | Typed boundaries, authority matrix, capability provenance, denials, and recovery tests |
-| Decide production readiness | [`$review-ai-production-readiness`](.agents/skills/review-ai-production-readiness/SKILL.md) | Release decision, control gaps, owners, rollout limits, and rollback triggers |
-| Operate the service or portfolio | [`$operate-ai-service`](.agents/skills/operate-ai-service/SKILL.md) | Service or portfolio scorecard, incidents and changes, value, cost, capacity, and next decision |
-| Transfer ownership | [`$transfer-ai-service`](.agents/skills/transfer-ai-service/SKILL.md) | Exercised operating capability, support model, blockers, and exit decision |
-| Reuse field learning | [`$productize-field-learning`](.agents/skills/productize-field-learning/SKILL.md) | Sanitized learning record, productization boundary, validation, owner, and release path |
+| Job | Skill |
+| --- | --- |
+| Qualify a workflow | [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) |
+| Engineer the value case | [`$engineer-ai-value`](.agents/skills/engineer-ai-value/SKILL.md) |
+| Select the mechanism | [`$select-ai-mechanism`](.agents/skills/select-ai-mechanism/SKILL.md) |
+| Design the system | [`$design-production-ai-system`](.agents/skills/design-production-ai-system/SKILL.md) |
+| Build evaluations | [`$build-ai-evaluation`](.agents/skills/build-ai-evaluation/SKILL.md) |
+| Secure action boundaries | [`$secure-ai-action-boundary`](.agents/skills/secure-ai-action-boundary/SKILL.md) |
+| Review production readiness | [`$review-ai-production-readiness`](.agents/skills/review-ai-production-readiness/SKILL.md) |
+| Operate a service or portfolio | [`$operate-ai-service`](.agents/skills/operate-ai-service/SKILL.md) |
+| Transfer ownership | [`$transfer-ai-service`](.agents/skills/transfer-ai-service/SKILL.md) |
+| Productize field learning | [`$productize-field-learning`](.agents/skills/productize-field-learning/SKILL.md) |
 
 </details>
 
-Each skill progressively loads only the playbook, controls, templates, and examples needed for its job. The skills are instruction-only: they do not grant tools, credentials, permissions, approval, or evidence. The [control catalog](controls/control-catalog.json), schemas, target-system policy, and human authority remain controlling. Before admitting a skill into a production workflow, apply the provenance, authority, lifecycle, and disable controls in `TOL-006`.
+Skills are instruction-only routes over the same governed artifacts. They grant no tools, credentials, permissions, approval, or evidence. Target-system policy, human authority, exact capability admission, schemas, and controls remain controlling.
 
-[`AGENTS.md`](AGENTS.md) is the repository-wide working contract; [`catalog.json`](catalog.json) is the governed-artifact registry; [`llms.txt`](llms.txt) is the compact navigation index.
+## Scope and evidence
 
-A useful fallback when no single skill fits is:
+The repository does not require a specific model, cloud, or agent framework. It is not a drop-in runtime, certification, or substitute for the target organization's review. The control catalog is engineering policy normative within this guide, not an external compliance standard.
 
-```text
-Follow AGENTS.md. Help me design a production AI-enabled system for [workflow].
-Start by observing and chartering the current work: actor, decision,
-inputs, action, owner, baseline, accepted outcome, verifier, adoption path,
-and risk ceiling. Compare deterministic, optimization, ML, retrieval,
-foundation-model, agent, and human options. Recommend the smallest matching
-blueprint. Produce only the artifacts justified by the workflow, citing
-repository control IDs. Do not begin implementation while a consequential
-discovery question is unresolved.
-```
+Practice-informed guidance is separated from dated research, controls, executable evidence, and vendor or speaker claims. Metrics remain attributed; experimental findings remain labeled. Verify changing platform behavior against current primary documentation before deployment.
 
-For an implementation or review task, state the target workflow, allowed authority, systems in scope, evidence available, and expected deliverable. The skill or agent map can then route through the repository without loading every document.
+[`AGENTS.md`](AGENTS.md) is the repository working contract, [`catalog.json`](catalog.json) is the governed-artifact registry, and [`llms.txt`](llms.txt) is the compact machine-navigation index.
 
 ## Validate a checkout
 
-Requires Node.js 22 or later.
-
-Review repository code before running it. For an untrusted contribution, use CI or a disposable environment with no credentials or sensitive data; `npm test` executes repository-controlled code.
+Review repository code before running it. For an untrusted contribution, use CI or a disposable environment without credentials or sensitive data.
 
 ```bash
 npm ci --ignore-scripts
@@ -242,11 +176,9 @@ npm test
 git diff --check
 ```
 
-The suite checks repository links and anchors, JSON contracts, policy denials, authorization boundaries, duplicate-safe writes, adversarial scenarios, traces, and postcondition verification in the reference environment.
-
 ## Contribute
 
-Start with [CONTRIBUTING.md](CONTRIBUTING.md). Use [GitHub Discussions](https://github.com/davidahmann/fde-guide/discussions) for design questions, [Issues](https://github.com/davidahmann/fde-guide/issues) for reproducible defects or evidence corrections, and the private vulnerability channel in [SECURITY.md](SECURITY.md) for security reports.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md). Use [Discussions](https://github.com/davidahmann/fde-guide/discussions) for design questions, [Issues](https://github.com/davidahmann/fde-guide/issues) for reproducible defects or evidence corrections, and the private channel in [SECURITY.md](SECURITY.md) for vulnerabilities.
 
 Maintained by [David Ahmann](https://github.com/davidahmann) ([LinkedIn](https://www.linkedin.com/in/dahmann/)), a cloud, data, and AI platform leader with Field CTO experience. This is an independent project; no current or former employer endorsement is implied.
 

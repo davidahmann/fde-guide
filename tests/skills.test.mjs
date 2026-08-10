@@ -227,13 +227,33 @@ test("the skill pack routes every control domain", async () => {
   assert.deepEqual([...routedPrefixes].sort(), [...expectedPrefixes].sort());
 });
 
-test("public navigation leads with audience outcomes and keeps skills optional", async () => {
+test("public navigation progressively discloses the Guide, Handbook, Engineering Kit, and optional skills", async () => {
   const readme = await readFile(path.join(root, "README.md"), "utf8");
+  const guide = await readFile(path.join(root, "guide", "README.md"), "utf8");
   const agents = await readFile(path.join(root, "AGENTS.md"), "utf8");
   const llms = await readFile(path.join(root, "llms.txt"), "utf8");
+  const catalog = JSON.parse(await readFile(path.join(root, "catalog.json"), "utf8"));
 
+  assert.ok(readme.indexOf("## Choose your depth") < readme.indexOf("## See it working"));
+  assert.ok(readme.indexOf("## See it working") < readme.indexOf("## Who this is for"));
   assert.ok(readme.indexOf("## Who this is for") < readme.indexOf("## Optional: use it with a coding agent"));
   assert.ok(readme.indexOf("## From idea to production") < readme.indexOf("## Optional: use it with a coding agent"));
+  for (const body of [readme, guide]) {
+    for (const layer of ["The Guide", "Handbook", "Engineering Kit"]) assert.match(body, new RegExp(layer));
+  }
+  for (const body of [readme, agents, llms]) assert.match(body, /guide\/README\.md/);
+  assert.equal(catalog.artifacts.find((artifact) => artifact.path === "guide/README.md")?.id, "guide.core");
+
+  const numberedGuideSections = [...guide.matchAll(/^## (\d+)\. /gm)].map((match) => Number(match[1]));
+  assert.deepEqual(numberedGuideSections, Array.from({ length: 12 }, (_, index) => index + 1));
+  assert.match(guide, /examples\/invoice-exception\/reference-loop\.mjs/);
+  assert.match(guide, /examples\/shipment-risk-triage\/shipment-risk-triage\.mjs/);
+  assert.match(readme, /examples\/invoice-exception\/reference-loop\.mjs/);
+  assert.match(readme, /npm run test:reference/);
+  assert.ok(readme.split(/\s+/).length < guide.split(/\s+/).length, "README must remain the shorter entry door");
+  assert.match(readme, /They are not separate frameworks/);
+  assert.match(guide, /They are three depths of one method—not separate frameworks/);
+
   assert.match(readme, /npx skills add davidahmann\/fde-guide/);
   assert.match(readme, /The guide is complete as documentation/);
   assert.ok(agents.indexOf("## Repository map") < agents.indexOf("## Skill routes"));
