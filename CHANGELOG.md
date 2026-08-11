@@ -4,6 +4,8 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.13.0] - 2026-08-10
+
 - Add a compact FDE and AI engineer capability roadmap with role boundaries, eight capability domains, four evidence-backed practice missions, a five-part engagement starter pack, assessment prompts, and a concise glossary.
 - Publish the roadmap as a focused web route and integrate it into human, agent, catalog, contribution, and maintainer navigation without creating a parallel method.
 - Add a low-friction field-signal issue form for anonymized lessons, failure patterns, learning resources, and capability gaps while preserving confidentiality and evidence boundaries.
@@ -134,7 +136,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.12.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.13.0...HEAD
+[1.13.0]: https://github.com/davidahmann/fde-guide/compare/v1.12.0...v1.13.0
 [1.12.0]: https://github.com/davidahmann/fde-guide/compare/v1.11.0...v1.12.0
 [1.11.0]: https://github.com/davidahmann/fde-guide/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/davidahmann/fde-guide/compare/v1.9.0...v1.10.0
