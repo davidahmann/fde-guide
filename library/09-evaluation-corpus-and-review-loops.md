@@ -40,10 +40,17 @@ expected:
 verifier: "payment-service idempotency record plus source-of-truth readback"
 grader: deterministic
 owner: payments-platform
+reference_authority:
+  basis: source_of_truth
+  source_revision: payment-policy-v18
+  label_author: payments-evaluation-author
+  approved_by: payments-policy-owner
+  adjudication_method: deterministic_reconciliation
+  review_due: 2027-02-07
 last_reviewed: 2026-08-07
 ```
 
-At minimum, track: case ID, workflow, behavioral slice, fixture/source revision, risk level, expected artifact or effect, verification method, owner, and review date. Version the fixture, tool schema, policy, prompt, model route, and grader separately so a changed score can be diagnosed rather than guessed at.
+At minimum, track: case ID, workflow, behavioral slice, fixture/source revision, risk level, expected artifact or effect, verification method, and reference authority. Reference authority includes the evidence basis, source owner and revision, classification, label author, independent approver and approval time, adjudication and disagreement process, and review due date. Version the fixture, tool schema, policy, prompt, model route, and grader separately so a changed score can be diagnosed rather than guessed at. `EVA-007`.
 
 ## Design the test distribution explicitly
 
@@ -65,7 +72,7 @@ Oversample rare, high-consequence conditions. For each required slice, set the e
 Just as a codebase needs tests, the corpus needs automated quality checks. Fail CI when a case is malformed or a change alters protected coverage without an explicit decision.
 
 - Unique case IDs and unique behavioral scenarios; detect near-duplicates as well as identical prompts.
-- Required metadata, source/fixture revision, owner, and review date are present.
+- Required metadata, source/fixture revision, reference owner, independent approval, adjudication, and review date are present and current.
 - The slice matrix still meets its declared coverage and risk quotas.
 - Expected outcomes, trace assertions, and grade references resolve correctly.
 - Cases do not leak a shortcut through answer labels, fixture names, tool descriptions, static test-only IDs, or predictable ordering.

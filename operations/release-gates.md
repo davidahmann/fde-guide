@@ -51,9 +51,10 @@ Controls: `ARC-001`, `ARC-002`, `ARC-003`, `ARC-004`, `ARC-005`, `FDE-001`, `FDE
 | Egress | Denied except explicit operation, identity, data-class, destination, method, redirect, and credential rules |
 | Idempotency | Duplicate delivery produces one business effect |
 | Evaluator boundary | Candidate runtime cannot mutate fixtures, graders, or pass signal |
+| Reference authority | Expected results and expert labels name their source revision, owner, independent approver, adjudication process, and review date |
 | Budget controls | Steps, time, retries, parallelism, and spend terminate safely |
 
-Controls: `ARC-002`, `DEL-002`, `CTX-002`, `CTX-005`, `TOL-001`, `TOL-002`, `TOL-003`, `TOL-004`, `TOL-005`, `TOL-006`, `IAM-001`, `IAM-002`, `IAM-003`, `SEC-001`, `SEC-002`, `SEC-003`, `SEC-005`, `SEC-006`, `SEC-007`, `REL-001`, `REL-002`, `REL-005`, `STA-002`, `EVA-002`, `CST-002`.
+Controls: `ARC-002`, `DEL-002`, `CTX-002`, `CTX-005`, `TOL-001`, `TOL-002`, `TOL-003`, `TOL-004`, `TOL-005`, `TOL-006`, `IAM-001`, `IAM-002`, `IAM-003`, `SEC-001`, `SEC-002`, `SEC-003`, `SEC-005`, `SEC-006`, `SEC-007`, `REL-001`, `REL-002`, `REL-005`, `STA-002`, `EVA-002`, `EVA-007`, `CST-002`.
 
 ## Gate 2 — Shadow
 
@@ -68,7 +69,7 @@ Controls: `ARC-002`, `DEL-002`, `CTX-002`, `CTX-005`, `TOL-001`, `TOL-002`, `TOL
 | Adoption | Eligible use, completion, override, abandonment, and reviewer load meet predeclared thresholds |
 | Cost | P95 cost/accepted-outcome within budget |
 
-Controls: `ARC-005`, `FDE-003`, `VAL-001`, `ADP-001`, `DEL-001`, `DEL-002`, `CTX-001`, `CTX-002`, `CTX-003`, `CTX-005`, `TOL-002`, `TOL-004`, `TOL-005`, `IAM-002`, `IAM-003`, `SEC-004`, `SEC-005`, `REL-001`, `REL-002`, `REL-003`, `REL-004`, `REL-005`, `STA-001`, `EVA-001`, `EVA-002`, `EVA-003`, `EVA-005`, `EVA-006`, `HUM-001`, `HUM-002`, `HUM-003`, `OPS-001`, `OPS-005`, `OPS-007`, `CST-001`, `CST-002`.
+Controls: `ARC-005`, `FDE-003`, `VAL-001`, `ADP-001`, `DEL-001`, `DEL-002`, `CTX-001`, `CTX-002`, `CTX-003`, `CTX-005`, `TOL-002`, `TOL-004`, `TOL-005`, `IAM-002`, `IAM-003`, `SEC-004`, `SEC-005`, `REL-001`, `REL-002`, `REL-003`, `REL-004`, `REL-005`, `STA-001`, `EVA-001`, `EVA-002`, `EVA-003`, `EVA-005`, `EVA-006`, `EVA-007`, `HUM-001`, `HUM-002`, `HUM-003`, `OPS-001`, `OPS-005`, `OPS-007`, `CST-001`, `CST-002`.
 
 ## Gate 3 — Canary
 
@@ -129,11 +130,12 @@ Controls: `ADP-002`, `DEL-001`, `CTX-004`, `IAM-002`, `IAM-003`, `SEC-005`, `REL
 | Decision | Pass condition |
 | --- | --- |
 | Field learning | Evidence, recurrence, confidentiality, owner, destination, disposition, and validation are recorded |
+| Evaluation maintenance | Reference labels remain approved, current, source-bound, and adjudicated; stale or disputed labels are removed from release decisions |
 | Improvement | Compatible artifacts, affected segments, evaluation evidence, canary, rollback, and post-change outcome check are bound to a new applicable release record |
 | Expansion | Value, adoption, SLO, safety, reviewer capacity, service ownership, and rollback evidence pass for the named segment and effect class |
 | Retirement | Owner, affected users, admission freeze, authority and capability revocation, pending-effect reconciliation, state disposition, communications, and shutdown verification are complete |
 
-Controls: `ARC-005`, `FDE-004`, `VAL-002`, `VAL-003`, `ADP-001`, `ADP-002`, `TOL-006`, `SEC-001`, `SEC-002`, `SEC-004`, `SEC-006`, `SEC-007`, `STA-003`, `EVA-004`, `EVA-005`, `EVA-006`, `HUM-002`, `HUM-003`, `OPS-001`, `OPS-002`, `OPS-003`, `OPS-004`, `OPS-005`, `OPS-006`, `OPS-007`, `CST-001`.
+Controls: `ARC-005`, `FDE-004`, `VAL-002`, `VAL-003`, `ADP-001`, `ADP-002`, `TOL-006`, `SEC-001`, `SEC-002`, `SEC-004`, `SEC-006`, `SEC-007`, `STA-003`, `EVA-004`, `EVA-005`, `EVA-006`, `EVA-007`, `HUM-002`, `HUM-003`, `OPS-001`, `OPS-002`, `OPS-003`, `OPS-004`, `OPS-005`, `OPS-006`, `OPS-007`, `CST-001`.
 
 The control catalog is the source of truth for these sets. Repository validation compares every list above with each control's `release_gates` membership so documentation drift fails CI.
 

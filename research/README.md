@@ -25,6 +25,7 @@ Social, Reddit, YouTube, and news are research channels—not automatic authorit
 - [Business-flow and vertical-solution evidence note](2026-08-09--business-flow-and-vertical-solutions.md) — outcome-led solution design, operational applications, healthcare access workflows, financial-investigation evidence, and OT context boundaries used by the business-flow and industry profiles.
 - [FDE commercial and professional-practice note](2026-08-09--fde-commercial-and-professional-practice.md) — secondary-source leads for pilot graduation, continuation health, delivery-portfolio economics, responsible reuse, and professional boundaries; excludes copied content, commercial adaptation, benchmarks, and pricing doctrine.
 - [FDE product-boundaries and capability-transfer note](2026-08-10--fde-product-boundaries-and-capability-transfer.md) — directly inspectable practitioner evidence for contribution zones, product feedback, shadow-product avoidance, receiving-team capability, and reuse-rights decisions, with organizational claims kept non-normative.
+- [Multimodal operations and computer-use boundaries](2026-08-11--multimodal-operations-and-computer-use.md) — attributed field evidence for long-running multimodal work, reference-label authority, and browser/desktop action boundaries, with vendor metrics and an insurance vertical profile explicitly deferred.
 
 ## Archive
 

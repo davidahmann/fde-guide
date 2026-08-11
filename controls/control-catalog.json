@@ -411,6 +411,14 @@
       "release_gates": ["shadow", "canary", "autonomy", "operations"]
     },
     {
+      "id": "EVA-007",
+      "domain": "evaluation",
+      "level": "MUST",
+      "requirement": "Every expected result or human-authored reference label MUST declare its evidence basis, source and revision, accountable owner, data classification, independent approver, approval time, adjudication and disagreement process, and review due date.",
+      "evidence": ["R26-47", "R26-53", "R26-73"],
+      "release_gates": ["sandbox", "shadow", "operations"]
+    },
+    {
       "id": "HUM-001",
       "domain": "human_review",
       "level": "MUST",

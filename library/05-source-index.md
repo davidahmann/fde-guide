@@ -252,6 +252,16 @@ The original sources below establish the library's foundational concepts. For cu
 - **Use in this library:** [FDE commercial and professional-practice research note](../research/2026-08-09--fde-commercial-and-professional-practice.md), portfolio review, pilot graduation, sponsor resilience, and field-learning economics.
 - **Caution:** This is a narrative synthesis rather than a primary technical or audited operating source. Quantitative benchmarks, vendor outcomes, forecasts, sales tactics, pricing recommendations, and case claims are not adopted as project standards. The source permits non-commercial sharing but requires written permission for commercial adaptation; no source text, tables, or named framework vocabulary is incorporated here.
 
+<a id="s25"></a>
+## S25 — Adithya Sanjay / Pace: inside an applied-AI company
+
+- **Evidence:** Full post text supplied without a stable permalink or publication date; dated Pace architecture sources reviewed directly on 2026-08-11
+- **Author/publisher:** Adithya Sanjay, describing Pace
+- **Primary corroboration:** [Long-running multimodal architecture](https://withpace.com/news/multimodal-agents) and [insurance-operations product architecture](https://withpace.com/news/product-launch)
+- **Contribution:** The post connects workflow ownership, durable state, route-specific models and tools, browser fallback for legacy systems, human oversight, customer-approved evaluation cases, production drift, and field-to-product learning. The portable gaps are reference-answer provenance and a controlled computer-use action boundary. [R26-73](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-73) [R26-74](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-74)
+- **Use in this library:** [Multimodal and computer-use research note](../research/2026-08-11--multimodal-operations-and-computer-use.md), [computer-use blueprint](../blueprints/computer-use-action-boundary.md), and evaluation-reference authority.
+- **Caution:** Performance, volume, SLA, organizational, moat, pricing, and vertical-market claims remain first-party assertions. They are not production thresholds or independent evidence that an insurance profile is reusable.
+
 ## Cross-source convergence
 
 The most repeated ideas are:

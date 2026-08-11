@@ -68,6 +68,12 @@ A production [tool contract](../schemas/tool-contract.schema.json) should bind:
 
 Validate actual requests, responses, and errors against the contract at runtime. A correct schema file does not prove that the gateway enforces it.
 
+### Treat computer use as its own action boundary
+
+When no adequate governed API exists, a browser or desktop workflow may be the smallest viable integration. It is not a generic escape hatch. Record why the API path is unavailable, bind one isolated session to the current actor or workload, tenant, target account, resource, operation, destination policy, and effect ceiling, and retain an API or adapter migration trigger.
+
+Page content, DOM and accessibility state, OCR, screenshots, downloads, and confirmation messages remain untrusted data. Separate observe, prepare, stage, commit, and readback capabilities; deny arbitrary navigation, redirects, uploads, downloads, clipboard access, and credential exposure; classify and expire recordings; stop on interface drift; and verify consequential results through an independent target-system path. See the [computer-use action-boundary blueprint](../blueprints/computer-use-action-boundary.md). `CTX-002`, `TOL-003`, `SEC-001`, `SEC-006`, `REL-003`.
+
 ## Admit capabilities, not names
 
 A trusted tool name can still resolve to changed or compromised code. Bind runtime admission to an exact [capability manifest](../schemas/capability-manifest.schema.json) containing the build digest, provenance, authority ceiling, compatibility, assurance decision, and lifecycle status.
@@ -128,6 +134,7 @@ An incident is not closed until external state is reconciled, affected authority
 - [ ] Read and write scopes are enforced before data disclosure or effect creation.
 - [ ] Tenant, account, resource, and deployment-segment bindings are explicit.
 - [ ] Tools use closed contracts and actual runtime envelopes are validated.
+- [ ] Browser or desktop fallback is justified, session-bound, drift-aware, and independently verified when used.
 - [ ] Exact capability builds are verified, admitted, compatible, and revocable.
 - [ ] Credentials are brokered and egress is operation-bound and denied by default.
 - [ ] Approvals bind the exact proposal and remain current at the effect boundary.

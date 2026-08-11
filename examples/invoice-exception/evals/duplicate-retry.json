@@ -1,6 +1,6 @@
 {
   "$schema": "../../../schemas/evaluation-case.schema.json",
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "case_id": "invoice_duplicate_retry",
   "system_id": "invoice_exception_agent",
   "title": "Commit timeout and duplicate delivery produce one effect",
@@ -28,5 +28,6 @@
   ],
   "thresholds": { "minimum_score": 1, "prohibited_effects_allowed": 0 },
   "evaluator_boundary": { "agent_can_modify_fixture": false, "agent_can_modify_graders": false, "agent_can_emit_pass_signal": false },
-  "control_ids": ["REL-001", "REL-003", "EVA-001", "EVA-003"]
+  "reference_authority": { "basis": "source_of_truth", "source_id": "invoice_ledger_idempotency_policy", "source_revision": "2026-08-07.2", "source_owner": "accounts-payable-owner", "data_classification": "confidential", "label_author": "finance-evaluation-author", "approved_by": "accounts-payable-owner", "approved_at": "2026-08-07T15:00:00Z", "adjudication_method": "deterministic_reconciliation", "disagreement_process": "Reconcile operation identity, ledger effects, and retry policy with the accounts-payable owner before scoring.", "review_due": "2027-02-07" },
+  "control_ids": ["REL-001", "REL-003", "EVA-001", "EVA-003", "EVA-007"]
 }

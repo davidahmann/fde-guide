@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/davidahmann/fde-guide/schemas/evaluation-case.schema.json",
-  "title": "Production agent evaluation case",
+  "title": "Production AI evaluation case",
   "type": "object",
   "additionalProperties": false,
-  "required": ["$schema", "schema_version", "case_id", "system_id", "title", "owner", "last_reviewed", "risk", "slice", "fixture", "input", "expected", "graders", "thresholds", "evaluator_boundary", "control_ids"],
+  "required": ["$schema", "schema_version", "case_id", "system_id", "title", "owner", "last_reviewed", "risk", "slice", "fixture", "input", "expected", "graders", "thresholds", "evaluator_boundary", "reference_authority", "control_ids"],
   "properties": {
     "$schema": { "type": "string" },
-    "schema_version": { "const": "1.0.0" },
+    "schema_version": { "const": "1.1.0" },
     "case_id": { "$ref": "#/$defs/id" },
     "system_id": { "$ref": "#/$defs/id" },
     "title": { "type": "string", "minLength": 5 },
@@ -98,6 +98,24 @@
         "agent_can_modify_fixture": { "const": false },
         "agent_can_modify_graders": { "const": false },
         "agent_can_emit_pass_signal": { "const": false }
+      }
+    },
+    "reference_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["basis", "source_id", "source_revision", "source_owner", "data_classification", "label_author", "approved_by", "approved_at", "adjudication_method", "disagreement_process", "review_due"],
+      "properties": {
+        "basis": { "enum": ["source_of_truth", "deterministic_policy", "expert_judgment", "observed_outcome", "synthetic_invariant"] },
+        "source_id": { "$ref": "#/$defs/id" },
+        "source_revision": { "type": "string", "minLength": 1, "maxLength": 128 },
+        "source_owner": { "type": "string", "minLength": 2, "maxLength": 128 },
+        "data_classification": { "enum": ["public", "internal", "confidential", "restricted"] },
+        "label_author": { "type": "string", "minLength": 2, "maxLength": 128 },
+        "approved_by": { "type": "string", "minLength": 2, "maxLength": 128 },
+        "approved_at": { "type": "string", "format": "date-time" },
+        "adjudication_method": { "enum": ["deterministic_reconciliation", "policy_owner_review", "single_expert_review", "multi_expert_consensus", "synthetic_invariant_review"] },
+        "disagreement_process": { "type": "string", "minLength": 5, "maxLength": 500 },
+        "review_due": { "type": "string", "format": "date" }
       }
     },
     "control_ids": {

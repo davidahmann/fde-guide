@@ -35,6 +35,7 @@ export const navigation = [
     routes: [
       "/ai-agent-evaluation/",
       "/ai-agent-security/",
+      "/computer-use-agent-security/",
       "/production-ai-readiness/",
       "/operations/",
     ],
@@ -130,6 +131,14 @@ export const pages = [
     title: "AI Agent Security: Identity, Tools, Egress, and Verified Effects",
     description:
       "A production AI security guide for identity, tenant isolation, tool contracts, capability provenance, egress, approvals, and readback.",
+  },
+  {
+    route: "/computer-use-agent-security/",
+    source: "blueprints/computer-use-action-boundary.md",
+    navTitle: "Computer-use security",
+    title: "Computer-Use Agent Security: Browser Automation Boundaries",
+    description:
+      "Design browser and desktop automation with scoped sessions, hostile-content handling, duplicate safety, interface-drift controls, and independent readback.",
   },
   {
     route: "/production-ai-readiness/",

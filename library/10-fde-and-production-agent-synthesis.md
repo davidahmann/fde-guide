@@ -146,6 +146,8 @@ These are professional-practice boundaries over the guide's existing value, secu
 - Egress is bound to operation and credential provenance, not host name alone.
 - Workflow state and cross-context handoffs are typed and durable.
 - Evaluation reports name the claim, full version/environment manifest, trials, uncertainty, and contamination controls.
+- Expected results and expert labels retain source revision, accountable ownership, independent approval, adjudication, classification, and review dates.
+- Computer-use fallbacks isolate and bind sessions, treat visual content as untrusted, stop on interface drift, and verify effects through an independent target path.
 - Behavioral configuration changes use per-model/route evaluation, canary, and rollback.
 - Production monitoring covers data, workflow, policies, effects, people, outcomes, and cost.
 - Each consequential decision uses the smallest sufficient mechanism—deterministic code, optimization, ML, retrieval, a foundation model, an agent, or human review—and retains the evidence, fallback, and cost rationale.
@@ -162,6 +164,7 @@ These are professional-practice boundaries over the guide's existing value, secu
 - Self-review, monitoring, guardrails, and human approval do not replace authorization or source-of-truth verification.
 - A successful bootcamp, benchmark, or pilot is not production readiness or realized value.
 - A practitioner's claimed ROI, efficiency gain, or organizational forecast is not a portfolio target or release criterion without local measurement.
+- A vendor-reported accuracy, SLA, or deployment volume is not a reusable threshold, and one vertical field report does not establish a new industry profile.
 - Renewal, funding, sponsor activity, delivery throughput, or reuse is not accepted-outcome or realized-value evidence.
 - “AI-native” is not a reason to replace systems of record, remove accountable human judgment, or weaken ordinary software-engineering disciplines.
 
@@ -173,4 +176,4 @@ These are professional-practice boundaries over the guide's existing value, secu
 [R26-70]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-70
 [R26-71]: ../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-71
 
-Evidence: [R26-37 through R26-46](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#fde-delivery-and-operating-model-evidence), [R26-47 through R26-56](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-47), [R26-62 through R26-64](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-62), [R26-70 through R26-72](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-70), the [AI Engineer video index](../research/2026-08-07--ai-engineer-production-agent-video-index.md), the [operational-redesign note](../research/2026-08-08--operational-redesign-and-applied-ai-practice.md), and the [FDE product-boundaries note](../research/2026-08-10--fde-product-boundaries-and-capability-transfer.md).
+Evidence: [R26-37 through R26-46](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#fde-delivery-and-operating-model-evidence), [R26-47 through R26-56](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-47), [R26-62 through R26-64](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-62), [R26-70 through R26-74](../research/2026-02-07--2026-08-07-production-agent-source-ledger.md#r26-70), the [AI Engineer video index](../research/2026-08-07--ai-engineer-production-agent-video-index.md), the [operational-redesign note](../research/2026-08-08--operational-redesign-and-applied-ai-practice.md), the [FDE product-boundaries note](../research/2026-08-10--fde-product-boundaries-and-capability-transfer.md), and the [multimodal and computer-use note](../research/2026-08-11--multimodal-operations-and-computer-use.md).

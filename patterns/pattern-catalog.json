@@ -601,6 +601,36 @@
       "evidence": ["R26-70", "R26-71"],
       "reviewed_at": "2026-08-10",
       "review_due": "2027-02-10"
+    },
+    {
+      "id": "PAT-022",
+      "kind": "pattern",
+      "title": "API-first bounded computer-use fallback",
+      "status": "accepted",
+      "maturity": "field_tested",
+      "applies_when": ["an approved workflow must use a browser, desktop client, or visual interface because no adequate governed API exists"],
+      "implementation": ["record the missing API and migration trigger, then bind the computer-use session to one actor mode, tenant, target account, resource, operation, destination policy, and effect ceiling", "separate observe, prepare, stage, commit, and independent readback while treating page content and visual state as untrusted data"],
+      "control_ids": ["ARC-004", "CTX-002", "TOL-003", "IAM-003", "SEC-001", "SEC-006", "REL-001", "REL-003"],
+      "failure_signals": ["a broad authenticated browser session can navigate or act outside the approved business operation", "interface drift or page instructions change authority, credentials, destination, or effect"],
+      "verification": ["prompt injection, wrong tenant, session revocation, layout drift, redirect escape, duplicate submission, and timeout-after-effect fail safely", "every consequential result is reconciled through an independent target-system read path"],
+      "evidence": ["R26-49", "R26-73", "R26-74"],
+      "reviewed_at": "2026-08-11",
+      "review_due": "2027-02-11"
+    },
+    {
+      "id": "ANTI-020",
+      "kind": "anti_pattern",
+      "title": "Visual success as completion proof",
+      "status": "accepted",
+      "maturity": "normative",
+      "applies_when": ["a browser or computer-use workflow treats a confirmation banner, screenshot, recording, changed page, or successful click as the final business result"],
+      "implementation": ["keep visual evidence as classified debugging context", "derive completion only from a service receipt and source-of-truth readback against the declared business postcondition"],
+      "control_ids": ["TOL-004", "REL-003", "REL-005", "EVA-001"],
+      "failure_signals": ["the agent reports success while authoritative state is absent, stale, duplicated, or different", "a screenshot or recording is used as authorization, evaluation truth, or effect receipt"],
+      "verification": ["misleading success messages and timeout-after-click cases remain effect-unknown until reconciliation", "readback mismatch prevents completion and triggers owned recovery"],
+      "evidence": ["R26-20", "R26-73", "R26-74"],
+      "reviewed_at": "2026-08-11",
+      "review_due": "2027-02-11"
     }
   ]
 }

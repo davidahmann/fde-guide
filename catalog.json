@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/artifact-catalog.schema.json",
   "schema_version": "1.1.0",
-  "updated": "2026-08-10",
+  "updated": "2026-08-11",
   "artifacts": [
     {
       "id": "guide.core",
@@ -376,6 +376,12 @@
       "tags": ["architecture", "dependencies", "change-impact", "provenance"]
     },
     {
+      "id": "blueprint.computer-use-action-boundary",
+      "type": "blueprint",
+      "path": "blueprints/computer-use-action-boundary.md",
+      "tags": ["browser", "computer-use", "security", "effects", "readback"]
+    },
+    {
       "id": "solution.enterprise-foundation",
       "type": "blueprint",
       "path": "solutions/enterprise-foundation.md",
@@ -638,6 +644,12 @@
       "type": "evidence",
       "path": "research/2026-08-10--fde-product-boundaries-and-capability-transfer.md",
       "tags": ["sources", "fde", "product-boundary", "handoff"]
+    },
+    {
+      "id": "evidence.multimodal-operations-computer-use",
+      "type": "evidence",
+      "path": "research/2026-08-11--multimodal-operations-and-computer-use.md",
+      "tags": ["sources", "computer-use", "multimodal", "evaluation"]
     }
   ]
 }

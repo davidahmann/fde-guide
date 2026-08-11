@@ -7,6 +7,7 @@ Use the migration note that matches the source contract version. Each note names
 - [Artifact Catalog 1.1](artifact-catalog-1.1.md)
 - [Capability Manifest 1.1](capability-manifest-1.1.md)
 - [Effect Receipt 1.2](effect-receipt-1.2.md)
+- [Evaluation Case 1.1](evaluation-case-1.1.md)
 - [Handoff Envelope 1.1](handoff-envelope-1.1.md)
 - [Operational Ontology 1.1](operational-ontology-1.1.md)
 - [Solution Release 1.1](solution-release-1.1.md)

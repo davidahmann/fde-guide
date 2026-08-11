@@ -45,6 +45,8 @@ The gateway MUST reject invalid signatures, stale events, unknown tenants, unsup
 
 Credentials stay behind a broker, egress is destination- and account-bound, and every connector build has verified provenance, declared authority, an owner, a disable path, and lifecycle state. `SEC-001`, `SEC-002`, `SEC-006`, `SEC-007`, `TOL-006`.
 
+Prefer a provider API or target-owned adapter. If the approved workflow can only use a browser, desktop client, or terminal emulator, treat it as a separate [computer-use action boundary](../blueprints/computer-use-action-boundary.md): record the API gap and migration trigger, isolate the tenant-bound session, treat visual content as untrusted, separate observation from commit, classify recordings, detect interface drift, and verify the target state independently. Do not hide computer use behind the same reliability claim as a supported API connector.
+
 Retries use the same stable business-operation ID. The destination service or trusted adapter enforces duplicate safety, and consequential changes receive source-of-truth readback. A model MAY propose field mappings for human review; it MUST NOT supply credentials, widen scopes, decide tenant identity, or declare delivery success. `REL-001`, `REL-003`.
 
 ## Smallest useful slice
@@ -73,6 +75,7 @@ Do not begin with four branded connectors. Prove the shared runtime with one rep
 | Schema drift | Unsupported version is quarantined; an owner receives a sampled, minimized diagnostic. |
 | Cross-tenant replay | Replay authority, connection, operation, credential, and destination remain bound to the original tenant. |
 | Disabled connector | Exact artifact digest remains denied even if name or version is reused. |
+| Browser or desktop fallback | Wrong account, prompt injection, layout drift, duplicate submit, misleading success, and session revocation stop safely; only independent target readback completes the operation. |
 
 Run contract, provider-sandbox, replay-world, concurrency, and failure-injection tests. Include destination latency, rate limit, ambiguous response, partial batch, redirect, DNS rebinding, server-fetch, secret leakage, and dead-letter replay cases. `EVA-001`, `EVA-003`, `SEC-004`.
 

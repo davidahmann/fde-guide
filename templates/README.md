@@ -24,7 +24,7 @@ Copy the smallest set needed for one workflow, replace the example values with e
 | [Tool contract](tool-contract.json) | Which data and effects a capability exposes and how it is authorized, contained, and verified |
 | [Capability manifest](capability-manifest.json) | Which exact capability build is admitted, with what provenance, authority, assurance, and lifecycle |
 | [Threat model](threat-model.json) | Which abuses and failures must be prevented, detected, recovered, and tested |
-| [Evaluation case](evaluation-case.json) | Which representative condition must succeed, fail safely, or escalate |
+| [Evaluation case](evaluation-case.json) | Which representative condition must succeed, fail safely, or escalate, and who authorizes the expected result |
 | [Evaluation report](evaluation-report.json) | Which model- or agent-system claim was tested under which versions, trials, limits, and contamination controls |
 | [Handoff envelope](handoff-envelope.json) | What verified state, evidence, remaining work, authority, and budget one worker may pass to another |
 | [Architecture decision record](architecture-decision-record.md) | Why a consequential design choice was accepted and how it can be reversed |
