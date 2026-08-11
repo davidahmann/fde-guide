@@ -53,7 +53,7 @@ test("repository validator rejects bypasses at its integrated boundaries", async
       recursive: true,
       filter(source) {
         const topLevel = path.relative(sourceRoot, source).split(path.sep)[0];
-        return ![".git", "coverage", "node_modules"].includes(topLevel);
+        return ![".git", "coverage", "node_modules", "site-dist"].includes(topLevel);
       },
     });
     await execFileAsync("git", ["init", "--quiet"], { cwd: repositoryRoot });

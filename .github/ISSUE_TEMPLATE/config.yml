@@ -1,8 +1,8 @@
 blank_issues_enabled: false
 contact_links:
   - name: Architecture discussion
-    url: https://github.com/davidahmann/production-agent-engineering/discussions
+    url: https://github.com/davidahmann/fde-guide/discussions
     about: Ask design and implementation questions in Discussions.
   - name: Security report
-    url: https://github.com/davidahmann/production-agent-engineering/security/advisories/new
+    url: https://github.com/davidahmann/fde-guide/security/advisories/new
     about: Report vulnerabilities privately.

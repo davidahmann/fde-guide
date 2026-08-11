@@ -1,0 +1,169 @@
+export const site = {
+  name: "The FDE Guide",
+  shortName: "FDE Guide",
+  url: "https://davidahmann.github.io/fde-guide",
+  repository: "https://github.com/davidahmann/fde-guide",
+  description:
+    "A practical forward deployed engineering guide for measurable value and production AI systems.",
+  author: {
+    name: "David Ahmann",
+    url: "https://www.linkedin.com/in/dahmann/",
+  },
+};
+
+export const navigation = [
+  {
+    label: "Start",
+    routes: ["/", "/forward-deployed-engineering/", "/fde-operating-model/"],
+  },
+  {
+    label: "Design",
+    routes: [
+      "/ai-value-engineering/",
+      "/ai-workflows-vs-agents/",
+      "/production-ai-agent-architecture/",
+      "/workflow-automation-examples/",
+    ],
+  },
+  {
+    label: "Prove and operate",
+    routes: [
+      "/ai-agent-evaluation/",
+      "/ai-agent-security/",
+      "/production-ai-readiness/",
+      "/operations/",
+    ],
+  },
+  {
+    label: "Use the kit",
+    routes: [
+      "/reference-implementations/invoice-exception/",
+      "/reference-implementations/shipment-risk-triage/",
+      "/templates/",
+      "/research/",
+    ],
+  },
+];
+export const pages = [
+  {
+    route: "/",
+    source: "README.md",
+    navTitle: "Overview",
+    title: "The FDE Guide: Value Engineering for Production AI",
+    description:
+      "An open-source forward deployed engineering guide and executable kit for measurable, secure, production AI-enabled systems.",
+    type: "SoftwareSourceCode",
+  },
+  {
+    route: "/forward-deployed-engineering/",
+    source: "guide/README.md",
+    navTitle: "Forward Deployed Engineering",
+    title: "Forward Deployed Engineer Guide: From Workflow to Production",
+    description:
+      "Learn what forward deployed engineers do and how to move a real workflow from discovery to measurable, business-owned operation.",
+  },
+  {
+    route: "/fde-operating-model/",
+    source: "library/10-fde-and-production-agent-synthesis.md",
+    navTitle: "FDE operating model",
+    title: "The FDE Operating Model for Applied AI Delivery",
+    description:
+      "A practical operating model for forward deployed and internal applied-AI teams: discovery, value, delivery, adoption, operation, and learning.",
+  },
+  {
+    route: "/ai-value-engineering/",
+    source: "library/14-twelve-factors-ai-value-engineering.md",
+    navTitle: "AI value engineering",
+    title: "The 12 Factors of AI Value Engineering",
+    description:
+      "A twelve-factor framework for turning AI activity into accepted outcomes, positive net value, controlled risk, and durable operation.",
+  },
+  {
+    route: "/ai-workflows-vs-agents/",
+    source: "library/12-software-architecture-and-intelligence-selection.md",
+    navTitle: "Workflows vs. agents",
+    title: "AI Workflows vs. Agents: Select the Smallest Sufficient Mechanism",
+    description:
+      "Compare deterministic software, optimization, classical ML, retrieval, model calls, agents, and human review for each decision step.",
+  },
+  {
+    route: "/production-ai-agent-architecture/",
+    source: "library/03-agent-system-architecture.md",
+    navTitle: "Agent architecture",
+    title: "Production AI Agent Architecture: Harnesses, Tools, State, and Control",
+    description:
+      "Production AI agent architecture patterns for harnesses, context, tools, state, sandboxes, durable execution, and verifiable effects.",
+  },
+  {
+    route: "/workflow-automation-examples/",
+    source: "solutions/README.md",
+    navTitle: "Workflow patterns",
+    title: "Enterprise AI Workflow Automation Patterns and Examples",
+    description:
+      "Reusable business-flow patterns, industry profiles, and foundations for designing bounded enterprise AI workflow automation.",
+  },
+  {
+    route: "/ai-agent-evaluation/",
+    source: "library/04-production-evaluation-and-governance.md",
+    navTitle: "Agent evaluation",
+    title: "AI Agent Evaluation for Production Systems",
+    description:
+      "Design realistic AI agent evaluations with deterministic checks, behavioral traces, adversarial cases, cost budgets, and release evidence.",
+  },
+  {
+    route: "/ai-agent-security/",
+    source: "library/15-production-ai-security-and-action-boundaries.md",
+    navTitle: "Agent security",
+    title: "AI Agent Security: Identity, Tools, Egress, and Verified Effects",
+    description:
+      "A production AI security guide for identity, tenant isolation, tool contracts, capability provenance, egress, approvals, and readback.",
+  },
+  {
+    route: "/production-ai-readiness/",
+    source: "operations/release-gates.md",
+    navTitle: "Production readiness",
+    title: "Production AI Readiness: Evidence and Release Gates",
+    description:
+      "Use evidence-based release gates for value, architecture, security, evaluation, rollout, operation, and retirement of production AI systems.",
+  },
+  {
+    route: "/operations/",
+    source: "operations/README.md",
+    navTitle: "Production operations",
+    title: "Operating Production AI Systems",
+    description:
+      "A production operating model for AI systems covering telemetry, SLOs, incidents, behavior, cost, change, recovery, and retirement.",
+  },
+  {
+    route: "/reference-implementations/invoice-exception/",
+    source: "examples/invoice-exception/README.md",
+    navTitle: "Controlled-write example",
+    title: "Production AI Agent Example: Controlled Invoice Resolution",
+    description:
+      "An executable AI agent reference showing trusted authorization, staged writes, idempotency, signed receipts, readback, and adversarial tests.",
+  },
+  {
+    route: "/reference-implementations/shipment-risk-triage/",
+    source: "examples/shipment-risk-triage/README.md",
+    navTitle: "Hybrid AI example",
+    title: "Hybrid AI System Example: Shipment-Risk Triage",
+    description:
+      "An executable reference combining classical ML, deterministic policy, optional model explanation, human review, and outcome evaluation.",
+  },
+  {
+    route: "/templates/",
+    source: "templates/README.md",
+    navTitle: "Templates and contracts",
+    title: "FDE and Production AI Templates",
+    description:
+      "Starter artifacts for workflow discovery, value, architecture, evaluation, security, release, adoption, handoff, and service operation.",
+  },
+  {
+    route: "/research/",
+    source: "research/README.md",
+    navTitle: "Research and evidence",
+    title: "Production AI and FDE Research Notes",
+    description:
+      "Dated primary-source research, portable findings, attribution, uncertainty, and implementation implications behind The FDE Guide.",
+  },
+];

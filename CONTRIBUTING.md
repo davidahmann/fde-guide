@@ -33,6 +33,7 @@ Pull requests must keep the repository validator green and include regression co
 - Changeable platform claims cite a dated primary source in `research/`.
 - Vendor metrics remain attributed; experimental findings remain labeled.
 - Model output never authorizes effects, exposes secrets, changes its evaluator, or proves task completion.
+- Public site pages are generated from canonical Markdown through `site/site.config.mjs`; improve the source guide instead of creating duplicate web-only prose.
 
 ## Evidence changes
 

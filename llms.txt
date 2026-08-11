@@ -2,12 +2,14 @@
 
 Summary: A practical guide for FDEs and internal applied-AI teams to use value engineering and production architecture for AI-enabled systems. It moves customer or internal workflows from discovery to measurable, operated outcomes and does not require a specific model or agent framework.
 License: Apache-2.0
+Website: https://davidahmann.github.io/fde-guide/
 
 Read [AGENTS.md](AGENTS.md) before modifying this repository.
 
 ## Core entry points
 
 - Human overview: [README.md](README.md)
+- Searchable web guide: [The FDE Guide](https://davidahmann.github.io/fde-guide/)
 - Concise linear FDE Guide: [guide/README.md](guide/README.md)
 - Agent editing and routing contract: [AGENTS.md](AGENTS.md)
 - Governed-artifact registry: [catalog.json](catalog.json)
@@ -53,6 +55,7 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - Production changes: [operations/change-management.md](operations/change-management.md)
 - Map freshness and change impact: [operations/map-freshness-and-change-impact.md](operations/map-freshness-and-change-impact.md)
 - Behavior monitoring: [operations/behavior-monitoring.md](operations/behavior-monitoring.md)
+- Production AI security and action boundaries: [library/15-production-ai-security-and-action-boundaries.md](library/15-production-ai-security-and-action-boundaries.md)
 - Capability supply chain: [operations/capability-supply-chain.md](operations/capability-supply-chain.md)
 - Evidence policy and dated research: [research/README.md](research/README.md)
 - Maintainer runbook: [docs/maintainers/repository-maintenance.md](docs/maintainers/repository-maintenance.md)

@@ -4,13 +4,13 @@
 
 ![The FDE Guide: Discover value, design the system, govern decisions, release safely, operate outcomes](assets/fde-guide-banner.svg)
 
-An independent, open-source guide and engineering kit for turning a real customer or internal workflow into a measurable, operated AI-enabled service.
+An independent, open-source guide and engineering kit for forward deployed engineers (FDEs), internal applied-AI teams, and operators turning a real workflow into a measurable, operated AI-enabled service.
 
 [![Repository validation](https://github.com/davidahmann/fde-guide/actions/workflows/validate.yml/badge.svg)](https://github.com/davidahmann/fde-guide/actions/workflows/validate.yml)
 [![Latest release](https://img.shields.io/github/v/release/davidahmann/fde-guide)](https://github.com/davidahmann/fde-guide/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-[Read the Guide](guide/README.md) · [Use the Handbook](playbooks/README.md) · [Run the code](#see-it-working) · [Browse solutions](solutions/README.md) · [Use with an agent](#optional-use-it-with-a-coding-agent)
+[Read on the web](https://davidahmann.github.io/fde-guide/) · [Read the concise Guide](guide/README.md) · [Use the Handbook](playbooks/README.md) · [Run the code](#see-it-working) · [Browse solutions](solutions/README.md) · [Use with an agent](#optional-use-it-with-a-coding-agent)
 
 ## Choose your depth
 
@@ -63,7 +63,7 @@ The examples are in-memory teaching systems, not deployable products. Their test
 | Business value or use-case selection | [Concise Guide](guide/README.md) → [Discovery and Value](playbooks/01-discovery-and-value.md) | Bounded workflow, baseline, accepted outcome, verifier, value case, guardrails, and decision |
 | FDE or internal applied-AI delivery | [Handbook](playbooks/README.md) → current lifecycle stage | Evidence-backed path from observation through adoption, handoff, operation, and field learning |
 | AI engineering or software architecture | [Intelligence selection](library/12-software-architecture-and-intelligence-selection.md) → [blueprints](blueprints/README.md) | Smallest sufficient mechanism, coherent system boundary, contracts, failure behavior, and test plan |
-| Platform, security, release, or reliability | [Controls](controls/control-catalog.json) → [release gates](operations/release-gates.md) → [operations](operations/README.md) | Explicit authority, compatible release, telemetry, recovery, change, and retirement evidence |
+| Platform, security, release, or reliability | [Security and action boundaries](library/15-production-ai-security-and-action-boundaries.md) → [controls](controls/control-catalog.json) → [release gates](operations/release-gates.md) → [operations](operations/README.md) | Explicit authority, compatible release, telemetry, recovery, change, and retirement evidence |
 | Technical enablement or review | [Worked systems](#see-it-working) → [templates](templates/README.md) | A concrete view of the code, design packet, evaluation, and operating evidence |
 
 ## From idea to production
