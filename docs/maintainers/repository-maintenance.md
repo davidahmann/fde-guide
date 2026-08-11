@@ -19,6 +19,7 @@ This document keeps the guide coherent as research, controls, templates, example
 | `examples/` | Executable teaching evidence | Keep claims limited to tested behavior; add regressions for fixes |
 | `operations/` | Release and service contracts | Update alerts, runbooks, gates, rollback, and review cadence together |
 | `library/` | Explanatory synthesis | Cite stable source IDs and avoid duplicating normative contracts |
+| `site/` | Generated public discovery layer | Map one canonical source to one intent-led route; keep UI, metadata, crawler files, and search deterministic and free of duplicate prose |
 
 ## Claim workflow
 
@@ -50,7 +51,7 @@ This document keeps the guide coherent as research, controls, templates, example
 | Operations contract | SLO, alert, runbook, incident query, game day, example telemetry |
 | Repository skill | Trigger neighbors, value-framework and selected-solution routing, linked controls and artifacts, `agents/openai.yaml`, catalog entry, skill tests, README, AGENTS, and llms |
 | Solution artifact | Layer and coverage map, primary operating or technical boundary, referenced controls and templates, acceptance cases, operating measures, customer-specific decisions, catalog entry, navigation, and solution tests |
-| Public navigation | README hierarchy, concise Guide, AGENTS, llms, catalog, contribution docs, executable examples |
+| Public navigation or site | README hierarchy, concise Guide, AGENTS, llms, site route and metadata map, crawler files, Pages workflow, contribution docs, executable examples, and site tests |
 
 ## Research refresh
 
@@ -62,13 +63,22 @@ This document keeps the guide coherent as research, controls, templates, example
 ## Release procedure
 
 1. Inspect branch, remotes, status, and full diff.
-2. Run `npm ci --ignore-scripts`, `npm test`, and `git diff --check`; `npm test` includes solution, value-framework, skill-metadata, and catalog checks.
+2. Run `npm ci --ignore-scripts`, `npm test`, and `git diff --check`; `npm test` includes solution, value-framework, skill-metadata, site-build, link, metadata, and catalog checks.
 3. Run spelling, action workflow, dependency, and secret scans used by the current project.
 4. Confirm all new governed artifacts are cataloged and every new source ID resolves.
-5. Proofread README, concise Guide, AGENTS, llms, playbook routes, changelog, package/citation versions, and release links.
+5. Proofread README, concise Guide, AGENTS, llms, generated site routes and descriptions, playbook routes, changelog, package/citation versions, and release links.
 6. When skill discovery or packaging changes, verify `npx skills add davidahmann/fde-guide --list` from a disposable environment; do not add this network-dependent smoke test to the deterministic CI gate.
 7. Use a scoped commit and draft pull request; do not bypass protected `main`.
 8. Require CI and review before merge; tag only after the release tree and metadata agree.
+
+## Public site procedure
+
+- Treat repository Markdown as the only content source. Add a route in `site/site.config.mjs` only when the source answers a distinct reader question.
+- Keep page titles and descriptions specific, factual, and unique. Do not add keyword lists, synthetic FAQs, duplicate articles, or claims about search ranking.
+- Run `npm run test:site`, then inspect representative desktop and mobile renders before publishing a UI or navigation change.
+- The Pages workflow builds `site-dist/` in CI and deploys only that artifact. Do not commit generated output.
+- Keep `robots.txt`, `sitemap.xml`, structured metadata, the generated web `llms.txt`, and visible source links bound to the same route map.
+- After deployment, verify the canonical URL, core assets, sitemap, crawler policy, and a deep route over HTTPS. Use Search Console or equivalent measurement after ownership is configured; do not infer ranking from a successful deployment.
 
 ## Maintainer acceptance questions
 

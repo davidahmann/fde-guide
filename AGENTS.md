@@ -38,6 +38,7 @@ Do not load the entire repository by default. Use one skill or task route, then 
 | [`library/`](library/00-start-here.md) | Explains design decisions, implementation sequence, and failure modes | Human-readable guidance |
 | [`operations/`](operations/README.md) | Defines release, telemetry, service objectives, incident response, and change | Operating contract |
 | [`research/`](research/README.md) | Records dated sources, portable findings, and caveats | Evidence for claims that can change |
+| [`site/`](site/site.config.mjs) | Maps canonical Markdown into the public web guide and provides its minimal UI | Generated discovery layer; never a second content source |
 | [`docs/maintainers/`](docs/maintainers/repository-maintenance.md) | Defines repository stewardship and release maintenance | Internal maintainer runbook |
 | [`.agents/skills/`](.agents/skills/) | Provides focused FDE and AI-engineering workflows | Optional task interfaces over canonical repository artifacts; not authority or runtime capabilities |
 | [`scripts/`](scripts/validate-repository.mjs) | Validates repository-wide structure and cross-references | Automated repository guardrail |
@@ -83,7 +84,7 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 | Run a service review | [Production service review](templates/production-service-review.md) → [SLO scorecard](operations/slo-scorecard.md) → [behavior monitoring](operations/behavior-monitoring.md) → [change management](operations/change-management.md) | Outcome, adoption, reliability, safety, cost, change, ownership, and retirement decisions |
 | Update changing guidance | [Research policy](research/README.md) → dated primary source → affected pattern, control, or library page | Attributed claim, caveat, review date, and linked implementation impact |
 | Change operations or a runbook | Relevant OPS controls → trace and effect contracts → affected operations document → example and recovery tests | Consistent telemetry, SLO, detection, containment, recovery, and release behavior |
-| Change repository, CI, or community metadata | [README](README.md) → [concise Guide](guide/README.md) when public method or hierarchy changes → package metadata, citation, and changelog → workflow or community file → validator | Consistent public metadata, safe automation, navigation, and validation |
+| Change repository, site, CI, or community metadata | [README](README.md) → [concise Guide](guide/README.md) when public method or hierarchy changes → [`site/site.config.mjs`](site/site.config.mjs) and site tests when web discovery changes → package metadata, citation, and changelog → workflow or community file → validator | Consistent public metadata, safe automation, navigation, generated site, and validation |
 | Add or change a repository skill | Target [`SKILL.md`](.agents/skills/) → directly linked controls and artifacts → `agents/openai.yaml` → skill and repository tests → public navigation | Focused trigger, bounded workflow, clear output, no duplicate methodology, catalog registration, and validated metadata |
 
 ## Artifact sequence for a new system
@@ -129,6 +130,7 @@ If these disagree, do not silently choose one. Identify the conflict, preserve t
 - New solution artifacts compose existing controls, blueprints, templates, and examples around one recurring business flow, industry specialization, or horizontal delivery boundary. They state maturity, smallest useful slice, acceptance and operating contracts, customer-specific work, and what they do not prove.
 - New examples include a design record, decision-mechanism rationale, domain model, tool contracts where applicable, eval cases, threat model, and executable verification when feasible.
 - Recommendations based on changing platform behavior cite a dated primary source in `research/`.
+- The public site projects canonical repository Markdown through `site/site.config.mjs`; do not copy or fork guide prose into a separate site corpus.
 - Vendor metrics remain attributed; experimental patterns remain labeled.
 - Every new reusable canonical artifact is added to `catalog.json` with a stable ID and repository-contained path. Community files and explanatory library pages remain uncataloged unless explicitly designated.
 - Repository skills remain thin interfaces over canonical artifacts: frontmatter contains only `name` and `description`, trigger scopes do not overlap materially, UI metadata names the skill explicitly, and no skill claims tool or approval authority.
@@ -156,7 +158,7 @@ If these disagree, do not silently choose one. Identify the conflict, preserve t
 3. Inspect the governing control, schema, blueprint, example, and evidence before editing.
 4. Make the smallest coherent change and update coupled artifacts where a contract changes.
 5. Add regression coverage for a fix and positive plus negative tests for a safety-contract change.
-6. Run targeted tests, then the full validation gate.
+6. Run targeted tests, including `npm run test:site` for public web changes, then the full validation gate.
 7. Review the diff for unsupported claims, stale links, secrets, private data, machine-local paths, placeholders, and accidental scope expansion.
 8. Report changed artifacts, verification performed, remaining risks, and any migration or rollback requirement.
 9. Do not commit, push, tag, release, or change GitHub settings unless the user explicitly authorizes it.
@@ -174,7 +176,7 @@ npm test
 git diff --check
 ```
 
-For a focused iteration, use `npm run test:markdown`, `npm run test:paths`, `npm run test:repository`, `npm run test:contracts`, `npm run test:tool-security`, `npm run test:telemetry`, `npm run test:governance`, `npm run test:release-integrity`, `npm run test:release-gates`, `npm run test:solutions`, `npm run test:value-framework`, `npm run test:skills`, `npm run test:policy`, `npm run test:reference`, or `npm run test:evals`; run the full gate before declaring the repository change complete.
+For a focused iteration, use `npm run test:markdown`, `npm run test:paths`, `npm run test:repository`, `npm run test:contracts`, `npm run test:tool-security`, `npm run test:telemetry`, `npm run test:governance`, `npm run test:release-integrity`, `npm run test:release-gates`, `npm run test:solutions`, `npm run test:value-framework`, `npm run test:skills`, `npm run test:policy`, `npm run test:reference`, `npm run test:evals`, `npm run test:hybrid`, or `npm run test:site`; run the full gate before declaring the repository change complete.
 
 A change is complete only when:
 

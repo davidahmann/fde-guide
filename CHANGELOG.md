@@ -4,6 +4,10 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+- Add a generated GitHub Pages guide with focused reader routes, accessible navigation, local search, canonical and social metadata, structured data, sitemap, crawler policy, and a machine-readable web index without creating a second content corpus.
+- Add a human-readable production AI security and action-boundary chapter that routes identity, data access, tools, capabilities, egress, approvals, effects, readback, tests, and operations into one implementation sequence.
+- Add deterministic site build and regression tests, SHA-pinned Pages deployment, corrected community links, and public navigation for the web guide.
+
 ## [1.11.0] - 2026-08-10
 
 - Add an owned field-contribution path that classifies customer configuration, target-owned extensions, shared product/platform work, time-bounded experiments, and prohibited or deferred work before implementation.

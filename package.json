@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/davidahmann/fde-guide/issues"
   },
-  "homepage": "https://github.com/davidahmann/fde-guide#readme",
+  "homepage": "https://davidahmann.github.io/fde-guide/",
   "keywords": [
     "fde",
     "value-engineering",
@@ -33,6 +33,7 @@
     "node": ">=22"
   },
   "scripts": {
+    "build:site": "node scripts/build-site.mjs",
     "validate": "node scripts/validate-repository.mjs",
     "test:markdown": "node --test tests/markdown-anchors.test.mjs",
     "test:paths": "node --test tests/repository-paths.test.mjs",
@@ -50,10 +51,14 @@
     "test:reference": "node --test examples/invoice-exception/reference-loop.test.mjs",
     "test:evals": "node --test examples/invoice-exception/run-evals.test.mjs",
     "test:hybrid": "node --test examples/shipment-risk-triage/shipment-risk-triage.test.mjs",
-    "test": "npm run validate && npm run test:markdown && npm run test:paths && npm run test:repository && npm run test:contracts && npm run test:tool-security && npm run test:telemetry && npm run test:governance && npm run test:release-integrity && npm run test:release-gates && npm run test:solutions && npm run test:value-framework && npm run test:skills && npm run test:policy && npm run test:reference && npm run test:evals && npm run test:hybrid"
+    "test:site": "npm run build:site && node --test tests/site.test.mjs",
+    "test": "npm run validate && npm run test:markdown && npm run test:paths && npm run test:repository && npm run test:contracts && npm run test:tool-security && npm run test:telemetry && npm run test:governance && npm run test:release-integrity && npm run test:release-gates && npm run test:solutions && npm run test:value-framework && npm run test:skills && npm run test:policy && npm run test:reference && npm run test:evals && npm run test:hybrid && npm run test:site"
   },
   "devDependencies": {
     "ajv": "8.20.0",
-    "ajv-formats": "3.0.1"
+    "ajv-formats": "3.0.1",
+    "markdown-it": "15.0.0",
+    "markdown-it-anchor": "9.2.1",
+    "mermaid": "11.16.1"
   }
 }

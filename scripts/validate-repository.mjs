@@ -55,8 +55,8 @@ const defaultRoot = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const root = process.env.REPOSITORY_VALIDATION_ROOT
   ? path.resolve(process.env.REPOSITORY_VALIDATION_ROOT)
   : defaultRoot;
-const ignoredDirectories = new Set([".git", "node_modules", "coverage"]);
-const textExtensions = new Set([".cff", ".json", ".md", ".mjs", ".js", ".spdx", ".txt", ".yml", ".yaml"]);
+const ignoredDirectories = new Set([".git", "node_modules", "coverage", "site-dist"]);
+const textExtensions = new Set([".cff", ".css", ".json", ".md", ".mjs", ".js", ".spdx", ".svg", ".txt", ".yml", ".yaml"]);
 const textBasenames = new Set([".editorconfig", ".gitattributes", ".gitignore", "CODEOWNERS", "LICENSE", "Makefile", "NOTICE"]);
 const failures = [];
 
@@ -342,6 +342,7 @@ const requiredPublicFiles = [
   ".github/ISSUE_TEMPLATE/evidence-correction.yml",
   ".github/PULL_REQUEST_TEMPLATE.md",
   ".github/dependabot.yml",
+  ".github/workflows/pages.yml",
   ".github/workflows/validate.yml",
   "AGENTS.md",
   "CHANGELOG.md",
