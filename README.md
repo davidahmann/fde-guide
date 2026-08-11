@@ -10,7 +10,7 @@ An independent, open-source guide and engineering kit for forward deployed engin
 [![Latest release](https://img.shields.io/github/v/release/davidahmann/fde-guide)](https://github.com/davidahmann/fde-guide/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-[Read on the web](https://davidahmann.github.io/fde-guide/) · [Read the concise Guide](guide/README.md) · [Use the Handbook](playbooks/README.md) · [Run the code](#see-it-working) · [Browse solutions](solutions/README.md) · [Use with an agent](#optional-use-it-with-a-coding-agent)
+[Read on the web](https://davidahmann.github.io/fde-guide/) · [Read the concise Guide](guide/README.md) · [Build FDE capability](guide/capability-roadmap.md) · [Use the Handbook](playbooks/README.md) · [Run the code](#see-it-working) · [Browse solutions](solutions/README.md) · [Use with an agent](#optional-use-it-with-a-coding-agent)
 
 ## Choose your depth
 
@@ -18,11 +18,13 @@ This is one method at three levels. Start with only the depth your job requires.
 
 | Layer | Use it when | Start here |
 | --- | --- | --- |
-| **The Guide** | You want the mental model, core principles, and complete FDE delivery loop in about 20 minutes | [Read the concise Guide](guide/README.md) |
+| **The Guide** | You want the mental model, core principles, complete FDE delivery loop, or a practical path for building capability | [Read the concise Guide](guide/README.md) or follow the [FDE and AI engineer capability roadmap](guide/capability-roadmap.md) |
 | **The Handbook** | You are qualifying, designing, delivering, transferring, or operating a real workflow | [Follow the lifecycle playbooks](playbooks/README.md) and [human-readable library](library/00-start-here.md) |
 | **The Engineering Kit** | You need implementation artifacts, architecture, machine-readable contracts, release controls, executable examples, or tests | [Inspect the kit](#what-is-in-the-engineering-kit), [controlled-write system](examples/invoice-exception/README.md), and [hybrid system](examples/shipment-risk-triage/README.md) |
 
 The Guide explains the method. The Handbook supports judgment. The Engineering Kit makes claims, authority, behavior, and changes inspectable and testable. They are not separate frameworks.
+
+New to the role or assessing a team? The [capability roadmap](guide/capability-roadmap.md) compares adjacent responsibilities, organizes the work into eight capability domains, and provides four evidence-backed practice missions, a five-part starter pack, and a concise glossary. It is a learning route over this method—not a certification or separate framework.
 
 ## The core idea: engineer value before autonomy
 
@@ -60,6 +62,7 @@ The examples are in-memory teaching systems, not deployable products. Their test
 
 | You own | Start with | You should leave with |
 | --- | --- | --- |
+| Learning, hiring, or capability development | [FDE and AI engineer capability roadmap](guide/capability-roadmap.md) → one practice mission | Role boundaries, capability gaps, starter artifacts, and inspectable evidence without a stack-first curriculum |
 | Business value or use-case selection | [Concise Guide](guide/README.md) → [Discovery and Value](playbooks/01-discovery-and-value.md) | Bounded workflow, baseline, accepted outcome, verifier, value case, guardrails, and decision |
 | FDE or internal applied-AI delivery | [Handbook](playbooks/README.md) → current lifecycle stage | Evidence-backed path from observation through adoption, handoff, operation, and field learning |
 | AI engineering or software architecture | [Intelligence selection](library/12-software-architecture-and-intelligence-selection.md) → [blueprints](blueprints/README.md) | Smallest sufficient mechanism, coherent system boundary, contracts, failure behavior, and test plan |
@@ -178,7 +181,7 @@ git diff --check
 
 ## Contribute
 
-Start with [CONTRIBUTING.md](CONTRIBUTING.md). Use [Discussions](https://github.com/davidahmann/fde-guide/discussions) for design questions, [Issues](https://github.com/davidahmann/fde-guide/issues) for reproducible defects or evidence corrections, and the private channel in [SECURITY.md](SECURITY.md) for vulnerabilities.
+Start with [CONTRIBUTING.md](CONTRIBUTING.md). Use [Discussions](https://github.com/davidahmann/fde-guide/discussions) for design questions, the focused [field-signal form](https://github.com/davidahmann/fde-guide/issues/new?template=field-signal.yml) to suggest an anonymized lesson or learning resource, [Issues](https://github.com/davidahmann/fde-guide/issues) for reproducible defects or evidence corrections, and the private channel in [SECURITY.md](SECURITY.md) for vulnerabilities.
 
 Maintained by [David Ahmann](https://github.com/davidahmann) ([LinkedIn](https://www.linkedin.com/in/dahmann/)), a cloud, data, and AI platform leader with Field CTO experience. This is an independent project; no current or former employer endorsement is implied.
 

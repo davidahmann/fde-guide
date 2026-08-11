@@ -6,7 +6,7 @@ This document keeps the guide coherent as research, controls, templates, example
 
 | Layer | Authority | Change obligation |
 | --- | --- | --- |
-| `guide/` | Concise human mental model and route into deeper artifacts | Stay linear, readable, non-normative, consistent with the lifecycle, and free of duplicated contract detail |
+| `guide/` | Concise human mental model plus role and practice orientation | Keep the core method linear; keep the capability roadmap non-normative, evidence-oriented, and free of duplicated contract detail or certification claims |
 | `.agents/skills/` | Focused human- and agent-readable task routes | Keep triggers distinct, procedures thin, outputs explicit, metadata valid, and links bound to canonical artifacts |
 | `research/` | Dated evidence and caveats | Verify source, date, attribution, and claim boundary |
 | `controls/` | Normative project requirements | Link evidence and release gates; update affected verification |
@@ -66,7 +66,7 @@ This document keeps the guide coherent as research, controls, templates, example
 2. Run `npm ci --ignore-scripts`, `npm test`, and `git diff --check`; `npm test` includes solution, value-framework, skill-metadata, site-build, link, metadata, and catalog checks.
 3. Run spelling, action workflow, dependency, and secret scans used by the current project.
 4. Confirm all new governed artifacts are cataloged and every new source ID resolves.
-5. Proofread README, concise Guide, AGENTS, llms, generated site routes and descriptions, playbook routes, changelog, package/citation versions, and release links.
+5. Proofread README, concise Guide, capability roadmap, AGENTS, llms, generated site routes and descriptions, playbook routes, changelog, package/citation versions, and release links.
 6. When skill discovery or packaging changes, verify `npx skills add davidahmann/fde-guide --list` from a disposable environment; do not add this network-dependent smoke test to the deterministic CI gate.
 7. Use a scoped commit and draft pull request; do not bypass protected `main`.
 8. Require CI and review before merge; tag only after the release tree and metadata agree.

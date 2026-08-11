@@ -11,6 +11,7 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - Human overview: [README.md](README.md)
 - Searchable web guide: [The FDE Guide](https://davidahmann.github.io/fde-guide/)
 - Concise linear FDE Guide: [guide/README.md](guide/README.md)
+- FDE and AI engineer capability roadmap: [guide/capability-roadmap.md](guide/capability-roadmap.md)
 - Agent editing and routing contract: [AGENTS.md](AGENTS.md)
 - Governed-artifact registry: [catalog.json](catalog.json)
 - Production controls: [controls/control-catalog.json](controls/control-catalog.json)

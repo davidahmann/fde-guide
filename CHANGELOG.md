@@ -4,6 +4,10 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+- Add a compact FDE and AI engineer capability roadmap with role boundaries, eight capability domains, four evidence-backed practice missions, a five-part engagement starter pack, assessment prompts, and a concise glossary.
+- Publish the roadmap as a focused web route and integrate it into human, agent, catalog, contribution, and maintainer navigation without creating a parallel method.
+- Add a low-friction field-signal issue form for anonymized lessons, failure patterns, learning resources, and capability gaps while preserving confidentiality and evidence boundaries.
+
 ## [1.12.0] - 2026-08-10
 
 - Add a generated GitHub Pages guide with focused reader routes, accessible navigation, local search, canonical and social metadata, structured data, sitemap, crawler policy, and a machine-readable web index without creating a second content corpus.

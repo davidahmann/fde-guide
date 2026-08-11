@@ -340,6 +340,7 @@ const requiredPublicFiles = [
   ".github/ISSUE_TEMPLATE/config.yml",
   ".github/ISSUE_TEMPLATE/design-proposal.yml",
   ".github/ISSUE_TEMPLATE/evidence-correction.yml",
+  ".github/ISSUE_TEMPLATE/field-signal.yml",
   ".github/PULL_REQUEST_TEMPLATE.md",
   ".github/dependabot.yml",
   ".github/workflows/pages.yml",

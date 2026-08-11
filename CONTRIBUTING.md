@@ -55,6 +55,12 @@ Repository skills live under [`.agents/skills/`](.agents/skills/) and remain thi
 - be registered in [`catalog.json`](catalog.json) and covered by `npm run test:skills`;
 - update `README.md`, `guide/README.md`, `AGENTS.md`, and `llms.txt` when public navigation or the shared method changes.
 
+## Suggest a field signal or learning resource
+
+Use the focused [field-signal form](https://github.com/davidahmann/fde-guide/issues/new?template=field-signal.yml) for one anonymized delivery lesson, failure pattern, useful practitioner resource, or missing capability topic. This is the lowest-friction contribution path; you do not need to propose a control, schema, or implementation.
+
+Explain why the signal matters to FDE or applied-AI work, state whether it comes from direct experience or a source, and keep the claim no broader than the evidence. Do not include customer names, employer-confidential material, private data, credentials, or a disguised vendor pitch. A submitted signal is a research lead, not authority, target evidence, or an automatic roadmap addition.
+
 ## Pull requests
 
 Keep each pull request reviewable and scoped to one outcome. Explain:
