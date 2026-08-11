@@ -8,7 +8,7 @@ authors:
 repository-code: "https://github.com/davidahmann/fde-guide"
 url: "https://github.com/davidahmann/fde-guide"
 license: Apache-2.0
-version: 1.12.0
+version: 1.13.0
 date-released: 2026-08-10
 abstract: "Value engineering and production architecture for FDEs and applied-AI teams: workflow discovery, operational solution patterns, vertical profiles, software architecture, controls, evaluation contracts, runbooks, executable references, and optional task skills."
 keywords:
