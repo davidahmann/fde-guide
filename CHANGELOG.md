@@ -4,6 +4,8 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.12.0] - 2026-08-10
+
 - Add a generated GitHub Pages guide with focused reader routes, accessible navigation, local search, canonical and social metadata, structured data, sitemap, crawler policy, and a machine-readable web index without creating a second content corpus.
 - Add a human-readable production AI security and action-boundary chapter that routes identity, data access, tools, capabilities, egress, approvals, effects, readback, tests, and operations into one implementation sequence.
 - Add deterministic site build and regression tests, SHA-pinned Pages deployment, corrected community links, and public navigation for the web guide.
@@ -128,7 +130,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.11.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.12.0...HEAD
+[1.12.0]: https://github.com/davidahmann/fde-guide/compare/v1.11.0...v1.12.0
 [1.11.0]: https://github.com/davidahmann/fde-guide/compare/v1.10.0...v1.11.0
 [1.10.0]: https://github.com/davidahmann/fde-guide/compare/v1.9.0...v1.10.0
 [1.9.0]: https://github.com/davidahmann/fde-guide/compare/v1.8.0...v1.9.0
