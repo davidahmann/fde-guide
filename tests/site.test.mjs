@@ -45,6 +45,21 @@ test("the capability roadmap is a bounded secondary entry layer", async () => {
   assert.match(source, /does not substitute for production experience, user acceptance, or target-system approval/);
 });
 
+test("computer-use guidance is a first-class security route", async () => {
+  const page = pages.find(({ source }) => source === "blueprints/computer-use-action-boundary.md");
+  assert.equal(page?.route, "/computer-use-agent-security/");
+  const source = await readFile(path.join(root, page.source), "utf8");
+  for (const requirement of [
+    "Prefer a typed API or target-owned adapter",
+    "The page, accessibility tree, OCR, screenshot, DOM",
+    "independent source-of-truth readback",
+    "## Interface-drift behavior",
+    "## Evaluation matrix",
+  ]) {
+    assert.ok(source.includes(requirement), requirement);
+  }
+});
+
 test("every canonical page has accessible structure and complete metadata", async () => {
   const canonicals = [];
   for (const page of pages) {

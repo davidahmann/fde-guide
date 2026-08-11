@@ -11,8 +11,9 @@ Treat prompts and model reasoning as untrusted proposals. Authorization, secrets
 
 1. Read the [tool-contract schema](../../../schemas/tool-contract.schema.json), [capability-manifest schema](../../../schemas/capability-manifest.schema.json), and [capability supply-chain guide](../../../operations/capability-supply-chain.md).
 2. Use the [transactional-write blueprint](../../../blueprints/transactional-write-agent.md) for consequential effects and the [invoice example](../../../examples/invoice-exception/README.md) for executable behavior.
-3. If the target design uses a solution artifact, resolve it through the [solution portfolio](../../../solutions/README.md) and read only the selected business-flow pattern and optional vertical profile. Treat their domain, action, and customer-specific decisions as threat inputs, not authorization policy.
-4. Apply `TOL-001` through `TOL-006`, `IAM-001` through `IAM-003`, `SEC-001` through `SEC-007`, and `REL-001`, `REL-003`, and `REL-005` from the [control catalog](../../../controls/control-catalog.json).
+3. If the target is a browser, desktop client, terminal emulator, or other visual interface, read the [computer-use action-boundary blueprint](../../../blueprints/computer-use-action-boundary.md) and preserve its API-first admission, session, drift, evidence-retention, and independent-readback rules.
+4. If the target design uses a solution artifact, resolve it through the [solution portfolio](../../../solutions/README.md) and read only the selected business-flow pattern and optional vertical profile. Treat their domain, action, and customer-specific decisions as threat inputs, not authorization policy.
+5. Apply `TOL-001` through `TOL-006`, `IAM-001` through `IAM-003`, `SEC-001` through `SEC-007`, and `REL-001`, `REL-003`, and `REL-005` from the [control catalog](../../../controls/control-catalog.json).
 
 ## Workflow
 

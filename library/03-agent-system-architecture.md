@@ -49,6 +49,8 @@ The general tool needs stronger isolation, budgets, file and network boundaries,
 
 Tejas Kumar's GPT-3.5 Turbo browser-agent demonstration gives a compact harness recipe: a controlled tool registry, history compaction, a maximum-step guardrail, and a separate verification step. The unharnessed agent reached a login page while attempting an upvote and then claimed success. A postcondition verifier exposed the mismatch. A later authentication handler detected the login state and completed authentication programmatically; in production, credentials should remain outside model-visible context and be injected only by an authorized handler. The lesson is architectural: stable control surfaces can improve reliability without relying on repeated prompt adjustments. [S19]
 
+When a browser, desktop client, or terminal emulator is the only viable path to a target system, use the [computer-use action-boundary blueprint](../blueprints/computer-use-action-boundary.md). Treat visual content as hostile data, bind the session and operation, separate observation from effects, stop on interface drift, and verify completion through an independent target-system path. Computer use is a compatibility fallback, not a substitute for a typed API or service-side control.
+
 ## Loop engineering
 
 A loop is more than “try again.” It needs:

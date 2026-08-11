@@ -16,6 +16,7 @@ import {
   canonicalJson,
   changeImpactAssessmentSemanticErrors,
   embeddedToolSchemaErrors,
+  evaluationCaseSemanticErrors,
   evaluationReportSemanticErrors,
   evaluationSandboxDigestPayload,
   expectedEvaluationEnvironmentDigest,
@@ -498,6 +499,9 @@ for (const [file, tool] of documents) {
   for (const error of toolContractSemanticErrors(tool, relative(file))) fail(error);
 }
 for (const [file, report] of documents) {
+  if (report?.case_id && report?.reference_authority && report?.expected) {
+    for (const error of evaluationCaseSemanticErrors(report, relative(file))) fail(error);
+  }
   if (report?.report_id && report?.system && report?.suite) {
     for (const error of evaluationReportSemanticErrors(report, relative(file))) fail(error);
   }

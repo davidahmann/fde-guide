@@ -8,6 +8,7 @@
 | One workflow needs deliberate routing between rules, optimization, ML, retrieval, foundation models, and human review | [Hybrid intelligence system](hybrid-intelligence-system.md) |
 | Variable evidence path, read-only outcome, reliable sufficiency test | [Bounded retrieval agent](bounded-retrieval-agent.md) |
 | External mutation, policy constraints, approval or rollback | [Transactional write agent](transactional-write-agent.md) |
+| A browser, desktop client, or visual interface is the only viable path to a target system | [Computer-use action boundary](computer-use-action-boundary.md) |
 | External trigger, long duration, retries, pause/resume | [Event-driven investigation agent](event-driven-investigation-agent.md) |
 | Distinct tools, data scopes, permissions, or specialist contexts | [Multi-agent coordinator](multi-agent-coordinator.md) |
 | Several production workflows need shared governance and reusable services | [Enterprise agent platform](enterprise-agent-platform.md) |

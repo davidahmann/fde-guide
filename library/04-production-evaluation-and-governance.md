@@ -59,6 +59,8 @@ Type validation is also not business validation. Pydantic can reject a malformed
 
 LLM judges are useful but non-deterministic and can share the producer's blind spots. Calibrate them against expert labels, measure agreement, and avoid using one unvalidated judge as the only release gate.
 
+Expert labels are evidence, not anonymous truth. Each expected result or human-authored reference label needs an evidence basis, source and revision, accountable owner, label author, independent approver, approval time, adjudication and disagreement process, data classification, and review date. A stale, disputed, self-approved, or untraceable “golden” answer cannot remain a release gate. Use the versioned [evaluation-case contract](../schemas/evaluation-case.schema.json). `EVA-007`.
+
 Data-agent evaluation needs special care. A query can execute successfully and still answer the wrong business question because the agent chose the wrong grain, source-of-truth table, join, time window, population, or interpretation. Evaluation should inspect assumptions and query structure as well as the final number or chart. [S02]
 
 ### Layer 3: behavioral and trace evaluation
@@ -87,7 +89,7 @@ Every production failure should be triaged into:
 
 ### Treat the evaluation corpus as a controlled product
 
-A release suite needs its own contracts and quality gates: stable case IDs; representative workflow, risk, and failure slices; versioned fixtures and source revisions; an expected artifact or external effect; a verifier; an owner; and a review date. CI should catch missing metadata, duplicate or shortcut-prone cases, broken assertions, and loss of required high-risk coverage. The agent must not be able to change the fixtures, tests, judge, telemetry, or signal that certifies success.
+A release suite needs its own contracts and quality gates: stable case IDs; representative workflow, risk, and failure slices; versioned fixtures and source revisions; an expected artifact or external effect; a verifier; accountable reference-answer provenance; and a review date. CI should catch missing metadata, self-approved or stale labels, duplicate or shortcut-prone cases, broken assertions, and loss of required high-risk coverage. The agent must not be able to change the fixtures, tests, judge, telemetry, or signal that certifies success.
 
 When a case fails, use a deliberate **diagnose → explain → target → independent retest** loop. The review packet should show the proposed action, evidence, governing constraint, rejected alternative, observed effect, and available approval or escalation action. This makes human review informed and turns production feedback into a usable regression case rather than a pass/fail anecdote. See [Evaluation Corpus and Review Loops](09-evaluation-corpus-and-review-loops.md) for the case contract, slice matrix, corpus linting rules, and release checklist. [S21]
 

@@ -474,6 +474,33 @@ export function evaluationReportSemanticErrors(report, label = "evaluation repor
   return errors;
 }
 
+export function evaluationCaseSemanticErrors(evaluationCase, label = "evaluation case") {
+  const errors = [];
+  const authority = evaluationCase?.reference_authority ?? {};
+
+  if (authority.label_author === authority.approved_by) {
+    errors.push(`${label} reference label author and approver must be different principals`);
+  }
+  if (authority.review_due && evaluationCase?.last_reviewed
+    && authority.review_due < evaluationCase.last_reviewed) {
+    errors.push(`${label} reference label review_due precedes last_reviewed`);
+  }
+  if (authority.approved_at && evaluationCase?.last_reviewed
+    && authority.approved_at.slice(0, 10) > evaluationCase.last_reviewed) {
+    errors.push(`${label} reference label approval occurs after last_reviewed`);
+  }
+  if (authority.basis === "expert_judgment"
+    && !["single_expert_review", "multi_expert_consensus"].includes(authority.adjudication_method)) {
+    errors.push(`${label} expert-judgment reference requires an expert adjudication method`);
+  }
+  if (authority.basis === "synthetic_invariant"
+    && authority.adjudication_method !== "synthetic_invariant_review") {
+    errors.push(`${label} synthetic reference requires synthetic_invariant_review`);
+  }
+
+  return errors;
+}
+
 export function solutionReleaseSemanticErrors(release, label = "solution release") {
   const errors = [];
   const singletonRoles = new Set([

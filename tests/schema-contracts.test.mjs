@@ -10,6 +10,7 @@ import addFormats from "ajv-formats";
 import {
   embeddedToolSchemaErrors,
   changeImpactAssessmentSemanticErrors,
+  evaluationCaseSemanticErrors,
   evaluationReportSemanticErrors,
   ontologyIdentityErrors,
   patternCatalogErrors,
@@ -252,6 +253,34 @@ test("evaluation schema rejects an agent-controlled pass signal", async () => {
   const fixture = await json("templates/evaluation-case.json");
   fixture.evaluator_boundary.agent_can_emit_pass_signal = true;
   assert.equal(validate(fixture), false);
+});
+
+test("evaluation cases bind reference answers to independent, current authority", async () => {
+  const ajv = new Ajv2020({ allErrors: true, strict: true });
+  addFormats(ajv);
+  const validate = ajv.compile(await json("schemas/evaluation-case.schema.json"));
+  const fixture = await json("templates/evaluation-case.json");
+  assert.equal(validate(fixture), true, JSON.stringify(validate.errors));
+  assert.deepEqual(evaluationCaseSemanticErrors(fixture, "fixture"), []);
+
+  const missing = structuredClone(fixture);
+  delete missing.reference_authority.source_revision;
+  assert.equal(validate(missing), false);
+  assert.ok(validate.errors.some(
+    (error) => error.keyword === "required" && error.params.missingProperty === "source_revision",
+  ));
+
+  const selfApproved = structuredClone(fixture);
+  selfApproved.reference_authority.approved_by = selfApproved.reference_authority.label_author;
+  assert.ok(evaluationCaseSemanticErrors(selfApproved, "fixture").some((error) => error.includes("different principals")));
+
+  const stale = structuredClone(fixture);
+  stale.reference_authority.review_due = "2026-01-01";
+  assert.ok(evaluationCaseSemanticErrors(stale, "fixture").some((error) => error.includes("review_due")));
+
+  const futureApproved = structuredClone(fixture);
+  futureApproved.reference_authority.approved_at = "2026-08-08T00:00:00Z";
+  assert.ok(evaluationCaseSemanticErrors(futureApproved, "fixture").some((error) => error.includes("after last_reviewed")));
 });
 
 test("system maps remain derived navigation context rather than authority", async () => {
@@ -547,12 +576,12 @@ test("ontology identity keys resolve to declared attributes", async () => {
 test("pattern catalogs require unique IDs, defined evidence, and ordered current review dates", async () => {
   const fixture = await json("patterns/pattern-catalog.json");
   const evidenceIds = new Set(fixture.patterns.flatMap((pattern) => pattern.evidence).filter((id) => !id.startsWith("internal-")));
-  const reviewDate = new Date("2026-08-10T12:00:00Z");
+  const reviewDate = new Date("2026-08-11T12:00:00Z");
   assert.deepEqual(patternCatalogErrors(fixture, evidenceIds, "fixture", reviewDate), []);
 
   fixture.patterns[1].id = fixture.patterns[0].id;
   fixture.patterns[0].evidence = ["R26-99"];
-  fixture.patterns[0].reviewed_at = "2026-08-11";
+  fixture.patterns[0].reviewed_at = "2026-08-12";
   fixture.patterns[1].review_due = "2026-08-06";
   const errors = patternCatalogErrors(fixture, evidenceIds, "fixture", reviewDate);
   assert.ok(errors.some((error) => error.includes("duplicates pattern ID")));

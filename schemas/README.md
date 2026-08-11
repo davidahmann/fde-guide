@@ -17,7 +17,7 @@ The current agent-system, evaluation-report, and solution-release contracts are 
 | [Tool contract](tool-contract.schema.json) | Input/output/error shape, authorization, data exposure, effects, network policy, and failure behavior |
 | [Capability manifest](capability-manifest.schema.json) | Publisher, build provenance, artifact digests, authority, runtime profile, assurance, and lifecycle |
 | [Threat model](threat-model.schema.json) | Assets, boundaries, threats, mitigations, recovery, and negative cases |
-| [Evaluation case](evaluation-case.schema.json) | Replay world, expected trajectory, outcome, graders, and evaluator isolation |
+| [Evaluation case](evaluation-case.schema.json) | Replay world, expected trajectory, source-bound reference authority, outcome, graders, and evaluator isolation |
 | [Evaluation output](evaluation-output.schema.json) | Exact isolated-runner output and case-level execution evidence bound to an evaluation report |
 | [Evaluation report](evaluation-report.schema.json) | Tested claim, complete environment, trials, results, uncertainty, contamination, and decision |
 | [Handoff envelope](handoff-envelope.schema.json) | Objective, verified state, provenance, remaining work, delegated authority, budget, expiry, and terminal reason |
@@ -28,4 +28,4 @@ The current agent-system, evaluation-report, and solution-release contracts are 
 
 Schema validity does not prove that a value is true or a control is implemented. Templates provide canonical structural examples; executable examples and release evidence must prove behavior.
 
-For a breaking change, update the schema version, canonical template, governed examples, validator mapping, positive and negative tests, and the applicable note in the [`docs/migrations/` index](../docs/migrations/README.md). Workflow Charter 1.2 users should follow the [residual-loss migration](../docs/migrations/workflow-charter-1.2.md).
+For a breaking change, update the schema version, canonical template, governed examples, validator mapping, positive and negative tests, and the applicable note in the [`docs/migrations/` index](../docs/migrations/README.md). Evaluation Case 1.1 users should follow the [reference-authority migration](../docs/migrations/evaluation-case-1.1.md); Workflow Charter 1.2 users should follow the [residual-loss migration](../docs/migrations/workflow-charter-1.2.md).

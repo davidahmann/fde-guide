@@ -319,11 +319,11 @@ async function createApprovedReleaseFixture(repositoryRoot) {
     suite: {
       uri: "../../examples/invoice-exception/evals/",
       version: null,
-      schema_version: "1.0.0",
+      schema_version: "1.1.0",
       digest: await sha256Path(suiteDirectory),
       fixture_uri: "../../examples/invoice-exception/evals/authorized-commit.json",
       fixture_revision: null,
-      fixture_schema_version: "1.0.0",
+      fixture_schema_version: "1.1.0",
       fixture_digest: await sha256Path(fixturePath),
       holdout_isolated: true,
       agent_can_modify: false,

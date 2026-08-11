@@ -164,6 +164,8 @@ The central action rule is simple:
 
 Keep secrets and credentials outside model-visible context. Recheck current identity, tenant, scope, policy, release admission, and approval at the boundary that performs a consequential effect. Derive duplicate safety from a stable business-operation identity. After an effect, verify the result in the authoritative system before reporting completion.
 
+If a legacy browser, desktop client, or terminal emulator is the only viable integration, treat computer use as a separate controlled action boundary—not as an unrestricted tool. Bind the session and operation, treat visual content as untrusted, stop on interface drift, classify recordings, and verify the result independently. See the [computer-use action-boundary blueprint](../blueprints/computer-use-action-boundary.md).
+
 **Use in the repository:** [blueprint selector](../blueprints/README.md), [operational ontology](../templates/operational-ontology.json), [tool contract](../templates/tool-contract.json), [capability manifest](../templates/capability-manifest.json), and [production controls](../controls/control-catalog.json).
 
 ## 7. Build one controlled vertical slice

@@ -111,9 +111,9 @@
         {
           "component_id": "node-dependency-lock",
           "uri": "../package-lock.json",
-          "version": "1.13.0",
+          "version": "1.14.0",
           "schema_version": null,
-          "digest": "sha256:193938d748c22be371c8cfa6006382acb2eb763f53284df3aa984c6c4d7bc39a"
+          "digest": "sha256:a1111dfd6dc2f9ba516d5f27e709cd1a0ec16ee2fc9af63a3c685d6c1daf7e12"
         },
         {
           "component_id": "operational-ontology",
@@ -144,19 +144,19 @@
           "digest": "sha256:4fe9e3f8ddb9a904f0e85889699369179dd66e0123600ef16167e5d415fded74"
         }
       ],
-      "environment_digest": "sha256:96bf2090552a25fa01e5fdae97220129630a986c563cebf17674125834d54f63",
+      "environment_digest": "sha256:c22f8eecbd840f6088aac01e54ee6dc517b0a6082dd366207f80ab3bb3998596",
       "network_mode": "not_executed"
     }
   },
   "suite": {
     "uri": "evaluation-case.json",
     "version": null,
-    "schema_version": "1.0.0",
-    "digest": "sha256:50db6aecac5c91e89dda3bfbc546b5002fb326dce623d5516d3ccaac0ff6487d",
+    "schema_version": "1.1.0",
+    "digest": "sha256:7ded144811432dbdec79b034820ebdfd0d1ccfb5b858f243eddca5f5d5b012ed",
     "fixture_uri": "evaluation-case.json",
     "fixture_revision": null,
-    "fixture_schema_version": "1.0.0",
-    "fixture_digest": "sha256:50db6aecac5c91e89dda3bfbc546b5002fb326dce623d5516d3ccaac0ff6487d",
+    "fixture_schema_version": "1.1.0",
+    "fixture_digest": "sha256:7ded144811432dbdec79b034820ebdfd0d1ccfb5b858f243eddca5f5d5b012ed",
     "holdout_isolated": true,
     "agent_can_modify": false
   },
@@ -180,7 +180,7 @@
       "uri": null,
       "version": null,
       "schema_version": null,
-      "digest": "sha256:8898103f234c48dbbf763aa5ac4ef5216cebd3bd3212a5f84a69d0dc0eb377b4"
+      "digest": "sha256:f8dd269dbc9fb72a2061ff8bae87e972d419e6e30de29648f2d445417151ac72"
     },
     "minimum_confidence": 0.95
   },

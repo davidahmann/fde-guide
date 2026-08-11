@@ -765,6 +765,28 @@ This is a curated implementation database, not a popularity list. It favors prim
 - **Anti-pattern:** A strategy deck, demo, or isolated workflow that never enters the target product and cannot survive the delivery engineer's exit.
 - **Caveat:** This is practitioner synthesis and commercial positioning, not an independent outcome study. Pricing, role definitions, and market forecasts are not repository requirements.
 
+<a id="r26-73"></a>
+### R26-73 — Pace: long-running multimodal operations and accountable evaluation cases
+
+- **Date:** 2026-06-22 and 2026-06-25; reviewed 2026-08-11
+- **Type / tier:** First-party vendor engineering and product reports; C
+- **Sources:** [Building a long-running, multimodal agent for insurance](https://withpace.com/news/multimodal-agents) and [One agent for the complexity of insurance operations](https://withpace.com/news/product-launch)
+- **Finding:** Pace describes long-running work split across voice, document, general, and computer-use paths with persistent shared state, focused context, different latency and model constraints, and target-system writeback. It also describes real cases paired with known answers, customer corrections, graders, citations, screenshots, and recordings as part of evaluation and audit workflows.
+- **Portable pattern:** Keep workflow state independent from transient context; apply the smallest suitable mechanism per modality; treat browser interaction as a controlled capability; bind expected results to a named source revision, accountable owner, approval, adjudication, classification, and review date.
+- **Anti-pattern:** One undifferentiated agent context, visual success as completion proof, or an anonymous “golden set” whose expected answers have no governed authority or maintenance path.
+- **Caveat:** Architecture and performance statements are first-party vendor reports from insurance deployments. Published accuracy, volume, and SLA figures are not portable thresholds, and screenshots or recordings do not replace authorization or source-of-truth readback.
+
+<a id="r26-74"></a>
+### R26-74 — Anthropic: browser content remains an adversarial action surface
+
+- **Date:** 2025-11-24; revalidated 2026-08-11
+- **Type / tier:** Official security research; A for the stated browser threat model
+- **Source:** [Mitigating the risk of prompt injections in browser use](https://www.anthropic.com/research/prompt-injection-defenses)
+- **Finding:** Anthropic identifies every webpage and embedded or dynamically loaded object as potential untrusted input, while browser agents can navigate, fill forms, click, and download. It explicitly states that prompt injection remains unsolved and that model-layer robustness is not complete protection.
+- **Portable pattern:** Treat page content as tainted data; constrain browser capability by session, identity, tenant, resource, destination, operation, and effect; combine model defenses with containment, typed action boundaries, and independent readback.
+- **Anti-pattern:** Assuming a browser agent is safe because its model resists known prompt injections, a human approved a broad session, or the page displayed a success message.
+- **Caveat:** Product-specific classifier and attack-rate results are not portable assurance levels. The durable evidence is the threat model and need for layered controls.
+
 ## Social, Reddit, YouTube, and news screening notes
 
 ### Social and Reddit material admitted as leads or first-party field reports
@@ -793,3 +815,5 @@ This is a curated implementation database, not a popularity list. It favors prim
 7. **The economic unit is accepted work.** Count tools, retries, waiting, human review, and recovery—not just model tokens.
 8. **Field work needs an owned destination.** Classify a change before building it, use the destination team's normal engineering and operating path, and retire temporary parallel infrastructure.
 9. **Transfer is measured capability.** Track whether the receiving team can operate, change, recover, and retire the system while target-specific delivery dependence falls without weakening outcomes or safety.
+10. **Browser control is a distinct action boundary.** Treat pages and visual state as untrusted, constrain sessions and operations, and verify consequential results through an independent target path.
+11. **Reference answers need accountable provenance.** Bind expected results and expert labels to a source revision, owner, independent approval, adjudication, classification, and review date.
