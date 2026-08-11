@@ -1,0 +1,70 @@
+name: Field signal or learning resource
+description: Suggest one anonymized FDE lesson, failure pattern, useful resource, or missing capability topic.
+title: "[Field signal]: "
+labels:
+  - triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share one focused signal. Do not include customer names, private data, credentials, employer-confidential material, or vulnerability details. Use SECURITY.md for vulnerabilities.
+  - type: dropdown
+    id: signal_type
+    attributes:
+      label: Signal type
+      options:
+        - Anonymized delivery lesson
+        - Failure or anti-pattern
+        - Learning resource
+        - Missing capability or practice topic
+        - Terminology or role clarification
+    validations:
+      required: true
+  - type: textarea
+    id: signal
+    attributes:
+      label: What should practitioners learn?
+      description: State the lesson in your own words and keep it to one bounded claim.
+    validations:
+      required: true
+  - type: textarea
+    id: relevance
+    attributes:
+      label: Why it matters for FDE or applied-AI work
+      description: Explain which workflow, decision, delivery stage, failure, or operating responsibility it improves.
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence_type
+    attributes:
+      label: Evidence type
+      options:
+        - Direct experience, anonymized
+        - Primary source or reproducible artifact
+        - Secondary source or practitioner commentary
+        - Question or hypothesis needing evidence
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL or public artifact
+      description: Optional for anonymized experience; use a stable public URL when the signal comes from a source.
+  - type: textarea
+    id: limits
+    attributes:
+      label: Limits and context
+      description: State where this may not transfer, what remains uncertain, and any vendor or environment dependency.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I removed customer, employer-confidential, personal, credential, and security-sensitive information.
+          required: true
+        - label: I have the right to submit this text and have disclosed any affiliation or commercial interest in the description.
+          required: true
+        - label: I understand this is a research lead, not production evidence, authority, or an automatic repository recommendation.
+          required: true

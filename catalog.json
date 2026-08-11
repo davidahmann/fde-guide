@@ -10,6 +10,12 @@
       "tags": ["fde", "value", "architecture", "lifecycle"]
     },
     {
+      "id": "guide.capability-roadmap",
+      "type": "standard",
+      "path": "guide/capability-roadmap.md",
+      "tags": ["fde", "ai-engineering", "capability", "learning"]
+    },
+    {
       "id": "controls.production",
       "type": "control_catalog",
       "path": "controls/control-catalog.json",

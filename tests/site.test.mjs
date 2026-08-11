@@ -28,6 +28,23 @@ test("site configuration defines one canonical source per route", () => {
   }
 });
 
+test("the capability roadmap is a bounded secondary entry layer", async () => {
+  const page = pages.find(({ source }) => source === "guide/capability-roadmap.md");
+  assert.equal(page?.route, "/forward-deployed-engineer-roadmap/");
+  const source = await readFile(path.join(root, page.source), "utf8");
+  for (const heading of [
+    "## Choose the responsibility, not the title",
+    "## The capability map",
+    "## Four practice missions",
+    "## The quick-start engagement pack",
+    "## Concise glossary",
+  ]) {
+    assert.ok(source.includes(heading), heading);
+  }
+  assert.match(source, /not a certification, hiring standard, fixed curriculum/);
+  assert.match(source, /does not substitute for production experience, user acceptance, or target-system approval/);
+});
+
 test("every canonical page has accessible structure and complete metadata", async () => {
   const canonicals = [];
   for (const page of pages) {

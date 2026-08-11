@@ -6,6 +6,8 @@ This is the concise human guide to forward-deployed engineering and internal app
 
 **Reading time:** about 20 minutes. This guide is narrative orientation, not a production standard or a substitute for the target organization's policy, security, architecture, or risk review.
 
+If you are learning the role, planning a development path, or assessing a team, use the companion [FDE and AI Engineer Capability Roadmap](capability-roadmap.md). It turns this method into role boundaries, capability evidence, four practice missions, a quick-start pack, and a glossary without creating a second methodology.
+
 ## 1. What an FDE is responsible for
 
 A forward-deployed engineer turns an ambiguous operating problem into a supported software service that produces a measurable outcome. The work crosses four responsibilities:
@@ -295,6 +297,7 @@ If a consequential answer is missing, stay in discovery. A model or framework ch
 
 Choose the depth that matches the work:
 
+- **Build capability:** use the [FDE and AI Engineer Capability Roadmap](capability-roadmap.md), complete one bounded mission, and keep the resulting limitations visible.
 - **Run the method:** use the [FDE Handbook](../playbooks/README.md) and follow the current lifecycle stage.
 - **Design a recurring solution:** start from the [business-flow portfolio](../solutions/README.md), then select only the relevant vertical profile and horizontal foundation.
 - **Build or review a system:** use the [Engineering Kit](../templates/README.md), [controls](../controls/control-catalog.json), [schemas](../schemas/README.md), [blueprints](../blueprints/README.md), [examples](../examples/invoice-exception/README.md), and [tests](../tests/).

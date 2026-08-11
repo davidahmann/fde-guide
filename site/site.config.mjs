@@ -14,7 +14,12 @@ export const site = {
 export const navigation = [
   {
     label: "Start",
-    routes: ["/", "/forward-deployed-engineering/", "/fde-operating-model/"],
+    routes: [
+      "/",
+      "/forward-deployed-engineering/",
+      "/forward-deployed-engineer-roadmap/",
+      "/fde-operating-model/",
+    ],
   },
   {
     label: "Design",
@@ -61,6 +66,14 @@ export const pages = [
     title: "Forward Deployed Engineer Guide: From Workflow to Production",
     description:
       "Learn what forward deployed engineers do and how to move a real workflow from discovery to measurable, business-owned operation.",
+  },
+  {
+    route: "/forward-deployed-engineer-roadmap/",
+    source: "guide/capability-roadmap.md",
+    navTitle: "FDE capability roadmap",
+    title: "Forward Deployed Engineer Roadmap: Skills, Missions, and Evidence",
+    description:
+      "A practical capability roadmap for forward deployed and applied AI engineers, with role boundaries, four missions, starter artifacts, and a glossary.",
   },
   {
     route: "/fde-operating-model/",
