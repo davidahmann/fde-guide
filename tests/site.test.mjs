@@ -17,10 +17,6 @@ function matches(html, pattern) {
   return [...html.matchAll(pattern)].map((match) => match[1]);
 }
 
-function decodeHtml(value) {
-  return value.replaceAll("&amp;", "&").replaceAll("&quot;", '"').replaceAll("&#39;", "'");
-}
-
 test("site configuration defines one canonical source per route", () => {
   assert.equal(new Set(pages.map(({ route }) => route)).size, pages.length);
   assert.equal(new Set(pages.map(({ source }) => source)).size, pages.length);
@@ -66,7 +62,7 @@ test("generated internal links, assets, and anchors resolve", async () => {
   for (const page of pages) {
     const file = routeFile(page.route);
     const html = await readFile(file, "utf8");
-    const attributes = matches(html, /(?:href|src)="([^"]+)"/g).map(decodeHtml);
+    const attributes = matches(html, /(?:href|src)="([^"]+)"/g);
     for (const value of attributes) {
       if (!value || value.startsWith("#") || /^(?:https?:|mailto:|data:|\/\/)/.test(value)) continue;
       const match = value.match(/^([^?#]*)(?:\?[^#]*)?(#.*)?$/);
@@ -97,13 +93,13 @@ test("sitemap, crawler policy, and machine index cover the public guide", async 
   for (const page of pages) {
     const canonical = `${site.url}${page.route}`;
     assert.equal(sitemapUrls.filter((url) => url === canonical).length, 1, canonical);
-    assert.match(llms, new RegExp(canonical.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.ok(llms.includes(canonical), canonical);
   }
   assert.match(robots, /User-agent: \*/);
   for (const crawler of ["OAI-SearchBot", "Claude-SearchBot", "Claude-User", "Google-Extended"]) {
-    assert.match(robots, new RegExp(`User-agent: ${crawler}\\nAllow: /`));
+    assert.ok(robots.includes(`User-agent: ${crawler}\nAllow: /`), crawler);
   }
-  assert.match(robots, new RegExp(`Sitemap: ${site.url.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}/sitemap\\.xml`));
+  assert.ok(robots.includes(`Sitemap: ${site.url}/sitemap.xml`));
 });
 
 test("site output is self-contained and free of retired or local references", async () => {

@@ -35,7 +35,7 @@ function slugify(value) {
   return value
     .toLowerCase()
     .trim()
-    .replace(/<[^>]*>/g, "")
+    .replace(/[<>]/g, "-")
     .replace(/[^\p{Letter}\p{Number}]+/gu, "-")
     .replace(/^-|-$/g, "");
 }
