@@ -4,6 +4,12 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.15.0] - 2026-08-11
+
+- Add the AI Value Engineering Scorecard as a portable interface to the existing twelve-factor framework: one human-readable assessment, a machine-readable worksheet and schema, and downloadable SVG, PNG, and one-page PDF formats.
+- Keep the four value gates non-compensable, bind demonstrated scores to inspectable evidence, and add semantic validation, negative contract tests, and repository-wide navigation for people and agents.
+- Publish a focused scorecard web route and make AI Value Engineering the durable framework name while retaining “Valuemaxxing” only as optional informal shorthand.
+
 ## [1.14.0] - 2026-08-11
 
 - Add an API-first computer-use action-boundary blueprint for browser and desktop automation, including split observation/effect authority, session and destination policy, interface-drift handling, source-of-truth readback, and adversarial release tests.
@@ -142,7 +148,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.14.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.15.0...HEAD
+[1.15.0]: https://github.com/davidahmann/fde-guide/compare/v1.14.0...v1.15.0
 [1.14.0]: https://github.com/davidahmann/fde-guide/compare/v1.13.0...v1.14.0
 [1.13.0]: https://github.com/davidahmann/fde-guide/compare/v1.12.0...v1.13.0
 [1.12.0]: https://github.com/davidahmann/fde-guide/compare/v1.11.0...v1.12.0

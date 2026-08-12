@@ -25,6 +25,7 @@ export const navigation = [
     label: "Design",
     routes: [
       "/ai-value-engineering/",
+      "/ai-value-engineering-scorecard/",
       "/ai-workflows-vs-agents/",
       "/production-ai-agent-architecture/",
       "/workflow-automation-examples/",
@@ -91,6 +92,14 @@ export const pages = [
     title: "The 12 Factors of AI Value Engineering",
     description:
       "A twelve-factor framework for turning AI activity into accepted outcomes, positive net value, controlled risk, and durable operation.",
+  },
+  {
+    route: "/ai-value-engineering-scorecard/",
+    source: "guide/ai-value-engineering-scorecard.md",
+    navTitle: "AI value scorecard",
+    title: "AI Value Engineering Scorecard: 12 Factors and 4 Hard Gates",
+    description:
+      "Assess one AI-enabled workflow across twelve value factors and four hard gates, then record a bounded pilot or lifecycle decision.",
   },
   {
     route: "/ai-workflows-vs-agents/",

@@ -10,7 +10,7 @@ An independent, open-source guide and engineering kit for forward deployed engin
 [![Latest release](https://img.shields.io/github/v/release/davidahmann/fde-guide)](https://github.com/davidahmann/fde-guide/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-[Read on the web](https://davidahmann.github.io/fde-guide/) · [Read the concise Guide](guide/README.md) · [Build FDE capability](guide/capability-roadmap.md) · [Use the Handbook](playbooks/README.md) · [Run the code](#see-it-working) · [Browse solutions](solutions/README.md) · [Use with an agent](#optional-use-it-with-a-coding-agent)
+[Read on the web](https://davidahmann.github.io/fde-guide/) · [Read the concise Guide](guide/README.md) · [Use the value scorecard](guide/ai-value-engineering-scorecard.md) · [Build FDE capability](guide/capability-roadmap.md) · [Use the Handbook](playbooks/README.md) · [Run the code](#see-it-working) · [Browse solutions](solutions/README.md) · [Use with an agent](#optional-use-it-with-a-coding-agent)
 
 ## Choose your depth
 
@@ -36,7 +36,7 @@ An agent is one component option. For each consequential decision, compare deter
 
 > **Tokens are an input. Autonomy is a design choice. Accepted outcomes are the product.**
 
-The [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md) turn that principle into explicit value, verifier, adoption, authority, cost, proof, and lifecycle gates.
+The [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md) turn that principle into explicit value, verifier, adoption, authority, cost, proof, and lifecycle gates. Use the one-page [AI Value Engineering Scorecard](guide/ai-value-engineering-scorecard.md) to assess one workflow without reading the full operating manual.
 
 ## See it working
 
@@ -86,7 +86,7 @@ flowchart LR
 | Stage | Question | Working artifact |
 | --- | --- | --- |
 | Observe | How does the work really happen, including exceptions and recovery? | [Observation log](templates/field-observation-log.md) and [discovery pack](templates/fde-discovery-pack.md) |
-| Charter | Is the workflow worth changing, and how will an outcome be accepted? | [Workflow charter](templates/workflow-charter.json) and [value case](templates/value-case.md) |
+| Charter | Is the workflow worth changing, and how will an outcome be accepted? | [Workflow charter](templates/workflow-charter.json), [value case](templates/value-case.md), and [AI Value Engineering Scorecard](guide/ai-value-engineering-scorecard.md) |
 | Select | Which steps belong in software, optimization, ML, retrieval, a model, an agent, or human review? | [Intelligence-selection record](templates/intelligence-selection-record.md) |
 | Build | What is the smallest end-to-end slice that exercises the real boundaries and work surface? | [Delivery plan](templates/delivery-and-adoption-plan.md), [domain model](templates/operational-ontology.json), and applicable [blueprint](blueprints/README.md) |
 | Prove | Does it work safely, economically, and usefully on representative cases? | [Evaluation cases](templates/evaluation-case.json), user evidence, failure tests, and applicable release record |

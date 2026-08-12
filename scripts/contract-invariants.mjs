@@ -718,6 +718,61 @@ export function changeImpactAssessmentSemanticErrors(assessment, map = null, lab
   return errors;
 }
 
+const valueScorecardFactors = [
+  [1, "observe_real_work", "Observe the real work"],
+  [2, "own_outcome", "Own the outcome"],
+  [3, "bound_eligible_work", "Bound the eligible work"],
+  [4, "establish_counterfactual", "Establish the counterfactual"],
+  [5, "name_verifier", "Name the verifier"],
+  [6, "engineer_workflow_and_adoption", "Engineer the workflow and adoption"],
+  [7, "use_smallest_sufficient_intelligence", "Use the smallest sufficient intelligence"],
+  [8, "bound_authority_and_loss", "Bound authority and loss"],
+  [9, "price_whole_service", "Price the whole service"],
+  [10, "prove_representative_work", "Prove it on representative work"],
+  [11, "measure_attributable_realized_value", "Measure attributable realized value"],
+  [12, "expand_constrain_or_retire", "Expand, constrain, or retire from evidence"],
+];
+
+export function valueScorecardSemanticErrors(scorecard, label = "AI value engineering scorecard") {
+  const errors = [];
+  const factors = scorecard?.factors ?? [];
+  for (const [index, expected] of valueScorecardFactors.entries()) {
+    const [number, id, name] = expected;
+    const factor = factors[index];
+    if (!factor
+      || factor.factor_number !== number
+      || factor.factor_id !== id
+      || factor.factor_name !== name) {
+      errors.push(`${label} factor ${number} does not match the canonical ordered factor`);
+      continue;
+    }
+    if (factor.score === 2 && (factor.evidence ?? []).length === 0) {
+      errors.push(`${label} factor ${number} cannot be demonstrated without evidence`);
+    }
+  }
+
+  const gates = Object.values(scorecard?.hard_gates ?? {});
+  const unresolvedGate = gates.some((gate) => gate?.status !== "pass");
+  if (unresolvedGate && ["pilot", "continue"].includes(scorecard?.decision?.disposition)) {
+    errors.push(`${label} cannot recommend ${scorecard.decision.disposition} while a hard gate is fail or unknown`);
+  }
+  for (const [gateId, gate] of Object.entries(scorecard?.hard_gates ?? {})) {
+    if (gate?.status === "pass" && (gate.evidence ?? []).length === 0) {
+      errors.push(`${label} hard gate ${gateId} cannot pass without evidence`);
+    }
+  }
+  if (scorecard?.assessed_at && scorecard?.decision?.decided_at
+    && scorecard.decision.decided_at < scorecard.assessed_at) {
+    errors.push(`${label} decision predates the assessment`);
+  }
+  if (scorecard?.assessed_at && scorecard?.decision?.next_review
+    && scorecard.decision.next_review < scorecard.assessed_at.slice(0, 10)) {
+    errors.push(`${label} next review predates the assessment`);
+  }
+
+  return errors;
+}
+
 export function patternCatalogErrors(catalog, evidenceIds, label = "pattern catalog", today = new Date()) {
   const errors = [];
   const patternIds = new Set();

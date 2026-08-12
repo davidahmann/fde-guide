@@ -178,6 +178,15 @@ test("governed JSON paths bind to their expected schemas", () => {
   assert.equal(isGovernedJsonDocument("examples/invoice-exception/tools/read-invoice.json"), true);
   assert.equal(expectedDocumentSchema("catalog.json"), "schemas/artifact-catalog.schema.json");
   assert.equal(expectedDocumentSchema("templates/agent-system.json"), "schemas/agent-system.schema.json");
+  assert.equal(expectedDocumentSchema("templates/ai-value-engineering-scorecard.json"), "schemas/ai-value-engineering-scorecard.schema.json");
+  assert.equal(
+    expectedDocumentSchema("examples/workflow/value-review.json", {
+      assessment_id: "value_review",
+      hard_gates: {},
+      factors: [],
+    }),
+    "schemas/ai-value-engineering-scorecard.schema.json",
+  );
   assert.equal(expectedDocumentSchema("examples/invoice-exception/evals/authorized-commit.json"), "schemas/evaluation-case.schema.json");
   assert.equal(expectedDocumentSchema("examples/invoice-exception/tools/read-invoice.json"), "schemas/tool-contract.schema.json");
 });

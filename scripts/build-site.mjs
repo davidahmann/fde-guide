@@ -89,8 +89,16 @@ async function rewriteLocalTarget(target, currentPage, { image = false } = {}) {
   const mapped = pageBySource.get(resolved) || pageBySource.get(path.posix.join(resolved, "README.md"));
   if (mapped) return `${relativeRoute(currentPage.route, mapped.route)}${parts.query}${parts.hash}`;
 
-  if (image && resolved === "assets/fde-guide-banner.svg") {
-    return `${relativeAsset(currentPage.route, "assets/fde-guide-banner.svg")}${parts.query}${parts.hash}`;
+  const publicAssets = new Set([
+    "assets/fde-guide-banner.svg",
+    "assets/ai-value-engineering-scorecard.svg",
+    "assets/ai-value-engineering-scorecard.png",
+  ]);
+  if (publicAssets.has(resolved)) {
+    return `${relativeAsset(currentPage.route, resolved)}${parts.query}${parts.hash}`;
+  }
+  if (resolved === "output/pdf/ai-value-engineering-scorecard.pdf") {
+    return `${relativeAsset(currentPage.route, "downloads/ai-value-engineering-scorecard.pdf")}${parts.query}${parts.hash}`;
   }
 
   try {
@@ -365,6 +373,7 @@ async function build() {
 
   await rm(outputRoot, { recursive: true, force: true });
   await mkdir(path.join(outputRoot, "assets"), { recursive: true });
+  await mkdir(path.join(outputRoot, "downloads"), { recursive: true });
   const rendered = [];
   for (const page of pages) rendered.push(await renderPage(page));
 
@@ -373,6 +382,9 @@ async function build() {
   await copyFile(path.join(root, "site/assets/favicon.svg"), path.join(outputRoot, "assets/favicon.svg"));
   await copyFile(path.join(root, "assets/fde-guide-banner.svg"), path.join(outputRoot, "assets/fde-guide-banner.svg"));
   await copyFile(path.join(root, "assets/fde-guide-social.png"), path.join(outputRoot, "assets/fde-guide-social.png"));
+  await copyFile(path.join(root, "assets/ai-value-engineering-scorecard.svg"), path.join(outputRoot, "assets/ai-value-engineering-scorecard.svg"));
+  await copyFile(path.join(root, "assets/ai-value-engineering-scorecard.png"), path.join(outputRoot, "assets/ai-value-engineering-scorecard.png"));
+  await copyFile(path.join(root, "output/pdf/ai-value-engineering-scorecard.pdf"), path.join(outputRoot, "downloads/ai-value-engineering-scorecard.pdf"));
   await copyFile(path.join(root, "node_modules/mermaid/dist/mermaid.min.js"), path.join(outputRoot, "assets/mermaid.min.js"));
 
   const searchIndex = rendered.map((page) => ({

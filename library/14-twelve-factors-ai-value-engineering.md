@@ -1,6 +1,8 @@
 # The 12 Factors of AI Value Engineering
 
-## Valuemaxxing: turn AI activity into accepted outcomes
+> **12 factors. 4 hard gates. One outcome: accepted value.**
+
+## Turn AI activity into accepted outcomes
 
 AI has an accounting problem.
 
@@ -190,6 +192,8 @@ Assess the remaining factors as:
 
 The score supports a conversation. It is not a certification, and strong factors do not average away a failed gate.
 
+Use the one-page [AI Value Engineering Scorecard](../guide/ai-value-engineering-scorecard.md) for a portable assessment, visual, PDF, and machine-readable decision record. The scorecard is an interface to this framework, not a separate method or production-readiness certification.
+
 ## Apply the framework
 
 | Factors | Primary working artifacts |
@@ -205,7 +209,7 @@ The framework synthesizes this guide's controls and field method. It is informed
 
 > **Tokens are an input. Autonomy is a design choice. Accepted outcomes are the product.**
 
-Valuemaxxing does not mean maximizing automation. It means maximizing durable net value from a system that people can verify, operate, and stop.
+“Valuemaxxing” may be used as informal shorthand for maximizing durable net value, but it is not the framework name, a score, or a requirement to maximize automation. The durable names are **The 12 Factors of AI Value Engineering** and the **AI Value Engineering Scorecard**.
 
 Sometimes that produces a larger agent deployment. Sometimes it produces a smaller model, a deterministic rule, a better interface, or a person with better evidence.
 
