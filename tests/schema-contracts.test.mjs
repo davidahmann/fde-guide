@@ -17,11 +17,13 @@ import {
   solutionReleaseSemanticErrors,
   systemMapManifestSemanticErrors,
   toolContractSemanticErrors,
+  valueScorecardSemanticErrors,
 } from "../scripts/contract-invariants.mjs";
 
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const pairs = [
   ["artifact-catalog.schema.json", "catalog.json"],
+  ["ai-value-engineering-scorecard.schema.json", "templates/ai-value-engineering-scorecard.json"],
   ["control-catalog.schema.json", "controls/control-catalog.json"],
   ["change-impact-assessment.schema.json", "templates/change-impact-assessment.json"],
   ["operational-ontology.schema.json", "templates/operational-ontology.json"],
@@ -35,6 +37,27 @@ const pairs = [
   ["solution-release.schema.json", "templates/solution-release.json"],
   ["system-map-manifest.schema.json", "templates/system-map-manifest.json"],
 ];
+
+test("the AI value scorecard preserves factor identity and hard-gate decisions", async () => {
+  const fixture = await json("templates/ai-value-engineering-scorecard.json");
+  assert.deepEqual(valueScorecardSemanticErrors(fixture, "fixture"), []);
+
+  const reordered = structuredClone(fixture);
+  [reordered.factors[0], reordered.factors[1]] = [reordered.factors[1], reordered.factors[0]];
+  assert.ok(valueScorecardSemanticErrors(reordered, "fixture").some((error) => error.includes("canonical ordered factor")));
+
+  const unsupportedPass = structuredClone(fixture);
+  unsupportedPass.factors[0].score = 2;
+  assert.ok(valueScorecardSemanticErrors(unsupportedPass, "fixture").some((error) => error.includes("without evidence")));
+
+  const gateBypass = structuredClone(fixture);
+  gateBypass.decision.disposition = "pilot";
+  assert.ok(valueScorecardSemanticErrors(gateBypass, "fixture").some((error) => error.includes("hard gate")));
+
+  const evidenceFreeGate = structuredClone(fixture);
+  evidenceFreeGate.hard_gates.owned_outcome.status = "pass";
+  assert.ok(valueScorecardSemanticErrors(evidenceFreeGate, "fixture").some((error) => error.includes("cannot pass without evidence")));
+});
 
 
 async function json(relativePath) {

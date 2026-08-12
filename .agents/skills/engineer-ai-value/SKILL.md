@@ -9,8 +9,8 @@ Make value an operating contract rather than a slide-deck estimate. Measure acce
 
 ## Read first
 
-1. Read the [12 Factors of AI Value Engineering](../../../library/14-twelve-factors-ai-value-engineering.md) and [Value Engineering and Frugal Architecture](../../../library/11-value-engineering-and-frugal-architecture.md).
-2. Use the [value-case template](../../../templates/value-case.md) and the authoritative [workflow-charter template](../../../templates/workflow-charter.json).
+1. Read the [12 Factors of AI Value Engineering](../../../library/14-twelve-factors-ai-value-engineering.md), its portable [scorecard](../../../guide/ai-value-engineering-scorecard.md), and [Value Engineering and Frugal Architecture](../../../library/11-value-engineering-and-frugal-architecture.md).
+2. Use the machine-readable [scorecard template](../../../templates/ai-value-engineering-scorecard.json), [value-case template](../../../templates/value-case.md), and authoritative [workflow-charter template](../../../templates/workflow-charter.json).
 3. If qualification records a business-flow pattern or vertical profile, resolve it through the [solution portfolio](../../../solutions/README.md) and read only the selected artifacts. Use their outcome measures and non-claims as hypotheses; local evidence and owners control.
 4. Apply `VAL-001` through `VAL-003`, `CST-001`, `CST-002`, and `FDE-003` from the [control catalog](../../../controls/control-catalog.json).
 
@@ -29,6 +29,7 @@ Make value an operating contract rather than a slide-deck estimate. Measure acce
 Return:
 
 - an updated value case linked to its workflow charter;
+- a completed scorecard with no total score and no hard gate averaged away;
 - a formula with units, sources, owners, and measured-versus-assumed labels;
 - base and downside economics, cost ceiling, and guardrails;
 - time-bounded pilot measurement and graduation plan with separate gate thresholds;

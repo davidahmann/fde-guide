@@ -16,6 +16,12 @@
       "tags": ["fde", "ai-engineering", "capability", "learning"]
     },
     {
+      "id": "guide.ai-value-engineering-scorecard",
+      "type": "standard",
+      "path": "guide/ai-value-engineering-scorecard.md",
+      "tags": ["value", "scorecard", "evidence", "decision"]
+    },
+    {
       "id": "controls.production",
       "type": "control_catalog",
       "path": "controls/control-catalog.json",
@@ -44,6 +50,12 @@
       "type": "template",
       "path": "templates/value-case.md",
       "tags": ["value", "outcome", "economics", "measurement"]
+    },
+    {
+      "id": "template.ai-value-engineering-scorecard",
+      "type": "template",
+      "path": "templates/ai-value-engineering-scorecard.json",
+      "tags": ["value", "scorecard", "gates", "decision"]
     },
     {
       "id": "template.intelligence-selection",
@@ -242,6 +254,12 @@
       "type": "schema",
       "path": "schemas/workflow-charter.schema.json",
       "tags": ["discovery", "value", "outcome", "readiness"]
+    },
+    {
+      "id": "schema.ai-value-engineering-scorecard",
+      "type": "schema",
+      "path": "schemas/ai-value-engineering-scorecard.schema.json",
+      "tags": ["value", "scorecard", "evidence", "decision"]
     },
     {
       "id": "schema.agent-system",

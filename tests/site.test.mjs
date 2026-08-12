@@ -45,6 +45,21 @@ test("the capability roadmap is a bounded secondary entry layer", async () => {
   assert.match(source, /does not substitute for production experience, user acceptance, or target-system approval/);
 });
 
+test("the AI value scorecard is a portable assessment rather than a second framework", async () => {
+  const page = pages.find(({ source }) => source === "guide/ai-value-engineering-scorecard.md");
+  assert.equal(page?.route, "/ai-value-engineering-scorecard/");
+  const source = await readFile(path.join(root, page.source), "utf8");
+  assert.match(source, /12 factors\. 4 hard gates\. One outcome: accepted value\./);
+  assert.match(source, /not a separate framework/i);
+  assert.match(source, /Do not convert the twelve scores into a certification or universal pass mark/i);
+  for (const target of [
+    "../output/pdf/ai-value-engineering-scorecard.pdf",
+    "../assets/ai-value-engineering-scorecard.svg",
+    "../assets/ai-value-engineering-scorecard.png",
+    "../templates/ai-value-engineering-scorecard.json",
+  ]) assert.ok(source.includes(target), target);
+});
+
 test("computer-use guidance is a first-class security route", async () => {
   const page = pages.find(({ source }) => source === "blueprints/computer-use-action-boundary.md");
   assert.equal(page?.route, "/computer-use-agent-security/");
@@ -141,6 +156,9 @@ test("site output is self-contained and free of retired or local references", as
     "assets/search-index.json",
     "assets/fde-guide-banner.svg",
     "assets/fde-guide-social.png",
+    "assets/ai-value-engineering-scorecard.svg",
+    "assets/ai-value-engineering-scorecard.png",
+    "downloads/ai-value-engineering-scorecard.pdf",
     "assets/favicon.svg",
     "assets/mermaid.min.js",
     "404.html",

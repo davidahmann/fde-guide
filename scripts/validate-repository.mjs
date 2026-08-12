@@ -27,6 +27,7 @@ import {
   sha256Digest,
   systemMapManifestSemanticErrors,
   toolContractSemanticErrors,
+  valueScorecardSemanticErrors,
 } from "./contract-invariants.mjs";
 import {
   capabilityManifestSemanticErrors,
@@ -499,6 +500,9 @@ for (const [file, tool] of documents) {
   for (const error of toolContractSemanticErrors(tool, relative(file))) fail(error);
 }
 for (const [file, report] of documents) {
+  if (report?.assessment_id && report?.hard_gates && Array.isArray(report?.factors)) {
+    for (const error of valueScorecardSemanticErrors(report, relative(file))) fail(error);
+  }
   if (report?.case_id && report?.reference_authority && report?.expected) {
     for (const error of evaluationCaseSemanticErrors(report, relative(file))) fail(error);
   }

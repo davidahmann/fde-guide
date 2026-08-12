@@ -271,6 +271,9 @@ export function classifyReference(candidate, allowedExternalSchemes) {
 
 export function governedDocumentSchema(document) {
   if (!document || typeof document !== "object" || Array.isArray(document)) return null;
+  if (document.assessment_id && document.hard_gates && Array.isArray(document.factors)) {
+    return "schemas/ai-value-engineering-scorecard.schema.json";
+  }
   if (document.bundle_id && Array.isArray(document.components) && Array.isArray(document.tool_members)) {
     return "schemas/behavior-bundle.schema.json";
   }
@@ -305,6 +308,7 @@ export function expectedDocumentSchema(repositoryPath, document = null) {
   const name = path.posix.basename(repositoryPath);
   const templateSchemas = new Map([
     ["agent-system.json", "schemas/agent-system.schema.json"],
+    ["ai-value-engineering-scorecard.json", "schemas/ai-value-engineering-scorecard.schema.json"],
     ["behavior-bundle.json", "schemas/behavior-bundle.schema.json"],
     ["capability-manifest.json", "schemas/capability-manifest.schema.json"],
     ["change-impact-assessment.json", "schemas/change-impact-assessment.schema.json"],

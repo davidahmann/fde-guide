@@ -164,6 +164,36 @@ test("the four hard gates cannot be averaged away", async () => {
   assert.match(gateSection, /strong factors do not average away a failed gate/i);
 });
 
+test("the portable scorecard preserves the framework without inventing a certification", async () => {
+  const [framework, scorecard, worksheetText, schemaText, svg, catalogText] = await Promise.all([
+    readFile(frameworkPath, "utf8"),
+    readFile(path.join(root, "guide", "ai-value-engineering-scorecard.md"), "utf8"),
+    readFile(path.join(root, "templates", "ai-value-engineering-scorecard.json"), "utf8"),
+    readFile(path.join(root, "schemas", "ai-value-engineering-scorecard.schema.json"), "utf8"),
+    readFile(path.join(root, "assets", "ai-value-engineering-scorecard.svg"), "utf8"),
+    readFile(path.join(root, "catalog.json"), "utf8"),
+  ]);
+  const worksheet = JSON.parse(worksheetText);
+  const schema = JSON.parse(schemaText);
+  const frameworkFactors = [...framework.matchAll(/^## (\d+)\. (.+)$/gm)].map((match) => ({
+    number: Number(match[1]),
+    name: match[2],
+  }));
+  assert.deepEqual(worksheet.factors.map(({ factor_number: number, factor_name: name }) => ({ number, name })), frameworkFactors);
+  assert.equal(Object.keys(worksheet.hard_gates).length, 4);
+  assert.deepEqual(schema.properties.factors.minItems, 12);
+  assert.match(scorecard, /not a separate framework/i);
+  assert.match(scorecard, /Do not convert the twelve scores into a certification or universal pass mark/i);
+  assert.doesNotMatch(scorecard, /total score|pass mark:/i);
+  assert.match(svg, /12 factors\. 4 hard gates\. One outcome: accepted value\./);
+  const catalog = JSON.parse(catalogText).artifacts;
+  for (const id of [
+    "guide.ai-value-engineering-scorecard",
+    "template.ai-value-engineering-scorecard",
+    "schema.ai-value-engineering-scorecard",
+  ]) assert.ok(catalog.some((artifact) => artifact.id === id), id);
+});
+
 test("every control cited by the framework resolves", async () => {
   const [framework, catalogText] = await Promise.all([
     readFile(frameworkPath, "utf8"),
@@ -175,7 +205,7 @@ test("every control cited by the framework resolves", async () => {
   for (const controlId of cited) assert.ok(known.has(controlId), `framework cites unknown control ${controlId}`);
 });
 
-test("human and agent navigation place the framework above implementation detail", async () => {
+test("human and agent navigation place the framework and scorecard above implementation detail", async () => {
   const [readme, agents, llms, valueGuide, discovery] = await Promise.all([
     readFile(path.join(root, "README.md"), "utf8"),
     readFile(path.join(root, "AGENTS.md"), "utf8"),
@@ -184,7 +214,9 @@ test("human and agent navigation place the framework above implementation detail
     readFile(path.join(root, "playbooks", "01-discovery-and-value.md"), "utf8"),
   ]);
   const reference = "library/14-twelve-factors-ai-value-engineering.md";
+  const scorecard = "guide/ai-value-engineering-scorecard.md";
   for (const body of [readme, agents, llms]) assert.ok(body.includes(reference));
+  for (const body of [readme, agents, llms]) assert.ok(body.includes(scorecard));
   assert.ok(valueGuide.includes("14-twelve-factors-ai-value-engineering.md"));
   assert.ok(discovery.includes("../library/14-twelve-factors-ai-value-engineering.md"));
   assert.ok(readme.indexOf("12 Factors of AI Value Engineering") < readme.indexOf("## From idea to production"));

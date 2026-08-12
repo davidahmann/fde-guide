@@ -107,9 +107,9 @@ realized net value =
 
 Keep forecast, demonstrated pilot evidence, and realized production value separate. Do not annualize a narrow pilot without an explicit, owned extrapolation. Do not count the same benefit twice through time saved, unit value, avoided loss, or reduced headcount.
 
-The [12 Factors of AI Value Engineering](../library/14-twelve-factors-ai-value-engineering.md) are the full framework. Four are hard gates: owned outcome, credible verifier, bounded authority and expected loss, and a plausible positive value case after full cost.
+The [12 Factors of AI Value Engineering](../library/14-twelve-factors-ai-value-engineering.md) are the full framework. Four are hard gates: owned outcome, credible verifier, bounded authority and expected loss, and a plausible positive value case after full cost. The one-page [AI Value Engineering Scorecard](ai-value-engineering-scorecard.md) turns those factors into a portable assessment and decision record.
 
-**Use in the repository:** [workflow charter](../templates/workflow-charter.json), [value case](../templates/value-case.md), and [value and frugal architecture](../library/11-value-engineering-and-frugal-architecture.md).
+**Use in the repository:** [AI Value Engineering Scorecard](ai-value-engineering-scorecard.md), [workflow charter](../templates/workflow-charter.json), [value case](../templates/value-case.md), and [value and frugal architecture](../library/11-value-engineering-and-frugal-architecture.md).
 
 ## 5. Select the smallest sufficient mechanism
 
