@@ -1,10 +1,10 @@
 {
   "$schema": "../schemas/solution-release.schema.json",
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "release_id": "bounded_workflow_release",
   "version": "0.1.0",
   "release_status": "draft",
-  "release_digest": "sha256:91cf316ab2008c8b72c446f13d1f0d165a57e1dde74b258f7b4f289ec6e7051f",
+  "release_digest": "sha256:48c08c37e6bfaea097f7ed837ff6def6f9c3a6f34a3c8b4b3230813784158171",
   "owner": "technical-owner",
   "created_at": "2026-08-07T16:00:00Z",
   "workflow_charter_uri": "workflow-charter.json",
@@ -25,11 +25,11 @@
     },
     {
       "role": "data_context",
-      "uri": "agent-system.json",
+      "uri": "data-context-manifest.json",
       "version": "0.1.0",
-      "schema_version": "1.2.0",
-      "digest": "sha256:87a9eb0ac9daf09c06058cf5f71b66ab5603ba0831918d1f197bb21b42170659",
-      "change_summary": "Bind the exact source, schema, revision, trust, and freshness context evaluated with the agent."
+      "schema_version": "1.0.0",
+      "digest": "sha256:61e468248aa0e9c4bc856296c266562b3acb76dc429d4ce58db8ac29d2994a5b",
+      "change_summary": "Bind the four data planes, decision-critical quality, preparation lineage, and operating contract."
     },
     {
       "role": "domain_model",
@@ -92,7 +92,7 @@
       "uri": "evaluation-report.json",
       "version": "0.1.0",
       "schema_version": "1.0.0",
-      "digest": "sha256:8b033254225e09a94b7da16d5a79d086715e2f5cc63949984e739ccf2603a7e1",
+      "digest": "sha256:b3e117558a4e61d79bf462c15456a0d56f5c82edb8e65978ef92ea0041a8ecd5",
       "change_summary": "Bind the tested claim and evaluation environment."
     },
     {

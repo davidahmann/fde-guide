@@ -11,6 +11,8 @@ Copy the smallest set needed for one workflow, replace the example values with e
 | [Workflow charter](workflow-charter.json) | Whether to discover, pilot, defer, do not build, promote, pause, or retire the workflow |
 | [AI Value Engineering Scorecard](ai-value-engineering-scorecard.json) | Whether the four hard gates and twelve factors support a bounded pilot or lifecycle decision |
 | [Value case](value-case.md) | Whether measured outcome improvement justifies full delivery and operating cost |
+| [Data-readiness assessment](data-readiness-assessment.md) | Whether the four data planes and decision-critical sources are fit, affordable, and owned for the bounded workflow |
+| [Data-context manifest](data-context-manifest.json) | Which exact sources, quality evidence, preparation, labels, outputs, economics, and monitors are bound to design and release |
 | [Intelligence selection record](intelligence-selection-record.md) | Which rules, optimization, ML, retrieval, foundation-model, agent, and human options were considered for a consequential decision |
 
 ## Solution and assurance

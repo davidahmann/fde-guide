@@ -4,6 +4,12 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.16.0] - 2026-08-12
+
+- Add a decision-scoped data-readiness method that separates operational, knowledge/context, evaluation/training, and telemetry/feedback planes across discovery, design, evaluation, release, and operation.
+- Add a machine-readable data-context contract, assessment, preparation-pipeline blueprint, operating contract, release binding, semantic validation, and adversarial regression coverage.
+- Extend the transactional reference, public Guide, web navigation, lifecycle skills, controls, release gates, and service reviews so source authority, quality, preparation, labels, generated outputs, economics, and drift remain owned and testable.
+
 ## [1.15.0] - 2026-08-11
 
 - Add the AI Value Engineering Scorecard as a portable interface to the existing twelve-factor framework: one human-readable assessment, a machine-readable worksheet and schema, and downloadable SVG, PNG, and one-page PDF formats.
@@ -148,7 +154,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.15.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.16.0...HEAD
+[1.16.0]: https://github.com/davidahmann/fde-guide/compare/v1.15.0...v1.16.0
 [1.15.0]: https://github.com/davidahmann/fde-guide/compare/v1.14.0...v1.15.0
 [1.14.0]: https://github.com/davidahmann/fde-guide/compare/v1.13.0...v1.14.0
 [1.13.0]: https://github.com/davidahmann/fde-guide/compare/v1.12.0...v1.13.0

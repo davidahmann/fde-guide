@@ -2,6 +2,8 @@
 
 Production AI is still production software. It needs explicit boundaries, owned state, data contracts, identity, delivery discipline, operations, and retirement. **Agents are components in operational software systems. They are not the system.**
 
+The data contract is decision-bound, not a generic platform assertion. Use the [data-context manifest](../templates/data-context-manifest.json) to bind operational, knowledge/context, evaluation/training, and telemetry/feedback planes plus quality, preparation, labels, generated outputs, economics, and drift response before architecture approval. `CTX-006` through `CTX-009`.
+
 Use this page when a workflow is ready to move from a value hypothesis to an architecture. Controls: `ARC-001`, `ARC-002`, `ARC-004`, `ARC-005`, `DEL-001`, `REL-002`, `OPS-001`.
 
 ## Select the mechanism per decision

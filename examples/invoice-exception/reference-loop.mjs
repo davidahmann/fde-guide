@@ -76,7 +76,7 @@ if (["rolled_back", "retired"].includes(referenceReleasePayload.release_status))
 
 const expectedArtifacts = Object.freeze([
   ["workflow_charter", "workflow-charter.json", new URL("./workflow-charter.json", import.meta.url)],
-  ["data_context", "agent-system.json", new URL("./agent-system.json", import.meta.url)],
+  ["data_context", "data-context-manifest.json", new URL("./data-context-manifest.json", import.meta.url)],
   ["domain_model", "ontology.json", new URL("./ontology.json", import.meta.url)],
   ["agent_system", "agent-system.json", new URL("./agent-system.json", import.meta.url)],
   ["behavior_bundle", "behavior-bundle.json", new URL("./behavior-bundle.json", import.meta.url)],

@@ -29,6 +29,8 @@ Use the [intelligence-selection record](../templates/intelligence-selection-reco
 
 **Goal:** ensure the systems around the selected mechanism can safely serve as capabilities and contextual resources.
 
+Before integrating them, complete the [data-readiness assessment](../templates/data-readiness-assessment.md) and bind the accepted source, quality, preparation, label, output, and operating assumptions in a [data-context manifest](../templates/data-context-manifest.json). A dependency may be reachable and still be unfit for the decision. `CTX-006` through `CTX-009`.
+
 Assess each dependency as both a **resource** (the system reads it) and a **capability** (the system changes it). The workflow is constrained by its least-ready dependency. [AWS's Agentic Readiness method](https://aws.amazon.com/blogs/migration-and-modernization/agentic-readiness/) provides a useful lens: interface quality, security posture, data handling, resilience, and observability are separate checks.
 
 | Control | Implementation question |

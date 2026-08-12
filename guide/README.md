@@ -30,12 +30,13 @@ The guide uses one lifecycle throughout. Do not create a parallel method for eac
 ```mermaid
 flowchart LR
     A["Observe the work"] --> B["Charter value and scope"]
-    B --> C["Select the mechanism"]
-    C --> D["Build one controlled slice"]
-    D --> E["Prove it with cases and users"]
-    E --> F["Launch and transfer ownership"]
-    F --> G["Operate, learn, or retire"]
-    G --> B
+    B --> C["Make data fit for the decision"]
+    C --> D["Select the mechanism"]
+    D --> E["Build one controlled slice"]
+    E --> F["Prove it with cases and users"]
+    F --> G["Launch and transfer ownership"]
+    G --> H["Operate, learn, or retire"]
+    H --> B
 ```
 
 Each stage ends in a decision and evidence that another person can inspect:
@@ -44,6 +45,7 @@ Each stage ends in a decision and evidence that another person can inspect:
 | --- | --- | --- |
 | Observe | Is this the real workflow and decision boundary? | Representative cases, exceptions, actors, systems, workarounds, and owner validation |
 | Charter | Is the workflow worth changing? | Baseline, accepted outcome, verifier, eligible population, attribution, guardrails, value hypothesis, and risk ceiling |
+| Prepare data | Are the sources fit for this decision? | Four data planes, source authority, quality thresholds, preparation lineage, output ownership, remediation economics, and failure behavior |
 | Select | What is the smallest sufficient mechanism? | Comparison of software, optimization, ML, retrieval, model, agent, and human routes |
 | Build | Can one vertical slice exercise the real boundaries? | Domain/state model, contracts, work surface, failure behavior, and adoption plan |
 | Prove | Does it work safely and usefully on representative work? | Repeatable cases, user evidence, failure tests, cost and latency, limitations, and rollback criteria |
@@ -111,7 +113,19 @@ The [12 Factors of AI Value Engineering](../library/14-twelve-factors-ai-value-e
 
 **Use in the repository:** [AI Value Engineering Scorecard](ai-value-engineering-scorecard.md), [workflow charter](../templates/workflow-charter.json), [value case](../templates/value-case.md), and [value and frugal architecture](../library/11-value-engineering-and-frugal-architecture.md).
 
-## 5. Select the smallest sufficient mechanism
+## 5. Make data fit for the decision
+
+Data readiness is not a generic platform score. It is evidence that the specific information required for the bounded decision is authoritative, accessible, timely, representative, lawful, economical, and operable.
+
+Keep four uses explicit: operational state, knowledge and context, evaluation and training, and telemetry and feedback. Record where sources live; their owner, grain, keys, time semantics, schema, revision, freshness, access, retention, and correction behavior; the quality thresholds for decision-critical fields; every preparation transformation; label authority where used; and the ownership and lifecycle of generated output data.
+
+Brownfield delivery must reconcile policy, contracts, code, database state, runbooks, and operator practice without treating any one as automatically authoritative. Greenfield delivery must establish identifiers, corrections, quality telemetry, and ownership before synthetic assumptions become accidental contracts.
+
+If source repair exceeds the workflow value ceiling, constrain the population, add human collection or review, choose a smaller mechanism, or do not build.
+
+**Use in the repository:** [data-readiness chapter](../library/16-data-readiness-and-context-contracts.md), [assessment](../templates/data-readiness-assessment.md), [data-context manifest](../templates/data-context-manifest.json), and [pipeline blueprint](../blueprints/data-preparation-and-context-pipeline.md).
+
+## 6. Select the smallest sufficient mechanism
 
 “Use AI” is not an architecture decision. Decompose the workflow into consequential decision steps and choose each mechanism separately.
 
@@ -131,7 +145,7 @@ Add an agent only where bounded multi-step judgment is useful. Add multiple agen
 
 **Use in the repository:** [intelligence-selection record](../templates/intelligence-selection-record.md), [software architecture guide](../library/12-software-architecture-and-intelligence-selection.md), and [hybrid system blueprint](../blueprints/hybrid-intelligence-system.md).
 
-## 6. Design the whole decision system
+## 7. Design the whole decision system
 
 The model is one component inside a larger software and operating boundary.
 
@@ -168,7 +182,7 @@ If a legacy browser, desktop client, or terminal emulator is the only viable int
 
 **Use in the repository:** [blueprint selector](../blueprints/README.md), [operational ontology](../templates/operational-ontology.json), [tool contract](../templates/tool-contract.json), [capability manifest](../templates/capability-manifest.json), and [production controls](../controls/control-catalog.json).
 
-## 7. Build one controlled vertical slice
+## 8. Build one controlled vertical slice
 
 The first slice should pass through the real interfaces and control boundaries without attempting the full product.
 
@@ -189,7 +203,7 @@ Predeclare the pilot's maximum duration, evidence cutoff, and separate technical
 
 **Use in the repository:** [Solution Design and Delivery](../playbooks/02-solution-and-delivery.md), [delivery and adoption plan](../templates/delivery-and-adoption-plan.md), and [customer handoff](../templates/customer-enablement-handoff.md).
 
-## 8. Prove claims on representative work
+## 9. Prove claims on representative work
 
 An evaluation is a release claim under stated conditions—not a permanent score.
 
@@ -207,7 +221,7 @@ Promote through bounded stages such as offline evaluation, shadow operation, can
 
 **Use in the repository:** [evaluation guide](../library/04-production-evaluation-and-governance.md), [evaluation-case template](../templates/evaluation-case.json), and [release gates](../operations/release-gates.md).
 
-## 9. Operate the service and transfer ownership
+## 10. Operate the service and transfer ownership
 
 Production is a recurring decision, not the last deployment step.
 
@@ -227,7 +241,7 @@ Transfer is complete when the receiving team can operate, change, recover, suppo
 
 **Use in the repository:** [Operate and Scale](../playbooks/03-operate-and-scale.md), [production service review](../templates/production-service-review.md), [operations map](../operations/README.md), and [handoff template](../templates/customer-enablement-handoff.md).
 
-## 10. Turn field learning into product capability
+## 11. Turn field learning into product capability
 
 The compounding advantage of FDE work is not reusable customer data or a growing pile of custom code. It is the ability to separate local context from portable engineering knowledge.
 
@@ -249,7 +263,7 @@ Do not manufacture dependence. Preserve negative and stopped evidence, transfer 
 
 **Use in the repository:** [field-learning register](../templates/field-learning-register.md), [FDE and applied-AI synthesis](../library/10-fde-and-production-agent-synthesis.md), and optional [portfolio review](../templates/fde-portfolio-review.md).
 
-## 11. See the method in executable systems
+## 12. See the method in executable systems
 
 This repository includes two code-backed teaching systems.
 
@@ -278,7 +292,7 @@ npm run test:hybrid
 
 These are in-memory teaching implementations. Passing their tests proves only the declared local behavior; it does not certify a target deployment.
 
-## 12. Start a real engagement
+## 13. Start a real engagement
 
 Before implementation, make sure you can answer:
 

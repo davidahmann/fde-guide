@@ -197,7 +197,7 @@ async function createApprovedReleaseFixture(repositoryRoot) {
 
   const report = {
     $schema: "../../schemas/evaluation-report.schema.json",
-    schema_version: "1.0.0",
+    schema_version: "1.2.0",
     report_id: "invoice_exception_pilot_report",
     version: "1.0.0",
     owner: "evaluation-preparer",
@@ -509,7 +509,7 @@ async function createApprovedReleaseFixture(repositoryRoot) {
     autonomy_level: agent.autonomy.level,
     artifacts: [
       await artifact("workflow_charter", "../../examples/invoice-exception/workflow-charter.json", charter.version, charter.schema_version, "Bind the approved pilot workflow."),
-      await artifact("data_context", "../../examples/invoice-exception/agent-system.json", agent.version, agent.schema_version, "Bind the evaluated source and schema context."),
+      await artifact("data_context", "../../examples/invoice-exception/data-context-manifest.json", "1.0.0", "1.0.0", "Bind the evaluated data-context manifest."),
       await artifact("domain_model", "../../examples/invoice-exception/ontology.json", (await json("examples/invoice-exception/ontology.json", repositoryRoot)).version, (await json("examples/invoice-exception/ontology.json", repositoryRoot)).schema_version, "Bind the operational domain model."),
       await artifact("agent_system", "../../examples/invoice-exception/agent-system.json", agent.version, agent.schema_version, "Bind the evaluated agent system."),
       ...toolArtifacts,
@@ -795,7 +795,7 @@ test("repository validation rejects release and evaluation integrity bypasses", 
       }
     });
 
-    await t.test("data context must equal the evaluated agent context contract", async () => {
+    await t.test("data context must bind the evaluated agent context contract", async () => {
       await mutateFile(
         repositoryRoot,
         "examples/invoice-exception/solution-release.json",

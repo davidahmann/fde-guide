@@ -79,6 +79,7 @@ npm test
 - `commit.policy_revision == current_policy_revision`
 - `caller.tenant_id == invoice.tenant_id`
 - `current_caller_scopes` and `current_policy_revision` are checked at each data/effect boundary
+- the [data-context manifest](data-context-manifest.json) separates operational, policy, evaluation, and telemetry uses and binds the agent's exact source projection, preparation, quality, output, and drift contract
 - `committed == true` only after source-of-truth readback
 - `effect_unknown` is reconciled before retry or completion
 - `completed == true` only after trusted receipt and readback-attestation verification

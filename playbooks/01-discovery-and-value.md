@@ -158,6 +158,10 @@ Before recommending `pilot`, freeze a time-bounded graduation contract in the [d
 
 The pilot should improve the work around current systems of record before forcing a platform migration. If data ownership, identity, access, or auditability is inadequate, make that remediation a readiness dependency rather than hiding it behind an AI layer. `FDE-003`, `ADP-001`, `ADP-002`.
 
+Use the [data-readiness assessment](../templates/data-readiness-assessment.md) to separate operational, knowledge/context, evaluation/training, and telemetry/feedback uses. Inventory where decision-bearing sources live, their owners and authority, population and time semantics, quality thresholds, preparation and correction paths, generated-output obligations, remediation economics, and production monitors. Start the [data-context manifest](../templates/data-context-manifest.json) now; refine it after mechanism selection and bind it to release evidence.
+
+Unknown quality on a decision-critical field is a condition to remediate, constrain, or stop. A general data-platform score, clean demo dataset, or vector index does not prove readiness for this decision. `CTX-006`, `CTX-007`, `CTX-008`.
+
 ## 8. Assess readiness
 
 Score each dimension from `0` to `4`, and attach evidence:

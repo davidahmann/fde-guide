@@ -744,3 +744,108 @@ export function workflowCharterSemanticErrors(charter, label = "workflow charter
   }
   return errors;
 }
+
+export function dataContextManifestSemanticErrors(manifest, label = "data context manifest") {
+  const errors = [];
+  const requiredPlanes = new Set(["operational", "knowledge_context", "evaluation_training", "telemetry_feedback"]);
+  const planes = new Map();
+  for (const plane of manifest?.data_planes ?? []) {
+    if (planes.has(plane.plane_id)) errors.push(`${label} duplicates data plane ${plane.plane_id}`);
+    planes.set(plane.plane_id, plane);
+  }
+  for (const planeId of requiredPlanes) {
+    if (!planes.has(planeId)) errors.push(`${label} is missing data plane ${planeId}`);
+  }
+
+  const sources = new Map();
+  for (const source of manifest?.sources ?? []) {
+    if (sources.has(source.source_id)) errors.push(`${label} duplicates source ${source.source_id}`);
+    sources.set(source.source_id, source);
+    for (const duplicate of duplicateValues((source?.quality?.metrics ?? []).map((metric) => metric.dimension))) {
+      errors.push(`${label} source ${source.source_id} duplicates quality dimension ${duplicate}`);
+    }
+  }
+  for (const [planeId, plane] of planes) {
+    for (const sourceId of plane.source_ids ?? []) {
+      const source = sources.get(sourceId);
+      if (!source) errors.push(`${label} plane ${planeId} references unknown source ${sourceId}`);
+      else if (!(source.planes ?? []).includes(planeId)) errors.push(`${label} plane ${planeId} and source ${sourceId} disagree on membership`);
+    }
+  }
+  for (const source of sources.values()) {
+    for (const planeId of source.planes ?? []) {
+      if (!planes.get(planeId)?.source_ids?.includes(source.source_id)) {
+        errors.push(`${label} source ${source.source_id} is not registered by plane ${planeId}`);
+      }
+    }
+  }
+
+  const critical = manifest?.quality_contract?.decision_critical_fields ?? [];
+  for (const field of critical) {
+    const source = sources.get(field.source_id);
+    if (!source) {
+      errors.push(`${label} decision-critical field ${field.field} references unknown source ${field.source_id}`);
+      continue;
+    }
+    if (manifest?.status === "ready") {
+      const metrics = new Map((source?.quality?.metrics ?? []).map((metric) => [metric.dimension, metric]));
+      for (const dimension of field.required_dimensions ?? []) {
+        const metric = metrics.get(dimension);
+        if (!metric || metric.status !== "pass" || metric.observed === null) {
+          errors.push(`${label} ready field ${field.source_id}.${field.field} lacks passing ${dimension} evidence`);
+        }
+      }
+    }
+  }
+  for (const rule of manifest?.quality_contract?.reconciliation_rules ?? []) {
+    for (const sourceId of rule.source_ids ?? []) {
+      if (!sources.has(sourceId)) errors.push(`${label} reconciliation rule ${rule.rule_id} references unknown source ${sourceId}`);
+    }
+  }
+
+  const availableInputs = new Set(sources.keys());
+  for (const duplicate of duplicateValues((manifest?.preparation?.steps ?? []).map((step) => step.step_id))) {
+    errors.push(`${label} duplicates preparation step ${duplicate}`);
+  }
+  for (const step of manifest?.preparation?.steps ?? []) {
+    for (const input of step.inputs ?? []) {
+      if (!availableInputs.has(input)) errors.push(`${label} preparation step ${step.step_id} references unavailable input ${input}`);
+    }
+    if (availableInputs.has(step.output_id)) errors.push(`${label} preparation output ${step.output_id} is not unique`);
+    availableInputs.add(step.output_id);
+  }
+
+  for (const labelContract of manifest?.label_contracts ?? []) {
+    if (!sources.has(labelContract.source_id)) errors.push(`${label} label ${labelContract.label_id} references unknown source ${labelContract.source_id}`);
+    if (labelContract.owner === labelContract.independent_approver) errors.push(`${label} label ${labelContract.label_id} is self-approved`);
+  }
+  for (const duplicate of duplicateValues((manifest?.output_records ?? []).map((record) => record.output_id))) {
+    errors.push(`${label} duplicates output record ${duplicate}`);
+  }
+  const optionIds = new Set((manifest?.economics?.options ?? []).map((option) => option.option_id));
+  if (manifest?.economics?.selected_option && !optionIds.has(manifest.economics.selected_option)) {
+    errors.push(`${label} selects unknown economic option ${manifest.economics.selected_option}`);
+  }
+  for (const monitor of manifest?.operations?.monitors ?? []) {
+    if (!sources.has(monitor.source_id)) errors.push(`${label} monitor ${monitor.monitor_id} references unknown source ${monitor.source_id}`);
+  }
+  for (const duplicate of duplicateValues((manifest?.decision?.approved_by ?? []).map((approval) => approval.principal))) {
+    errors.push(`${label} approval principal ${duplicate} is not independent`);
+  }
+  for (const duplicate of duplicateValues((manifest?.decision?.approved_by ?? []).map((approval) => approval.role))) {
+    errors.push(`${label} duplicates approval role ${duplicate}`);
+  }
+  if (manifest?.status === "ready") {
+    if ((manifest?.quality_contract?.unresolved_conditions ?? []).length > 0) errors.push(`${label} cannot be ready with unresolved conditions`);
+    if (manifest?.decision?.disposition !== "continue") errors.push(`${label} ready status requires continue disposition`);
+    const approvalRoles = new Set((manifest?.decision?.approved_by ?? []).map((approval) => approval.role));
+    for (const role of ["data", "operational"]) if (!approvalRoles.has(role)) errors.push(`${label} ready status requires ${role} approval`);
+    for (const segment of manifest?.quality_contract?.segment_coverage ?? []) {
+      if (segment.status !== "pass") errors.push(`${label} ready segment ${segment.segment} lacks passing coverage evidence`);
+    }
+  }
+  for (const controlId of ["CTX-006", "CTX-007", "CTX-008", "CTX-009"]) {
+    if (!(manifest?.control_ids ?? []).includes(controlId)) errors.push(`${label} omits control ${controlId}`);
+  }
+  return errors;
+}

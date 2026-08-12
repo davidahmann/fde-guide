@@ -11,6 +11,7 @@ Use the migration note that matches the source contract version. Each note names
 - [Handoff Envelope 1.1](handoff-envelope-1.1.md)
 - [Operational Ontology 1.1](operational-ontology-1.1.md)
 - [Solution Release 1.1](solution-release-1.1.md)
+- [Solution Release 1.2](solution-release-1.2.md)
 - [Telemetry Contract 1.1](telemetry-contract-1.1.md)
 - [Tool Contract 1.1](tool-contract-1.1.md)
 - [Trace Event 1.2](trace-event-1.2.md)

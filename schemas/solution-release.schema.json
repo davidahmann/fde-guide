@@ -7,7 +7,7 @@
   "required": ["$schema", "schema_version", "release_id", "version", "release_status", "release_digest", "owner", "created_at", "workflow_charter_uri", "agent_system_uri", "evaluation_report_uri", "target_segments", "autonomy_level", "artifacts", "compatibility", "rollout", "approvals", "deployment_evidence", "rollback_evidence", "retirement_evidence", "control_ids"],
   "properties": {
     "$schema": { "type": "string" },
-    "schema_version": { "const": "1.1.0" },
+    "schema_version": { "const": "1.2.0" },
     "release_id": { "$ref": "#/$defs/id" },
     "version": { "$ref": "#/$defs/version" },
     "release_status": { "enum": ["draft", "review", "approved", "deployed", "rolled_back", "retired"] },

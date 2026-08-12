@@ -20,6 +20,10 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - Discovery and value: [playbooks/01-discovery-and-value.md](playbooks/01-discovery-and-value.md)
 - Twelve-factor AI value framework: [library/14-twelve-factors-ai-value-engineering.md](library/14-twelve-factors-ai-value-engineering.md)
 - Portable AI value assessment: [guide/ai-value-engineering-scorecard.md](guide/ai-value-engineering-scorecard.md)
+- Data readiness and context contracts: [library/16-data-readiness-and-context-contracts.md](library/16-data-readiness-and-context-contracts.md)
+- Data-readiness assessment: [templates/data-readiness-assessment.md](templates/data-readiness-assessment.md)
+- Machine-readable data-context manifest: [templates/data-context-manifest.json](templates/data-context-manifest.json)
+- Data-context manifest contract: [schemas/data-context-manifest.schema.json](schemas/data-context-manifest.schema.json)
 - Machine-readable AI value scorecard: [templates/ai-value-engineering-scorecard.json](templates/ai-value-engineering-scorecard.json)
 - AI value scorecard contract: [schemas/ai-value-engineering-scorecard.schema.json](schemas/ai-value-engineering-scorecard.schema.json)
 - Value and frugal architecture: [library/11-value-engineering-and-frugal-architecture.md](library/11-value-engineering-and-frugal-architecture.md)
@@ -40,6 +44,7 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - Secure AI workload accelerator: [solutions/secure-ai-workload.md](solutions/secure-ai-workload.md)
 - Deployment and operations accelerator: [solutions/deployment-and-operations.md](solutions/deployment-and-operations.md)
 - Governed data-agent design: [blueprints/data-analysis-agent.md](blueprints/data-analysis-agent.md)
+- Data preparation and context pipeline: [blueprints/data-preparation-and-context-pipeline.md](blueprints/data-preparation-and-context-pipeline.md)
 - Controlled improvement design: [blueprints/controlled-improvement-agent.md](blueprints/controlled-improvement-agent.md)
 - Computer-use action boundary: [blueprints/computer-use-action-boundary.md](blueprints/computer-use-action-boundary.md)
 - Hybrid intelligence-system design: [blueprints/hybrid-intelligence-system.md](blueprints/hybrid-intelligence-system.md)
@@ -59,6 +64,7 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - End-to-end hybrid FDE reference: [examples/shipment-risk-triage/README.md](examples/shipment-risk-triage/README.md)
 - Release and operations: [operations/README.md](operations/README.md)
 - Production changes: [operations/change-management.md](operations/change-management.md)
+- Data quality and drift: [operations/data-quality-and-drift.md](operations/data-quality-and-drift.md)
 - Map freshness and change impact: [operations/map-freshness-and-change-impact.md](operations/map-freshness-and-change-impact.md)
 - Behavior monitoring: [operations/behavior-monitoring.md](operations/behavior-monitoring.md)
 - Production AI security and action boundaries: [library/15-production-ai-security-and-action-boundaries.md](library/15-production-ai-security-and-action-boundaries.md)
@@ -83,7 +89,7 @@ Skills are instruction-only routes over the same governed artifacts above. They 
 
 Safety baseline: Model output does not authorize effects or prove completion. Side-effecting operations require boundary authorization and service-enforced duplicate safety; consequential effects also require source-of-truth verification.
 
-Build order: workflow charter and value case → intelligence-selection and architecture decisions → domain model → agent system/behavior bundle only when selected → tool contracts and capability manifests → threat model and evaluation → model/agent solution release when applicable, otherwise equivalent target software-release evidence. A tool change is incomplete until the exact build is admitted, included in the behavior bundle where applicable, evaluated, and bound into a new release digest.
+Build order: workflow charter and value case → data-readiness assessment and manifest → intelligence-selection and architecture decisions → domain model → agent system/behavior bundle only when selected → tool contracts and capability manifests → threat model and evaluation → model/agent solution release when applicable, otherwise equivalent target software-release evidence. A tool or data-contract change is incomplete until its exact build or manifest is evaluated and bound into a new release record.
 
 Contribution contract: [CONTRIBUTING.md](CONTRIBUTING.md)
 Security reports: [SECURITY.md](SECURITY.md)
