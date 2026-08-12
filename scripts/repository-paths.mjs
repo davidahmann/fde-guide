@@ -274,6 +274,9 @@ export function governedDocumentSchema(document) {
   if (document.assessment_id && document.hard_gates && Array.isArray(document.factors)) {
     return "schemas/ai-value-engineering-scorecard.schema.json";
   }
+  if (document.context_manifest_id && Array.isArray(document.data_planes) && Array.isArray(document.sources)) {
+    return "schemas/data-context-manifest.schema.json";
+  }
   if (document.bundle_id && Array.isArray(document.components) && Array.isArray(document.tool_members)) {
     return "schemas/behavior-bundle.schema.json";
   }
@@ -291,7 +294,7 @@ export function isGovernedJsonDocument(repositoryPath, document = null) {
     || /^controls\/.+\.json$/.test(repositoryPath)
     || /^examples\/.+\.json$/.test(repositoryPath)
     || /^patterns\/.+\.json$/.test(repositoryPath)
-    || /^releases\/.+\/(?:agent-system|behavior-bundle|capability-manifest|change-impact-assessment|evaluation-case|evaluation-output|evaluation-report|handoff-envelope|operational-ontology|solution-release|system-map-manifest|threat-model|tool-contract|workflow-charter)\.json$/.test(repositoryPath)
+    || /^releases\/.+\/(?:agent-system|behavior-bundle|capability-manifest|change-impact-assessment|data-context-manifest|evaluation-case|evaluation-output|evaluation-report|handoff-envelope|operational-ontology|solution-release|system-map-manifest|threat-model|tool-contract|workflow-charter)\.json$/.test(repositoryPath)
     || /^releases\/.+\/(?:evals|tools)\/.+\.json$/.test(repositoryPath)
     || /^templates\/.+\.json$/.test(repositoryPath)
     || governedDocumentSchema(document) !== null;
@@ -312,6 +315,7 @@ export function expectedDocumentSchema(repositoryPath, document = null) {
     ["behavior-bundle.json", "schemas/behavior-bundle.schema.json"],
     ["capability-manifest.json", "schemas/capability-manifest.schema.json"],
     ["change-impact-assessment.json", "schemas/change-impact-assessment.schema.json"],
+    ["data-context-manifest.json", "schemas/data-context-manifest.schema.json"],
     ["evaluation-case.json", "schemas/evaluation-case.schema.json"],
     ["evaluation-output.json", "schemas/evaluation-output.schema.json"],
     ["evaluation-report.json", "schemas/evaluation-report.schema.json"],
@@ -335,6 +339,7 @@ export function expectedDocumentSchema(repositoryPath, document = null) {
   if (/^examples\/[^/]+\/behavior-bundle\.json$/.test(repositoryPath)) return "schemas/behavior-bundle.schema.json";
   if (/^examples\/[^/]+\/capability-manifest\.json$/.test(repositoryPath)) return "schemas/capability-manifest.schema.json";
   if (/^examples\/[^/]+\/change-impact-assessment\.json$/.test(repositoryPath)) return "schemas/change-impact-assessment.schema.json";
+  if (/^examples\/[^/]+\/data-context-manifest\.json$/.test(repositoryPath)) return "schemas/data-context-manifest.schema.json";
   if (/^examples\/[^/]+\/evaluation-output\.json$/.test(repositoryPath)) return "schemas/evaluation-output.schema.json";
   if (/^examples\/[^/]+\/evaluation-report\.json$/.test(repositoryPath)) return "schemas/evaluation-report.schema.json";
   if (/^examples\/[^/]+\/solution-release\.json$/.test(repositoryPath)) return "schemas/solution-release.schema.json";

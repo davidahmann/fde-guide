@@ -74,7 +74,7 @@ List production behavior clusters, new regressions, evaluator calibration change
 | Support and escalation | — | — | — | — |
 | Incident response and reconciliation | — | — | — | — |
 | Evaluation and release | — | — | — | — |
-| Policy, data, capability, and selected-mechanism change | — | — | — | — |
+| Policy, data-context manifest, source/schema/permission/quality/lineage/drift, capability, and selected-mechanism change | — | — | — | — |
 | Rollback and recovery | — | — | — | — |
 | Cost, value, and capacity review | — | — | — | — |
 | Retirement and state disposition | — | — | — | — |

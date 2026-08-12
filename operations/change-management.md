@@ -10,6 +10,7 @@ Controls: `DEL-001`, `DEL-002`, `EVA-006`, `OPS-007`.
 | --- | --- | --- |
 | Documentation only | Explanation with no contract, code, policy, prompt, fixture, or procedure effect | Link, claim, and navigation validation |
 | Internal refactor | Behavior-preserving code or infrastructure change | Contract and regression suite; shadow if runtime path changes |
+| Data and context | Source semantics, keys, schema, access, quality, preparation, parser/OCR, join, index, feature, label, population, output, correction | Manifest diff, affected-segment evaluation, lineage verification, canary, replay, rebaseline or rollback |
 | Behavioral | Model, prompt, tool description, route, context, memory, guardrail, budget | Per-model/route eval, soak or canary, rollback |
 | Capability | New/changed tool, skill, MCP server, browser/code access, egress, credential | Threat update, contract/authorization/security tests, sandbox, scoped canary |
 | Domain/policy | Source, schema, ontology, business rule, policy, approval | Data reconciliation, migration, representative replay, owner approval |

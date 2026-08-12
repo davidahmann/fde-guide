@@ -55,42 +55,42 @@
       "uri": "./behavior-bundle.json",
       "version": "3.0.0",
       "schema_version": "1.0.0",
-      "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+      "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
     },
     "prompt_bundle": {
       "component_id": "invoice_prompt_bundle",
       "uri": "./behavior-bundle.json",
       "version": "1.0.0",
       "schema_version": "1.0.0",
-      "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+      "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
     },
     "harness": {
       "component_id": "invoice_harness",
       "uri": "./behavior-bundle.json",
       "version": "3.0.0",
       "schema_version": "1.0.0",
-      "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+      "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
     },
     "context_policy": {
       "component_id": "invoice_context_policy",
       "uri": "./behavior-bundle.json",
       "version": "3.0.0",
       "schema_version": "1.0.0",
-      "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+      "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
     },
     "tool_bundle": {
       "component_id": "invoice_tool_bundle",
       "uri": "./behavior-bundle.json",
       "version": "3.0.0",
       "schema_version": "1.0.0",
-      "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+      "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
     },
     "guardrail_policy": {
       "component_id": "invoice_guardrail_policy",
       "uri": "./behavior-bundle.json",
       "version": "3.0.0",
       "schema_version": "1.0.0",
-      "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+      "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
     }
   },
   "workflow": {

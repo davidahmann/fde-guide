@@ -35,6 +35,8 @@ This is the portable architectural lesson from Palantir's decision-centric Ontol
 
 Control: `ARC-002`.
 
+Promote the discovery assessment into a validated [data-context manifest](../templates/data-context-manifest.json). Its four planes, decision-critical profile, preparation versions, labels, output records, economics, and operating response must match the selected mechanisms. Use the [data preparation and context pipeline](../blueprints/data-preparation-and-context-pipeline.md) when parsing, reconciliation, redaction, chunking, indexing, features, or derived views are material production components. `CTX-006` through `CTX-009`.
+
 ## 3. Select the smallest sufficient decision mechanism
 
 Evaluate these in order when they fit the decision:
@@ -109,7 +111,7 @@ Version these together:
 
 | Layer | Required identity |
 | --- | --- |
-| Data and context | Source, schema, freshness rule, retrieval/index revision |
+| Data and context | Data-context manifest, source/schema revisions, quality snapshot, preparation/index/feature versions, label authority, and output-record contract |
 | Domain | Ontology/domain-model version and migration |
 | Behavior | Behavior-bundle ID/version/digest that binds the model, prompt/instruction, route, harness, context policy, complete tool membership, and guardrail |
 | Capabilities | Tool contract plus exact capability-manifest ID/version/digest, implementation provenance, authorization, network policy, and lifecycle |

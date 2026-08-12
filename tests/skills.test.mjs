@@ -110,6 +110,21 @@ test("skills progressively route through the value framework and selected soluti
   }
 });
 
+test("data readiness is progressively routed through the lifecycle skills", async () => {
+  const requiredRoutes = new Map([
+    ["qualify-ai-workflow", ["data-readiness-assessment.md", "operational, knowledge/context, evaluation/training, and telemetry/feedback"]],
+    ["select-ai-mechanism", ["data-context-manifest.json", "quality, preparation, labels, context, and drift"]],
+    ["design-production-ai-system", ["data-context manifest", "CTX-001` through `CTX-009"]],
+    ["build-ai-evaluation", ["data-context-manifest.json", "missing, stale, conflicting, corrected, late"]],
+    ["review-ai-production-readiness", ["data-context manifest", "output ownership"]],
+    ["operate-ai-service", ["data-quality-and-drift.md", "CTX-009"]],
+  ]);
+  for (const [skillName, fragments] of requiredRoutes) {
+    const body = await readFile(path.join(skillsRoot, skillName, "SKILL.md"), "utf8");
+    for (const fragment of fragments) assert.ok(body.includes(fragment), `${skillName} omits ${fragment}`);
+  }
+});
+
 test("operating, value, transfer, and productization skills carry the portfolio-health extensions", async () => {
   const [operate, value, transfer, productize] = await Promise.all([
     readFile(path.join(skillsRoot, "operate-ai-service", "SKILL.md"), "utf8"),
@@ -245,7 +260,7 @@ test("public navigation progressively discloses the Guide, Handbook, Engineering
   assert.equal(catalog.artifacts.find((artifact) => artifact.path === "guide/README.md")?.id, "guide.core");
 
   const numberedGuideSections = [...guide.matchAll(/^## (\d+)\. /gm)].map((match) => Number(match[1]));
-  assert.deepEqual(numberedGuideSections, Array.from({ length: 12 }, (_, index) => index + 1));
+  assert.deepEqual(numberedGuideSections, Array.from({ length: 13 }, (_, index) => index + 1));
   assert.match(guide, /examples\/invoice-exception\/reference-loop\.mjs/);
   assert.match(guide, /examples\/shipment-risk-triage\/shipment-risk-triage\.mjs/);
   assert.match(readme, /examples\/invoice-exception\/reference-loop\.mjs/);

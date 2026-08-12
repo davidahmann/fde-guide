@@ -10,7 +10,7 @@ An independent, open-source guide and engineering kit for forward deployed engin
 [![Latest release](https://img.shields.io/github/v/release/davidahmann/fde-guide)](https://github.com/davidahmann/fde-guide/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-[Read on the web](https://davidahmann.github.io/fde-guide/) · [Read the concise Guide](guide/README.md) · [Use the value scorecard](guide/ai-value-engineering-scorecard.md) · [Build FDE capability](guide/capability-roadmap.md) · [Use the Handbook](playbooks/README.md) · [Run the code](#see-it-working) · [Browse solutions](solutions/README.md) · [Use with an agent](#optional-use-it-with-a-coding-agent)
+[Read on the web](https://davidahmann.github.io/fde-guide/) · [Read the concise Guide](guide/README.md) · [Use the value scorecard](guide/ai-value-engineering-scorecard.md) · [Establish data readiness](library/16-data-readiness-and-context-contracts.md) · [Build FDE capability](guide/capability-roadmap.md) · [Use the Handbook](playbooks/README.md) · [Run the code](#see-it-working) · [Browse solutions](solutions/README.md) · [Use with an agent](#optional-use-it-with-a-coding-agent)
 
 ## Choose your depth
 
@@ -64,6 +64,7 @@ The examples are in-memory teaching systems, not deployable products. Their test
 | --- | --- | --- |
 | Learning, hiring, or capability development | [FDE and AI engineer capability roadmap](guide/capability-roadmap.md) → one practice mission | Role boundaries, capability gaps, starter artifacts, and inspectable evidence without a stack-first curriculum |
 | Business value or use-case selection | [Concise Guide](guide/README.md) → [Discovery and Value](playbooks/01-discovery-and-value.md) | Bounded workflow, baseline, accepted outcome, verifier, value case, guardrails, and decision |
+| Data, context, or knowledge readiness | [Data readiness and context contracts](library/16-data-readiness-and-context-contracts.md) → [assessment](templates/data-readiness-assessment.md) | Decision-bound source inventory, quality thresholds, preparation lineage, output ownership, remediation economics, and operating contract |
 | FDE or internal applied-AI delivery | [Handbook](playbooks/README.md) → current lifecycle stage | Evidence-backed path from observation through adoption, handoff, operation, and field learning |
 | AI engineering or software architecture | [Intelligence selection](library/12-software-architecture-and-intelligence-selection.md) → [blueprints](blueprints/README.md) | Smallest sufficient mechanism, coherent system boundary, contracts, failure behavior, and test plan |
 | Platform, security, release, or reliability | [Security and action boundaries](library/15-production-ai-security-and-action-boundaries.md) → [controls](controls/control-catalog.json) → [release gates](operations/release-gates.md) → [operations](operations/README.md) | Explicit authority, compatible release, telemetry, recovery, change, and retirement evidence |
@@ -76,17 +77,19 @@ The entire repository follows one delivery loop.
 ```mermaid
 flowchart LR
     A["Observe the work"] --> B["Charter value and scope"]
-    B --> C["Select the mechanism"]
-    C --> D["Build one controlled slice"]
-    D --> E["Prove it with cases and users"]
-    E --> F["Launch and transfer ownership"]
-    F --> G["Operate, learn, or retire"]
+    B --> C["Make data fit for the decision"]
+    C --> D["Select the mechanism"]
+    D --> E["Build one controlled slice"]
+    E --> F["Prove it with cases and users"]
+    F --> G["Launch and transfer ownership"]
+    G --> H["Operate, learn, or retire"]
 ```
 
 | Stage | Question | Working artifact |
 | --- | --- | --- |
 | Observe | How does the work really happen, including exceptions and recovery? | [Observation log](templates/field-observation-log.md) and [discovery pack](templates/fde-discovery-pack.md) |
 | Charter | Is the workflow worth changing, and how will an outcome be accepted? | [Workflow charter](templates/workflow-charter.json), [value case](templates/value-case.md), and [AI Value Engineering Scorecard](guide/ai-value-engineering-scorecard.md) |
+| Prepare data | Are the operational, context, evaluation, and feedback sources fit for this decision and affordable to operate? | [Data-readiness assessment](templates/data-readiness-assessment.md) and [data-context manifest](templates/data-context-manifest.json) |
 | Select | Which steps belong in software, optimization, ML, retrieval, a model, an agent, or human review? | [Intelligence-selection record](templates/intelligence-selection-record.md) |
 | Build | What is the smallest end-to-end slice that exercises the real boundaries and work surface? | [Delivery plan](templates/delivery-and-adoption-plan.md), [domain model](templates/operational-ontology.json), and applicable [blueprint](blueprints/README.md) |
 | Prove | Does it work safely, economically, and usefully on representative cases? | [Evaluation cases](templates/evaluation-case.json), user evidence, failure tests, and applicable release record |
@@ -102,11 +105,11 @@ If the workflow has no measurable outcome, credible verifier, accountable owner,
 | [`examples/`](examples/invoice-exception/README.md) | Executable reference runtimes, policies, worlds, evaluation runners, threats, release evidence, and regression tests |
 | [`solutions/`](solutions/README.md) | Business-flow patterns, industry profiles, and horizontal accelerators—design starting points, not deployable products |
 | [`blueprints/`](blueprints/README.md) | Reference architectures with components, trust boundaries, state, failures, telemetry, and release tests |
-| [`templates/`](templates/README.md) | Discovery, value, architecture, domain, evaluation, release, adoption, handoff, and service-review artifacts |
+| [`templates/`](templates/README.md) | Discovery, value, data readiness, architecture, domain, evaluation, release, adoption, handoff, and service-review artifacts |
 | [`controls/`](controls/control-catalog.json) | Machine-readable production requirements and release-gate mappings normative within this guide |
-| [`schemas/`](schemas/README.md) | JSON Schema 2020-12 contracts for governed design, evaluation, capability, handoff, telemetry, and release records |
+| [`schemas/`](schemas/README.md) | JSON Schema 2020-12 contracts for governed data, design, evaluation, capability, handoff, telemetry, and release records |
 | [`patterns/`](patterns/pattern-catalog.json) | Evidence-linked implementation patterns and anti-patterns |
-| [`operations/`](operations/README.md) | Release, telemetry, SLO, incident, behavior-monitoring, change, recovery, and retirement guidance |
+| [`operations/`](operations/README.md) | Release, data quality and drift, telemetry, SLO, incident, behavior-monitoring, change, recovery, and retirement guidance |
 | [`research/`](research/README.md) | Dated sources, portable findings, attribution, and caveats behind changing recommendations |
 | [`scripts/`](scripts/validate-repository.mjs) and [`tests/`](tests/) | Repository validation, semantic invariants, security regressions, release-integrity checks, and executable examples |
 

@@ -1,10 +1,10 @@
 {
   "$schema": "../../schemas/solution-release.schema.json",
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "release_id": "invoice_exception_reference_release",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "release_status": "review",
-  "release_digest": "sha256:47e7844b0830934f5422b9268ad99b5d6ea117cc2ec0e263c8569ceb2f9bf740",
+  "release_digest": "sha256:6c95fee255d9c1049339017ac922f64e5719f843a12cb1ff1a9d0719b19e1398",
   "owner": "reference-release-maintainer",
   "created_at": "2026-08-07T18:00:00Z",
   "workflow_charter_uri": "workflow-charter.json",
@@ -25,11 +25,11 @@
     },
     {
       "role": "data_context",
-      "uri": "agent-system.json",
-      "version": "3.0.0",
-      "schema_version": "1.2.0",
-      "digest": "sha256:75184a3ff435b73268bc23a3ff9b9189f5cefbe7854228669c60951bfaa3cc9d",
-      "change_summary": "Bind the exact declared context sources, revisions, and trust labels."
+      "uri": "data-context-manifest.json",
+      "version": "1.0.0",
+      "schema_version": "1.0.0",
+      "digest": "sha256:adfd7f70e70dac39528f5766f5992a217612cbbb28f8183cc208d5d0b5d85f56",
+      "change_summary": "Bind the four data planes, decision-critical quality, preparation lineage, and operating contract."
     },
     {
       "role": "domain_model",
@@ -44,7 +44,7 @@
       "uri": "agent-system.json",
       "version": "3.0.0",
       "schema_version": "1.2.0",
-      "digest": "sha256:75184a3ff435b73268bc23a3ff9b9189f5cefbe7854228669c60951bfaa3cc9d",
+      "digest": "sha256:682b9cb4519a10df1b585f51fac05d95d5ddb1dc9c3ebf5b58948fb6441db012",
       "change_summary": "Bind the exact workflow topology, authority, and behavior contract."
     },
     {
@@ -52,7 +52,7 @@
       "uri": "behavior-bundle.json",
       "version": "3.0.0",
       "schema_version": "1.0.0",
-      "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941",
+      "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25",
       "change_summary": "Bind the exact runtime, policy, tool, and capability component graph."
     },
     {
@@ -156,7 +156,7 @@
       "uri": "evaluation-report.json",
       "version": "2.0.0",
       "schema_version": "1.0.0",
-      "digest": "sha256:72bbbcfdd1d62386177c2d9770b51c8d436cfade52d86ec511672ceb82b0694d",
+      "digest": "sha256:3edacbf0b1ec3cbfb9dccff91e66408cd7190d2ee83068dd514fc5b15f6bdc64",
       "change_summary": "Bind the isolated deterministic regression claim and raw runner evidence."
     },
     {
@@ -164,7 +164,7 @@
       "uri": "reference-loop.mjs",
       "version": "3.0.0",
       "schema_version": null,
-      "digest": "sha256:06f0e7eed1dbf5b3ce055745fec4065043ee6cf70a91868075bdcfeb6e0fa6b8",
+      "digest": "sha256:1e528dd3191ff7b0abc3c44b01235a100cfc47ceac414aed3223390a94f54b5d",
       "change_summary": "Bind the exact bounded state-machine runtime under review."
     },
     {
@@ -172,7 +172,7 @@
       "uri": "README.md",
       "version": null,
       "schema_version": null,
-      "digest": "sha256:e111d3f7c2e48e50ebd19baed1d56f25b942b07ef597afe7c36ba1b22cb03c99",
+      "digest": "sha256:717f263b6e927be63804875d6c08d668b0a89502f47ef84154dec38e233a4448",
       "change_summary": "Bind the documented operator-facing reference workflow."
     },
     {

@@ -31,6 +31,7 @@ For a deterministic, optimization, or classical-ML-only system, use the target s
 | Field evidence | Representative normal, exception, failure, and handoff cases observed |
 | Workflow charter | User, decision, action, accepted outcome, baseline, target, owner, verifier, risk ceiling, and disposition |
 | Value case | Assumptions, attribution, full cost, guardrails, and stop threshold are falsifiable |
+| Data readiness | Versioned data-context manifest binds four data planes, decision-critical quality, preparation lineage, output obligations, economics, and failure behavior |
 | Operational ontology | Entities, actions, policies, invariants, evidence lineage |
 | System design | Architecture and mechanism records bind behavior, authority, state, failure, and operations; when a foundation-model or agent workflow is selected, the agent-system record is valid against `agent-system.schema.json` |
 | Tool contracts | Valid against `tool-contract.schema.json` |
@@ -39,7 +40,7 @@ For a deterministic, optimization, or classical-ML-only system, use the target s
 | Adoption and ownership | Intended users, professional work surface, review path, receiving service owner, and enablement plan |
 | Economics | Cost/run, cost/accepted-outcome, and realized-value measurement plans |
 
-Controls: `ARC-001`, `ARC-002`, `ARC-003`, `ARC-004`, `ARC-005`, `FDE-001`, `FDE-002`, `FDE-003`, `VAL-001`, `VAL-003`, `CTX-001`, `CTX-004`, `CTX-005`, `TOL-001`, `TOL-003`, `TOL-005`, `TOL-006`, `IAM-001`, `SEC-004`, `REL-004`, `STA-001`, `STA-003`.
+Controls: `ARC-001`, `ARC-002`, `ARC-003`, `ARC-004`, `ARC-005`, `FDE-001`, `FDE-002`, `FDE-003`, `VAL-001`, `VAL-003`, `CTX-001`, `CTX-004`, `CTX-005`, `CTX-006`, `CTX-007`, `CTX-008`, `TOL-001`, `TOL-003`, `TOL-005`, `TOL-006`, `IAM-001`, `SEC-004`, `REL-004`, `STA-001`, `STA-003`.
 
 ## Gate 1 — Sandbox
 
@@ -52,9 +53,10 @@ Controls: `ARC-001`, `ARC-002`, `ARC-003`, `ARC-004`, `ARC-005`, `FDE-001`, `FDE
 | Idempotency | Duplicate delivery produces one business effect |
 | Evaluator boundary | Candidate runtime cannot mutate fixtures, graders, or pass signal |
 | Reference authority | Expected results and expert labels name their source revision, owner, independent approver, adjudication process, and review date |
+| Data pipeline isolation | Preparation versions and lineage are exact; runtime cannot access protected evaluation answers or widen data use |
 | Budget controls | Steps, time, retries, parallelism, and spend terminate safely |
 
-Controls: `ARC-002`, `DEL-002`, `CTX-002`, `CTX-005`, `TOL-001`, `TOL-002`, `TOL-003`, `TOL-004`, `TOL-005`, `TOL-006`, `IAM-001`, `IAM-002`, `IAM-003`, `SEC-001`, `SEC-002`, `SEC-003`, `SEC-005`, `SEC-006`, `SEC-007`, `REL-001`, `REL-002`, `REL-005`, `STA-002`, `EVA-002`, `EVA-007`, `CST-002`.
+Controls: `ARC-002`, `DEL-002`, `CTX-002`, `CTX-005`, `CTX-008`, `TOL-001`, `TOL-002`, `TOL-003`, `TOL-004`, `TOL-005`, `TOL-006`, `IAM-001`, `IAM-002`, `IAM-003`, `SEC-001`, `SEC-002`, `SEC-003`, `SEC-005`, `SEC-006`, `SEC-007`, `REL-001`, `REL-002`, `REL-005`, `STA-002`, `EVA-002`, `EVA-007`, `CST-002`.
 
 ## Gate 2 — Shadow
 
@@ -65,11 +67,12 @@ Controls: `ARC-002`, `DEL-002`, `CTX-002`, `CTX-005`, `TOL-001`, `TOL-002`, `TOL
 | High-severity slice | Meets independent threshold |
 | Trace completeness | `100%` required span/event fields |
 | Retrieval/context | Freshness and provenance SLOs pass where retrieval or governed context is used |
+| Data decision fit | Critical quality, segment coverage, preparation lineage, corrections, and drift meet the admitted manifest |
 | Human review | Evidence packets judged sufficient by named reviewers where review is required |
 | Adoption | Eligible use, completion, override, abandonment, and reviewer load meet predeclared thresholds |
 | Cost | P95 cost/accepted-outcome within budget |
 
-Controls: `ARC-005`, `FDE-003`, `VAL-001`, `ADP-001`, `DEL-001`, `DEL-002`, `CTX-001`, `CTX-002`, `CTX-003`, `CTX-005`, `TOL-002`, `TOL-004`, `TOL-005`, `IAM-002`, `IAM-003`, `SEC-004`, `SEC-005`, `REL-001`, `REL-002`, `REL-003`, `REL-004`, `REL-005`, `STA-001`, `EVA-001`, `EVA-002`, `EVA-003`, `EVA-005`, `EVA-006`, `EVA-007`, `HUM-001`, `HUM-002`, `HUM-003`, `OPS-001`, `OPS-005`, `OPS-007`, `CST-001`, `CST-002`.
+Controls: `ARC-005`, `FDE-003`, `VAL-001`, `ADP-001`, `DEL-001`, `DEL-002`, `CTX-001`, `CTX-002`, `CTX-003`, `CTX-005`, `CTX-006`, `CTX-007`, `CTX-008`, `CTX-009`, `TOL-002`, `TOL-004`, `TOL-005`, `IAM-002`, `IAM-003`, `SEC-004`, `SEC-005`, `REL-001`, `REL-002`, `REL-003`, `REL-004`, `REL-005`, `STA-001`, `EVA-001`, `EVA-002`, `EVA-003`, `EVA-005`, `EVA-006`, `EVA-007`, `HUM-001`, `HUM-002`, `HUM-003`, `OPS-001`, `OPS-005`, `OPS-007`, `CST-001`, `CST-002`.
 
 ## Gate 3 — Canary
 
@@ -83,9 +86,10 @@ Controls: `ARC-005`, `FDE-003`, `VAL-001`, `ADP-001`, `DEL-001`, `DEL-002`, `CTX
 | Customer ownership | Receiving service team has exercised support, incident, change, and rollback procedures |
 | Rollback | Trigger and restoration procedure exercised |
 | Compatibility | Selected mechanism, policy, schema, runtime, and applicable model, prompt, and tool versions are recorded |
+| Data contract | Source, preparation, context, label, output, monitoring, and fallback bindings are exact for the canary segment |
 | Release record | Complete artifact bundle, digests, environment, migration, canary, rollback, and approvals are valid in the target delivery system; a model/agent release also validates against `solution-release.schema.json` |
 
-Controls: `FDE-003`, `VAL-002`, `ADP-001`, `ADP-002`, `DEL-001`, `DEL-002`, `CTX-002`, `SEC-002`, `SEC-006`, `SEC-007`, `REL-003`, `REL-005`, `EVA-001`, `EVA-003`, `EVA-006`, `HUM-001`, `HUM-003`, `OPS-002`, `OPS-004`, `OPS-006`, `OPS-007`.
+Controls: `FDE-003`, `VAL-002`, `ADP-001`, `ADP-002`, `DEL-001`, `DEL-002`, `CTX-002`, `CTX-006`, `CTX-007`, `CTX-008`, `CTX-009`, `SEC-002`, `SEC-006`, `SEC-007`, `REL-003`, `REL-005`, `EVA-001`, `EVA-003`, `EVA-006`, `HUM-001`, `HUM-003`, `OPS-002`, `OPS-004`, `OPS-006`, `OPS-007`.
 
 ## Gate 4 — Autonomy promotion
 
@@ -131,11 +135,12 @@ Controls: `ADP-002`, `DEL-001`, `CTX-004`, `IAM-002`, `IAM-003`, `SEC-005`, `REL
 | --- | --- |
 | Field learning | Evidence, recurrence, confidentiality, owner, destination, disposition, and validation are recorded |
 | Evaluation maintenance | Reference labels remain approved, current, source-bound, and adjudicated; stale or disputed labels are removed from release decisions |
+| Data operation | Source, preparation, output, correction, coverage, and drift conditions remain within the admitted contract or are constrained, replayed, rolled back, or rebaselined |
 | Improvement | Compatible artifacts, affected segments, evaluation evidence, canary, rollback, and post-change outcome check are bound to a new applicable release record |
 | Expansion | Value, adoption, SLO, safety, reviewer capacity, service ownership, and rollback evidence pass for the named segment and effect class |
 | Retirement | Owner, affected users, admission freeze, authority and capability revocation, pending-effect reconciliation, state disposition, communications, and shutdown verification are complete |
 
-Controls: `ARC-005`, `FDE-004`, `VAL-002`, `VAL-003`, `ADP-001`, `ADP-002`, `TOL-006`, `SEC-001`, `SEC-002`, `SEC-004`, `SEC-006`, `SEC-007`, `STA-003`, `EVA-004`, `EVA-005`, `EVA-006`, `EVA-007`, `HUM-002`, `HUM-003`, `OPS-001`, `OPS-002`, `OPS-003`, `OPS-004`, `OPS-005`, `OPS-006`, `OPS-007`, `CST-001`.
+Controls: `ARC-005`, `FDE-004`, `VAL-002`, `VAL-003`, `ADP-001`, `ADP-002`, `CTX-006`, `CTX-007`, `CTX-008`, `CTX-009`, `TOL-006`, `SEC-001`, `SEC-002`, `SEC-004`, `SEC-006`, `SEC-007`, `STA-003`, `EVA-004`, `EVA-005`, `EVA-006`, `EVA-007`, `HUM-002`, `HUM-003`, `OPS-001`, `OPS-002`, `OPS-003`, `OPS-004`, `OPS-005`, `OPS-006`, `OPS-007`, `CST-001`.
 
 The control catalog is the source of truth for these sets. Repository validation compares every list above with each control's `release_gates` membership so documentation drift fails CI.
 

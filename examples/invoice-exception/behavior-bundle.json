@@ -32,7 +32,7 @@
       "configuration": {
         "entrypoint": "runInvoiceException",
         "runtime_uri": "reference-loop.mjs",
-        "runtime_digest": "sha256:06f0e7eed1dbf5b3ce055745fec4065043ee6cf70a91868075bdcfeb6e0fa6b8"
+        "runtime_digest": "sha256:1e528dd3191ff7b0abc3c44b01235a100cfc47ceac414aed3223390a94f54b5d"
       }
     },
     {

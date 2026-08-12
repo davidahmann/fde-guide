@@ -11,13 +11,13 @@ Review one declared release and its claimed authority or autonomy. A green test 
 
 1. Read the [control catalog](../../../controls/control-catalog.json) and [release gates](../../../operations/release-gates.md). When model or agent behavior is selected, also read the [solution-release contract](../../../schemas/solution-release.schema.json).
 2. Resolve guide artifacts through [catalog.json](../../../catalog.json). Resolve model/agent candidate artifacts through the solution-release manifest; for a deterministic, optimization, or classical-ML-only system, use its target-software release record and equivalent architecture, test, provenance, deployment, rollback, and operating evidence without placeholder agent artifacts.
-3. Use the target workflow charter, value case, system design, tools, threat model, adoption plan, operations evidence, and rollback plan. Require a behavior bundle, capability manifest, and evaluation report only when they apply; otherwise require the target software equivalents.
+3. Use the target workflow charter, value case, data-context manifest, system design, tools, threat model, adoption plan, operations evidence, and rollback plan. Require a behavior bundle, capability manifest, and evaluation report only when they apply; otherwise require the target software equivalents.
 4. If the release claims a solution artifact, resolve it through the [solution portfolio](../../../solutions/README.md) and read only the selected business-flow pattern and optional vertical profile. Verify customer-specific gaps and non-claims; a design accelerator is not release evidence.
 
 ## Workflow
 
 1. State the exact release, workflow segment, actor mode, authority ceiling, environment, and decision being reviewed.
-2. Check value and ownership, architecture and state, solution-profile deviations, context and data, identity and authorization, tool and capability boundaries, security, reliability, evaluation, human review, adoption, operations, cost, change, and retirement.
+2. Check value and ownership, architecture and state, solution-profile deviations, data planes and decision fit, preparation and labels, output ownership, context, identity and authorization, tool and capability boundaries, security, reliability, evaluation, human review, adoption, operations, cost, change, and retirement.
 3. For each applicable control, record `met`, `gap`, or `not applicable`, the evidence, owner, and expiry or review date. Never infer evidence from intent or documentation alone.
 4. Separate release blockers from time-bounded remediation, improvement, and accepted residual risk. Name the approving principal for every accepted risk.
 5. For a model/agent release, decide `hold`, `reject`, or approve the declared `shadow`, `canary`, `bounded_segment`, or `full_segment` rollout strategy, then state any permitted manifest status change. Otherwise decide against the target software's declared rollout and lifecycle vocabulary. Bind either decision to exact artifact versions and digests.

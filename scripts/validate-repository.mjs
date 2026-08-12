@@ -31,6 +31,7 @@ import {
 } from "./contract-invariants.mjs";
 import {
   capabilityManifestSemanticErrors,
+  dataContextManifestSemanticErrors,
   effectReceiptSemanticErrors,
   handoffEnvelopeSemanticErrors,
   operationalOntologySemanticErrors,
@@ -502,6 +503,9 @@ for (const [file, tool] of documents) {
 for (const [file, report] of documents) {
   if (report?.assessment_id && report?.hard_gates && Array.isArray(report?.factors)) {
     for (const error of valueScorecardSemanticErrors(report, relative(file))) fail(error);
+  }
+  if (report?.context_manifest_id && Array.isArray(report?.data_planes) && Array.isArray(report?.sources)) {
+    for (const error of dataContextManifestSemanticErrors(report, relative(file))) fail(error);
   }
   if (report?.case_id && report?.reference_authority && report?.expected) {
     for (const error of evaluationCaseSemanticErrors(report, relative(file))) fail(error);
@@ -1027,6 +1031,7 @@ const referenceSchemas = new Map([
   ["agent_system", "schemas/agent-system.schema.json"],
   ["behavior_bundle", "schemas/behavior-bundle.schema.json"],
   ["capability_manifest", "schemas/capability-manifest.schema.json"],
+  ["data_context", "schemas/data-context-manifest.schema.json"],
   ["evaluation_case", "schemas/evaluation-case.schema.json"],
   ["evaluation_output", "schemas/evaluation-output.schema.json"],
   ["evaluation", "schemas/evaluation-report.schema.json"],
@@ -1785,8 +1790,22 @@ for (const [file, release] of documents) {
   }
   const candidateDataContextPath = candidateReleaseArtifactPaths("data_context")[0];
   const candidateDataContext = documents.get(candidateDataContextPath);
-  if (!candidateDataContext?.context
-    || canonicalJson(candidateDataContext.context) !== canonicalJson(candidateAgent?.context)) {
+  const candidateDataSources = new Map((candidateDataContext?.sources ?? []).map((source) => [source.source_id, source]));
+  const candidateContextProjection = (candidateAgent?.context?.sources ?? []).map((source) => {
+    const declared = candidateDataSources.get(source.source_id);
+    return declared && {
+      source_id: declared.source_id,
+      owner: declared.owner,
+      source_of_truth: declared.source_of_truth,
+      revision: declared.contract.revision,
+      schema_contract: { id: declared.contract.schema_id, version: declared.contract.version, digest: declared.contract.digest },
+      freshness_slo_seconds: declared.contract.freshness_slo_seconds,
+      classification: declared.classification,
+      trust: declared.trust,
+    };
+  });
+  if (candidateContextProjection.some((source) => !source)
+    || canonicalJson(candidateContextProjection) !== canonicalJson(candidateAgent?.context?.sources ?? [])) {
     fail(`${relative(file)} data_context artifact does not bind the agent system source, schema, revision, trust, and freshness context`);
   }
 
@@ -1988,8 +2007,22 @@ for (const [file, release] of documents) {
 
   const dataContextPath = releaseArtifactPaths("data_context")[0];
   const dataContext = documents.get(dataContextPath);
-  if (!dataContext?.context
-    || canonicalJson(dataContext.context) !== canonicalJson(agent?.context)) {
+  const dataSources = new Map((dataContext?.sources ?? []).map((source) => [source.source_id, source]));
+  const contextProjection = (agent?.context?.sources ?? []).map((source) => {
+    const declared = dataSources.get(source.source_id);
+    return declared && {
+      source_id: declared.source_id,
+      owner: declared.owner,
+      source_of_truth: declared.source_of_truth,
+      revision: declared.contract.revision,
+      schema_contract: { id: declared.contract.schema_id, version: declared.contract.version, digest: declared.contract.digest },
+      freshness_slo_seconds: declared.contract.freshness_slo_seconds,
+      classification: declared.classification,
+      trust: declared.trust,
+    };
+  });
+  if (contextProjection.some((source) => !source)
+    || canonicalJson(contextProjection) !== canonicalJson(agent?.context?.sources ?? [])) {
     fail(`${relative(file)} data_context artifact does not bind the agent system source, schema, revision, trust, and freshness context`);
   }
 

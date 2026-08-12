@@ -171,6 +171,38 @@
       "release_gates": ["design", "sandbox", "shadow"]
     },
     {
+      "id": "CTX-006",
+      "domain": "context",
+      "level": "MUST",
+      "requirement": "Every consequential workflow MUST bind its eligible population and decision to a versioned data-context manifest that separates operational, knowledge/context, evaluation/training, and telemetry/feedback uses and records source location, owner, purpose, authority, grain, keys, time semantics, schema, revision, freshness, access, retention, deletion, and output-data obligations.",
+      "evidence": ["R26-14", "R26-67"],
+      "release_gates": ["design", "shadow", "canary", "operations"]
+    },
+    {
+      "id": "CTX-007",
+      "domain": "context",
+      "level": "MUST",
+      "requirement": "Decision-critical data MUST be profiled against owned thresholds for completeness, validity, uniqueness, consistency, timeliness, eligible-population coverage, and representativeness as applicable, with explicit behavior for missing, stale, conflicting, corrected, and late-arriving data and segment-level constraints when thresholds fail.",
+      "evidence": ["R26-14", "R26-47"],
+      "release_gates": ["design", "shadow", "canary", "operations"]
+    },
+    {
+      "id": "CTX-008",
+      "domain": "context",
+      "level": "MUST",
+      "requirement": "Preparation, reconciliation, indexing, feature, and label pipelines MUST retain source and transformation lineage, exact implementation versions, validation and correction behavior, reference authority, and independent label approval where applicable; derived data MUST NOT silently become source-of-truth policy, authorization, runtime instruction, or training consent.",
+      "evidence": ["R26-47", "R26-53", "R26-67"],
+      "release_gates": ["design", "sandbox", "shadow", "canary", "operations"]
+    },
+    {
+      "id": "CTX-009",
+      "domain": "context",
+      "level": "MUST",
+      "requirement": "Production operation MUST monitor decision-critical source, schema, permission, freshness, quality, coverage, lineage, correction, output-record, and drift conditions by applicable segment and MUST route breaches to owned stop, fallback, reconciliation, replay, rollback, or rebaseline behavior.",
+      "evidence": ["R26-07", "R26-17", "R26-51"],
+      "release_gates": ["shadow", "canary", "operations"]
+    },
+    {
       "id": "TOL-001",
       "domain": "tools",
       "level": "MUST",

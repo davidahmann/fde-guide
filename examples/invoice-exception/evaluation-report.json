@@ -32,37 +32,37 @@
   "system": {
     "agent_system_uri": "agent-system.json",
     "system_version": "3.0.0",
-    "system_digest": "sha256:75184a3ff435b73268bc23a3ff9b9189f5cefbe7854228669c60951bfaa3cc9d",
+    "system_digest": "sha256:682b9cb4519a10df1b585f51fac05d95d5ddb1dc9c3ebf5b58948fb6441db012",
     "component_manifest": [
       {
         "role": "model_route",
         "component_id": "invoice_model_route",
         "version": "3.0.0",
-        "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+        "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
       },
       {
         "role": "prompt_bundle",
         "component_id": "invoice_prompt_bundle",
         "version": "1.0.0",
-        "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+        "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
       },
       {
         "role": "tool_bundle",
         "component_id": "invoice_tool_bundle",
         "version": "3.0.0",
-        "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+        "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
       },
       {
         "role": "context_policy",
         "component_id": "invoice_context_policy",
         "version": "3.0.0",
-        "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+        "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
       },
       {
         "role": "guardrail_bundle",
         "component_id": "invoice_guardrail_policy",
         "version": "3.0.0",
-        "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+        "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
       }
     ],
     "environment": {
@@ -71,12 +71,12 @@
         "uri": "reference-loop.mjs",
         "version": "3.0.0",
         "schema_version": null,
-        "digest": "sha256:06f0e7eed1dbf5b3ce055745fec4065043ee6cf70a91868075bdcfeb6e0fa6b8"
+        "digest": "sha256:1e528dd3191ff7b0abc3c44b01235a100cfc47ceac414aed3223390a94f54b5d"
       },
       "harness": {
         "component_id": "invoice_harness",
         "version": "3.0.0",
-        "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+        "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
       },
       "sandbox": {
         "component_id": "local-node-host-process",
@@ -109,9 +109,9 @@
         {
           "component_id": "node-dependency-lock",
           "uri": "../../package-lock.json",
-          "version": "1.15.0",
+          "version": "1.16.0",
           "schema_version": null,
-          "digest": "sha256:a49d5f44f4a587b45b1d32cbf5e82013fd42acbcebb06b6451026fc9ee364bf0"
+          "digest": "sha256:fa2d356263393ce3c6dae835b6328d0371151a8cccd0b3d7510fedadc90ae3ad"
         },
         {
           "component_id": "invoice-ontology",
@@ -125,7 +125,7 @@
           "uri": "behavior-bundle.json",
           "version": "3.0.0",
           "schema_version": "1.0.0",
-          "digest": "sha256:876279fdfc0a812e2936f4b60410a6d5d8b18a5ebddf71a737e94f6568d81941"
+          "digest": "sha256:ebe51e05f22df7ffe48461f4d6d761a4808cfd985f0a8eae5e32294da0a85d25"
         },
         {
           "component_id": "tool-read_invoice",
@@ -219,6 +219,13 @@
           "digest": "sha256:9565fbd85246295cf572f37d14cdb6d2692566deb72a89c7b660894498da6c91"
         },
         {
+          "component_id": "invoice-data-context-manifest",
+          "uri": "data-context-manifest.json",
+          "version": "1.0.0",
+          "schema_version": "1.0.0",
+          "digest": "sha256:adfd7f70e70dac39528f5766f5992a217612cbbb28f8183cc208d5d0b5d85f56"
+        },
+        {
           "component_id": "invoice-threat-model",
           "uri": "threat-model.json",
           "version": null,
@@ -233,7 +240,7 @@
           "digest": "sha256:6be09a856d1e40d69cf21a3147b686df866c474a4241ed3b24405347cd03eb97"
         }
       ],
-      "environment_digest": "sha256:949563341a09618a0f6fc6447d715f9cd8e78aa75986229d8ef5050ae49f8a17",
+      "environment_digest": "sha256:3a34e6e7fd807222817222395b91e1fbb353d6c478c83ef71e7b6343886eebbd",
       "network_mode": "unenforced"
     }
   },
@@ -269,7 +276,7 @@
       "uri": "evaluation-output.json",
       "version": null,
       "schema_version": "1.0.0",
-      "digest": "sha256:450962bd99ceaee85fde8717264f4161425a6193e5124d4a351066c525d149fc"
+      "digest": "sha256:fb2f1a775384ea7499c936233463c0c17710766a6db126858e2ce0fb94c4f44a"
     },
     "minimum_confidence": 1
   },

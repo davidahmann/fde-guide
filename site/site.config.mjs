@@ -26,6 +26,7 @@ export const navigation = [
     routes: [
       "/ai-value-engineering/",
       "/ai-value-engineering-scorecard/",
+      "/ai-data-readiness/",
       "/ai-workflows-vs-agents/",
       "/production-ai-agent-architecture/",
       "/workflow-automation-examples/",
@@ -100,6 +101,14 @@ export const pages = [
     title: "AI Value Engineering Scorecard: 12 Factors and 4 Hard Gates",
     description:
       "Assess one AI-enabled workflow across twelve value factors and four hard gates, then record a bounded pilot or lifecycle decision.",
+  },
+  {
+    route: "/ai-data-readiness/",
+    source: "library/16-data-readiness-and-context-contracts.md",
+    navTitle: "AI data readiness",
+    title: "AI Data Readiness: Context, Quality, Lineage, and Drift",
+    description:
+      "A decision-bound data readiness method for operational data, AI context, evaluation evidence, preparation lineage, output ownership, and production drift.",
   },
   {
     route: "/ai-workflows-vs-agents/",

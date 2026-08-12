@@ -1,7 +1,7 @@
 {
   "$schema": "./schemas/artifact-catalog.schema.json",
   "schema_version": "1.1.0",
-  "updated": "2026-08-11",
+  "updated": "2026-08-12",
   "artifacts": [
     {
       "id": "guide.core",
@@ -56,6 +56,18 @@
       "type": "template",
       "path": "templates/ai-value-engineering-scorecard.json",
       "tags": ["value", "scorecard", "gates", "decision"]
+    },
+    {
+      "id": "template.data-readiness-assessment",
+      "type": "template",
+      "path": "templates/data-readiness-assessment.md",
+      "tags": ["data", "context", "readiness", "quality"]
+    },
+    {
+      "id": "template.data-context-manifest",
+      "type": "template",
+      "path": "templates/data-context-manifest.json",
+      "tags": ["data", "context", "lineage", "release"]
     },
     {
       "id": "template.intelligence-selection",
@@ -262,6 +274,12 @@
       "tags": ["value", "scorecard", "evidence", "decision"]
     },
     {
+      "id": "schema.data-context-manifest",
+      "type": "schema",
+      "path": "schemas/data-context-manifest.schema.json",
+      "tags": ["data", "context", "quality", "lineage"]
+    },
+    {
       "id": "schema.agent-system",
       "type": "schema",
       "path": "schemas/agent-system.schema.json",
@@ -344,6 +362,12 @@
       "type": "blueprint",
       "path": "blueprints/bounded-retrieval-agent.md",
       "tags": ["retrieval", "read-only", "evidence"]
+    },
+    {
+      "id": "blueprint.data-preparation-context",
+      "type": "blueprint",
+      "path": "blueprints/data-preparation-and-context-pipeline.md",
+      "tags": ["data", "preparation", "context", "lineage"]
     },
     {
       "id": "blueprint.transactional-write",
@@ -536,6 +560,12 @@
       "type": "standard",
       "path": "operations/behavior-monitoring.md",
       "tags": ["monitoring", "security", "behavior", "containment"]
+    },
+    {
+      "id": "operations.data-quality-drift",
+      "type": "standard",
+      "path": "operations/data-quality-and-drift.md",
+      "tags": ["data", "quality", "drift", "operations"]
     },
     {
       "id": "operations.capability-supply-chain",

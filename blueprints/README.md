@@ -5,6 +5,7 @@
 | Condition | Default |
 | --- | --- |
 | Fixed steps, enumerated branches, deterministic rules | Deterministic workflow |
+| Decision-critical sources need profiling, preparation, reconciliation, lineage, or drift controls | [Data preparation and context pipeline](data-preparation-and-context-pipeline.md) |
 | One workflow needs deliberate routing between rules, optimization, ML, retrieval, foundation models, and human review | [Hybrid intelligence system](hybrid-intelligence-system.md) |
 | Variable evidence path, read-only outcome, reliable sufficiency test | [Bounded retrieval agent](bounded-retrieval-agent.md) |
 | External mutation, policy constraints, approval or rollback | [Transactional write agent](transactional-write-agent.md) |
@@ -26,6 +27,7 @@ Use only the artifacts justified by the selected decision mechanisms. The curren
 | --- | --- |
 | Workflow discovery | [`templates/fde-discovery-pack.md`](../templates/fde-discovery-pack.md) |
 | Workflow and value decision | [`schemas/workflow-charter.schema.json`](../schemas/workflow-charter.schema.json) |
+| Data readiness and context contract | [`schemas/data-context-manifest.schema.json`](../schemas/data-context-manifest.schema.json) |
 | Intelligence selection | [`templates/intelligence-selection-record.md`](../templates/intelligence-selection-record.md) |
 | System-boundary decision | [`templates/architecture-decision-record.md`](../templates/architecture-decision-record.md) |
 | Operational ontology | [`schemas/operational-ontology.schema.json`](../schemas/operational-ontology.schema.json) |

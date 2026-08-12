@@ -59,7 +59,8 @@ Minimum coverage:
 
 | Layer | Signals |
 | --- | --- |
-| Sources | Freshness, completeness, schema, permission, lineage, reconciliation |
+| Sources | Freshness, completeness, validity, uniqueness, consistency, schema, permission, lineage, reconciliation |
+| Data decision fit | Eligible-population and segment coverage, representativeness, correction latency, preparation health, output ownership, drift |
 | Context | Retrieval sufficiency, provenance, trust, cache age, memory invalidation |
 | Behavior | Model/prompt/route versions, tool selection, steps, stop reasons, refusal and escalation |
 | Capabilities | Contract errors, denials, latency, rate limit, credential and egress policy |
@@ -73,6 +74,8 @@ Minimum coverage:
 Model-call traces alone cannot explain a stale source, broken policy, unusable interface, or failed business effect. Palantir's observability guidance similarly spans data, functions, actions, agents, traces, logs, and alerts. [R26-46]
 
 Control: `OPS-006`.
+
+Follow the [data quality and drift operating contract](../operations/data-quality-and-drift.md) for source, preparation, label, output, correction, rebaseline, rollback, and retirement decisions. `CTX-009`.
 
 ## 4. Close the production learning loop
 

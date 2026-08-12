@@ -7,6 +7,7 @@ Use these artifacts after design begins—not only after launch. They define how
 | Decide whether to promote | [Release gates](release-gates.md) | Evidence-backed hold, shadow, canary, bounded-production, or autonomy decision |
 | Define runtime evidence | [Telemetry contract](telemetry-contract.md) | Trace, effect, version, identity, outcome, and cost events |
 | Set service targets | [SLO scorecard](slo-scorecard.md) | Segment-specific objectives, budgets, capacity, and recovery policy |
+| Operate data readiness | [Data quality and drift](data-quality-and-drift.md) | Source, quality, lineage, correction, drift, rebaseline, and retirement decisions |
 | Contain and recover | [Incident runbook](incident-runbook.md) | Scoped containment, reconciliation, regression, ownership, and re-enable decision |
 | Change behavior safely | [Change management](change-management.md) | Compatible release bundle, evaluation report, canary, rollback, and post-change decision |
 | Keep dependency views useful | [Map freshness and change impact](map-freshness-and-change-impact.md) | Derived maps with source provenance, freshness, impact review, and no shadow authority |
