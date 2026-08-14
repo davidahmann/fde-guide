@@ -599,12 +599,12 @@ test("ontology identity keys resolve to declared attributes", async () => {
 test("pattern catalogs require unique IDs, defined evidence, and ordered current review dates", async () => {
   const fixture = await json("patterns/pattern-catalog.json");
   const evidenceIds = new Set(fixture.patterns.flatMap((pattern) => pattern.evidence).filter((id) => !id.startsWith("internal-")));
-  const reviewDate = new Date("2026-08-11T12:00:00Z");
+  const reviewDate = new Date("2026-08-14T12:00:00Z");
   assert.deepEqual(patternCatalogErrors(fixture, evidenceIds, "fixture", reviewDate), []);
 
   fixture.patterns[1].id = fixture.patterns[0].id;
   fixture.patterns[0].evidence = ["R26-99"];
-  fixture.patterns[0].reviewed_at = "2026-08-12";
+  fixture.patterns[0].reviewed_at = "2026-08-15";
   fixture.patterns[1].review_due = "2026-08-06";
   const errors = patternCatalogErrors(fixture, evidenceIds, "fixture", reviewDate);
   assert.ok(errors.some((error) => error.includes("duplicates pattern ID")));
