@@ -354,13 +354,13 @@
       "status": "accepted",
       "maturity": "normative",
       "applies_when": ["multiple agents share the same context, tools, permissions, and sequential workflow"],
-      "implementation": ["replace with one bounded agent or deterministic workflow unless an admission criterion is met"],
-      "control_ids": ["ARC-001", "ARC-003", "REL-004"],
-      "failure_signals": ["coordination cost, duplicated work, unresolved conflicts, and cancellation leaks"],
-      "verification": ["single-agent baseline is measured before decomposition"],
-      "evidence": ["R26-10", "R26-29", "R26-31"],
-      "reviewed_at": "2026-08-07",
-      "review_due": "2027-02-07"
+      "implementation": ["replace with one bounded agent or deterministic workflow unless an admission criterion is met", "admit a topology only when repeated, matched-budget evaluation on representative work beats the simpler control without unresolved authority or merge ambiguity"],
+      "control_ids": ["ARC-001", "ARC-003", "ARC-004", "REL-004"],
+      "failure_signals": ["coordination cost, duplicated work, unresolved conflicts, cancellation leaks, or regression against the simpler baseline"],
+      "verification": ["deterministic or coded-workflow and single-agent baselines are measured before decomposition and retained as controls after behavior or topology changes"],
+      "evidence": ["R26-10", "R26-29", "R26-31", "R26-75"],
+      "reviewed_at": "2026-08-14",
+      "review_due": "2027-02-14"
     },
     {
       "id": "ANTI-006",

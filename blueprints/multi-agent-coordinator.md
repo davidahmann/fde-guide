@@ -11,6 +11,18 @@ At least one MUST be true:
 
 Before admission, run the same representative suite through a serial single-agent or deterministic baseline. Record task success, safety, latency, cost, review load, and failure isolation. Parallel or specialist decomposition is accepted only when the measured benefit exceeds coordination cost and introduces no unresolved authority or merge ambiguity (`ARC-004`).
 
+## Measured topology selection
+
+Treat published thresholds as priors, not release gates. A 2026 controlled study found that a single-agent baseline near 45% was useful for predicting zero-to-negative multi-agent gains within the tested domains, but the result does not generalize into a universal cutoff. Low baseline performance alone also does not justify fan-out. [R26-75](../research/2026-08-14--multi-agent-topology-selection.md#r26-75)
+
+For every candidate topology:
+
+- Keep deterministic, coded-workflow, and serial single-agent paths as live controls.
+- Hold the representative cases, prompts, tools, and total compute budget constant; use repeated trials where model behavior is selected.
+- Start sequentially dependent work on the serial path. Test fan-out only when work decomposes cleanly or workers need genuinely different context, permissions, tools, ownership, specialization, or latency.
+- Compare accepted outcome, safety, latency, full cost, review load, and failure isolation—not final-answer quality alone.
+- Rerun the comparison after changing the model, prompt, context policy, tool set, topology, or verifier, and retire coordination when it no longer wins.
+
 ## Components
 
 ```mermaid
@@ -111,7 +123,7 @@ The atomic claim is the execution admission record. A concurrent or post-restart
 11. Successful root and nested consumption through authoritative parent and recipient resolution.
 12. Concurrent and post-restart replay returns `already_claimed` without second admission.
 13. Unavailable verifier or atomic claim service fails closed.
-14. Serial baseline comparison and admission decision.
+14. Matched-budget serial baseline comparison and topology admission or retirement decision.
 15. Malformed, over-scoped, stale, and tainted context-handoff rejection.
 
 ## Controls

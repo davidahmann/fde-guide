@@ -4,6 +4,8 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+- Add controlled evidence and matched-budget guidance for admitting, selecting, re-evaluating, and retiring multi-agent topologies without treating a benchmark threshold as a universal release gate.
+
 ## [1.16.0] - 2026-08-12
 
 - Add a decision-scoped data-readiness method that separates operational, knowledge/context, evaluation/training, and telemetry/feedback planes across discovery, design, evaluation, release, and operation.

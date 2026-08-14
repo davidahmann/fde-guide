@@ -115,6 +115,8 @@ Do not formalize a large graph before observing real traces. Start with a capabl
 
 Multi-agent design is not automatically more capable. It is useful when tasks are truly independent, specialists need different context or tools, or parallel work reduces elapsed time. Hex's effort to unify notebook and thread agents around a common harness, tool bundles, and context harvesting suggests that shared infrastructure matters more than agent count. [S02]
 
+A 2026 controlled evaluation reinforces this selection rule rather than supplying a universal topology. Across 260 matched configurations, multi-agent performance ranged from +80.8% on decomposable financial analysis to −70.0% on sequential planning, while the overall mean change was −0.3%. A single-agent score near 45% was useful as a within-domain selection heuristic, not a release gate. Keep the simpler path as a live control, compare total budgets on representative work, and retire coordination when it no longer earns its cost. [R26-75](../research/2026-08-14--multi-agent-topology-selection.md#r26-75)
+
 ## Event-sourced execution
 
 The event-sourced workshop and HumanLayer's stateless-reducer principle converge on a useful runtime shape:
