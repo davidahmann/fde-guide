@@ -1,5 +1,7 @@
 # Production Release Gates
 
+Use the [production service readiness template](../templates/production-service-readiness.md) to assemble target-specific evidence, owners, gaps, and next proof across the gates below. The template does not replace the exact release record or gate decision.
+
 ## Gate progression
 
 ```text

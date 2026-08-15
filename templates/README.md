@@ -49,6 +49,7 @@ Copy the smallest set needed for one workflow, replace the example values with e
 | --- | --- |
 | [Delivery and adoption plan](delivery-and-adoption-plan.md) | How the vertical slice, acceptance, rollout, enablement, and ownership transfer will run |
 | [Solution release](solution-release.json) | Which compatible model- or agent-system artifact bundle is approved for which segment and rollout |
+| [Production service readiness](production-service-readiness.md) | Which target-specific service boundaries are required, designed, tested, operational, unresolved, or inapplicable before rollout or handoff |
 | [Customer enablement handoff](customer-enablement-handoff.md) | Whether the receiving team can operate, change, recover, and retire the service |
 | [Production service review](production-service-review.md) | Whether to expand, constrain, pause, improve, or retire the live workflow |
 | [FDE and applied-AI portfolio review](fde-portfolio-review.md) | How to compare stage flow, accepted value, continuation, full delivery economics, reuse, and capacity across multiple workflows without overriding service gates |

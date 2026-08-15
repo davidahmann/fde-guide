@@ -81,7 +81,7 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 | Change a schema | Schema → matching template → cataloged examples → contract tests | Compatible structure or an explicit migration, plus positive and negative tests |
 | Fix executable behavior | Example design → tool contracts → threat model and evals → implementation and tests | Root-cause fix with a replayable regression case |
 | Build a hybrid decision system | [Hybrid blueprint](blueprints/hybrid-intelligence-system.md) → [Shipment-risk walkthrough](examples/shipment-risk-triage/README.md) → selection record → route-specific contracts and tests | Versioned prediction, deterministic policy, optional model aid, human review, and outcome/cost evidence without unnecessary agency |
-| Review production readiness | [Control catalog](controls/control-catalog.json) → [release gates](operations/release-gates.md) → target artifacts and traces | Evidence-backed gaps, release decision, rollback conditions, and owners |
+| Review production readiness | [Control catalog](controls/control-catalog.json) → [release gates](operations/release-gates.md) → [production service readiness](templates/production-service-readiness.md) → target artifacts and traces | Evidence-backed gaps, release decision, rollback conditions, and owners |
 | Transfer a customer solution | [Delivery and adoption plan](templates/delivery-and-adoption-plan.md) → [customer handoff](templates/customer-enablement-handoff.md) → [Operate and Scale](playbooks/03-operate-and-scale.md) | Named service ownership and exercised support, evaluation, change, incident, rollback, and retirement capabilities |
 | Run a service review | [Production service review](templates/production-service-review.md) → [SLO scorecard](operations/slo-scorecard.md) → [behavior monitoring](operations/behavior-monitoring.md) → [change management](operations/change-management.md) | Outcome, adoption, reliability, safety, cost, change, ownership, and retirement decisions |
 | Update changing guidance | [Research policy](research/README.md) → dated primary source → affected pattern, control, or library page | Attributed claim, caveat, review date, and linked implementation impact |
@@ -108,8 +108,9 @@ Create the smallest complete design packet in this order:
 13. Realistic [`templates/evaluation-case.json`](templates/evaluation-case.json) cases with source-bound reference authority, followed by finalized threat-to-test mappings
 14. Reproducible target-system evaluation evidence; when model or agent behavior is selected, bind it in [`templates/evaluation-report.json`](templates/evaluation-report.json)
 15. Versioned target software-release evidence against [`operations/release-gates.md`](operations/release-gates.md); when model or agent behavior is selected, use [`templates/solution-release.json`](templates/solution-release.json) to bind the evaluated data context, behavior bundle, tools, capabilities, and other release artifacts
-16. Finalized customer handoff before delivery-team exit
-17. Recurring [`templates/production-service-review.md`](templates/production-service-review.md) after launch; add [`templates/fde-portfolio-review.md`](templates/fde-portfolio-review.md) only when comparing multiple workflows
+16. [`templates/production-service-readiness.md`](templates/production-service-readiness.md) bound to target evidence before rollout or customer handoff
+17. Finalized customer handoff before delivery-team exit
+18. Recurring [`templates/production-service-review.md`](templates/production-service-review.md) after launch; add [`templates/fde-portfolio-review.md`](templates/fde-portfolio-review.md) only when comparing multiple workflows
 
 Do not begin with multi-agent topology or framework selection. First establish the observed workflow, accepted outcome, baseline, verifier, source systems, permissions, adoption path, accountable service owner, and maximum tolerable effect.
 

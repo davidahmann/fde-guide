@@ -201,7 +201,7 @@ Start adoption and handoff during the pilot. The receiving team should pair on e
 
 Predeclare the pilot's maximum duration, evidence cutoff, and separate technical, operator, adoption, value, economics, and production-readiness graduation gates. A demo should not quietly become production because it impressed a sponsor.
 
-**Use in the repository:** [Solution Design and Delivery](../playbooks/02-solution-and-delivery.md), [delivery and adoption plan](../templates/delivery-and-adoption-plan.md), and [customer handoff](../templates/customer-enablement-handoff.md).
+**Use in the repository:** [Solution Design and Delivery](../playbooks/02-solution-and-delivery.md), [delivery and adoption plan](../templates/delivery-and-adoption-plan.md), [production service readiness](../templates/production-service-readiness.md), and [customer handoff](../templates/customer-enablement-handoff.md).
 
 ## 9. Prove claims on representative work
 
