@@ -49,6 +49,7 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - Computer-use action boundary: [blueprints/computer-use-action-boundary.md](blueprints/computer-use-action-boundary.md)
 - Hybrid intelligence-system design: [blueprints/hybrid-intelligence-system.md](blueprints/hybrid-intelligence-system.md)
 - Starter design artifacts: [templates/README.md](templates/README.md)
+- Production service readiness: [templates/production-service-readiness.md](templates/production-service-readiness.md)
 - Intelligence selection record: [templates/intelligence-selection-record.md](templates/intelligence-selection-record.md)
 - Machine-readable contracts: [schemas/README.md](schemas/README.md)
 - Evaluation-case and reference-authority contract: [schemas/evaluation-case.schema.json](schemas/evaluation-case.schema.json)

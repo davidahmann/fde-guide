@@ -4,6 +4,9 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.17.0] - 2026-08-15
+
+- Add a control-backed production service readiness packet that separates required, unresolved, designed, tested, operational, and inapplicable evidence without creating a composite score or mandating databases, caches, queues, or horizontal scaling for every workflow.
 - Add controlled evidence and matched-budget guidance for admitting, selecting, re-evaluating, and retiring multi-agent topologies without treating a benchmark threshold as a universal release gate.
 
 ## [1.16.0] - 2026-08-12
@@ -156,7 +159,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.16.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.17.0...HEAD
+[1.17.0]: https://github.com/davidahmann/fde-guide/compare/v1.16.0...v1.17.0
 [1.16.0]: https://github.com/davidahmann/fde-guide/compare/v1.15.0...v1.16.0
 [1.15.0]: https://github.com/davidahmann/fde-guide/compare/v1.14.0...v1.15.0
 [1.14.0]: https://github.com/davidahmann/fde-guide/compare/v1.13.0...v1.14.0
