@@ -1,7 +1,7 @@
 {
   "name": "fde-guide",
-  "version": "1.17.0",
-  "description": "An FDE and applied AI engineering guide for measurable value and production systems.",
+  "version": "1.18.0",
+  "description": "An FDE and applied AI engineering guide for field discovery, accountable adaptation, measurable value, and production systems.",
   "private": true,
   "license": "Apache-2.0",
   "author": {
@@ -47,6 +47,7 @@
     "test:solutions": "node --test tests/reference-solutions.test.mjs",
     "test:value-framework": "node --test tests/value-engineering-framework.test.mjs",
     "test:data-readiness": "node --test tests/data-readiness.test.mjs",
+    "test:field-practice": "node --test tests/field-engagement.test.mjs",
     "test:production-readiness": "node --test tests/production-service-readiness.test.mjs",
     "test:skills": "node --test tests/skills.test.mjs",
     "test:policy": "node --test examples/invoice-exception/authorization-policy.test.mjs",
@@ -54,7 +55,7 @@
     "test:evals": "node --test examples/invoice-exception/run-evals.test.mjs",
     "test:hybrid": "node --test examples/shipment-risk-triage/shipment-risk-triage.test.mjs",
     "test:site": "npm run build:site && node --test tests/site.test.mjs",
-    "test": "npm run validate && npm run test:markdown && npm run test:paths && npm run test:repository && npm run test:contracts && npm run test:tool-security && npm run test:telemetry && npm run test:governance && npm run test:release-integrity && npm run test:release-gates && npm run test:solutions && npm run test:value-framework && npm run test:data-readiness && npm run test:production-readiness && npm run test:skills && npm run test:policy && npm run test:reference && npm run test:evals && npm run test:hybrid && npm run test:site"
+    "test": "npm run validate && npm run test:markdown && npm run test:paths && npm run test:repository && npm run test:contracts && npm run test:tool-security && npm run test:telemetry && npm run test:governance && npm run test:release-integrity && npm run test:release-gates && npm run test:solutions && npm run test:value-framework && npm run test:data-readiness && npm run test:field-practice && npm run test:production-readiness && npm run test:skills && npm run test:policy && npm run test:reference && npm run test:evals && npm run test:hybrid && npm run test:site"
   },
   "devDependencies": {
     "ajv": "8.20.0",

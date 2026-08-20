@@ -11,7 +11,7 @@ Evaluate the product claim in its real environment, not an isolated model answer
 
 1. Read [Evaluation Corpus and Review Loops](../../../library/09-evaluation-corpus-and-review-loops.md) and the [release gates](../../../operations/release-gates.md).
 2. When model or agent behavior is selected, use the [evaluation-case](../../../templates/evaluation-case.json) and [evaluation-report](../../../templates/evaluation-report.json) contracts. For a deterministic, optimization, or classical-ML-only system, use an equivalent target-software evaluation record; do not create placeholder model or agent artifacts.
-3. Inspect the target system, threat model, workflow charter, [data-context manifest](../../../templates/data-context-manifest.json), selected components, tools, operating budgets, and real failure history. Inspect the behavior bundle only when one applies.
+3. Confirm the tested boundary is current and has no unresolved material reframe. Inspect the target system, threat model, workflow charter, [data-context manifest](../../../templates/data-context-manifest.json), selected components, tools, operating budgets, and real failure history. Inspect the behavior bundle only when one applies.
 4. If the declared design uses a solution artifact, resolve it through the [solution portfolio](../../../solutions/README.md) and read only the selected business-flow pattern and optional vertical profile. Use acceptance, operating, and non-claim sections as case seeds; they are not evaluation evidence.
 5. Apply `EVA-001` through `EVA-006`, `SEC-004`, `REL-002`, `OPS-004`, and `CST-002` from the [control catalog](../../../controls/control-catalog.json).
 

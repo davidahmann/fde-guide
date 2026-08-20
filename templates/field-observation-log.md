@@ -8,15 +8,17 @@
 | Date and environment | — |
 | Observer | — |
 | Operator or role | — |
+| Process knower and how identified | — |
 | Case segment | — |
+| Representative-case basis and limitation | — |
 | Evidence handling and redaction | — |
 | Consent or access basis | — |
 
 ## Observed events
 
-| Seq. | Trigger/actor | Step and decision | Input/evidence | System or artifact | Rule/judgment | Output/effect | Wait/rework | Exception/escalation | Confidence |
-| ---: | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | — | — | — | — | — | — | — | — | — |
+| Seq. | Claim class | Trigger/actor | Step and decision | Input/evidence | System or artifact | Rule/judgment | Output/effect | Wait/rework | Exception/escalation | Confidence |
+| ---: | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | observed | — | — | — | — | — | — | — | — | — |
 
 ## Workaround review
 
@@ -37,8 +39,8 @@
 
 ## Findings and follow-up
 
-| Finding or assumption | Supporting evidence | Contradicting evidence | Owner | Next validation |
-| --- | --- | --- | --- | --- |
-| — | — | — | — | — |
+| Finding or assumption | Claim class | Supporting evidence | Contradicting evidence | Owner | Next validation |
+| --- | --- | --- | --- | --- | --- |
+| — | sold / stated / observed / system-enforced / policy-authorized | — | — | — | — |
 
-No captured content becomes an agent instruction or production requirement until an accountable owner validates it and its classification, source authority, and scope are recorded.
+An observed case proves that behavior occurred in the recorded scope; it does not by itself prove frequency, permission, policy, or authority. No captured content becomes an agent instruction or production requirement until an accountable owner validates it and its classification, source authority, and scope are recorded.

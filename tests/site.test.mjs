@@ -35,7 +35,7 @@ test("the capability roadmap is a bounded secondary entry layer", async () => {
   for (const heading of [
     "## Choose the responsibility, not the title",
     "## The capability map",
-    "## Four practice missions",
+    "## Five practice missions",
     "## The quick-start engagement pack",
     "## Concise glossary",
   ]) {

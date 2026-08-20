@@ -16,6 +16,9 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 - Governed-artifact registry: [catalog.json](catalog.json)
 - Production controls: [controls/control-catalog.json](controls/control-catalog.json)
 - End-to-end FDE lifecycle: [playbooks/README.md](playbooks/README.md)
+- Field engagement and accountable reframing: [playbooks/00-field-engagement-and-reframing.md](playbooks/00-field-engagement-and-reframing.md)
+- Engagement-reframe record: [templates/engagement-reframe.json](templates/engagement-reframe.json)
+- Engagement-reframe contract: [schemas/engagement-reframe.schema.json](schemas/engagement-reframe.schema.json)
 - FDE and applied AI engineering synthesis: [library/10-fde-and-production-agent-synthesis.md](library/10-fde-and-production-agent-synthesis.md)
 - Discovery and value: [playbooks/01-discovery-and-value.md](playbooks/01-discovery-and-value.md)
 - Twelve-factor AI value framework: [library/14-twelve-factors-ai-value-engineering.md](library/14-twelve-factors-ai-value-engineering.md)
@@ -76,6 +79,7 @@ Read [AGENTS.md](AGENTS.md) before modifying this repository.
 ## Optional task skills
 
 - Qualify a workflow: [.agents/skills/qualify-ai-workflow/SKILL.md](.agents/skills/qualify-ai-workflow/SKILL.md)
+- Reframe a contradicted engagement: [.agents/skills/reframe-ai-engagement/SKILL.md](.agents/skills/reframe-ai-engagement/SKILL.md)
 - Engineer the value case: [.agents/skills/engineer-ai-value/SKILL.md](.agents/skills/engineer-ai-value/SKILL.md)
 - Select the smallest sufficient mechanism: [.agents/skills/select-ai-mechanism/SKILL.md](.agents/skills/select-ai-mechanism/SKILL.md)
 - Design a production system: [.agents/skills/design-production-ai-system/SKILL.md](.agents/skills/design-production-ai-system/SKILL.md)

@@ -8,9 +8,9 @@ authors:
 repository-code: "https://github.com/davidahmann/fde-guide"
 url: "https://github.com/davidahmann/fde-guide"
 license: Apache-2.0
-version: 1.17.0
-date-released: 2026-08-15
-abstract: "Value engineering and production architecture for FDEs and applied-AI teams: workflow discovery, data readiness, operational solution patterns, software architecture, controls, evaluation contracts, runbooks, executable references, and optional task skills."
+version: 1.18.0
+date-released: 2026-08-20
+abstract: "Field discovery, accountable adaptation, value engineering, and production architecture for FDEs and applied-AI teams: evidence-backed reframing, data readiness, solution patterns, controls, evaluations, runbooks, executable references, and optional task skills."
 keywords:
   - AI agents
   - agent engineering

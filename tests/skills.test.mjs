@@ -14,6 +14,7 @@ const expectedSkills = new Map([
   ["operate-ai-service", ["slo", "incident", "cost"]],
   ["productize-field-learning", ["customer-specific", "recurrence", "reusable"]],
   ["qualify-ai-workflow", ["discovery", "workflow", "verifier"]],
+  ["reframe-ai-engagement", ["inherited", "process knower", "disposition"]],
   ["review-ai-production-readiness", ["release", "evidence", "rollback"]],
   ["secure-ai-action-boundary", ["identity", "authorization", "idempotency"]],
   ["select-ai-mechanism", ["deterministic", "ml", "agent"]],
@@ -27,6 +28,7 @@ const expectedProgressiveRoutes = new Map([
   ["operate-ai-service", ["../../../library/14-twelve-factors-ai-value-engineering.md", "../../../solutions/README.md"]],
   ["productize-field-learning", ["../../../solutions/README.md", "when evidence suggests that destination"]],
   ["qualify-ai-workflow", ["../../../library/14-twelve-factors-ai-value-engineering.md", "../../../solutions/business-flows/README.md"]],
+  ["reframe-ai-engagement", ["../../../solutions/README.md", "not target evidence"]],
   ["review-ai-production-readiness", ["../../../solutions/README.md", "not release evidence"]],
   ["secure-ai-action-boundary", ["../../../solutions/README.md", "not authorization policy"]],
   ["select-ai-mechanism", ["../../../solutions/README.md", "not target policy or evidence"]],
@@ -50,7 +52,7 @@ function quotedYamlValue(body, key) {
   return match[1];
 }
 
-test("the repository exposes exactly ten focused FDE and AI engineering skills", async () => {
+test("the repository exposes exactly eleven focused FDE and AI engineering skills", async () => {
   const directories = (await readdir(skillsRoot, { withFileTypes: true }))
     .filter((entry) => entry.isDirectory())
     .map((entry) => entry.name)
@@ -160,6 +162,25 @@ test("qualification and value engineering have distinct lifecycle triggers", asy
   assert.match(quotedYamlValue(qualificationUi, "default_prompt"), /before value modeling or solution design/i);
   assert.match(quotedYamlValue(valueUi, "short_description"), /bounded or live AI workflow/i);
   assert.match(quotedYamlValue(valueUi, "default_prompt"), /bounded workflow or its continued live operation/i);
+});
+
+test("qualification, engagement reframing, and value engineering have distinct field triggers", async () => {
+  const [qualificationText, reframeText, valueText, reframeUi] = await Promise.all([
+    readFile(path.join(skillsRoot, "qualify-ai-workflow", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "reframe-ai-engagement", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "engineer-ai-value", "SKILL.md"), "utf8"),
+    readFile(path.join(skillsRoot, "reframe-ai-engagement", "agents", "openai.yaml"), "utf8"),
+  ]);
+  const qualification = parseFrontmatter(qualificationText).metadata.description;
+  const reframe = parseFrontmatter(reframeText).metadata.description;
+  const value = parseFrontmatter(valueText).metadata.description;
+
+  assert.match(qualification, /before value modeling or solution design/i);
+  assert.match(reframe, /field evidence materially contradicts the sold brief or current boundary/i);
+  assert.match(value, /already bounded AI-enabled workflow/i);
+  assert.doesNotMatch(reframe, /production (?:release|readiness|approval)/i);
+  assert.match(quotedYamlValue(reframeUi, "short_description"), /field evidence/i);
+  assert.match(quotedYamlValue(reframeUi, "default_prompt"), /scoped human disposition/i);
 });
 
 test("qualification, value engineering, and production review use bounded decision vocabularies", async () => {

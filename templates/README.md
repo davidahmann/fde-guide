@@ -7,6 +7,7 @@ Copy the smallest set needed for one workflow, replace the example values with e
 | Template | Decision it supports |
 | --- | --- |
 | [Field-observation log](field-observation-log.md) | What people actually do, including exceptions and workarounds |
+| [Engagement reframe](engagement-reframe.json) | Whether field evidence justifies a scoped change to the inherited brief and which dependent work must be reviewed or superseded |
 | [FDE discovery pack](fde-discovery-pack.md) | Whether the workflow is bounded, owned, verifiable, and ready |
 | [Workflow charter](workflow-charter.json) | Whether to discover, pilot, defer, do not build, promote, pause, or retire the workflow |
 | [AI Value Engineering Scorecard](ai-value-engineering-scorecard.json) | Whether the four hard gates and twelve factors support a bounded pilot or lifecycle decision |

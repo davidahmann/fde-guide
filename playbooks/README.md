@@ -8,7 +8,8 @@ Use these playbooks to move one customer or internal workflow from an important 
 
 ```mermaid
 flowchart LR
-    Q["Qualify"] --> D["Discover"]
+    I["Inherit and reframe"] --> Q["Qualify"]
+    Q --> D["Discover"]
     D --> C["Charter"]
     C --> S["Design"]
     S --> B["Build"]
@@ -22,6 +23,7 @@ flowchart LR
 
 | Stage | Primary question | Required output | Decision |
 | --- | --- | --- | --- |
+| Inherit and reframe | What was sold, what actually happens, and who may change the boundary? | Current field brief, representative evidence, engagement-reframe record, safe fallback, and next field move | Continue discovery, bounded kickoff, defer, or stop |
 | Qualify | Is this problem important, owned, bounded, and verifiable? | Candidate brief and gate result | Discover, defer, or do not build |
 | Discover | How does the work actually happen, including exceptions and workarounds? | Observation log, current-state workflow, source map, exception set | Charter or stop |
 | Charter | Which outcome, segment, verifier, value hypothesis, and risk ceiling define success? | [Workflow charter](../templates/workflow-charter.json) and [value case](../templates/value-case.md) | Pilot, defer, or do not build |
@@ -35,9 +37,10 @@ flowchart LR
 
 ## Read in order
 
-1. [Discovery and value](01-discovery-and-value.md)
-2. [Solution design and delivery](02-solution-and-delivery.md)
-3. [Operate and scale](03-operate-and-scale.md)
+1. [Field engagement and accountable reframing](00-field-engagement-and-reframing.md)
+2. [Discovery and value](01-discovery-and-value.md)
+3. [Solution design and delivery](02-solution-and-delivery.md)
+4. [Operate and scale](03-operate-and-scale.md)
 
 The [production implementation playbook](../library/07-production-implementation-playbook.md) remains the detailed technical release sequence. These FDE playbooks add customer discovery, value, adoption, ownership, and field-to-product learning around it.
 
@@ -46,6 +49,7 @@ The [production implementation playbook](../library/07-production-implementation
 | Artifact | Purpose |
 | --- | --- |
 | [Field-observation log](../templates/field-observation-log.md) | Record actual work, evidence, exceptions, and workarounds |
+| [Engagement-reframe record](../templates/engagement-reframe.json) | Preserve the inherited brief, competing claims, scoped disposition, chronology, and selective propagation |
 | [FDE discovery pack](../templates/fde-discovery-pack.md) | Map workflow, sources, decisions, exceptions, and readiness |
 | [Workflow charter](../templates/workflow-charter.json) | Bind problem, scope, outcome, value, readiness, owners, and decision |
 | [Value case](../templates/value-case.md) | Separate estimated, measured, and realized value |
@@ -57,4 +61,4 @@ The [production implementation playbook](../library/07-production-implementation
 | [FDE and applied-AI portfolio review](../templates/fde-portfolio-review.md) | Compare stage flow, accepted value, continuation, full delivery economics, reuse, and capacity across multiple workflows without overriding service gates |
 | [Field-learning register](../templates/field-learning-register.md) | Route validated field evidence into customer configuration, product change, shared pattern, or retirement |
 
-Controls `FDE-001` through `FDE-004`, `VAL-001` through `VAL-003`, `ADP-001` through `ADP-002`, and `DEL-001` through `DEL-002` define the lifecycle baseline within this guide.
+Controls `FDE-001` through `FDE-005`, `VAL-001` through `VAL-003`, `ADP-001` through `ADP-002`, and `DEL-001` through `DEL-002` define the lifecycle baseline within this guide.

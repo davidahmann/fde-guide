@@ -849,3 +849,63 @@ export function dataContextManifestSemanticErrors(manifest, label = "data contex
   }
   return errors;
 }
+
+export function engagementReframeSemanticErrors(record, label = "engagement reframe") {
+  const errors = [];
+  const claims = new Map();
+  for (const duplicate of duplicateValues((record?.claims ?? []).map((claim) => claim.claim_id))) {
+    errors.push(`${label} duplicates claim ${duplicate}`);
+  }
+  for (const claim of record?.claims ?? []) claims.set(claim.claim_id, claim);
+
+  for (const duplicate of duplicateValues((record?.conflicts ?? []).map((conflict) => conflict.conflict_id))) {
+    errors.push(`${label} duplicates conflict ${duplicate}`);
+  }
+  for (const conflict of record?.conflicts ?? []) {
+    const classes = new Set();
+    for (const claimId of conflict.claim_ids ?? []) {
+      const claim = claims.get(claimId);
+      if (!claim) errors.push(`${label} conflict ${conflict.conflict_id} references unknown claim ${claimId}`);
+      else classes.add(claim.class);
+    }
+    if (classes.size < 2) errors.push(`${label} conflict ${conflict.conflict_id} does not preserve distinct evidence classes`);
+  }
+
+  const authority = record?.roles?.disposition_authority;
+  if (record?.disposition) {
+    if (authority?.status !== "verified") errors.push(`${label} records a disposition without verified disposition authority`);
+    if (record.disposition.actor !== authority?.identity) errors.push(`${label} disposition actor is not the named disposition authority`);
+  }
+  if (record?.proposal?.status === "accepted") {
+    if (!record.disposition) errors.push(`${label} accepts a proposal without a scoped human disposition`);
+    if ((record?.conflicts ?? []).some((conflict) => conflict.state === "open")) {
+      errors.push(`${label} accepts a proposal while a recorded conflict remains open`);
+    }
+  }
+
+  for (const duplicate of duplicateValues((record?.downstream_impacts ?? []).map((impact) => impact.artifact_id))) {
+    errors.push(`${label} duplicates downstream artifact ${duplicate}`);
+  }
+  for (const impact of record?.downstream_impacts ?? []) {
+    for (const claimId of impact.depends_on_claim_ids ?? []) {
+      if (!claims.has(claimId)) errors.push(`${label} impact ${impact.artifact_id} references unknown claim ${claimId}`);
+    }
+    if (impact.action === "supersede" && (impact.depends_on_claim_ids ?? []).length === 0) {
+      errors.push(`${label} supersedes ${impact.artifact_id} without a claim dependency`);
+    }
+  }
+
+  const chronology = record?.chronology ?? [];
+  for (const duplicate of duplicateValues(chronology.map((event) => event.event_id))) {
+    errors.push(`${label} duplicates chronology event ${duplicate}`);
+  }
+  for (let index = 1; index < chronology.length; index += 1) {
+    if (Date.parse(chronology[index].occurred_at) < Date.parse(chronology[index - 1].occurred_at)) {
+      errors.push(`${label} chronology is not ordered at ${chronology[index].event_id}`);
+    }
+  }
+  for (const controlId of ["FDE-001", "FDE-002", "FDE-005"]) {
+    if (!(record?.control_ids ?? []).includes(controlId)) errors.push(`${label} omits control ${controlId}`);
+  }
+  return errors;
+}

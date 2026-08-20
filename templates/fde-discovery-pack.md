@@ -1,5 +1,23 @@
 # FDE Discovery Pack
 
+## Inherited story and accountable field roles
+
+Preserve the brief as received before improving or reconciling it. Treat it as an evidence-bearing hypothesis, not current truth.
+
+| Inherited claim | Exact source and revision | Sold, stated, or assumed | Commercial status | Limitation or unknown |
+| --- | --- | --- | --- | --- |
+| | | | | |
+
+| Role | Named person or explicit unknown | Evidence or authority basis | Scope | Verified by |
+| --- | --- | --- | --- | --- |
+| Sponsor | | | | |
+| Process knower | | | | |
+| Operator | | | | |
+| Disposition authority | | | | |
+| Independent verifier | | | | |
+
+Do not infer the process knower, operator, disposition authority, or verifier from the sponsor. One person may hold multiple roles only when each role has a separate, recorded basis.
+
 ## Engagement charter
 
 | Field | Value |
@@ -32,6 +50,20 @@ Use the machine-readable [workflow-charter template](workflow-charter.json) for 
 | Evidence ID | Method | Case/segment | Date | Source owner | Redaction/classification | Observation supported | Limitation |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | | Interview / shadow / recording / event log / artifact / metric | | | | | | |
+
+## Field claim comparison and accountable reframe
+
+| Claim ID | Class | Statement | Exact source and owner | Scope and limitation | Contradiction or missing evidence | Currentness |
+| --- | --- | --- | --- | --- | --- | --- |
+| | sold / stated / observed / system-enforced / policy-authorized | | | | | current / contested / superseded |
+
+No claim class universally outranks another or grants authority. Observation proves occurrence in scope; system testing proves exact-build behavior; policy remains normative within its revision and scope; a stakeholder assertion proves only that it was stated.
+
+| Material conflict | Affected boundary or outcome | Safe fallback while unresolved | Proposed reframe | Required disposition and authority | Next field move |
+| --- | --- | --- | --- | --- | --- |
+| | | | | continue discovery / bounded kickoff / defer / stop | find owner / observe case / resolve cited conflict |
+
+When field evidence materially changes the brief, use the machine-readable [engagement-reframe record](engagement-reframe.json) to preserve the competing claims, scoped decision, selective downstream impact, and chronology.
 
 ## Workflow event log
 
@@ -136,7 +168,7 @@ Copy these seven dimensions and their evidence into `workflow-charter.readiness`
 | Operator or domain expert | | Better evidence, reduced rework, or faster exception handling | Review, correct, escalate, or pause | Shadow comparison, training, feedback, and workload measures | |
 | Product or applied-AI team | | Reusable capability or reduced delivery friction | Preserve the customer-specific boundary and own shared changes | Sanitized recurrence evidence and release decision | |
 
-Controls: `FDE-002`, `FDE-003`, `FDE-004`, `ADP-001`, `CTX-001`, `CTX-002`.
+Controls: `FDE-001`, `FDE-002`, `FDE-003`, `FDE-004`, `FDE-005`, `ADP-001`, `CTX-001`, `CTX-002`.
 
 ## Cutover plan
 

@@ -9,7 +9,7 @@ Translate an approved workflow into the smallest coherent software system. Prese
 
 ## Read first
 
-1. Confirm the workflow charter, value case, data-readiness assessment, data-context manifest, and intelligence-selection record are complete enough to design.
+1. Confirm the current engagement boundary has no unresolved material reframe, then verify that the workflow charter, value case, data-readiness assessment, data-context manifest, and intelligence-selection record are complete enough to design.
 2. Read [Solution Design and Delivery](../../../playbooks/02-solution-and-delivery.md), the [solution portfolio](../../../solutions/README.md), the [production implementation playbook](../../../library/07-production-implementation-playbook.md), and the [blueprint selector](../../../blueprints/README.md).
 3. Select at most one business-flow pattern, one optional vertical profile, and one primary horizontal foundation. Record `none` for the pattern or foundation when no artifact fits; do not force a composition. Read only selected artifacts and treat them as design accelerators, not target evidence.
 4. Follow the canonical artifact order in [AGENTS.md](../../../AGENTS.md).
