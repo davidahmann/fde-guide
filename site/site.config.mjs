@@ -4,7 +4,7 @@ export const site = {
   url: "https://davidahmann.github.io/fde-guide",
   repository: "https://github.com/davidahmann/fde-guide",
   description:
-    "A practical forward deployed engineering guide for measurable value and production AI systems.",
+    "A practical forward deployed engineering guide for field discovery, accountable adaptation, measurable value, and production AI systems.",
   author: {
     name: "David Ahmann",
     url: "https://www.linkedin.com/in/dahmann/",
@@ -19,6 +19,12 @@ export const navigation = [
       "/forward-deployed-engineering/",
       "/forward-deployed-engineer-roadmap/",
       "/fde-operating-model/",
+    ],
+  },
+  {
+    label: "Field practice",
+    routes: [
+      "/field-engagement-reframing/",
     ],
   },
   {
@@ -76,7 +82,15 @@ export const pages = [
     navTitle: "FDE capability roadmap",
     title: "Forward Deployed Engineer Roadmap: Skills, Missions, and Evidence",
     description:
-      "A practical capability roadmap for forward deployed and applied AI engineers, with role boundaries, four missions, starter artifacts, and a glossary.",
+      "A practical capability roadmap for forward deployed and applied AI engineers, with role boundaries, five missions, starter artifacts, and a glossary.",
+  },
+  {
+    route: "/field-engagement-reframing/",
+    source: "playbooks/00-field-engagement-and-reframing.md",
+    navTitle: "Field engagement and reframing",
+    title: "FDE Field Engagement: Reframe a Brief with Evidence",
+    description:
+      "A practical FDE method for finding the process knower, reconciling field contradictions, obtaining scoped decisions, and changing direction without erasing history.",
   },
   {
     route: "/fde-operating-model/",

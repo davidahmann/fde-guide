@@ -11,6 +11,7 @@ The current agent-system, evaluation-report, and solution-release contracts are 
 | [System-map manifest](system-map-manifest.schema.json) | Derived software/operational views, provenance, freshness, classification, and prohibited authority uses |
 | [Change-impact assessment](change-impact-assessment.schema.json) | Material-change scope, impacts, validation, review, promotion, and rollback evidence |
 | [Workflow charter](workflow-charter.schema.json) | Problem, scope, outcome, value, readiness, owners, and disposition |
+| [Engagement reframe](engagement-reframe.schema.json) | Inherited brief, accountable field roles, competing claims, material conflicts, scoped disposition, selective propagation, and chronology |
 | [AI Value Engineering Scorecard](ai-value-engineering-scorecard.schema.json) | Four hard gates, twelve evidence scores, bounded decisions, owners, and review timing |
 | [Data-context manifest](data-context-manifest.schema.json) | Four data planes, source authority, quality, preparation lineage, labels, output records, economics, and operations |
 | [Operational ontology](operational-ontology.schema.json) | Domain entities, relationships, policies, actions, and invariants |

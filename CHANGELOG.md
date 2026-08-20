@@ -4,6 +4,12 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.18.0] - 2026-08-20
+
+- Add a field-engagement method that preserves the inherited brief, separates sponsor, process-knower, operator, disposition-authority, and verifier roles, and reconciles sold, stated, observed, system-enforced, and policy-authorized claims.
+- Add a governed engagement-reframe contract, canonical template, worked field case, semantic validation, and fail-closed regression tests for scoped dispositions, selective downstream propagation, and immutable chronology.
+- Add a focused reframing skill and connect the field loop across discovery templates, playbooks, capability guidance, public navigation, repository controls, and downstream value, design, and evaluation entry gates.
+
 ## [1.17.0] - 2026-08-15
 
 - Add a control-backed production service readiness packet that separates required, unresolved, designed, tested, operational, and inapplicable evidence without creating a composite score or mandating databases, caches, queues, or horizontal scaling for every workflow.
@@ -159,7 +165,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.17.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.18.0...HEAD
+[1.18.0]: https://github.com/davidahmann/fde-guide/compare/v1.17.0...v1.18.0
 [1.17.0]: https://github.com/davidahmann/fde-guide/compare/v1.16.0...v1.17.0
 [1.16.0]: https://github.com/davidahmann/fde-guide/compare/v1.15.0...v1.16.0
 [1.15.0]: https://github.com/davidahmann/fde-guide/compare/v1.14.0...v1.15.0

@@ -271,6 +271,9 @@ export function classifyReference(candidate, allowedExternalSchemes) {
 
 export function governedDocumentSchema(document) {
   if (!document || typeof document !== "object" || Array.isArray(document)) return null;
+  if (document.record_id && document.inherited_brief && document.roles && Array.isArray(document.claims)) {
+    return "schemas/engagement-reframe.schema.json";
+  }
   if (document.assessment_id && document.hard_gates && Array.isArray(document.factors)) {
     return "schemas/ai-value-engineering-scorecard.schema.json";
   }
@@ -319,6 +322,7 @@ export function expectedDocumentSchema(repositoryPath, document = null) {
     ["evaluation-case.json", "schemas/evaluation-case.schema.json"],
     ["evaluation-output.json", "schemas/evaluation-output.schema.json"],
     ["evaluation-report.json", "schemas/evaluation-report.schema.json"],
+    ["engagement-reframe.json", "schemas/engagement-reframe.schema.json"],
     ["handoff-envelope.json", "schemas/handoff-envelope.schema.json"],
     ["operational-ontology.json", "schemas/operational-ontology.schema.json"],
     ["threat-model.json", "schemas/threat-model.schema.json"],

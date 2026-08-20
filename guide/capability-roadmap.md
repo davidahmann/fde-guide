@@ -26,13 +26,14 @@ The work moves through one operating loop. Software, data, security, product jud
 
 ```mermaid
 flowchart LR
-    O["Observe the work"] --> V["Engineer value"]
+    A["Reconcile the field"] --> O["Observe the work"]
+    O --> V["Engineer value"]
     V --> M["Select the mechanism"]
     M --> B["Build and integrate"]
     B --> P["Prove and release"]
     P --> R["Operate and transfer"]
     R --> L["Productize learning"]
-    L --> O
+    L --> A
 
     F["Software · data · security · product · communication"] --- O
     F --- M
@@ -42,6 +43,7 @@ flowchart LR
 
 | Capability | You can do the work when you can… | Inspectable evidence |
 | --- | --- | --- |
+| Field leadership and accountable adaptation | Preserve an inherited brief, find the process knower, reconcile sponsor, operator, policy, and system evidence, and obtain a scoped disposition without rewriting history | [Field playbook](../playbooks/00-field-engagement-and-reframing.md), [engagement-reframe record](../templates/engagement-reframe.json), decision evidence |
 | Workflow discovery | Reconstruct real cases, exceptions, workarounds, actors, sources, decisions, and recovery without treating interviews as proof | [Observation log](../templates/field-observation-log.md), [discovery pack](../templates/fde-discovery-pack.md), owner validation |
 | Value and product judgment | Define the eligible population, baseline, accepted outcome, verifier, full cost, guardrails, adoption path, and stop decision | [Workflow charter](../templates/workflow-charter.json), [value case](../templates/value-case.md), [12 Factors](../library/14-twelve-factors-ai-value-engineering.md) |
 | Software and data architecture | Establish domain state, four data planes, decision-fit quality, preparation lineage, source-of-truth boundaries, integration contracts, failure ownership, change paths, and supportability | [Data-readiness assessment](../templates/data-readiness-assessment.md), [data-context manifest](../templates/data-context-manifest.json), [operational ontology](../templates/operational-ontology.json), [architecture decision](../templates/architecture-decision-record.md), [blueprints](../blueprints/README.md) |
@@ -53,11 +55,24 @@ flowchart LR
 
 Breadth matters, but no one must be the deepest specialist in every domain. A strong practitioner recognizes missing expertise, assigns owners, exposes assumptions, and prevents an unowned gap from becoming hidden production risk.
 
-## Four practice missions
+## Five practice missions
 
 Use these missions in order when learning the method. On real work, enter at the current lifecycle stage and preserve prior evidence. A repository exercise demonstrates reasoning and implementation technique; it does not substitute for production experience, user acceptance, or target-system approval.
 
-### Mission 1: qualify a real workflow
+### Mission 1: rescue an inherited brief
+
+Choose a request whose sold or stated workflow can be tested against actual work.
+
+1. Preserve the inherited claims and exact source passages.
+2. Separately verify the sponsor, process knower, operator, disposition authority, and verifier.
+3. Observe one representative case and a material exception.
+4. Compare sold, stated, observed, system-enforced, and policy-authorized claims.
+5. Propose a bounded reframe and safe fallback, then record `continue_discovery`, `bounded_kickoff`, `defer`, or `stop` from the scoped authority.
+6. Preserve chronology and update only dependency-linked work.
+
+**Finish with:** an [engagement-reframe record](../templates/engagement-reframe.json) another person can trace from inherited claim to field evidence, disposition, and next move.
+
+### Mission 2: qualify a real workflow
 
 Choose one bounded workflow you can observe. Do not begin with an agent idea.
 
@@ -69,7 +84,7 @@ Choose one bounded workflow you can observe. Do not begin with an agent idea.
 
 **Finish with:** an [observation log](../templates/field-observation-log.md), [workflow charter](../templates/workflow-charter.json), and [value case](../templates/value-case.md) another person can challenge.
 
-### Mission 2: design the smallest sufficient system
+### Mission 3: design the smallest sufficient system
 
 Use the [shipment-risk walkthrough](../examples/shipment-risk-triage/README.md) as a reference for separating mechanisms.
 
@@ -81,7 +96,7 @@ Use the [shipment-risk walkthrough](../examples/shipment-risk-triage/README.md) 
 
 **Finish with:** an [intelligence-selection record](../templates/intelligence-selection-record.md), architecture decision, domain model, and a tested slice whose complexity is justified by the workflow.
 
-### Mission 3: secure and verify a consequential action
+### Mission 4: secure and verify a consequential action
 
 Use the [invoice-exception reference](../examples/invoice-exception/README.md) to inspect a controlled write.
 
@@ -94,7 +109,7 @@ Use the [invoice-exception reference](../examples/invoice-exception/README.md) t
 
 **Finish with:** executable positive and adversarial tests, an explicit threat model, and a release claim no broader than the tested behavior.
 
-### Mission 4: operate and transfer the service
+### Mission 5: operate and transfer the service
 
 Treat launch as the start of a recurring decision.
 
@@ -112,6 +127,7 @@ Do not copy every template before the workflow earns that complexity. Start with
 
 | Decision | Start with | Add when needed |
 | --- | --- | --- |
+| Is the inherited brief still defensible? | [Engagement-reframe record](../templates/engagement-reframe.json) | Decision brief and selective change-impact record when field evidence conflicts |
 | What work is changing? | [Observation log](../templates/field-observation-log.md) | Discovery pack for stakeholder, source, constraint, and readiness detail |
 | Is it worth changing? | [Workflow charter](../templates/workflow-charter.json) and [value case](../templates/value-case.md) | Adoption evidence, attribution design, portfolio comparison |
 | What should make each decision? | [Intelligence-selection record](../templates/intelligence-selection-record.md) | Architecture decisions, domain model, system map, applicable blueprint |
@@ -125,6 +141,7 @@ This pack is an orientation subset, not a production-complete packet. Use the fu
 Whether reviewing yourself, a candidate, or a delivery team, ask for decisions and evidence rather than tool-name recall.
 
 - Can they reconstruct a workflow from cases and recognize when not to build?
+- Can they find the real process knower, expose a sponsor/operator/policy conflict, and change direction without erasing history or inventing authority?
 - Can they connect an accepted outcome to a verifier, value case, and accountable owner?
 - Can they choose a smaller mechanism than an agent when it is sufficient?
 - Can they explain source, identity, tenant, authority, failure, and recovery boundaries?

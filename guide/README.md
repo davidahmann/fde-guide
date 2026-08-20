@@ -6,7 +6,7 @@ This is the concise human guide to forward-deployed engineering and internal app
 
 **Reading time:** about 20 minutes. This guide is narrative orientation, not a production standard or a substitute for the target organization's policy, security, architecture, or risk review.
 
-If you are learning the role, planning a development path, or assessing a team, use the companion [FDE and AI Engineer Capability Roadmap](capability-roadmap.md). It turns this method into role boundaries, capability evidence, four practice missions, a quick-start pack, and a glossary without creating a second methodology.
+If you are learning the role, planning a development path, or assessing a team, use the companion [FDE and AI Engineer Capability Roadmap](capability-roadmap.md). It turns this method into role boundaries, capability evidence, five practice missions, a quick-start pack, and a glossary without creating a second methodology.
 
 ## 1. What an FDE is responsible for
 
@@ -29,8 +29,8 @@ The guide uses one lifecycle throughout. Do not create a parallel method for eac
 
 ```mermaid
 flowchart LR
-    A["Observe the work"] --> B["Charter value and scope"]
-    B --> C["Make data fit for the decision"]
+    A["Inherit the brief"] --> B["Observe and reconcile the work"]
+    B --> C["Charter value and scope"]
     C --> D["Select the mechanism"]
     D --> E["Build one controlled slice"]
     E --> F["Prove it with cases and users"]
@@ -43,6 +43,7 @@ Each stage ends in a decision and evidence that another person can inspect:
 
 | Stage | Decision | Minimum evidence |
 | --- | --- | --- |
+| Inherit and reconcile | Is the brief still a defensible boundary? | Exact inherited claims, separately verified roles, representative case, conflicting evidence, safe fallback, scoped disposition, and next field move |
 | Observe | Is this the real workflow and decision boundary? | Representative cases, exceptions, actors, systems, workarounds, and owner validation |
 | Charter | Is the workflow worth changing? | Baseline, accepted outcome, verifier, eligible population, attribution, guardrails, value hypothesis, and risk ceiling |
 | Prepare data | Are the sources fit for this decision? | Four data planes, source authority, quality thresholds, preparation lineage, output ownership, remediation economics, and failure behavior |
@@ -55,6 +56,10 @@ Each stage ends in a decision and evidence that another person can inspect:
 Stopping, narrowing, or redesigning weak work is a valid result. A strong model score, sponsor, renewal, launch, or usage number cannot average away a failed value, authority, safety, ownership, or production gate.
 
 ## 3. Observe the work before designing the system
+
+An architect can begin once the operating boundary is sufficiently accepted. An FDE often has to discover and renegotiate that boundary first. Treat the inherited brief as a hypothesis: preserve what was sold, find the process knower through recent work and exceptions, compare sponsor claims with operator practice, system behavior, and policy, then obtain a scoped disposition before changing dependent work.
+
+When field evidence materially contradicts the brief, use [Field Engagement and Accountable Reframing](../playbooks/00-field-engagement-and-reframing.md) and the [engagement-reframe record](../templates/engagement-reframe.json). A reframe keeps prior evidence and revisions, names the safe fallback, and changes only dependent artifacts. It does not grant production approval or target-system authority.
 
 Context extraction is not collecting every document. It is discovering the minimum operational truth needed to make a consequential design decision.
 
@@ -73,7 +78,7 @@ Interviews create hypotheses. Operator walkthroughs, source artifacts, system tr
 
 Do not automate a workaround before asking whether the workflow, policy, source system, or handoff should be repaired. AI can make a broken process move faster while making the underlying problem harder to see.
 
-**Use in the repository:** [field-observation log](../templates/field-observation-log.md), [discovery pack](../templates/fde-discovery-pack.md), and [Discovery and Value](../playbooks/01-discovery-and-value.md).
+**Use in the repository:** [field-engagement playbook](../playbooks/00-field-engagement-and-reframing.md), [field-observation log](../templates/field-observation-log.md), [discovery pack](../templates/fde-discovery-pack.md), and [Discovery and Value](../playbooks/01-discovery-and-value.md).
 
 ## 4. Engineer the value contract
 

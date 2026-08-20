@@ -51,6 +51,7 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 | Job | Skill | Primary result |
 | --- | --- | --- |
 | Qualify a workflow | [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) | Observed workflow, preliminary factor gates, selected pattern or none, and discover/defer/do-not-build decision |
+| Reframe a contradicted engagement | [`$reframe-ai-engagement`](.agents/skills/reframe-ai-engagement/SKILL.md) | Preserved inherited brief, representative evidence, bounded conflict, safe fallback, scoped disposition, selective propagation, and next field move |
 | Engineer value | [12 Factors of AI Value Engineering](library/14-twelve-factors-ai-value-engineering.md) → [AI Value Engineering Scorecard](guide/ai-value-engineering-scorecard.md) → [`$engineer-ai-value`](.agents/skills/engineer-ai-value/SKILL.md) | Outcome economics, hard-gate assessment, cost ceiling, guardrails, and measurement plan |
 | Select intelligence | [`$select-ai-mechanism`](.agents/skills/select-ai-mechanism/SKILL.md) | Smallest sufficient mechanism per decision route |
 | Design the system | [`$design-production-ai-system`](.agents/skills/design-production-ai-system/SKILL.md) | Coherent architecture and applicable design packet |
@@ -67,7 +68,7 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 | --- | --- | --- |
 | Learn or explain the method | [Concise FDE Guide](guide/README.md) → relevant Handbook or Engineering Kit link | Shared mental model without loading the complete repository |
 | Learn or assess FDE and AI-engineering capability | [Capability roadmap](guide/capability-roadmap.md) → one relevant practice mission → linked canonical artifacts | Role boundaries, capability gaps, and inspectable practice evidence without treating the roadmap as a hiring standard or production proof |
-| Lead an FDE or internal delivery engagement | [Concise FDE Guide](guide/README.md) when orientation is needed → [FDE playbooks](playbooks/README.md) → current lifecycle stage → required templates | Evidence-backed decisions from qualification through business-owned production operation |
+| Lead an FDE or internal delivery engagement | [Concise FDE Guide](guide/README.md) when orientation is needed → [Field engagement and accountable reframing](playbooks/00-field-engagement-and-reframing.md) → [FDE playbooks](playbooks/README.md) → current lifecycle stage → required templates | Evidence-backed decisions from inherited brief through business-owned production operation |
 | Review an FDE or applied-AI portfolio | [Operate and Scale](playbooks/03-operate-and-scale.md) → [portfolio review](templates/fde-portfolio-review.md) → linked service reviews and field-learning records | Cohort-aware investment, continuation, productization, transfer, capacity, and exit decisions without overriding workflow gates |
 | Build shared applied-AI capability | [FDE and applied AI engineering synthesis](library/10-fde-and-production-agent-synthesis.md) → current lifecycle stage → relevant reusable artifact | A deliberate boundary between workflow-specific delivery, reusable product/platform capability, and sanitized field learning |
 | Select a workflow | [Discovery and Value](playbooks/01-discovery-and-value.md) → [Start Here](library/00-start-here.md) → [discovery pack](templates/fde-discovery-pack.md) → [workflow charter](templates/workflow-charter.json) | Observed workflow, owner, baseline, accepted outcome, verifier, value hypothesis, and risk ceiling |
@@ -93,7 +94,7 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 
 Create the smallest complete design packet in this order:
 
-1. [`templates/field-observation-log.md`](templates/field-observation-log.md) and [`templates/fde-discovery-pack.md`](templates/fde-discovery-pack.md)
+1. [`templates/field-observation-log.md`](templates/field-observation-log.md) and [`templates/fde-discovery-pack.md`](templates/fde-discovery-pack.md); add [`templates/engagement-reframe.json`](templates/engagement-reframe.json) when inherited commitments and field evidence materially conflict
 2. [`templates/workflow-charter.json`](templates/workflow-charter.json), [`templates/value-case.md`](templates/value-case.md), and the [`templates/ai-value-engineering-scorecard.json`](templates/ai-value-engineering-scorecard.json) assessment when a pilot or lifecycle decision is needed
 3. [`templates/data-readiness-assessment.md`](templates/data-readiness-assessment.md) and a draft [`templates/data-context-manifest.json`](templates/data-context-manifest.json); refine and bind the manifest after mechanism selection
 4. [`templates/intelligence-selection-record.md`](templates/intelligence-selection-record.md) and [`templates/architecture-decision-record.md`](templates/architecture-decision-record.md) for consequential decision and system-boundary choices

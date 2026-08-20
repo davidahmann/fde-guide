@@ -32,6 +32,7 @@ import {
 import {
   capabilityManifestSemanticErrors,
   dataContextManifestSemanticErrors,
+  engagementReframeSemanticErrors,
   effectReceiptSemanticErrors,
   handoffEnvelopeSemanticErrors,
   operationalOntologySemanticErrors,
@@ -518,6 +519,9 @@ for (const [file, report] of documents) {
   }
   if (report?.workflow_id && report?.functional_requirement && report?.decision) {
     for (const error of workflowCharterSemanticErrors(report, relative(file))) fail(error);
+  }
+  if (report?.record_id && report?.inherited_brief && Array.isArray(report?.claims)) {
+    for (const error of engagementReframeSemanticErrors(report, relative(file))) fail(error);
   }
   if (report?.map_id && Array.isArray(report?.sources) && Array.isArray(report?.relations)) {
     for (const error of systemMapManifestSemanticErrors(report, relative(file))) fail(error);

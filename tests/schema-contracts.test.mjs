@@ -34,6 +34,7 @@ const pairs = [
   ["pattern-catalog.schema.json", "patterns/pattern-catalog.json"],
   ["workflow-charter.schema.json", "templates/workflow-charter.json"],
   ["evaluation-report.schema.json", "templates/evaluation-report.json"],
+  ["engagement-reframe.schema.json", "templates/engagement-reframe.json"],
   ["solution-release.schema.json", "templates/solution-release.json"],
   ["system-map-manifest.schema.json", "templates/system-map-manifest.json"],
 ];

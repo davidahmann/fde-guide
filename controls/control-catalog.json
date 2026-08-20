@@ -46,7 +46,7 @@
       "id": "FDE-001",
       "domain": "delivery",
       "level": "MUST",
-      "requirement": "Each use case MUST name the user, working interface, operational decision, decision inputs, permitted action, accepted outcome, owner, and verifier before solution design begins.",
+      "requirement": "Each use case MUST name the user, working interface, operational decision, decision inputs, permitted action, accepted outcome, sponsor, process knower, operator, disposition authority, owner, and independent verifier before solution design begins; one person MAY hold multiple roles only with a separate basis for each.",
       "evidence": ["R26-37", "R26-41"],
       "release_gates": ["design"]
     },
@@ -54,7 +54,7 @@
       "id": "FDE-002",
       "domain": "delivery",
       "level": "MUST",
-      "requirement": "Discovery MUST include representative workflow observations, artifacts, exceptions, workarounds, and validation by operators or domain experts, with sensitive evidence minimized and governed.",
+      "requirement": "Discovery MUST include representative workflow observations, artifacts, exceptions, workarounds, and validation by operators or domain experts; reconcile consequential sold, stated, observed, system-enforced, and policy-authorized claims while minimizing and governing sensitive evidence.",
       "evidence": ["R26-37", "R26-41", "R26-54"],
       "release_gates": ["design"]
     },
@@ -73,6 +73,14 @@
       "requirement": "Recurring field observations, operator corrections, adoption barriers, and production failure patterns MUST enter a governed learning register with evidence, confidentiality, owner, disposition, destination, and validation outcome.",
       "evidence": ["R26-37", "R26-45", "R26-46"],
       "release_gates": ["operations"]
+    },
+    {
+      "id": "FDE-005",
+      "domain": "delivery",
+      "level": "MUST",
+      "requirement": "When field evidence materially contradicts an inherited commitment, the team MUST preserve the sources and prior state, identify the affected boundary and disposition authority, provide a safe fallback, record a scoped human disposition, and propagate only dependent changes.",
+      "evidence": ["R26-37", "R26-41", "R26-44"],
+      "release_gates": ["design", "shadow"]
     },
     {
       "id": "VAL-001",

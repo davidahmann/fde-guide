@@ -1,6 +1,6 @@
 # The FDE Guide
 
-> **Value engineering and production architecture for FDEs, applied-AI engineers, product teams, and operators**
+> **Field discovery, accountable adaptation, value engineering, and production architecture for FDEs, applied-AI engineers, product teams, and operators**
 
 ![The FDE Guide: Discover value, design the system, govern decisions, release safely, operate outcomes](assets/fde-guide-banner.svg)
 
@@ -24,7 +24,7 @@ This is one method at three levels. Start with only the depth your job requires.
 
 The Guide explains the method. The Handbook supports judgment. The Engineering Kit makes claims, authority, behavior, and changes inspectable and testable. They are not separate frameworks.
 
-New to the role or assessing a team? The [capability roadmap](guide/capability-roadmap.md) compares adjacent responsibilities, organizes the work into eight capability domains, and provides four evidence-backed practice missions, a five-part starter pack, and a concise glossary. It is a learning route over this method—not a certification or separate framework.
+New to the role or assessing a team? The [capability roadmap](guide/capability-roadmap.md) compares adjacent responsibilities, organizes the work into nine capability domains, and provides five evidence-backed practice missions, a five-part starter pack, and a concise glossary. It is a learning route over this method—not a certification or separate framework.
 
 ## The core idea: engineer value before autonomy
 
@@ -63,6 +63,7 @@ The examples are in-memory teaching systems, not deployable products. Their test
 | You own | Start with | You should leave with |
 | --- | --- | --- |
 | Learning, hiring, or capability development | [FDE and AI engineer capability roadmap](guide/capability-roadmap.md) → one practice mission | Role boundaries, capability gaps, starter artifacts, and inspectable evidence without a stack-first curriculum |
+| Inherited brief or field contradiction | [Field engagement and accountable reframing](playbooks/00-field-engagement-and-reframing.md) → [engagement-reframe record](templates/engagement-reframe.json) | Process knower, representative evidence, bounded conflict, safe fallback, scoped disposition, and next field move |
 | Business value or use-case selection | [Concise Guide](guide/README.md) → [Discovery and Value](playbooks/01-discovery-and-value.md) | Bounded workflow, baseline, accepted outcome, verifier, value case, guardrails, and decision |
 | Data, context, or knowledge readiness | [Data readiness and context contracts](library/16-data-readiness-and-context-contracts.md) → [assessment](templates/data-readiness-assessment.md) | Decision-bound source inventory, quality thresholds, preparation lineage, output ownership, remediation economics, and operating contract |
 | FDE or internal applied-AI delivery | [Handbook](playbooks/README.md) → current lifecycle stage | Evidence-backed path from observation through adoption, handoff, operation, and field learning |
@@ -76,17 +77,19 @@ The entire repository follows one delivery loop.
 
 ```mermaid
 flowchart LR
-    A["Observe the work"] --> B["Charter value and scope"]
-    B --> C["Make data fit for the decision"]
-    C --> D["Select the mechanism"]
-    D --> E["Build one controlled slice"]
-    E --> F["Prove it with cases and users"]
-    F --> G["Launch and transfer ownership"]
-    G --> H["Operate, learn, or retire"]
+    A["Inherit the brief"] --> B["Observe and reconcile the work"]
+    B --> C["Charter value and scope"]
+    C --> D["Make data fit for the decision"]
+    D --> E["Select the mechanism"]
+    E --> F["Build one controlled slice"]
+    F --> G["Prove it with cases and users"]
+    G --> H["Launch and transfer ownership"]
+    H --> I["Operate, learn, or retire"]
 ```
 
 | Stage | Question | Working artifact |
 | --- | --- | --- |
+| Inherit and reconcile | What was sold, what actually happens, who knows the process, and who may change the boundary? | [Engagement-reframe record](templates/engagement-reframe.json), [observation log](templates/field-observation-log.md), and [field playbook](playbooks/00-field-engagement-and-reframing.md) |
 | Observe | How does the work really happen, including exceptions and recovery? | [Observation log](templates/field-observation-log.md) and [discovery pack](templates/fde-discovery-pack.md) |
 | Charter | Is the workflow worth changing, and how will an outcome be accepted? | [Workflow charter](templates/workflow-charter.json), [value case](templates/value-case.md), and [AI Value Engineering Scorecard](guide/ai-value-engineering-scorecard.md) |
 | Prepare data | Are the operational, context, evaluation, and feedback sources fit for this decision and affordable to operate? | [Data-readiness assessment](templates/data-readiness-assessment.md) and [data-context manifest](templates/data-context-manifest.json) |
@@ -132,7 +135,7 @@ These artifacts are design hypotheses. They are not customer observations, compl
 
 ## Optional: use it with a coding agent
 
-The guide is complete as documentation. The optional task skills make ten focused jobs easier to invoke from Codex, Claude Code, Cursor, and other compatible agents:
+The guide is complete as documentation. The optional task skills make eleven focused jobs easier to invoke from Codex, Claude Code, Cursor, and other compatible agents:
 
 ```bash
 npx skills add davidahmann/fde-guide
@@ -145,11 +148,12 @@ Use $qualify-ai-workflow to assess this candidate workflow: [describe it].
 ```
 
 <details>
-<summary>See all ten optional workflow skills</summary>
+<summary>See all eleven optional workflow skills</summary>
 
 | Job | Skill |
 | --- | --- |
 | Qualify a workflow | [`$qualify-ai-workflow`](.agents/skills/qualify-ai-workflow/SKILL.md) |
+| Reframe a contradicted engagement | [`$reframe-ai-engagement`](.agents/skills/reframe-ai-engagement/SKILL.md) |
 | Engineer the value case | [`$engineer-ai-value`](.agents/skills/engineer-ai-value/SKILL.md) |
 | Select the mechanism | [`$select-ai-mechanism`](.agents/skills/select-ai-mechanism/SKILL.md) |
 | Design the system | [`$design-production-ai-system`](.agents/skills/design-production-ai-system/SKILL.md) |

@@ -2,6 +2,8 @@
 
 This page connects customer-facing FDE work with the internal applied-AI engineering, product, platform, and operations work that makes delivery repeatable. It separates portable lessons from Palantir, OpenAI, Anthropic, and the AI Engineer practitioner corpus; it does not claim that any organization follows one universal method.
 
+The field transition is a distinct FDE responsibility, not a preliminary architecture interview. An FDE preserves the inherited brief, finds the person who actually knows the process, observes representative work, reconciles sold, stated, observed, system-enforced, and policy-authorized claims, and obtains a scoped human disposition when evidence changes the boundary. Use the [field-engagement playbook](../playbooks/00-field-engagement-and-reframing.md) and [engagement-reframe record](../templates/engagement-reframe.json) before silently converting a field contradiction into requirements or architecture.
+
 The product is a measurable workflow improvement. A rule, optimizer, ML model, foundation-model call, agent, or human-review step is a mechanism selected for one decision—not the product itself.
 
 ## Two linked practices, one delivery system
