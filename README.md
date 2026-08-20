@@ -10,15 +10,17 @@ An independent, open-source guide and engineering kit for forward deployed engin
 [![Latest release](https://img.shields.io/github/v/release/davidahmann/fde-guide)](https://github.com/davidahmann/fde-guide/releases/latest)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
 
-[Read on the web](https://davidahmann.github.io/fde-guide/) · [Read the concise Guide](guide/README.md) · [Use the value scorecard](guide/ai-value-engineering-scorecard.md) · [Establish data readiness](library/16-data-readiness-and-context-contracts.md) · [Build FDE capability](guide/capability-roadmap.md) · [Use the Handbook](playbooks/README.md) · [Run the code](#see-it-working) · [Browse solutions](solutions/README.md) · [Use with an agent](#optional-use-it-with-a-coding-agent)
+[Read the five-minute Guide](guide/fde-guide-in-five-minutes.md) · [Read it on the web](https://davidahmann.github.io/fde-guide/five-minute-guide/) · [Read the concise Guide](guide/README.md) · [Use the value scorecard](guide/ai-value-engineering-scorecard.md) · [Establish data readiness](library/16-data-readiness-and-context-contracts.md) · [Build FDE capability](guide/capability-roadmap.md) · [Use the Handbook](playbooks/README.md) · [Run the code](#see-it-working) · [Browse solutions](solutions/README.md) · [Use with an agent](#optional-use-it-with-a-coding-agent)
 
 ## Choose your depth
 
 This is one method at three levels. Start with only the depth your job requires.
 
+**New here?** Start with [The FDE Guide in Five Minutes](guide/fde-guide-in-five-minutes.md). It gives you the job, five rules, three field moves, minimum working packet, and next route without loading the full repository.
+
 | Layer | Use it when | Start here |
 | --- | --- | --- |
-| **The Guide** | You want the mental model, core principles, complete FDE delivery loop, or a practical path for building capability | [Read the concise Guide](guide/README.md) or follow the [FDE and AI engineer capability roadmap](guide/capability-roadmap.md) |
+| **The Guide** | You want the mental model, core principles, complete FDE delivery loop, or a practical path for building capability | Start with the [five-minute Guide](guide/fde-guide-in-five-minutes.md), continue to the [concise Guide](guide/README.md), or follow the [FDE and AI engineer capability roadmap](guide/capability-roadmap.md) |
 | **The Handbook** | You are qualifying, designing, delivering, transferring, or operating a real workflow | [Follow the lifecycle playbooks](playbooks/README.md) and [human-readable library](library/00-start-here.md) |
 | **The Engineering Kit** | You need implementation artifacts, architecture, machine-readable contracts, release controls, executable examples, or tests | [Inspect the kit](#what-is-in-the-engineering-kit), [controlled-write system](examples/invoice-exception/README.md), and [hybrid system](examples/shipment-risk-triage/README.md) |
 

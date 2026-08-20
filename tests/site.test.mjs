@@ -28,6 +28,33 @@ test("site configuration defines one canonical source per route", () => {
   }
 });
 
+test("the five-minute guide stays concise and routes into canonical depth", async () => {
+  const page = pages.find(({ source }) => source === "guide/fde-guide-in-five-minutes.md");
+  assert.equal(page?.route, "/five-minute-guide/");
+  const source = await readFile(path.join(root, page.source), "utf8");
+  const words = source
+    .replace(/```[\s\S]*?```/g, " ")
+    .replace(/\[[^\]]+\]\([^\)]+\)/g, " ")
+    .match(/[\p{L}\p{N}][\p{L}\p{N}'’-]*/gu) ?? [];
+  assert.ok(words.length >= 700 && words.length <= 1_100, `five-minute guide has ${words.length} words`);
+  for (const heading of [
+    "## The job",
+    "## Five rules that matter",
+    "## When the brief is wrong",
+    "## The minimum working packet",
+    "## Choose the next route",
+    "## Keep the boundary clear",
+  ]) assert.ok(source.includes(heading), heading);
+  assert.equal((source.match(/```mermaid/g) ?? []).length, 1);
+  for (const target of [
+    "playbooks/00-field-engagement-and-reframing.md",
+    "templates/workflow-charter.json",
+    "operations/release-gates.md",
+    "concise FDE Guide](README.md)",
+  ]) assert.ok(source.includes(target), target);
+  assert.match(source, /guidance—not production approval/i);
+});
+
 test("the capability roadmap is a bounded secondary entry layer", async () => {
   const page = pages.find(({ source }) => source === "guide/capability-roadmap.md");
   assert.equal(page?.route, "/forward-deployed-engineer-roadmap/");

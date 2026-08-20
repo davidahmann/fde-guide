@@ -6,7 +6,7 @@ This repository is a design and verification kit for production AI-enabled syste
 
 Treat an agent as one component option. For each consequential decision, first compare deterministic code, optimization, classical ML, retrieval, a foundation-model call, a bounded agent workflow, and human review as applicable. Select the smallest sufficient mechanism and preserve the authority, evidence, cost, fallback, and retirement rationale. `ARC-004`, `ARC-005`.
 
-Use [`README.md`](README.md) for the public entry door, the concise [`guide/README.md`](guide/README.md) for the human mental model, [`guide/capability-roadmap.md`](guide/capability-roadmap.md) for role and practice orientation, and this file as the working contract for repository navigation and changes.
+Use [`README.md`](README.md) for the public entry door, [`guide/fde-guide-in-five-minutes.md`](guide/fde-guide-in-five-minutes.md) for the shortest orientation, the concise [`guide/README.md`](guide/README.md) for the complete human mental model, [`guide/capability-roadmap.md`](guide/capability-roadmap.md) for role and practice orientation, and this file as the working contract for repository navigation and changes.
 
 ## Required orientation
 
@@ -25,7 +25,7 @@ Do not load the entire repository by default. Use one skill or task route, then 
 
 | Path | Role | Treat it as |
 | --- | --- | --- |
-| [`guide/`](guide/README.md) | Gives a concise explanation of the FDE method plus a role and practice roadmap | Human orientation; narrative, not a certification or normative production contract |
+| [`guide/`](guide/README.md) | Gives a five-minute overview, a concise explanation of the FDE method, and a role and practice roadmap | Human orientation; narrative, not a certification or normative production contract |
 | [`catalog.json`](catalog.json) | Lists governed artifacts, types, paths, and tags | Registry; update when a cataloged artifact is added, moved, or removed |
 | [`controls/`](controls/control-catalog.json) | Defines production requirements and release gates | Engineering policy normative within this guide |
 | [`schemas/`](schemas/README.md) | Defines valid structures for machine-readable artifacts | Structural source of truth |
@@ -66,9 +66,9 @@ Repository-local skills are instruction-only workflows. They grant no tool acces
 
 | Task | Read next | Expected result |
 | --- | --- | --- |
-| Learn or explain the method | [Concise FDE Guide](guide/README.md) → relevant Handbook or Engineering Kit link | Shared mental model without loading the complete repository |
+| Learn or explain the method | [Five-minute FDE Guide](guide/fde-guide-in-five-minutes.md) → [Concise FDE Guide](guide/README.md) when more depth is needed → relevant Handbook or Engineering Kit link | Shared mental model without loading the complete repository |
 | Learn or assess FDE and AI-engineering capability | [Capability roadmap](guide/capability-roadmap.md) → one relevant practice mission → linked canonical artifacts | Role boundaries, capability gaps, and inspectable practice evidence without treating the roadmap as a hiring standard or production proof |
-| Lead an FDE or internal delivery engagement | [Concise FDE Guide](guide/README.md) when orientation is needed → [Field engagement and accountable reframing](playbooks/00-field-engagement-and-reframing.md) → [FDE playbooks](playbooks/README.md) → current lifecycle stage → required templates | Evidence-backed decisions from inherited brief through business-owned production operation |
+| Lead an FDE or internal delivery engagement | [Five-minute FDE Guide](guide/fde-guide-in-five-minutes.md) or [Concise FDE Guide](guide/README.md) when orientation is needed → [Field engagement and accountable reframing](playbooks/00-field-engagement-and-reframing.md) → [FDE playbooks](playbooks/README.md) → current lifecycle stage → required templates | Evidence-backed decisions from inherited brief through business-owned production operation |
 | Review an FDE or applied-AI portfolio | [Operate and Scale](playbooks/03-operate-and-scale.md) → [portfolio review](templates/fde-portfolio-review.md) → linked service reviews and field-learning records | Cohort-aware investment, continuation, productization, transfer, capacity, and exit decisions without overriding workflow gates |
 | Build shared applied-AI capability | [FDE and applied AI engineering synthesis](library/10-fde-and-production-agent-synthesis.md) → current lifecycle stage → relevant reusable artifact | A deliberate boundary between workflow-specific delivery, reusable product/platform capability, and sanitized field learning |
 | Select a workflow | [Discovery and Value](playbooks/01-discovery-and-value.md) → [Start Here](library/00-start-here.md) → [discovery pack](templates/fde-discovery-pack.md) → [workflow charter](templates/workflow-charter.json) | Observed workflow, owner, baseline, accepted outcome, verifier, value hypothesis, and risk ceiling |
@@ -122,7 +122,7 @@ Do not begin with multi-agent topology or framework selection. First establish t
 - JSON Schemas define valid artifact structure.
 - Executable tests provide regression evidence for the behavior they exercise; passing does not certify production readiness.
 - Blueprints and templates translate controls into reusable designs.
-- The concise Guide explains the shared mental model and routes readers to authoritative deeper artifacts.
+- The five-minute Guide provides the shortest orientation; the concise Guide explains the complete shared mental model and routes readers to authoritative deeper artifacts.
 - The capability roadmap organizes learning and assessment over the same method; it is not a certification, production gate, or substitute for target evidence.
 - Library pages explain the reasoning; research records the evidence and its limits.
 
