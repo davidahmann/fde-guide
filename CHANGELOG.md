@@ -4,6 +4,12 @@ Notable changes to this project are recorded here.
 
 ## [Unreleased]
 
+## [1.19.0] - 2026-08-20
+
+- Add a canonical five-minute FDE Guide that distills the field job, five operating rules, three moves for a contradicted brief, minimum working packet, and task-based next routes into a bounded first read.
+- Make the short orientation the primary entry across repository, web, human, agent, catalog, and maintainer navigation while retaining the concise Guide, Handbook, and Engineering Kit as authoritative deeper layers.
+- Add regression coverage for the overview's size, structure, source boundaries, canonical route, and links so the front door cannot quietly grow into another operating manual.
+
 ## [1.18.0] - 2026-08-20
 
 - Add a field-engagement method that preserves the inherited brief, separates sponsor, process-knower, operator, disposition-authority, and verifier roles, and reconciles sold, stated, observed, system-enforced, and policy-authorized claims.
@@ -165,7 +171,8 @@ Notable changes to this project are recorded here.
 - Add a transactional invoice-exception reference with executable policy, runtime, contract, and adversarial replay tests.
 - Add a dated evidence ledger with explicit source-quality and claim boundaries.
 
-[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.18.0...HEAD
+[Unreleased]: https://github.com/davidahmann/fde-guide/compare/v1.19.0...HEAD
+[1.19.0]: https://github.com/davidahmann/fde-guide/compare/v1.18.0...v1.19.0
 [1.18.0]: https://github.com/davidahmann/fde-guide/compare/v1.17.0...v1.18.0
 [1.17.0]: https://github.com/davidahmann/fde-guide/compare/v1.16.0...v1.17.0
 [1.16.0]: https://github.com/davidahmann/fde-guide/compare/v1.15.0...v1.16.0

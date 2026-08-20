@@ -4,6 +4,12 @@
   "updated": "2026-08-20",
   "artifacts": [
     {
+      "id": "guide.five-minute",
+      "type": "standard",
+      "path": "guide/fde-guide-in-five-minutes.md",
+      "tags": ["fde", "orientation", "quick-start", "lifecycle"]
+    },
+    {
       "id": "guide.core",
       "type": "standard",
       "path": "guide/README.md",

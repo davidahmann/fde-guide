@@ -6,6 +6,8 @@ This is the concise human guide to forward-deployed engineering and internal app
 
 **Reading time:** about 20 minutes. This guide is narrative orientation, not a production standard or a substitute for the target organization's policy, security, architecture, or risk review.
 
+Need the shortest useful orientation? Read [The FDE Guide in Five Minutes](fde-guide-in-five-minutes.md) first, then return here when you need the complete mental model.
+
 If you are learning the role, planning a development path, or assessing a team, use the companion [FDE and AI Engineer Capability Roadmap](capability-roadmap.md). It turns this method into role boundaries, capability evidence, five practice missions, a quick-start pack, and a glossary without creating a second methodology.
 
 ## 1. What an FDE is responsible for

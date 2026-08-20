@@ -6,7 +6,7 @@ This document keeps the guide coherent as research, controls, templates, example
 
 | Layer | Authority | Change obligation |
 | --- | --- | --- |
-| `guide/` | Concise human mental model plus role and practice orientation | Keep the core method linear; keep the capability roadmap non-normative, evidence-oriented, and free of duplicated contract detail or certification claims |
+| `guide/` | Five-minute orientation, concise human mental model, and role and practice guidance | Keep the overview short, the core method linear, and the capability roadmap non-normative, evidence-oriented, and free of duplicated contract detail or certification claims |
 | `.agents/skills/` | Focused human- and agent-readable task routes | Keep triggers distinct, procedures thin, outputs explicit, metadata valid, and links bound to canonical artifacts |
 | `research/` | Dated evidence and caveats | Verify source, date, attribution, and claim boundary |
 | `controls/` | Normative project requirements | Link evidence and release gates; update affected verification |
@@ -51,7 +51,7 @@ This document keeps the guide coherent as research, controls, templates, example
 | Operations contract | SLO, alert, runbook, incident query, game day, example telemetry |
 | Repository skill | Trigger neighbors, value-framework and selected-solution routing, linked controls and artifacts, `agents/openai.yaml`, catalog entry, skill tests, README, AGENTS, and llms |
 | Solution artifact | Layer and coverage map, primary operating or technical boundary, referenced controls and templates, acceptance cases, operating measures, customer-specific decisions, catalog entry, navigation, and solution tests |
-| Public navigation or site | README hierarchy, concise Guide, AGENTS, llms, site route and metadata map, crawler files, Pages workflow, contribution docs, executable examples, and site tests |
+| Public navigation or site | README hierarchy, five-minute and concise Guides, AGENTS, llms, site route and metadata map, crawler files, Pages workflow, contribution docs, executable examples, and site tests |
 
 ## Research refresh
 
@@ -66,7 +66,7 @@ This document keeps the guide coherent as research, controls, templates, example
 2. Run `npm ci --ignore-scripts`, `npm test`, and `git diff --check`; `npm test` includes solution, value-framework, skill-metadata, site-build, link, metadata, and catalog checks.
 3. Run spelling, action workflow, dependency, and secret scans used by the current project.
 4. Confirm all new governed artifacts are cataloged and every new source ID resolves.
-5. Proofread README, concise Guide, capability roadmap, AGENTS, llms, generated site routes and descriptions, playbook routes, changelog, package/citation versions, and release links.
+5. Proofread README, five-minute and concise Guides, capability roadmap, AGENTS, llms, generated site routes and descriptions, playbook routes, changelog, package/citation versions, and release links.
 6. When skill discovery or packaging changes, verify `npx skills add davidahmann/fde-guide --list` from a disposable environment; do not add this network-dependent smoke test to the deterministic CI gate.
 7. Use a scoped commit and draft pull request; do not bypass protected `main`.
 8. Require CI and review before merge; tag only after the release tree and metadata agree.
@@ -83,7 +83,7 @@ This document keeps the guide coherent as research, controls, templates, example
 ## Maintainer acceptance questions
 
 - Does the change improve a real user path or contract rather than add parallel prose?
-- Can a first-time human understand the method through the concise Guide before entering the Handbook or Engineering Kit?
+- Can a first-time human understand the essential method in five minutes, then find the right deeper route without scanning the repository?
 - Does a solution artifact make the business decision and delivery boundary clearer without becoming a parallel methodology, shallow industry wrapper, or claim of deployable completeness?
 - Can a person and a coding agent find the new artifact from the task they are trying to complete?
 - Are evidence, recommendation, control, implementation, and verification clearly separated?

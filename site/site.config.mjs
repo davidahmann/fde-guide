@@ -16,6 +16,7 @@ export const navigation = [
     label: "Start",
     routes: [
       "/",
+      "/five-minute-guide/",
       "/forward-deployed-engineering/",
       "/forward-deployed-engineer-roadmap/",
       "/fde-operating-model/",
@@ -67,6 +68,14 @@ export const pages = [
     description:
       "An open-source forward deployed engineering guide and executable kit for measurable, secure, production AI-enabled systems.",
     type: "SoftwareSourceCode",
+  },
+  {
+    route: "/five-minute-guide/",
+    source: "guide/fde-guide-in-five-minutes.md",
+    navTitle: "The Guide in five minutes",
+    title: "The FDE Guide in Five Minutes: From Field Work to Operated Value",
+    description:
+      "Learn the essential FDE method in five minutes: observe real work, bound value, choose the smallest mechanism, prove the release, and transfer ownership.",
   },
   {
     route: "/forward-deployed-engineering/",
